@@ -11,8 +11,4 @@ class HomeController extends GetxController {
       }
   }
 
-  void decrementCounter() {
-    counter.value != 0 ? counter.value-- : counter.value; //check the counter is not less then zero
-  }
-
 }

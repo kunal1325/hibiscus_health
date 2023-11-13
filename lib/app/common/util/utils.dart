@@ -8,4 +8,12 @@ abstract class Utils {
     }
   }
 
+  static assetSVGImage(String imagePath, {double? height, double? width, Color? color}) {
+    return SvgPicture.asset(
+      imagePath,
+      height: height,
+      width: width,
+    );
+  }
+
 }

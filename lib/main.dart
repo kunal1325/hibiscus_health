@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       builder: (BuildContext context, child) => GetMaterialApp(
         title: Strings.appName,
         debugShowCheckedModeBanner: false,
-        initialRoute: AppPages.INITIAL,
+        initialRoute: AppPages.initial,
         getPages: AppPages.routes,
         initialBinding: InitialBindings(),
       ),
