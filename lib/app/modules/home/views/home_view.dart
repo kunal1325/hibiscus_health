@@ -32,23 +32,11 @@ class HomeView extends GetView<HomeController> {
                   ],
                 ),
               ),
-              floatingActionButton: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  FloatingActionButton(
-                    onPressed: controller.incrementCounter,
-                    backgroundColor: AppColors.kSecColor,
-                    tooltip: Strings.increment,
-                    child: const Icon(Icons.add, color: AppColors.black,),
-                  ),
-                  const SizedBox(height: 10,),
-                  FloatingActionButton(
-                    onPressed: controller.decrementCounter,
-                    backgroundColor: AppColors.kSecColor,
-                    tooltip: Strings.decrement,
-                    child: const Icon(Icons.remove, color: AppColors.black,),
-                  ),
-                ],
+              floatingActionButton: FloatingActionButton(
+                onPressed: controller.incrementCounter,
+                backgroundColor: AppColors.kSecColor,
+                tooltip: Strings.increment,
+                child: const Icon(Icons.add, color: AppColors.black,),
               ),
             ),
           );

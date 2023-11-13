@@ -22,6 +22,7 @@ export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:get/get.dart';
 export 'dart:math';
 export 'dart:async';
+export 'package:flutter_svg/svg.dart';
 
 
 /// Strings
@@ -31,10 +32,15 @@ export 'dart:async';
 /// App Pages
 export 'app/routes/app_pages.dart';
 
-// Home
+/// Home
 export 'app/modules/home/bindings/home_binding.dart';
 export 'app/modules/home/controllers/home_controller.dart';
 export 'app/modules/home/views/home_view.dart';
 
-/// Models and APIs
+/// Splash
+export 'app/modules/splash/bindings/splash_binding.dart';
+export 'app/modules/splash/controllers/splash_controller.dart';
+export 'app/modules/splash/views/splash_view.dart';
+
+
 

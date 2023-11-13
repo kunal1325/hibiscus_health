@@ -3,13 +3,18 @@ import '../../import.dart';
 part 'app_routes.dart';
 
 abstract class AppPages {
-  static const INITIAL = Routes.LandingScreen;
+  static const initial = Routes.landingScreen;
 
   static final routes = [
     GetPage(
-      name: _Paths.HOME,
+      name: _Paths.home,
       page: () => HomeView(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.splash,
+      page: () => SplashView(),
+      binding: SplashBinding(),
     ),
   ];
 }
