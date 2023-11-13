@@ -32,6 +32,10 @@ export 'package:flutter_svg/svg.dart';
 /// App Pages
 export 'app/routes/app_pages.dart';
 
+///Models
+export 'app/data/models/onboarding_info.dart';
+
+
 /// Home
 export 'app/modules/home/bindings/home_binding.dart';
 export 'app/modules/home/controllers/home_controller.dart';
@@ -41,6 +45,12 @@ export 'app/modules/home/views/home_view.dart';
 export 'app/modules/splash/bindings/splash_binding.dart';
 export 'app/modules/splash/controllers/splash_controller.dart';
 export 'app/modules/splash/views/splash_view.dart';
+
+/// onBoarding
+export 'app/modules/on_boarding/bindings/on_boarding_binding.dart';
+export 'app/modules/on_boarding/controllers/on_boarding_controller.dart';
+export 'app/modules/on_boarding/views/on_boarding_view.dart';
+
 
 
 

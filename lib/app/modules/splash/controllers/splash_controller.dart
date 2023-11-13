@@ -13,7 +13,7 @@ class SplashController extends GetxController  with GetSingleTickerProviderState
   Future<void> onInit() async {
     controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 4),
+      duration: const Duration(seconds: 3),
     );
     animation = Tween(
       begin: 0.0,
@@ -25,7 +25,7 @@ class SplashController extends GetxController  with GetSingleTickerProviderState
   }
 
   Future<Timer> loadData() async {
-    return Timer(const Duration(seconds: 5), onDoneLoading);
+    return Timer(const Duration(seconds: 4), onDoneLoading);
   }
 
   onDoneLoading() async {
@@ -36,7 +36,7 @@ class SplashController extends GetxController  with GetSingleTickerProviderState
     if (userId == "") {
       Get.back();
     } else {
-      Get.toNamed("/home");
+      Get.toNamed("/onBoarding");
     }
   }
 
