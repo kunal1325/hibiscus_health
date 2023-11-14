@@ -1,6 +1,6 @@
 {
-    "name": "hibiscus_health",
-    "short_name": "hibiscus_health",
+    "name": "Hibiscus Health",
+    "short_name": "Hibiscus Health",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
