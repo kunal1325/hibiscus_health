@@ -16,5 +16,10 @@ abstract class AppPages {
       page: () => SplashView(),
       binding: SplashBinding(),
     ),
+    GetPage(
+      name: _Paths.onBoarding,
+      page: () => OnBoardingView(),
+      binding: OnBoardingBinding(),
+    ),
   ];
 }

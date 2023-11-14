@@ -23,14 +23,26 @@ export 'package:get/get.dart';
 export 'dart:math';
 export 'dart:async';
 export 'package:flutter_svg/svg.dart';
+export 'dart:io' hide HeaderValue;
+export 'dart:ui'  hide clampDouble hide decodeImageFromList hide TextStyle hide ImageDecoderCallback hide Codec hide Gradient hide Image hide StrutStyle;
 
 
 /// Strings
 
 /// Colors
 
+///Widgets
+export 'app/modules/widgets/blur_box.dart';
+export 'app/modules/widgets/exit_dialog.dart';
+
+
+
 /// App Pages
 export 'app/routes/app_pages.dart';
+
+///Models
+export 'app/data/models/onboarding_info.dart';
+
 
 /// Home
 export 'app/modules/home/bindings/home_binding.dart';
@@ -41,6 +53,12 @@ export 'app/modules/home/views/home_view.dart';
 export 'app/modules/splash/bindings/splash_binding.dart';
 export 'app/modules/splash/controllers/splash_controller.dart';
 export 'app/modules/splash/views/splash_view.dart';
+
+/// onBoarding
+export 'app/modules/on_boarding/bindings/on_boarding_binding.dart';
+export 'app/modules/on_boarding/controllers/on_boarding_controller.dart';
+export 'app/modules/on_boarding/views/on_boarding_view.dart';
+
 
 
 

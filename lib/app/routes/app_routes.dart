@@ -8,4 +8,5 @@ abstract class Routes {
 abstract class _Paths {
   static const home = '/home';
   static const splash = '/splash';
+  static const onBoarding = '/onBoarding';
 }
