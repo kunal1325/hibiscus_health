@@ -13,7 +13,7 @@ Future<bool> showExitPopup(context) async{
               child: const Text('No'),
             ),
             TextButton(
-              onPressed: () => Navigator.of(context).pop(true),
+              onPressed: () => exit(0),
               child: const Text('Yes'),
             ),
           ],
