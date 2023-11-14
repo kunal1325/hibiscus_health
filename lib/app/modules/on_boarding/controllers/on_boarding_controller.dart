@@ -17,7 +17,7 @@ class OnBoardingController extends GetxController {
 
   backwardAction() {
     if (isFirstPage) {
-      print("First Page");
+      showExitPopup(Get.context);
     } else {
       pageController.previousPage(duration: 300.milliseconds, curve: Curves.ease);
     }

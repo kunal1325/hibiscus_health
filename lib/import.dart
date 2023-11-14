@@ -23,11 +23,19 @@ export 'package:get/get.dart';
 export 'dart:math';
 export 'dart:async';
 export 'package:flutter_svg/svg.dart';
+export 'dart:io' hide HeaderValue;
+export 'dart:ui'  hide clampDouble hide decodeImageFromList hide TextStyle hide ImageDecoderCallback hide Codec hide Gradient hide Image hide StrutStyle;
 
 
 /// Strings
 
 /// Colors
+
+///Widgets
+export 'app/modules/widgets/blur_box.dart';
+export 'app/modules/widgets/exit_dialog.dart';
+
+
 
 /// App Pages
 export 'app/routes/app_pages.dart';

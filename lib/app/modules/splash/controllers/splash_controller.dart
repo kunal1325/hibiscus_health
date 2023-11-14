@@ -36,7 +36,7 @@ class SplashController extends GetxController  with GetSingleTickerProviderState
     if (userId == "") {
       Get.back();
     } else {
-      Get.toNamed("/onBoarding");
+      Get.offAndToNamed("/onBoarding");
     }
   }
 
