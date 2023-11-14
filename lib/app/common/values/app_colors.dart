@@ -8,4 +8,6 @@ abstract class AppColors {
   static const Color kTierColor = Color(0xffec4a0e);
   static const Color black = Colors.black;
   static const Color white = Colors.white;
+
+  static const Color previous = Color(0xffF3F3F3);
 }

@@ -23,6 +23,7 @@ export 'package:get/get.dart';
 export 'dart:math';
 export 'dart:async';
 export 'package:flutter_svg/svg.dart';
+export 'package:google_fonts/google_fonts.dart';
 export 'dart:io' hide HeaderValue;
 export 'dart:ui'  hide clampDouble hide decodeImageFromList hide TextStyle hide ImageDecoderCallback hide Codec hide Gradient hide Image hide StrutStyle;
 

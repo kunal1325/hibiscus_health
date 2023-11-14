@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
       minTextAdapt: true,
       builder: (BuildContext context, child) => GetMaterialApp(
+        defaultTransition: Transition.fade,
         title: Strings.appName,
         debugShowCheckedModeBanner: false,
         initialRoute: AppPages.initial,

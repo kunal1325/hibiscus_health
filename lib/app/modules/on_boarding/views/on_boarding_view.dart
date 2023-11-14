@@ -11,7 +11,7 @@ class OnBoardingView extends GetView<OnBoardingController> {
           body: Container(
             width: Get.width,
             height: Get.height,
-            color: AppColors.kPrimaryColor,
+            color: AppColors.black,
             child: Stack(
               children: [
                 PageView.builder(
@@ -31,17 +31,17 @@ class OnBoardingView extends GetView<OnBoardingController> {
                     top: 35,
                     child: InkWell(
                       onTap: controller.skipAction,
-                      child: const SizedBox(
+                      child: SizedBox(
                         width: 72,
                         height: 52,
                         child: Center(
                           child: Text("Skip",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.white,
+                              style: GoogleFonts.inter(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.previous,
                                 shadows: [
-                                  Shadow(
+                                  const Shadow(
                                     color: AppColors.black,      // Choose the color of the shadow
                                     blurRadius: 4.0,          // Adjust the blur radius for the shadow effect
                                     offset: Offset(0.0, 2.0), // Set the horizontal and vertical offset for the shadow
@@ -62,26 +62,25 @@ class OnBoardingView extends GetView<OnBoardingController> {
                       alignment: Alignment.bottomCenter,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(
-                          1,
-                              (index) => Obx(
-                                () =>Text(
-                                controller.onboardingPages[controller.selectedPageIndex.value].title,
-                                style: const TextStyle(
-                                    fontSize: 24,
-                                    fontWeight: FontWeight.w700,
-                                    color: AppColors.white,
-                                  shadows: [
-                                    Shadow(
-                                      color: AppColors.black,      // Choose the color of the shadow
-                                      blurRadius: 10.0,          // Adjust the blur radius for the shadow effect
-                                      offset: Offset(0.0, 4.0), // Set the horizontal and vertical offset for the shadow
-                                    ),
-                                  ],
-                                )
-                            ),
+                        children: [
+                          Obx(() =>
+                              Text(
+                                      controller.onboardingPages[controller.selectedPageIndex.value].title,
+                                      style: GoogleFonts.inter(
+                                        fontSize: 24,
+                                        fontWeight: FontWeight.bold,
+                                        color: AppColors.white,
+                                        shadows: [
+                                          const Shadow(
+                                            color: AppColors.black,      // Choose the color of the shadow
+                                            blurRadius: 10.0,          // Adjust the blur radius for the shadow effect
+                                            offset: Offset(0.0, 4.0), // Set the horizontal and vertical offset for the shadow
+                                          ),
+                                        ],
+                                      ),
+                                  ),
                           ),
-                        ),
+                        ],
                       ),
                   ),
                 ), // Title
@@ -96,12 +95,12 @@ class OnBoardingView extends GetView<OnBoardingController> {
                               height: 52,
                               child: Center(
                                 child: Text(controller.isFirstPage ? "" : "Previous",
-                                    style: const TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w600,
-                                        color: AppColors.white,
+                                    style: GoogleFonts.inter(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColors.previous,
                                       shadows: [
-                                        Shadow(
+                                        const Shadow(
                                           color: AppColors.black,      // Choose the color of the shadow
                                           blurRadius: 4.0,          // Adjust the blur radius for the shadow effect
                                           offset: Offset(0.0, 2.0), // Set the horizontal and vertical offset for the shadow
@@ -128,8 +127,8 @@ class OnBoardingView extends GetView<OnBoardingController> {
                               height: 10,
                               decoration: BoxDecoration(
                                 color: controller.selectedPageIndex.value == index
-                                    ? AppColors.kSecColor
-                                    : Colors.grey,
+                                    ? AppColors.white
+                                    : Colors.grey[700],
                                 shape: BoxShape.circle,
                               ),
                             );
@@ -143,17 +142,17 @@ class OnBoardingView extends GetView<OnBoardingController> {
                     bottom: 20,
                     child: InkWell(
                       onTap: controller.forwardAction,
-                      child: const SizedBox(
+                      child: SizedBox(
                         width: 72,
                         height: 52,
                         child: Center(
                           child: Text("Next",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.kSecColor,
+                              style: GoogleFonts.inter(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.kSecColor,
                                 shadows: [
-                                  Shadow(
+                                  const Shadow(
                                     color: AppColors.black,      // Choose the color of the shadow
                                     blurRadius: 4.0,          // Adjust the blur radius for the shadow effect
                                     offset: Offset(0.0, 2.0), // Set the horizontal and vertical offset for the shadow

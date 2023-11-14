@@ -49,6 +49,8 @@ dependencies:
   #for SVG Images
   flutter_svg:
 
+  #for google fonts
+  google_fonts:
 
 dev_dependencies:
   flutter_test:
