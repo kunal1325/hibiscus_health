@@ -21,5 +21,10 @@ abstract class AppPages {
       page: () => OnBoardingView(),
       binding: OnBoardingBinding(),
     ),
+    GetPage(
+      name: _Paths.welcomeScreen,
+      page: () => WelcomeView(),
+      binding: WelcomeBinding(),
+    ),
   ];
 }

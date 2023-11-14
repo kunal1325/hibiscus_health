@@ -6,12 +6,16 @@ abstract class Strings {
 
   static const String appName = 'Hibiscus Health';
 
-  ///Home Model
-
-
+  ///Home Screen
   static const String pushedMsg = 'You have pushed the button this many times:';
   static const String increment = 'Increment';
   static const String decrement = 'Decrement';
+
+  ///Welcome Screen
+  static const String welcomeHeading = 'Get Healthy With Hibiscus!';
+  static const String createAccount = 'Create Account';
+  static const String signIn = 'Sign in';
+
 
 
 
