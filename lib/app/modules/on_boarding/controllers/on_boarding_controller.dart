@@ -9,7 +9,7 @@ class OnBoardingController extends GetxController {
 
   forwardAction() {
     if (isLastPage) {
-      Get.toNamed("/home");
+      Get.offAndToNamed("/welcomeScreen");
     } else {
       pageController.nextPage(duration: 300.milliseconds, curve: Curves.ease);
     }
@@ -24,7 +24,7 @@ class OnBoardingController extends GetxController {
   }
 
   skipAction() {
-      Get.toNamed("/home");
+    Get.offAndToNamed("/welcomeScreen");
   }
 
   List<OnboardingInfo> onboardingPages = [

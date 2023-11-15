@@ -35,6 +35,7 @@ export 'dart:ui'  hide clampDouble hide decodeImageFromList hide TextStyle hide 
 ///Widgets
 export 'app/modules/widgets/blur_box.dart';
 export 'app/modules/widgets/exit_dialog.dart';
+export 'app/modules/widgets/custom_button.dart';
 
 
 
@@ -45,20 +46,25 @@ export 'app/routes/app_pages.dart';
 export 'app/data/models/onboarding_info.dart';
 
 
-/// Home
+/// Home Screen
 export 'app/modules/home/bindings/home_binding.dart';
 export 'app/modules/home/controllers/home_controller.dart';
 export 'app/modules/home/views/home_view.dart';
 
-/// Splash
+/// Splash Screen
 export 'app/modules/splash/bindings/splash_binding.dart';
 export 'app/modules/splash/controllers/splash_controller.dart';
 export 'app/modules/splash/views/splash_view.dart';
 
-/// onBoarding
+/// onBoarding Screen
 export 'app/modules/on_boarding/bindings/on_boarding_binding.dart';
 export 'app/modules/on_boarding/controllers/on_boarding_controller.dart';
 export 'app/modules/on_boarding/views/on_boarding_view.dart';
+
+/// Welcome Screen
+export 'app/modules/welcome_screen/bindings/welcome_binding.dart';
+export 'app/modules/welcome_screen/controllers/welcome_controller.dart';
+export 'app/modules/welcome_screen/views/welcome_view.dart';
 
 
 
