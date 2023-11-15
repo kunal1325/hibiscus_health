@@ -36,6 +36,7 @@ export 'dart:ui'  hide clampDouble hide decodeImageFromList hide TextStyle hide 
 export 'app/modules/widgets/blur_box.dart';
 export 'app/modules/widgets/exit_dialog.dart';
 export 'app/modules/widgets/custom_button.dart';
+export 'app/modules/widgets/text_input_field.dart';
 
 
 

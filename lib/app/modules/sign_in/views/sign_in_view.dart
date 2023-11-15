@@ -54,71 +54,40 @@ class SignInView extends GetView<SignInController> {
                     ),
                     SizedBox(height: 40,),
 
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        hintText: 'Enter your email',
-                        hintStyle: TextStyle(
-                          fontWeight: FontWeight.w300,
-                        ),
-                        contentPadding: EdgeInsets.all(15.0),
-                      ),
+
+                    TextInputField(
+                      hintText: Strings.emailHint,
+                      labelText: Strings.email,
                       keyboardType: TextInputType.emailAddress,
                       textInputAction: TextInputAction.next,
                       focusNode: controller.emailFocusNode,
+                      requestFocusNode: controller.passwordFocusNode,
                       controller: controller.emailController,
-                      onFieldSubmitted: (_) {
-                        FocusScope.of(context).requestFocus(controller.emailFocusNode);
-                      },
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter your email';
-                        }
-                        final validEmailPattern =
-                        RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$');
-                        if (!validEmailPattern.hasMatch(value)) {
-                          return 'Please enter a valid email address';
-                        }
-
-                        return null;
-                      },
+                      validator: controller.isValidEmail,
+                      obscureText: true,
+                      suffixIcon: SizedBox(),
                     ),
-                    TextFormField(
-                      obscureText: controller.isPinInVisible,
-                      decoration: InputDecoration(
-                        hintText: 'Enter your password',
-                        hintStyle: const TextStyle(
-                          fontWeight: FontWeight.w300,
-                        ),
-                        contentPadding: const EdgeInsets.all(15.0),
+                    SizedBox(height: 30,),
+                    Obx(() =>
+                        TextInputField(
+                        hintText: Strings.passwordHint,
+                        labelText: Strings.password,
+                        requestFocusNode: controller.passwordFocusNode,
+                        keyboardType: TextInputType.text,
+                        textInputAction: TextInputAction.done,
+                        focusNode: controller.passwordFocusNode,
+                        controller: controller.passwordController,
+                        validator: controller.isValidPassword,
+                        obscureText: controller.isPinInVisible.value,
                         suffixIcon: IconButton(
-                          icon: Icon(controller.secretPinVisibility),
-                          onPressed: () {
-                            controller.changeVisibility();
-                          },
+                            icon: Icon(controller.isPinInVisible.value ? Icons.visibility_outlined : Icons.visibility_off_outlined),
+                            onPressed: () => controller.changeVisibility()
                         ),
                       ),
-                      keyboardType: TextInputType.text,
-                      textInputAction: TextInputAction.done,
-                      focusNode: controller.pinFocusNode,
-                      controller: controller.pinController,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Please enter your password';
-                        }
-
-                        final hasLetter = value.contains(RegExp(r'[a-zA-Z]'));
-                        final hasNumber = value.contains(RegExp(r'[0-9]'));
-                        if (!hasLetter || !hasNumber) {
-                          return 'Password must contain both letters and numbers';
-                        }
-
-                        if (value.length < 8) {
-                          return 'Password must be at least 8 characters long';
-                        }
-
-                        return null;
-                      },
                     ),
+                    SizedBox(height: 30,),
+
+
 
                     SizedBox(height: 12,),
                     Row(

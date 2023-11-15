@@ -10,4 +10,7 @@ abstract class AppColors {
   static const Color white = Colors.white;
 
   static const Color previous = Color(0xffF3F3F3);
+  static const Color textFieldBorderColor = Color(0xffD0D5DD);
+
+
 }
