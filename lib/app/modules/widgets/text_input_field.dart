@@ -9,13 +9,14 @@ class TextInputField extends StatelessWidget {
   bool obscureText;
   Widget suffixIcon;
   FocusNode focusNode;
-  FocusNode requestFocusNode;
+  FocusNode? requestFocusNode;
   TextEditingController controller;
   String? Function(String?)? validator;
+  Function()? onEditingComplete;
 
   TextInputField({super.key, required this.hintText, required this.labelText, required this.keyboardType, required this.textInputAction,
    required this.obscureText, required this.suffixIcon,
-    required this.focusNode, required this.requestFocusNode, required this.controller, required this.validator});
+    required this.focusNode, this.requestFocusNode, required this.controller, required this.validator, this.onEditingComplete});
 
   @override
   Widget build(BuildContext context) {
@@ -91,6 +92,7 @@ class TextInputField extends StatelessWidget {
       onFieldSubmitted: (_) {
         FocusScope.of(context).requestFocus(requestFocusNode);
       },
+      onEditingComplete: onEditingComplete,
       validator: validator,
     );
   }

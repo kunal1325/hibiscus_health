@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import '../../../../import.dart';
 
 class SignInView extends GetView<SignInController> {
@@ -27,7 +25,6 @@ class SignInView extends GetView<SignInController> {
                       padding: const EdgeInsets.only(top: 120),
                       child: Utils.assetImage(AppImages.icon, height: 106, width: 106),
                     ),
-
                     SizedBox(height: 40,),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 11),
@@ -54,53 +51,78 @@ class SignInView extends GetView<SignInController> {
                     ),
                     SizedBox(height: 40,),
 
-
-                    TextInputField(
-                      hintText: Strings.emailHint,
-                      labelText: Strings.email,
-                      keyboardType: TextInputType.emailAddress,
-                      textInputAction: TextInputAction.next,
-                      focusNode: controller.emailFocusNode,
-                      requestFocusNode: controller.passwordFocusNode,
-                      controller: controller.emailController,
-                      validator: controller.isValidEmail,
-                      obscureText: true,
-                      suffixIcon: SizedBox(),
-                    ),
-                    SizedBox(height: 30,),
-                    Obx(() =>
-                        TextInputField(
-                        hintText: Strings.passwordHint,
-                        labelText: Strings.password,
-                        requestFocusNode: controller.passwordFocusNode,
-                        keyboardType: TextInputType.text,
-                        textInputAction: TextInputAction.done,
-                        focusNode: controller.passwordFocusNode,
-                        controller: controller.passwordController,
-                        validator: controller.isValidPassword,
-                        obscureText: controller.isPinInVisible.value,
-                        suffixIcon: IconButton(
-                            icon: Icon(controller.isPinInVisible.value ? Icons.visibility_outlined : Icons.visibility_off_outlined),
-                            onPressed: () => controller.changeVisibility()
-                        ),
+                    Form(
+                      autovalidateMode: AutovalidateMode.disabled,
+                      key: controller.formKey,
+                      child: Column(
+                        children: [
+                          TextInputField(
+                            hintText: Strings.emailHint,
+                            labelText: Strings.email,
+                            keyboardType: TextInputType.emailAddress,
+                            textInputAction: TextInputAction.next,
+                            focusNode: controller.emailFocusNode,
+                            requestFocusNode: controller.passwordFocusNode,
+                            controller: controller.emailController,
+                            validator: controller.isValidEmail,
+                            obscureText: false,
+                            suffixIcon: SizedBox(),
+                          ),
+                          SizedBox(height: 30,),
+                          Obx(() =>
+                              TextInputField(
+                                hintText: Strings.passwordHint,
+                                labelText: Strings.password,
+                                keyboardType: TextInputType.text,
+                                textInputAction: TextInputAction.done,
+                                focusNode: controller.passwordFocusNode,
+                                controller: controller.passwordController,
+                                validator: controller.isValidPassword,
+                                obscureText: controller.isPinInVisible.value,
+                                suffixIcon: IconButton(
+                                    icon: Icon(controller.isPinInVisible.value ? Icons.visibility_off_outlined : Icons.visibility_outlined, color: AppColors.kPrimaryColorText,),
+                                    onPressed: () => controller.changeVisibility()
+                                ),
+                                onEditingComplete: (){
+                                  // FocusManager.instance.primaryFocus?.unfocus();
+                                  controller.checkConnectivity();
+                                },
+                              ),
+                          ),
+                        ],
                       ),
                     ),
-                    SizedBox(height: 30,),
-
-
 
                     SizedBox(height: 12,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 0),
-                          child: Text(
-                            Strings.forgotPassword,
-                            style: GoogleFonts.inter(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                              color: AppColors.kPrimaryColor,
+                          padding: const EdgeInsets.only(right: 5),
+                          child: Theme(
+                            data: ThemeData(
+                              splashColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                            ),
+                            child: InkWell(
+                              onTap: controller.navigateToForgotPassword,
+                              child: Container(
+                                height: 50,
+                                child: Center(
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        Strings.forgotPassword,
+                                        style: GoogleFonts.inter(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500,
+                                          color: AppColors.kPrimaryColor,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -111,7 +133,7 @@ class SignInView extends GetView<SignInController> {
                       padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                       child: InkWell(
                           onTap: () {
-
+                            controller.checkConnectivity();
                           },
                           child: CustomButtons(
                             weight: Get.width- 40,
@@ -148,7 +170,7 @@ class SignInView extends GetView<SignInController> {
               ),
             ),
             Positioned(
-              bottom: 59,
+              bottom: 29,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -160,16 +182,30 @@ class SignInView extends GetView<SignInController> {
                       color: AppColors.kPrimaryColorText,
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
-
-                    },
-                    child: Text(
-                      Strings.signUp,
-                      style: GoogleFonts.inter(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.kPrimaryColor,
+                  Theme(
+                    data: ThemeData(
+                      splashColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                    ),
+                    child: InkWell(
+                      onTap: controller.navigateToSignUp,
+                      child: Container(
+                        width: 70,
+                        height: 50,
+                        child: Center(
+                          child: Row(
+                            children: [
+                              Text(
+                                Strings.signUp,
+                                style: GoogleFonts.inter(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.kPrimaryColor,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
                   ),

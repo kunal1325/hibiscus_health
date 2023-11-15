@@ -25,4 +25,23 @@ abstract class Utils {
     );
   }
 
+  static Future<bool> checkInternetConnectivity() async {
+    try {
+      final result = await InternetAddress.lookup(Strings.google);
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        return true;
+      } else {
+        return false;
+      }
+    } on SocketException catch (e) {
+      print(e);
+      return false;
+    }
+  }
+
+  static dismissKeyboard() {
+    FocusManager.instance.primaryFocus?.unfocus();
+    SystemChannels.textInput.invokeMethod(Strings.textInput_hide);
+  }
+
 }

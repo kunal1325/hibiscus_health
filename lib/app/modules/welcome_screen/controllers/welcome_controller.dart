@@ -8,7 +8,6 @@ class WelcomeController extends GetxController {
       print("Create Account");
       Get.toNamed("/home");
     } else {
-      print("Sign In");
       Get.toNamed("/signIn");
     }
   }

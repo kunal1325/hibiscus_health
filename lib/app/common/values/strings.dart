@@ -3,8 +3,10 @@ abstract class Strings {
   static const connectionTimeout = 'Connection timeout. Please try again after some time.';
   static const noConnection = 'No connection. Please turn on your internet!';
   static const unAuthorize = 'Unauthorized. Please login again!';
-
   static const String appName = 'Hibiscus Health';
+  static const String emptyString = '';
+  static const google  = "google.com";
+  static const textInput_hide = 'TextInput.hide';
 
   ///Home Screen
   static const String pushedMsg = 'You have pushed the button this many times:';
