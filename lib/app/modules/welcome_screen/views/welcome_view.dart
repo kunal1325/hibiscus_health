@@ -76,6 +76,7 @@ class WelcomeView extends GetView<WelcomeController> {
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                           fontColor: AppColors.kPrimaryColor,
+                          withShadow: true,
                         )
                       ),
                     ),
@@ -98,6 +99,7 @@ class WelcomeView extends GetView<WelcomeController> {
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                           fontColor: AppColors.kPrimaryColor,
+                          withShadow: true,
                         )
                       ),
                     ),

@@ -9,7 +9,7 @@ class WelcomeController extends GetxController {
       Get.toNamed("/home");
     } else {
       print("Sign In");
-      Get.toNamed("/home");
+      Get.toNamed("/signIn");
     }
   }
 

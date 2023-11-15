@@ -67,5 +67,9 @@ export 'app/modules/welcome_screen/controllers/welcome_controller.dart';
 export 'app/modules/welcome_screen/views/welcome_view.dart';
 
 
+/// Sign In Screen
+export 'app/modules/sign_in/bindings/sign_in_binding.dart';
+export 'app/modules/sign_in/controllers/sign_in_controller.dart';
+export 'app/modules/sign_in/views/sign_in_view.dart';
 
 

@@ -10,6 +10,7 @@ class CustomButtons extends StatelessWidget {
   final FontWeight fontWeight;
   final double fontSize;
   final Color fontColor;
+  final bool withShadow;
 
   const CustomButtons(
       {super.key,
@@ -21,7 +22,8 @@ class CustomButtons extends StatelessWidget {
       required this.title,
       required this.fontWeight,
       required this.fontSize,
-      required this.fontColor});
+      required this.fontColor,
+      required this.withShadow});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,8 @@ class CustomButtons extends StatelessWidget {
         ],
       ),
       child: Center(
-        child: Text(
+        child: withShadow
+            ? Text(
           title,
           style: GoogleFonts.inter(
             fontSize: fontSize,
@@ -50,6 +53,14 @@ class CustomButtons extends StatelessWidget {
                     0.3), // Set the horizontal and vertical offset for the shadow
               ),
             ],
+          ),
+        )
+            : Text(
+          title,
+          style: GoogleFonts.inter(
+            fontSize: fontSize,
+            fontWeight: fontWeight,
+            color: fontColor,
           ),
         ),
       ),

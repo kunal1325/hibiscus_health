@@ -26,5 +26,10 @@ abstract class AppPages {
       page: () => WelcomeView(),
       binding: WelcomeBinding(),
     ),
+    GetPage(
+      name: _Paths.signIn,
+      page: () => SignInView(),
+      binding: SignInBinding(),
+    ),
   ];
 }

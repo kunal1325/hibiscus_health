@@ -28,14 +28,9 @@ class OnBoardingController extends GetxController {
   }
 
   List<OnboardingInfo> onboardingPages = [
-    OnboardingInfo(AppImages.onBoardOne, 'Get Healthy With Hibiscus!',
-        'Now you can order food any time  right from your mobile.'),
-
-    OnboardingInfo(AppImages.onBoardTwo, 'Take control of your health',
-        'We are maintain safty and We keep clean while making food.'),
-
-    OnboardingInfo(AppImages.onBoardThree, 'Instant Access to Dietitian',
-        'Orders your favorite meals will be  immediately deliver')
+    OnboardingInfo(AppImages.onBoardOne, Strings.onBoardHeadingOne),
+    OnboardingInfo(AppImages.onBoardTwo, Strings.onBoardHeadingTwo),
+    OnboardingInfo(AppImages.onBoardThree, Strings.onBoardHeadingThree)
   ];
 
 }

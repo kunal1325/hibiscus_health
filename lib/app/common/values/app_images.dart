@@ -9,12 +9,13 @@ abstract class AppImages {
   static const String logoWhite = 'assets/images/svgs/logo_white.svg';
 
   ///On Boarding Screens
-
   static const String onBoardOne = 'assets/images/pngs/onboard_one.png';
   static const String onBoardTwo = 'assets/images/pngs/onboard_two.png';
   static const String onBoardThree = 'assets/images/pngs/onboard_three.png';
 
+///Sign Up Screens
 
+  static const String icon = 'assets/images/pngs/icon.png';
 
 
 }
