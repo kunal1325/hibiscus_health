@@ -11,4 +11,5 @@ abstract class _Paths {
   static const onBoarding = '/onBoarding';
   static const welcomeScreen = '/welcomeScreen';
   static const signIn = '/signIn';
+  static const signUp = '/signUp';
 }

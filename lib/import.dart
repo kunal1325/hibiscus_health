@@ -67,10 +67,14 @@ export 'app/modules/welcome_screen/bindings/welcome_binding.dart';
 export 'app/modules/welcome_screen/controllers/welcome_controller.dart';
 export 'app/modules/welcome_screen/views/welcome_view.dart';
 
-
 /// Sign In Screen
 export 'app/modules/sign_in/bindings/sign_in_binding.dart';
 export 'app/modules/sign_in/controllers/sign_in_controller.dart';
 export 'app/modules/sign_in/views/sign_in_view.dart';
+
+/// Sign Up Screen
+export 'app/modules/sign_up/bindings/sign_up_binding.dart';
+export 'app/modules/sign_up/controllers/sign_up_controller.dart';
+export 'app/modules/sign_up/views/sign_up_view.dart';
 
 

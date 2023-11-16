@@ -44,4 +44,29 @@ abstract class Utils {
     SystemChannels.textInput.invokeMethod(Strings.textInput_hide);
   }
 
+  static showSnackBarFun(context, String title) {
+    SnackBar snackBar = SnackBar(
+      content: Container(
+        height: 105,
+        child: Center(
+          child: Text(
+            title,
+              style: GoogleFonts.inter(
+                fontSize: 16,
+                fontWeight: FontWeight.w500,
+                color: AppColors.white,
+              ),
+          ),
+        ),
+      ),
+      backgroundColor: Colors.red,
+      dismissDirection: DismissDirection.up,
+      behavior: SnackBarBehavior.floating,
+      margin: EdgeInsets.only(
+          bottom: MediaQuery.of(context).size.height - 225,
+      ),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
 }

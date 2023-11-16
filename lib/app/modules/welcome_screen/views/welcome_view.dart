@@ -66,7 +66,7 @@ class WelcomeView extends GetView<WelcomeController> {
                         alignment: Alignment.bottomCenter,
                         child: InkWell(
                             onTap: () {
-                              controller.navigationAction("/createAccount");
+                              controller.navigationAction("/signUp");
                             },
                           child: CustomButtons(
                             weight: Get.width- 40,

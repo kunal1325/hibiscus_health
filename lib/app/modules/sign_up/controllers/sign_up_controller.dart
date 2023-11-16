@@ -1,18 +1,24 @@
 
 import '../../../../import.dart';
 
-class SignInController extends GetxController {
+class SignUpController extends GetxController {
 
   final emailFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
+  final confirmPasswordFocusNode = FocusNode();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  var isPinInVisible = true.obs;
-  GlobalKey<FormState> formKeySignIn = GlobalKey<FormState>();
+  final confirmPasswordController = TextEditingController();
+  var isPasswordVisible = true.obs;
+  var isConfirmPasswordVisible = true.obs;
+  GlobalKey<FormState> formKeySignUp = GlobalKey<FormState>();
   var isLoading = false.obs;
   var errorMsg = Strings.emptyString.obs;
-  void changeVisibility () {
-    isPinInVisible.value = !isPinInVisible.value;
+  void changePasswordEyeIcon () {
+    isPasswordVisible.value = !isPasswordVisible.value;
+  }
+  void changeConfirmPasswordEyeIcon () {
+    isConfirmPasswordVisible.value = !isConfirmPasswordVisible.value;
   }
   String? isValidEmail(String? text) {
     if (text!.isEmpty) {
@@ -36,11 +42,25 @@ class SignInController extends GetxController {
     }
     return null;
   }
+  String? isValidConfirmPassword(String? text) {
+    if (text!.isEmpty) {
+      return Strings.emptyConfirmPasswordError;
+    }
+    final hasLetter = text.contains(RegExp(r'[a-zA-Z]'));
+    final hasNumber = text.contains(RegExp(r'[0-9]'));
+    if (!hasLetter || !hasNumber) {
+      return Strings.invalidConfirmPasswordError;
+    }
+    if (text.length < 8) {
+      return Strings.shortConfirmPasswordError;
+    }
+    return null;
+  }
   void checkConnectivity() async {
     isLoading.value = true;
     Utils.dismissKeyboard();
     try {
-      var temp = formKeySignIn.currentState;
+      var temp = formKeySignUp.currentState;
       if (temp != null && temp.validate()) {
         var isConnected =
         await Utils.checkInternetConnectivity();
@@ -58,18 +78,21 @@ class SignInController extends GetxController {
     }
     isLoading.value = false;
   }
-  void navigateToSignUp(){
-    Get.off(SignUpView());
+  void navigateToSignIn(){
+    Get.off(SignInView());
   }
-  void navigateToForgotPassword(){
-    print("Forgot Password");
-    // Get.toNamed("/forgotPassword");
+  void navigateToGetHelp(){
     Get.toNamed("/home");
+  }
+  void openTermsOfService(){
+
+  }
+  void openPrivacyPolicy(){
+
   }
   navigateBack(){
     Get.offNamedUntil("/welcomeScreen", (route) => false);
   }
-
 
 
 }
