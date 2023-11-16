@@ -2,17 +2,17 @@ import '../../../import.dart';
 
 class TextInputField extends StatelessWidget {
 
-  String hintText;
-  String labelText;
-  TextInputType keyboardType;
-  TextInputAction textInputAction;
-  bool obscureText;
-  Widget suffixIcon;
-  FocusNode focusNode;
-  FocusNode? requestFocusNode;
-  TextEditingController controller;
-  String? Function(String?)? validator;
-  Function()? onEditingComplete;
+  final  String hintText;
+  final String labelText;
+  final TextInputType keyboardType;
+  final TextInputAction textInputAction;
+  final bool obscureText;
+  final Widget suffixIcon;
+  final FocusNode focusNode;
+  final FocusNode? requestFocusNode;
+  final TextEditingController controller;
+  final String? Function(String?)? validator;
+  final Function()? onEditingComplete;
 
   TextInputField({super.key, required this.hintText, required this.labelText, required this.keyboardType, required this.textInputAction,
    required this.obscureText, required this.suffixIcon,
@@ -34,7 +34,7 @@ class TextInputField extends StatelessWidget {
         ),
         labelStyle: GoogleFonts.inter(
           fontSize: 16,
-          fontWeight: FontWeight.w500,
+          fontWeight: FontWeight.w400,
           color: AppColors.kSecColorText,
         ),
         hintStyle: GoogleFonts.inter(
