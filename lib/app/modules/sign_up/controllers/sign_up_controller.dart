@@ -73,6 +73,7 @@ class SignUpController extends GetxController {
           print("email ====================>>>>>>>>>>>>>>>>> ${emailController.text}");
           print("password ====================>>>>>>>>>>>>>>>>> ${passwordController.text}");
           print("confirm password ====================>>>>>>>>>>>>>>>>> ${confirmPasswordController.text}");
+          navigateToPrivacyFirst();
         } else {
           errorMsg.value = Strings.noConnection;
         }
@@ -87,6 +88,10 @@ class SignUpController extends GetxController {
   }
   void navigateToGetHelp(){
     Get.toNamed("/home");
+  }
+
+  void navigateToPrivacyFirst(){
+    Get.toNamed("/privacyFirst");
   }
   void openTermsOfService(){
 

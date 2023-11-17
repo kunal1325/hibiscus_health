@@ -36,5 +36,10 @@ abstract class AppPages {
       page: () => SignUpView(),
       binding: SignUpBinding(),
     ),
+    GetPage(
+      name: _Paths.privacyFirst,
+      page: () => PrivacyFirstView(),
+      binding: PrivacyFirstBinding(),
+    ),
   ];
 }
