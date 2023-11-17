@@ -60,8 +60,8 @@ abstract class Strings {
   static const String alreadyAUser = 'Already have an account?  ';
   static const String alreadyTakenError = 'An error occurred!  It appears  that this username has already been taken.';
   static const String emptyConfirmPasswordError = 'Please enter confirm password';
-  static const String invalidConfirmPasswordError = 'Confirm password must have more than 8 characters.';
-  static const String shortConfirmPasswordError = 'Password must have more than 8 characters.';
-  static const String passwordNotMatchedError = 'Password not matched.';
+  static const String invalidConfirmPasswordError = 'Confirm password must contain both letters and numbers.';
+  static const String shortConfirmPasswordError = 'Confirm Password must have more than 8 characters.';
+  static const String passwordNotMatchedError = 'Both passwords are not matching.';
 
 }

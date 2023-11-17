@@ -23,6 +23,7 @@ class TextInputField extends StatelessWidget {
     return TextFormField(
       obscureText: obscureText,
       decoration: InputDecoration(
+        errorMaxLines: 2,
         hintText: hintText,
         labelText: labelText,
         contentPadding: EdgeInsets.all(15.0),

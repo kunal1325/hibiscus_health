@@ -46,10 +46,13 @@ class SignUpController extends GetxController {
     if (text!.isEmpty) {
       return Strings.emptyConfirmPasswordError;
     }
-    final hasLetter = text.contains(RegExp(r'[a-zA-Z]'));
-    final hasNumber = text.contains(RegExp(r'[0-9]'));
-    if (!hasLetter || !hasNumber) {
+    final ConfirmHasLetter = text.contains(RegExp(r'[a-zA-Z]'));
+    final ConfirmHasNumber = text.contains(RegExp(r'[0-9]'));
+    if (!ConfirmHasLetter || !ConfirmHasNumber) {
       return Strings.invalidConfirmPasswordError;
+    }
+    if (text != passwordController.text) {
+      return Strings.passwordNotMatchedError;
     }
     if (text.length < 8) {
       return Strings.shortConfirmPasswordError;
@@ -69,6 +72,7 @@ class SignUpController extends GetxController {
           print("data =================>>>>>>>>>>>>>>>>>");
           print("email ====================>>>>>>>>>>>>>>>>> ${emailController.text}");
           print("password ====================>>>>>>>>>>>>>>>>> ${passwordController.text}");
+          print("confirm password ====================>>>>>>>>>>>>>>>>> ${confirmPasswordController.text}");
         } else {
           errorMsg.value = Strings.noConnection;
         }
