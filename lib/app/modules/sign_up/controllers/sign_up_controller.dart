@@ -61,6 +61,8 @@ class SignUpController extends GetxController {
   }
   void checkConnectivity() async {
     isLoading.value = true;
+    navigateToPrivacyFirst();
+    return;
     Utils.dismissKeyboard();
     try {
       var temp = formKeySignUp.currentState;

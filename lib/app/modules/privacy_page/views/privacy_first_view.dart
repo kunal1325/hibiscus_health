@@ -35,7 +35,7 @@ class PrivacyFirstView extends GetView<PrivacyFirstController> {
                   bottom: 0,
                   child: Container(
                     width: Get.width,
-                    height: Get.height/1.5,
+                    height: Get.height/1.6,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(topLeft: Radius.circular(17), topRight: Radius.circular(17)),
                       color: AppColors.white,
@@ -50,7 +50,7 @@ class PrivacyFirstView extends GetView<PrivacyFirstController> {
                           Text(
                             Strings.privacyFirst,
                             style: GoogleFonts.inter(
-                              fontSize: 18,
+                              fontSize: 16,
                               fontWeight: FontWeight.w600,
                               color: AppColors.black,
                             ),
@@ -60,7 +60,7 @@ class PrivacyFirstView extends GetView<PrivacyFirstController> {
                             children: List.generate(
                               controller.privacyFirstModel.length,
                                   (index) => Container(
-                                    margin: EdgeInsets.symmetric(vertical: 20),
+                                    margin: EdgeInsets.symmetric(vertical: 15),
                                     child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -72,7 +72,7 @@ class PrivacyFirstView extends GetView<PrivacyFirstController> {
                                           overflow: TextOverflow.ellipsis,
                                           maxLines: 4,
                                           style: GoogleFonts.inter(
-                                            fontSize: 12,
+                                            fontSize: 13,
                                             fontWeight: FontWeight.w500,
                                             color: AppColors.kPrimaryColorText,
                                             letterSpacing: 0.40,
@@ -103,7 +103,6 @@ class PrivacyFirstView extends GetView<PrivacyFirstController> {
                                 withShadow: true,
                               )
                           ),
-
                         ],
                       ),
                     ),
