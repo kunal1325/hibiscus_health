@@ -2,6 +2,8 @@ import '../../../import.dart';
 
 class TextInputField extends StatelessWidget {
 
+  final  bool? enabled;
+  final  bool fillColor;
   final  String hintText;
   final String labelText;
   final TextInputType keyboardType;
@@ -14,20 +16,23 @@ class TextInputField extends StatelessWidget {
   final String? Function(String?)? validator;
   final Function()? onEditingComplete;
 
-  TextInputField({super.key, required this.hintText, required this.labelText, required this.keyboardType, required this.textInputAction,
+  TextInputField({super.key, required this.fillColor, this.enabled, required this.hintText, required this.labelText, required this.keyboardType, required this.textInputAction,
    required this.obscureText, required this.suffixIcon,
     required this.focusNode, this.requestFocusNode, required this.controller, required this.validator, this.onEditingComplete});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      enabled: enabled,
       obscureText: obscureText,
       decoration: InputDecoration(
+        filled: fillColor ? true : false,
+        fillColor: fillColor ? Colors.grey[200] : null,
         errorMaxLines: 2,
         hintText: hintText,
         labelText: labelText,
-        contentPadding: EdgeInsets.all(15.0),
         suffixIcon: suffixIcon,
+        contentPadding: EdgeInsets.all(15.0),
         errorStyle: GoogleFonts.inter(
           fontSize: 16,
           fontWeight: FontWeight.w500,
@@ -60,7 +65,7 @@ class TextInputField extends StatelessWidget {
         disabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
           borderSide: BorderSide(
-            color: AppColors.kPrimaryColorText,
+            color: Colors.grey.shade200,
             width: 1.0,
           ),
         ),

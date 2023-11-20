@@ -1,3 +1,5 @@
+import 'package:hibiscus_health/app/modules/sign_up/views/complete_profile.dart';
+
 import '../../import.dart';
 
 part 'app_routes.dart';
@@ -45,6 +47,11 @@ abstract class AppPages {
       name: _Paths.startMyJourney,
       page: () => StartMyJourneyView(),
       binding: StartMyJourneyBinding(),
+    ),
+    GetPage(
+      name: _Paths.completeProfile,
+      page: () => CompleteProfileView(),
+      binding: SignUpBinding(),
     ),
   ];
 }

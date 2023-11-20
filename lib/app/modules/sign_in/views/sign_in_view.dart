@@ -59,6 +59,7 @@ class SignInView extends GetView<SignInController> {
                         child: Column(
                           children: [
                             TextInputField(
+                              fillColor: false,
                               hintText: Strings.emailHint,
                               labelText: Strings.email,
                               keyboardType: TextInputType.emailAddress,
@@ -73,6 +74,7 @@ class SignInView extends GetView<SignInController> {
                             SizedBox(height: 30,),
                             Obx(() =>
                                 TextInputField(
+                                  fillColor: false,
                                   hintText: Strings.passwordHint,
                                   labelText: Strings.password,
                                   keyboardType: TextInputType.text,
@@ -161,7 +163,7 @@ class SignInView extends GetView<SignInController> {
                 left: 18,
                 child: GestureDetector(
                   onTap: () {
-                    onWillPop: () => controller.navigateBack();
+                    controller.navigateBack();
                   },
                   child: Icon(
                     Icons.arrow_back_ios_new_rounded,

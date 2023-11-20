@@ -3,6 +3,11 @@ import '../../../../import.dart';
 
 class SignUpController extends GetxController {
 
+  ///Common variables
+  var isLoading = false.obs;
+  var errorMsg = Strings.emptyString.obs;
+
+  ///Sign Up variables
   final emailFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
   final confirmPasswordFocusNode = FocusNode();
@@ -12,8 +17,24 @@ class SignUpController extends GetxController {
   var isPasswordVisible = true.obs;
   var isConfirmPasswordVisible = true.obs;
   GlobalKey<FormState> formKeySignUp = GlobalKey<FormState>();
-  var isLoading = false.obs;
-  var errorMsg = Strings.emptyString.obs;
+
+  ///Complete Profile variables
+  GlobalKey<FormState> formKeyCompleteProfile = GlobalKey<FormState>();
+  final fNameFocusNode = FocusNode();
+  final lNameFocusNode = FocusNode();
+  final phoneFocusNode = FocusNode();
+  final dobFocusNode = FocusNode();
+  final nutritionistFocusNode = FocusNode();
+  final fNameController = TextEditingController();
+  final lNameController = TextEditingController();
+  final phoneController = TextEditingController();
+  final dobController = TextEditingController();
+  final nutritionistController = TextEditingController();
+
+  DateTime? selectedDate;
+
+
+  ///Sign Up variables
   void changePasswordEyeIcon () {
     isPasswordVisible.value = !isPasswordVisible.value;
   }
@@ -59,6 +80,10 @@ class SignUpController extends GetxController {
     }
     return null;
   }
+
+
+
+  ///Complete Profile variables
   void checkConnectivity() async {
     isLoading.value = true;
     navigateToPrivacyFirst();
@@ -85,13 +110,68 @@ class SignUpController extends GetxController {
     }
     isLoading.value = false;
   }
+
+  String? isValidFName(String? text) {
+    if (text!.isEmpty) {
+      return Strings.emptyFirstNameError;
+    }
+    else
+      return null;
+  }
+
+  String? isValidLName(String? text) {
+    if (text!.isEmpty) {
+      return Strings.emptyLastNameError;
+    }
+    else
+      return null;
+  }
+
+  String? isValidPhone(String? text) {
+    if (text!.isEmpty) {
+      return Strings.emptyPhoneNameError;
+    }
+    else
+      return null;
+  }
+
+  String? isValidDob(String? text) {
+    if (text!.isEmpty) {
+      return Strings.emptyDobNameError;
+    }
+    else
+      return null;
+  }
+
+  String? isValidNutritionistCode(String? text) {
+    if (text!.isEmpty) {
+      return Strings.emptyNutritionistCodeNameError;
+    }
+    else
+      return null;
+  }
+
+  Future<void> selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime.now(),
+    );
+    if (picked != null && picked != selectedDate) {
+        selectedDate = picked;
+        dobController.text = '${picked.month} / ${picked.day} / ${picked.year}';
+    }
+  }
+
+
+  ///Navigation from Sign Up
   void navigateToSignIn(){
     Get.off(SignInView());
   }
   void navigateToGetHelp(){
     Get.toNamed("/home");
   }
-
   void navigateToPrivacyFirst(){
     Get.toNamed("/privacyFirst");
   }
@@ -101,8 +181,12 @@ class SignUpController extends GetxController {
   void openPrivacyPolicy(){
 
   }
-  navigateBack(){
+  navigateBackFromSignUp(){
     Get.offNamedUntil("/welcomeScreen", (route) => false);
+  }
+
+  navigateBackFromCompleteProfile(){
+    Get.offNamedUntil("/signUp", (route) => false);
   }
 
 
