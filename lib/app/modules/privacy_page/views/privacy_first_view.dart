@@ -88,7 +88,7 @@ class PrivacyFirstView extends GetView<PrivacyFirstController> {
                           SizedBox(height: 47,),
                           InkWell(
                               onTap: () {
-                                // controller.navigationAction("/signIn");
+                                controller.navigateToCompleteForm();
                               },
                               child: CustomButtons(
                                 weight: Get.width- 40,
@@ -100,7 +100,7 @@ class PrivacyFirstView extends GetView<PrivacyFirstController> {
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
                                 fontColor: AppColors.kPrimaryColor,
-                                withShadow: true,
+                                withShadow: false,
                               )
                           ),
                         ],

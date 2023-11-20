@@ -11,4 +11,8 @@ class PrivacyFirstController extends GetxController {
     PrivacyFirstModel(Strings.privacyFirstTitleFour),
   ];
 
+  void navigateToCompleteForm(){
+    Get.toNamed("/startMyJourney");
+  }
+
 }

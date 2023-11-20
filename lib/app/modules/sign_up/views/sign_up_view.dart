@@ -203,7 +203,7 @@ class SignUpView extends GetView<SignUpController> {
                               borderRadius: 10,
                               title: Strings.signUp,
                               fontSize: 16,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w500,
                               fontColor: AppColors.kPrimaryColor,
                               withShadow: false,
                             )

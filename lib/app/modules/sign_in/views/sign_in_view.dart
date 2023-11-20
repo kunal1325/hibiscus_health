@@ -144,7 +144,7 @@ class SignInView extends GetView<SignInController> {
                               borderRadius: 10,
                               title: Strings.login,
                               fontSize: 16,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w500,
                               fontColor: AppColors.kPrimaryColor,
                               withShadow: false,
                             )
