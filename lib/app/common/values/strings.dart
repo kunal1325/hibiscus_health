@@ -26,7 +26,7 @@ abstract class Strings {
   ///Welcome Screen
   static const String welcomeHeading = 'Get Healthy With Hibiscus!';
   static const String createAccount = 'Create Account';
-  static const String signIn = 'Sign in';
+  static const String signIn = 'Sign In';
 
   ///Sign in Screen
   static const String signInTitle = 'Sign in to Hibiscus';
@@ -42,12 +42,26 @@ abstract class Strings {
   static const String emptyEmailError = 'Please enter email address';
   static const String emptyPasswordError = 'Please enter password';
   static const String invalidEmailError = 'Please enter valid email address.';
-  static const String invalidPasswordError = 'Password must have more than 8 characters.';
+  static const String shortPasswordError = 'Password must have more than 8 characters.';
+  static const String invalidPasswordError = 'Password must contain both letters and numbers';
   static const String invalidDataError = 'Please enter correct details.';
 
-
-
-
-
+  ///Sign Up Screen
+  static const String signUpTitle = 'Get Started';
+  static const String signUpDescription = 'Sign up to get connected with your dietitian ';
+  static const String confirmPassword = 'Confirm Password';
+  static const String confirmPasswordHint = '*******';
+  static const String iAgree = "By creating an account, I agree to Hibiscus Healths";
+  static const String termsOfService = "Terms of Service ";
+  static const String and = "and ";
+  static const String privacyPolicy = "Privacy Policy";
+  static const String trouble = 'Trouble signing Up? ';
+  static const String getHelp = ' Get Help';
+  static const String alreadyAUser = 'Already have an account?  ';
+  static const String alreadyTakenError = 'An error occurred!  It appears  that this username has already been taken.';
+  static const String emptyConfirmPasswordError = 'Please enter confirm password';
+  static const String invalidConfirmPasswordError = 'Confirm password must contain both letters and numbers.';
+  static const String shortConfirmPasswordError = 'Confirm Password must have more than 8 characters.';
+  static const String passwordNotMatchedError = 'Both passwords are not matching.';
 
 }
