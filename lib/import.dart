@@ -36,6 +36,7 @@ export 'dart:ui'  hide clampDouble hide decodeImageFromList hide TextStyle hide 
 export 'app/modules/widgets/blur_box.dart';
 export 'app/modules/widgets/exit_dialog.dart';
 export 'app/modules/widgets/custom_button.dart';
+export 'app/modules/widgets/text_input_field.dart';
 
 
 
@@ -44,6 +45,8 @@ export 'app/routes/app_pages.dart';
 
 ///Models
 export 'app/data/models/onboarding_info.dart';
+export 'app/data/models/privacy_first_model.dart';
+export 'app/data/models/start_my_journey_model.dart';
 
 
 /// Home Screen
@@ -66,6 +69,25 @@ export 'app/modules/welcome_screen/bindings/welcome_binding.dart';
 export 'app/modules/welcome_screen/controllers/welcome_controller.dart';
 export 'app/modules/welcome_screen/views/welcome_view.dart';
 
+/// Sign In Screen
+export 'app/modules/sign_in/bindings/sign_in_binding.dart';
+export 'app/modules/sign_in/controllers/sign_in_controller.dart';
+export 'app/modules/sign_in/views/sign_in_view.dart';
+
+/// Sign Up Screen
+export 'app/modules/sign_up/bindings/sign_up_binding.dart';
+export 'app/modules/sign_up/controllers/sign_up_controller.dart';
+export 'app/modules/sign_up/views/sign_up_view.dart';
+
+/// Privacy First Screen
+export 'app/modules/privacy_page/bindings/privacy_first_binding.dart';
+export 'app/modules/privacy_page/controllers/privacy_first_controller.dart';
+export 'app/modules/privacy_page/views/privacy_first_view.dart';
+
+/// Start My Journey
+export 'app/modules/start_my_journey/bindings/start_my_journey_binding.dart';
+export 'app/modules/start_my_journey/controllers/start_my_journey_controller.dart';
+export 'app/modules/start_my_journey/views/start_my_journey_view.dart';
 
 
 

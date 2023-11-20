@@ -35,7 +35,7 @@ class OnBoardingView extends GetView<OnBoardingController> {
                         width: 72,
                         height: 52,
                         child: Center(
-                          child: Text("Skip",
+                          child: Text(Strings.skip,
                               style: GoogleFonts.inter(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,
@@ -94,7 +94,7 @@ class OnBoardingView extends GetView<OnBoardingController> {
                               width: 72,
                               height: 52,
                               child: Center(
-                                child: Text(controller.isFirstPage ? "" : "Previous",
+                                child: Text(controller.isFirstPage ? "" : Strings.previous,
                                     style: GoogleFonts.inter(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w500,
@@ -146,7 +146,7 @@ class OnBoardingView extends GetView<OnBoardingController> {
                         width: 72,
                         height: 52,
                         child: Center(
-                          child: Text("Next",
+                          child: Text(Strings.next,
                               style: GoogleFonts.inter(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w500,

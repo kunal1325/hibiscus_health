@@ -8,7 +8,6 @@ class HomeView extends GetView<HomeController> {
         builder: (controller) {
           return SafeArea(
             child: Scaffold(
-              backgroundColor: AppColors.kPrimaryColor,
               body: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

@@ -26,5 +26,25 @@ abstract class AppPages {
       page: () => WelcomeView(),
       binding: WelcomeBinding(),
     ),
+    GetPage(
+      name: _Paths.signIn,
+      page: () => SignInView(),
+      binding: SignInBinding(),
+    ),
+    GetPage(
+      name: _Paths.signUp,
+      page: () => SignUpView(),
+      binding: SignUpBinding(),
+    ),
+    GetPage(
+      name: _Paths.privacyFirst,
+      page: () => PrivacyFirstView(),
+      binding: PrivacyFirstBinding(),
+    ),
+    GetPage(
+      name: _Paths.startMyJourney,
+      page: () => StartMyJourneyView(),
+      binding: StartMyJourneyBinding(),
+    ),
   ];
 }
