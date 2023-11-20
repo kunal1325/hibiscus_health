@@ -41,5 +41,10 @@ abstract class AppPages {
       page: () => PrivacyFirstView(),
       binding: PrivacyFirstBinding(),
     ),
+    GetPage(
+      name: _Paths.startMyJourney,
+      page: () => StartMyJourneyView(),
+      binding: StartMyJourneyBinding(),
+    ),
   ];
 }

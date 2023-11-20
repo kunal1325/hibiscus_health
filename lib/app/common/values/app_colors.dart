@@ -12,5 +12,11 @@ abstract class AppColors {
   static const Color previous = Color(0xffF3F3F3);
   static const Color textFieldBorderColor = Color(0xffD0D5DD);
 
+  ///Start My Journey
+
+  static const Color lightSecColor =  Color(0xffEBF1DF);
+  static const Color darkSecColor =  Color(0xff4D7508);
+  static const Color avgSecColor =  Color(0xff65980C);
+
 
 }

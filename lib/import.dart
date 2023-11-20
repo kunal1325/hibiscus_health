@@ -46,6 +46,7 @@ export 'app/routes/app_pages.dart';
 ///Models
 export 'app/data/models/onboarding_info.dart';
 export 'app/data/models/privacy_first_model.dart';
+export 'app/data/models/start_my_journey_model.dart';
 
 
 /// Home Screen
@@ -82,6 +83,11 @@ export 'app/modules/sign_up/views/sign_up_view.dart';
 export 'app/modules/privacy_page/bindings/privacy_first_binding.dart';
 export 'app/modules/privacy_page/controllers/privacy_first_controller.dart';
 export 'app/modules/privacy_page/views/privacy_first_view.dart';
+
+/// Start My Journey
+export 'app/modules/start_my_journey/bindings/start_my_journey_binding.dart';
+export 'app/modules/start_my_journey/controllers/start_my_journey_controller.dart';
+export 'app/modules/start_my_journey/views/start_my_journey_view.dart';
 
 
 

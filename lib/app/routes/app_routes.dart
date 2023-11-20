@@ -2,7 +2,7 @@ part of 'app_pages.dart';
 // DO NOT EDIT. This is code generated via package:get_cli/get_cli.dart
 
 abstract class Routes {
-  static const landingScreen = _Paths.splash  ;
+  static const landingScreen = _Paths.startMyJourney  ;
 }
 
 abstract class _Paths {
@@ -13,4 +13,5 @@ abstract class _Paths {
   static const signIn = '/signIn';
   static const signUp = '/signUp';
   static const privacyFirst = '/privacyFirst';
+  static const startMyJourney = '/startMyJourney';
 }

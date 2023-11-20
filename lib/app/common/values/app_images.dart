@@ -16,9 +16,16 @@ abstract class AppImages {
 ///Sign Up Screens
   static const String icon = 'assets/images/pngs/icon.png';
 
-  //Privacy Policy
+  ///Privacy Policy
   static const String privacyPolicyIcon = 'assets/images/pngs/privacy_policy.png';
   static const String bg2 = 'assets/images/pngs/bg2.png';
   static const String privacyFirstFlower = 'assets/images/svgs/privacyFirstFlower.svg';
+
+
+  ///Start My Journey
+  static const String handShake = 'assets/images/pngs/hand_shake.png';
+  static const String dummy = 'assets/images/pngs/dummy.png';
+  static const String checked = 'assets/images/svgs/checked.svg';
+
 
 }
