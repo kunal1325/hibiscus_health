@@ -14,8 +14,11 @@ abstract class AppImages {
   static const String onBoardThree = 'assets/images/pngs/onboard_three.png';
 
 ///Sign Up Screens
-
   static const String icon = 'assets/images/pngs/icon.png';
 
+  //Privacy Policy
+  static const String privacyPolicyIcon = 'assets/images/pngs/privacy_policy.png';
+  static const String bg2 = 'assets/images/pngs/bg2.png';
+  static const String privacyFirstFlower = 'assets/images/svgs/privacyFirstFlower.svg';
 
 }

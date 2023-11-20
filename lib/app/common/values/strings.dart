@@ -64,4 +64,14 @@ abstract class Strings {
   static const String shortConfirmPasswordError = 'Confirm Password must have more than 8 characters.';
   static const String passwordNotMatchedError = 'Both passwords are not matching.';
 
+  //Privacy First
+
+  static const String privacyFirst = 'Privacy First';
+  static const String iConsent = 'I Consent';
+  static const String privacyFirstTitleOne = 'Your Hibiscus data includes information from using your Hibiscus health app';
+  static const String privacyFirstTitleTwo = 'We use your Hibiscus data to personalize your Hibiscus experience';
+  static const String privacyFirstTitleThree = 'Your Hibiscus data will not be shared for marketing purposes.';
+  static const String privacyFirstTitleFour = 'Your Hibiscus data will not be shared outside your care network without your consent.';
+
+
 }

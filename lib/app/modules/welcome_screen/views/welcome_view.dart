@@ -25,7 +25,6 @@ class WelcomeView extends GetView<WelcomeController> {
               height: MediaQuery.of(context).size.height,
               color: Colors.black.withOpacity(0.6),
               child: Center(
-                // child: Utils.assetSVGImage(AppImages.logoWhite)
                 child: Stack(
                   children: [
                     Positioned.fill(
