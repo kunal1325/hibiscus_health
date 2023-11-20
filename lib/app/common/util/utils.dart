@@ -16,12 +16,13 @@ abstract class Utils {
     );
   }
 
-  static assetImage(String imagePath, {Color? color, double? height, double? width}) {
+  static assetImage(String imagePath, {Color? color, double? height, double? width, BoxFit? boxFit}) {
     return Image.asset(
       imagePath,
       width: width,
       height: height,
       color: color,
+      fit: boxFit,
     );
   }
 

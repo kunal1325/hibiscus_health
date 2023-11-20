@@ -74,4 +74,16 @@ abstract class Strings {
   static const String privacyFirstTitleFour = 'Your Hibiscus data will not be shared outside your care network without your consent.';
 
 
+  ///Start My Journey
+
+  static const String welcome = 'Welcome ';
+  static const String profileSuccessfullyCreated = 'Your profile was successfully created!';
+  static const String connectedDietitian = 'You are now connected to a Dietitian';
+  static const String firstFaceScan = 'Complete your first face scan';
+  static const String firstFaceScanDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ';
+  static const String firstAssessment = 'Take first assessment';
+  static const String firstAssessmentDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ';
+  static const String startMyJourney = 'Start my journey';
+
+
 }
