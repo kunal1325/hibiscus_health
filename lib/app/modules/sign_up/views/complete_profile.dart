@@ -405,6 +405,7 @@ class CompleteProfileView extends GetView<SignUpController> {
                   ),
                 ),
               ),
+              Utils.getProgressBar(context, false),
             ],
           ),
         ),

@@ -30,6 +30,7 @@ export 'dart:ui'  hide clampDouble hide decodeImageFromList hide TextStyle hide 
 export 'package:country_pickers/country.dart';
 export 'package:country_pickers/country_pickers.dart';
 export 'package:phone_number/phone_number.dart';
+export 'package:flutter_spinkit/flutter_spinkit.dart';
 
 /// Strings
 
