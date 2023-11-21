@@ -106,6 +106,20 @@ abstract class Strings {
   static const String emptyDobNameError = 'Please enter Date Of Birth';
   static const String emptyNutritionistCodeNameError = 'Please enter Nutritionist code';
 
+  //Phone Number
+
+  static const plus_one  = "+1";
+  static const plus_nine_one  = "+91";
+  static const plus_two_three = "+23";
+  static const US = "US";
+  static const USA = "USA";
+  static const UnitedStates = "United States";
+  static const search = "Search";
+  static const one_string = '1';
+  static const nine_one_string = '91';
+  static const SelectCountry = "Select Country";
+
+
 
 
 }

@@ -70,6 +70,7 @@ class SignInView extends GetView<SignInController> {
                               validator: controller.isValidEmail,
                               obscureText: false,
                               suffixIcon: SizedBox(),
+                              prefixIcon: SizedBox(),
                             ),
                             SizedBox(height: 30,),
                             Obx(() =>
@@ -87,6 +88,7 @@ class SignInView extends GetView<SignInController> {
                                       icon: Icon(controller.isPinInVisible.value ? Icons.visibility_off_outlined : Icons.visibility_outlined, color: AppColors.kPrimaryColorText,),
                                       onPressed: () => controller.changeVisibility()
                                   ),
+                                  prefixIcon: SizedBox(),
                                   onEditingComplete: (){
                                     controller.checkConnectivity();
                                   },

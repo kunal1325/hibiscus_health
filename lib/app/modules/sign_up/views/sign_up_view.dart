@@ -70,6 +70,7 @@ class SignUpView extends GetView<SignUpController> {
                               validator: controller.isValidEmail,
                               obscureText: false,
                               suffixIcon: SizedBox(),
+                              prefixIcon: SizedBox(),
                             ),
                             SizedBox(height: 18,),
                             Obx(() =>
@@ -94,6 +95,7 @@ class SignUpView extends GetView<SignUpController> {
                                         onPressed: () => controller.changePasswordEyeIcon()
                                     ),
                                   ),
+                                  prefixIcon: SizedBox(),
                                 ),
                             ),
                             SizedBox(height: 18,),
@@ -118,6 +120,7 @@ class SignUpView extends GetView<SignUpController> {
                                         onPressed: () => controller.changeConfirmPasswordEyeIcon()
                                     ),
                                   ),
+                                  prefixIcon: SizedBox(),
                                   onEditingComplete: (){
                                     // FocusManager.instance.primaryFocus?.unfocus();
                                     controller.checkConnectivity();

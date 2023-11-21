@@ -71,7 +71,8 @@ class CompleteProfileView extends GetView<SignUpController> {
                               validator: controller.isValidEmail,
                               obscureText: false,
                               suffixIcon: SizedBox(),
-                            ),
+                              prefixIcon: SizedBox(),
+                            ), //Email
                             SizedBox(height: 12,),
                             TextInputField(
                               fillColor: false,
@@ -85,7 +86,8 @@ class CompleteProfileView extends GetView<SignUpController> {
                               validator: controller.isValidFName,
                               obscureText: false,
                               suffixIcon: SizedBox(),
-                            ),
+                              prefixIcon: SizedBox(),
+                            ), //FName
                             SizedBox(height: 12,),
                             TextInputField(
                               fillColor: false,
@@ -99,40 +101,202 @@ class CompleteProfileView extends GetView<SignUpController> {
                               validator: controller.isValidLName,
                               obscureText: false,
                               suffixIcon: SizedBox(),
-                            ),
+                              prefixIcon: SizedBox(),
+                            ), //LName
                             SizedBox(height: 12,),
-                            TextInputField(
-                              fillColor: false,
-                              hintText: Strings.phoneNumberHint,
-                              labelText: Strings.phoneNumber,
+                            TextFormField(
+                              decoration: InputDecoration(
+                                hintText: Strings.phoneNumberHint,
+                                labelText: Strings.phoneNumber,
+                                contentPadding: EdgeInsets.only(
+                                  top: 14.0,
+                                  bottom: 12.0,
+                                  left: 14.0,
+                                  right: 14.0,
+                                ),
+                                prefixIcon: GestureDetector(
+                                    onTap: () {
+                                      controller.openCountryPickerDialog();
+                                    },
+                                    child: Obx(() => Container(
+                                      height: 23,
+                                      width: 60,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.end,
+                                        children: [
+                                          Align(
+                                            child: Container(
+                                                height: 13,
+                                                width: 20,
+                                                child: CountryPickerUtils.getDefaultFlagImage(
+                                                    controller.selectedCountry.value)
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 2,
+                                          ),
+                                          Icon(
+                                            Icons.arrow_drop_down_rounded,
+                                            color: Colors.black,
+                                          )
+                                        ],
+                                      ),
+                                    ))
+                                ),
+                                suffixIcon: SizedBox(),
+                                errorStyle: GoogleFonts.inter(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.red,
+                                ),
+                                labelStyle: GoogleFonts.inter(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                  color: AppColors.kSecColorText,
+                                ),
+                                hintStyle: GoogleFonts.inter(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: AppColors.kSecColorText,
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  borderSide: BorderSide(
+                                    color: AppColors.textFieldBorderColor,
+                                    width: 1.0,
+                                  ),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  borderSide: BorderSide(
+                                    color: AppColors.textFieldBorderColor,
+                                    width: 1.0,
+                                  ),
+                                ),
+                                disabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  borderSide: BorderSide(
+                                    color: Colors.grey.shade200,
+                                    width: 1.0,
+                                  ),
+                                ),
+                                errorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  borderSide: BorderSide(
+                                    color: Colors.red,
+                                    width: 1.0,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  borderSide: BorderSide(
+                                    color: AppColors.kPrimaryColor,
+                                    width: 1.0,
+                                  ),
+                                ),
+                                focusedErrorBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(8.0),
+                                  borderSide: BorderSide(
+                                    color: Colors.red,
+                                    width: 1.0,
+                                  ),
+                                ),
+                              ),
                               keyboardType: TextInputType.number,
                               textInputAction: TextInputAction.next,
                               focusNode: controller.phoneFocusNode,
-                              requestFocusNode: controller.dobFocusNode,
+                              onFieldSubmitted: (_) {
+                                Utils.dismissKeyboard();
+                                controller.selectDate(context);
+                              },
                               controller: controller.phoneController,
                               validator: controller.isValidPhone,
-                              obscureText: false,
-                              suffixIcon: SizedBox(),
-                            ),
-                            SizedBox(height: 12,),
+                            ), //Phone Number
+                            SizedBox(height: 12),
                             GestureDetector(
                               onTap: () => controller.selectDate(context),
                               child: AbsorbPointer(
-                                child: TextInputField(
-                                  fillColor: false,
-                                  hintText: Strings.dobHint,
-                                  labelText: Strings.dob,
-                                  keyboardType: TextInputType.datetime,
-                                  textInputAction: TextInputAction.next,
-                                  focusNode: controller.dobFocusNode,
-                                  requestFocusNode: controller.nutritionistFocusNode,
-                                  controller: controller.dobController,
-                                  validator: controller.isValidDob,
+                                child: TextFormField(
+                                  enabled: true,
                                   obscureText: false,
-                                  suffixIcon: SizedBox(),
+                                  decoration: InputDecoration(
+                                    hintText: Strings.dobHint,
+                                    labelText: Strings.dob,
+                                    contentPadding: EdgeInsets.only(
+                                      top: 14.0,
+                                      bottom: 12.0,
+                                      left: 14.0,
+                                      right: 14.0,
+                                    ),
+                                    prefixIcon: Icon(Icons.calendar_month_outlined, size: 20,),
+                                    suffixIcon: SizedBox(),
+                                    errorStyle: GoogleFonts.inter(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.red,
+                                    ),
+                                    labelStyle: GoogleFonts.inter(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w400,
+                                      color: AppColors.kSecColorText,
+                                    ),
+                                    hintStyle: GoogleFonts.inter(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColors.kSecColorText,
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      borderSide: BorderSide(
+                                        color: AppColors.textFieldBorderColor,
+                                        width: 1.0,
+                                      ),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      borderSide: BorderSide(
+                                        color: AppColors.textFieldBorderColor,
+                                        width: 1.0,
+                                      ),
+                                    ),
+                                    disabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      borderSide: BorderSide(
+                                        color: Colors.grey.shade200,
+                                        width: 1.0,
+                                      ),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      borderSide: BorderSide(
+                                        color: Colors.red,
+                                        width: 1.0,
+                                      ),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      borderSide: BorderSide(
+                                        color: AppColors.kPrimaryColor,
+                                        width: 1.0,
+                                      ),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      borderSide: BorderSide(
+                                        color: Colors.red,
+                                        width: 1.0,
+                                      ),
+                                    ),
+                                  ),
+                                  keyboardType: TextInputType.datetime,
+                                  controller: controller.dobController,
+                                  onFieldSubmitted: (_) {
+                                    FocusScope.of(context).requestFocus(controller.nutritionistFocusNode,);
+                                  },
+                                  validator: controller.isValidDob,
                                 ),
                               ),
-                            ),
+                            ), //Dob
                             SizedBox(height: 34,),
                             Container(
                                 width: 173,
@@ -152,7 +316,8 @@ class CompleteProfileView extends GetView<SignUpController> {
                               validator: controller.isValidNutritionistCode,
                               obscureText: false,
                               suffixIcon: SizedBox(),
-                            ),
+                              prefixIcon: SizedBox(),
+                            ), //Nutritionist Code
                             SizedBox(height: 29,),
                           ],
                         ),

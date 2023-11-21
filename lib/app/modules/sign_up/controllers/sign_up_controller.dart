@@ -1,5 +1,5 @@
-
 import '../../../../import.dart';
+
 
 class SignUpController extends GetxController {
 
@@ -30,11 +30,28 @@ class SignUpController extends GetxController {
   final phoneController = TextEditingController();
   final dobController = TextEditingController();
   final nutritionistController = TextEditingController();
-
   DateTime? selectedDate;
+  var selectedCountry = Country(
+      iso3Code: Strings.USA,
+      isoCode: Strings.US,
+      name: Strings.UnitedStates,
+      phoneCode: Strings.one_string).obs;
+  TextEditingController ccController = TextEditingController(text: "+1");
+  Region selectedRegion = Region(Strings.US, 1);
+  List<Region> regions = [];
+  var store = Store(PhoneNumberUtil());
+
+  ///Common Functions
+
+  @override
+  Future<void> onInit() async {
+    // TODO: implement onInit
+    regions = await store.getRegions();
+    super.onInit();
+  }
 
 
-  ///Sign Up variables
+  ///Sign Up functions
   void changePasswordEyeIcon () {
     isPasswordVisible.value = !isPasswordVisible.value;
   }
@@ -82,8 +99,7 @@ class SignUpController extends GetxController {
   }
 
 
-
-  ///Complete Profile variables
+  ///Complete Profile functions
   void checkConnectivity() async {
     isLoading.value = true;
     navigateToPrivacyFirst();
@@ -110,7 +126,6 @@ class SignUpController extends GetxController {
     }
     isLoading.value = false;
   }
-
   String? isValidFName(String? text) {
     if (text!.isEmpty) {
       return Strings.emptyFirstNameError;
@@ -118,7 +133,6 @@ class SignUpController extends GetxController {
     else
       return null;
   }
-
   String? isValidLName(String? text) {
     if (text!.isEmpty) {
       return Strings.emptyLastNameError;
@@ -126,7 +140,6 @@ class SignUpController extends GetxController {
     else
       return null;
   }
-
   String? isValidPhone(String? text) {
     if (text!.isEmpty) {
       return Strings.emptyPhoneNameError;
@@ -134,7 +147,6 @@ class SignUpController extends GetxController {
     else
       return null;
   }
-
   String? isValidDob(String? text) {
     if (text!.isEmpty) {
       return Strings.emptyDobNameError;
@@ -142,7 +154,6 @@ class SignUpController extends GetxController {
     else
       return null;
   }
-
   String? isValidNutritionistCode(String? text) {
     if (text!.isEmpty) {
       return Strings.emptyNutritionistCodeNameError;
@@ -150,7 +161,6 @@ class SignUpController extends GetxController {
     else
       return null;
   }
-
   Future<void> selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -162,7 +172,58 @@ class SignUpController extends GetxController {
         selectedDate = picked;
         dobController.text = '${picked.month} / ${picked.day} / ${picked.year}';
     }
+    FocusScope.of(context).requestFocus(nutritionistFocusNode);
   }
+  void openCountryPickerDialog() => showDialog(
+    context: Get.context!,
+    builder: (context) => Theme(
+      data: Theme.of(context).copyWith(
+        primaryColor: AppColors.kPrimaryColor,
+        scaffoldBackgroundColor: Colors.black,
+        dialogBackgroundColor: Colors.black,
+      ),
+      child: CountryPickerDialog(
+        searchCursorColor: AppColors.kPrimaryColor,
+        isSearchable: false,
+        title: Text(Strings.SelectCountry),
+        onValuePicked: (country) {
+          selectedCountry.value = country;
+          ccController.text = '+${country.phoneCode}';
+          selectedRegion = regions
+              .where((element) =>
+          element.prefix.toString() == country.phoneCode)
+              .first;
+        },
+        itemFilter: (country) {
+          if (country.phoneCode == Strings.one_string ||
+              country.phoneCode == Strings.nine_one_string) {
+            return true;
+          } else {
+            return false;
+          }
+        },
+        itemBuilder: ((country) {
+          return Row(
+            children: <Widget>[
+              CountryPickerUtils.getDefaultFlagImage(country),
+              SizedBox(width: 8.0),
+              Text("+${country.phoneCode}"),
+              SizedBox(width: 8.0),
+              Flexible(
+                child: Text(
+                  country.name,
+                  style: TextStyle(color: Colors.white),
+                ),
+              )
+            ],
+          );
+        }),
+        priorityList: [
+          CountryPickerUtils.getCountryByIsoCode(Strings.US),
+        ],
+      ),
+    ),
+  );
 
 
   ///Navigation from Sign Up
@@ -184,7 +245,6 @@ class SignUpController extends GetxController {
   navigateBackFromSignUp(){
     Get.offNamedUntil("/welcomeScreen", (route) => false);
   }
-
   navigateBackFromCompleteProfile(){
     Get.offNamedUntil("/signUp", (route) => false);
   }

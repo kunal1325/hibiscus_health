@@ -10,6 +10,8 @@ class TextInputField extends StatelessWidget {
   final TextInputAction textInputAction;
   final bool obscureText;
   final Widget suffixIcon;
+
+  final Widget prefixIcon;
   final FocusNode focusNode;
   final FocusNode? requestFocusNode;
   final TextEditingController controller;
@@ -17,7 +19,7 @@ class TextInputField extends StatelessWidget {
   final Function()? onEditingComplete;
 
   TextInputField({super.key, required this.fillColor, this.enabled, required this.hintText, required this.labelText, required this.keyboardType, required this.textInputAction,
-   required this.obscureText, required this.suffixIcon,
+   required this.obscureText, required this.suffixIcon, required this.prefixIcon,
     required this.focusNode, this.requestFocusNode, required this.controller, required this.validator, this.onEditingComplete});
 
   @override
@@ -32,7 +34,13 @@ class TextInputField extends StatelessWidget {
         hintText: hintText,
         labelText: labelText,
         suffixIcon: suffixIcon,
-        contentPadding: EdgeInsets.all(15.0),
+        prefix: prefixIcon,
+        contentPadding: EdgeInsets.only(
+          top: 14.0,
+          bottom: 12.0,
+          left: 14.0,
+          right: 14.0,
+        ),
         errorStyle: GoogleFonts.inter(
           fontSize: 16,
           fontWeight: FontWeight.w500,

@@ -17,7 +17,7 @@ class HomeView extends GetView<HomeController> {
                       style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
-                          color: AppColors.white
+                          color: AppColors.black
                       ),
                     ),
                     Obx(() => Text(
@@ -25,7 +25,7 @@ class HomeView extends GetView<HomeController> {
                           style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.w700,
-                            color: AppColors.white
+                            color: AppColors.black
                           ),
                         )),
                   ],
