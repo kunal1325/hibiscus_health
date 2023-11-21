@@ -58,6 +58,13 @@ dependencies:
   #for checking connection
   connectivity_plus:
 
+  #for picking country code
+  country_pickers:
+  phone_number:
+
+  #for loader
+  flutter_spinkit:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -8,15 +8,13 @@ class SignUpView extends GetView<SignUpController> {
     return GetBuilder<SignUpController>(
       init: SignUpController(),
       builder: (controller) => WillPopScope(
-        onWillPop: () => controller.navigateBack(),
+        onWillPop: () => controller.navigateBackFromSignUp(),
         child: Scaffold(
           backgroundColor: AppColors.white,
           resizeToAvoidBottomInset: false,
           body: Stack(
             alignment: Alignment.topCenter,
             children: [
-
-
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
@@ -61,6 +59,7 @@ class SignUpView extends GetView<SignUpController> {
                         child: Column(
                           children: [
                             TextInputField(
+                              fillColor: false,
                               hintText: Strings.emailHint,
                               labelText: Strings.email,
                               keyboardType: TextInputType.emailAddress,
@@ -71,10 +70,12 @@ class SignUpView extends GetView<SignUpController> {
                               validator: controller.isValidEmail,
                               obscureText: false,
                               suffixIcon: SizedBox(),
+                              prefixIcon: SizedBox(),
                             ),
                             SizedBox(height: 18,),
                             Obx(() =>
                                 TextInputField(
+                                  fillColor: false,
                                   hintText: Strings.passwordHint,
                                   labelText: Strings.password,
                                   keyboardType: TextInputType.text,
@@ -94,11 +95,13 @@ class SignUpView extends GetView<SignUpController> {
                                         onPressed: () => controller.changePasswordEyeIcon()
                                     ),
                                   ),
+                                  prefixIcon: SizedBox(),
                                 ),
                             ),
                             SizedBox(height: 18,),
                             Obx(() =>
                                 TextInputField(
+                                  fillColor: false,
                                   hintText: Strings.confirmPasswordHint,
                                   labelText: Strings.confirmPassword,
                                   keyboardType: TextInputType.text,
@@ -117,6 +120,7 @@ class SignUpView extends GetView<SignUpController> {
                                         onPressed: () => controller.changeConfirmPasswordEyeIcon()
                                     ),
                                   ),
+                                  prefixIcon: SizedBox(),
                                   onEditingComplete: (){
                                     // FocusManager.instance.primaryFocus?.unfocus();
                                     controller.checkConnectivity();
@@ -288,13 +292,12 @@ class SignUpView extends GetView<SignUpController> {
                   ),
                 ),
               ),
-
               Positioned(
                 top: 49,
                 left: 18,
                 child: InkWell(
                   onTap: () {
-                    controller.navigateBack();
+                    controller.navigateBackFromSignUp();
                   },
                   child: Icon(
                     Icons.arrow_back_ios_new_rounded,

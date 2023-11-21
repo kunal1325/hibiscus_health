@@ -59,6 +59,7 @@ class SignInView extends GetView<SignInController> {
                         child: Column(
                           children: [
                             TextInputField(
+                              fillColor: false,
                               hintText: Strings.emailHint,
                               labelText: Strings.email,
                               keyboardType: TextInputType.emailAddress,
@@ -69,10 +70,12 @@ class SignInView extends GetView<SignInController> {
                               validator: controller.isValidEmail,
                               obscureText: false,
                               suffixIcon: SizedBox(),
+                              prefixIcon: SizedBox(),
                             ),
                             SizedBox(height: 30,),
                             Obx(() =>
                                 TextInputField(
+                                  fillColor: false,
                                   hintText: Strings.passwordHint,
                                   labelText: Strings.password,
                                   keyboardType: TextInputType.text,
@@ -85,6 +88,7 @@ class SignInView extends GetView<SignInController> {
                                       icon: Icon(controller.isPinInVisible.value ? Icons.visibility_off_outlined : Icons.visibility_outlined, color: AppColors.kPrimaryColorText,),
                                       onPressed: () => controller.changeVisibility()
                                   ),
+                                  prefixIcon: SizedBox(),
                                   onEditingComplete: (){
                                     controller.checkConnectivity();
                                   },
@@ -161,7 +165,7 @@ class SignInView extends GetView<SignInController> {
                 left: 18,
                 child: GestureDetector(
                   onTap: () {
-                    onWillPop: () => controller.navigateBack();
+                    controller.navigateBack();
                   },
                   child: Icon(
                     Icons.arrow_back_ios_new_rounded,

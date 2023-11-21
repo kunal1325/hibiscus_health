@@ -85,5 +85,44 @@ abstract class Strings {
   static const String firstAssessmentDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ';
   static const String startMyJourney = 'Start my journey';
 
+  /// Complete Profile
+
+  static const String completeProfile = 'Complete Profile';
+  static const String completeProfileDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo';
+  static const String fNameHint = 'John';
+  static const String fName = 'First Name';
+  static const String lNameHint = 'Doe';
+  static const String lName = 'Last Name';
+  static const String phoneNumberHint = '213 - 1231 - 2421';
+  static const String phoneNumber = 'Phone number';
+  static const String dobHint = 'MM / DD / YYYY';
+  static const String dob = 'Date of Birth';
+  static const String nutritionistCodeHint = 'HH0000';
+  static const String nutritionistCode = 'Nutritionist Code';
+  static const String completeSignUp = 'Complete sign up';
+  static const String emptyFirstNameError = 'Please enter First Name';
+  static const String emptyLastNameError = 'Please enter Last Name';
+  static const String emptyPhoneNameError = 'Please enter Phone Number';
+  static const String emptyDobNameError = 'Please enter Date Of Birth';
+  static const String emptyNutritionistCodeNameError = 'Please enter Nutritionist code';
+  static const plus_one  = "+1";
+  static const plus_nine_one  = "+91";
+  static const plus_two_three = "+23";
+  static const US = "US";
+  static const USA = "USA";
+  static const UnitedStates = "United States";
+  static const search = "Search";
+  static const one_string = '1';
+  static const nine_one_string = '91';
+  static const SelectCountry = "Select Country";
+
+
+  ///Loader
+  static const WillOnlyTakeASecond = "Will only take a second";
+
+
+
+
+
 
 }

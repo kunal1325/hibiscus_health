@@ -1,8 +1,13 @@
-
 import '../../../../import.dart';
+
 
 class SignUpController extends GetxController {
 
+  ///Common variables
+  var isLoading = false.obs;
+  var errorMsg = Strings.emptyString.obs;
+
+  ///Sign Up variables
   final emailFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
   final confirmPasswordFocusNode = FocusNode();
@@ -12,8 +17,41 @@ class SignUpController extends GetxController {
   var isPasswordVisible = true.obs;
   var isConfirmPasswordVisible = true.obs;
   GlobalKey<FormState> formKeySignUp = GlobalKey<FormState>();
-  var isLoading = false.obs;
-  var errorMsg = Strings.emptyString.obs;
+
+  ///Complete Profile variables
+  GlobalKey<FormState> formKeyCompleteProfile = GlobalKey<FormState>();
+  final fNameFocusNode = FocusNode();
+  final lNameFocusNode = FocusNode();
+  final phoneFocusNode = FocusNode();
+  final dobFocusNode = FocusNode();
+  final nutritionistFocusNode = FocusNode();
+  final fNameController = TextEditingController();
+  final lNameController = TextEditingController();
+  final phoneController = TextEditingController();
+  final dobController = TextEditingController();
+  final nutritionistController = TextEditingController();
+  DateTime? selectedDate;
+  var selectedCountry = Country(
+      iso3Code: Strings.USA,
+      isoCode: Strings.US,
+      name: Strings.UnitedStates,
+      phoneCode: Strings.one_string).obs;
+  TextEditingController ccController = TextEditingController(text: "+1");
+  Region selectedRegion = Region(Strings.US, 1);
+  List<Region> regions = [];
+  var store = Store(PhoneNumberUtil());
+
+  ///Common Functions
+
+  @override
+  Future<void> onInit() async {
+    // TODO: implement onInit
+    regions = await store.getRegions();
+    super.onInit();
+  }
+
+
+  ///Sign Up functions
   void changePasswordEyeIcon () {
     isPasswordVisible.value = !isPasswordVisible.value;
   }
@@ -59,6 +97,9 @@ class SignUpController extends GetxController {
     }
     return null;
   }
+
+
+  ///Complete Profile functions
   void checkConnectivity() async {
     isLoading.value = true;
     navigateToPrivacyFirst();
@@ -85,13 +126,113 @@ class SignUpController extends GetxController {
     }
     isLoading.value = false;
   }
+  String? isValidFName(String? text) {
+    if (text!.isEmpty) {
+      return Strings.emptyFirstNameError;
+    }
+    else
+      return null;
+  }
+  String? isValidLName(String? text) {
+    if (text!.isEmpty) {
+      return Strings.emptyLastNameError;
+    }
+    else
+      return null;
+  }
+  String? isValidPhone(String? text) {
+    if (text!.isEmpty) {
+      return Strings.emptyPhoneNameError;
+    }
+    else
+      return null;
+  }
+  String? isValidDob(String? text) {
+    if (text!.isEmpty) {
+      return Strings.emptyDobNameError;
+    }
+    else
+      return null;
+  }
+  String? isValidNutritionistCode(String? text) {
+    if (text!.isEmpty) {
+      return Strings.emptyNutritionistCodeNameError;
+    }
+    else
+      return null;
+  }
+  Future<void> selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(1900),
+      lastDate: DateTime.now(),
+    );
+    if (picked != null && picked != selectedDate) {
+        selectedDate = picked;
+        dobController.text = '${picked.month} / ${picked.day} / ${picked.year}';
+    }
+    FocusScope.of(context).requestFocus(nutritionistFocusNode);
+  }
+  void openCountryPickerDialog() => showDialog(
+    context: Get.context!,
+    builder: (context) => Theme(
+      data: Theme.of(context).copyWith(
+        primaryColor: AppColors.kPrimaryColor,
+        scaffoldBackgroundColor: Colors.black,
+        dialogBackgroundColor: Colors.black,
+      ),
+      child: CountryPickerDialog(
+        searchCursorColor: AppColors.kPrimaryColor,
+        isSearchable: false,
+        title: Text(Strings.SelectCountry),
+        onValuePicked: (country) {
+          selectedCountry.value = country;
+          ccController.text = '+${country.phoneCode}';
+          selectedRegion = regions
+              .where((element) =>
+          element.prefix.toString() == country.phoneCode)
+              .first;
+        },
+        itemFilter: (country) {
+          if (country.phoneCode == Strings.one_string ||
+              country.phoneCode == Strings.nine_one_string) {
+            return true;
+          } else {
+            return false;
+          }
+        },
+        itemBuilder: ((country) {
+          return Row(
+            children: <Widget>[
+              CountryPickerUtils.getDefaultFlagImage(country),
+              SizedBox(width: 8.0),
+              Text("+${country.phoneCode}"),
+              SizedBox(width: 8.0),
+              Flexible(
+                child: Text(
+                  country.name,
+                  style: TextStyle(color: Colors.white),
+                ),
+              )
+            ],
+          );
+        }),
+        priorityList: [
+          CountryPickerUtils.getCountryByIsoCode(Strings.US),
+        ],
+      ),
+    ),
+  );
+
+
+  ///Navigation from Sign Up
   void navigateToSignIn(){
     Get.off(SignInView());
   }
   void navigateToGetHelp(){
     Get.toNamed("/home");
   }
-
   void navigateToPrivacyFirst(){
     Get.toNamed("/privacyFirst");
   }
@@ -101,8 +242,11 @@ class SignUpController extends GetxController {
   void openPrivacyPolicy(){
 
   }
-  navigateBack(){
+  navigateBackFromSignUp(){
     Get.offNamedUntil("/welcomeScreen", (route) => false);
+  }
+  navigateBackFromCompleteProfile(){
+    Get.offNamedUntil("/signUp", (route) => false);
   }
 
 

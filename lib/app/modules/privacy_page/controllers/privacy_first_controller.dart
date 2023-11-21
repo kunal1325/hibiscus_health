@@ -12,7 +12,7 @@ class PrivacyFirstController extends GetxController {
   ];
 
   void navigateToCompleteForm(){
-    Get.toNamed("/startMyJourney");
+    Get.toNamed("/completeProfile");
   }
 
 }
