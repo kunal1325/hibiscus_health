@@ -12,11 +12,7 @@ class SignInController extends GetxController {
   var isLoading = false.obs;
   var errorMsg = Strings.emptyString.obs;
 
-
-
-
-
-
+  final ApiHelper _apiHelper = Get.find();
 
 
   void changeVisibility () {
@@ -44,30 +40,6 @@ class SignInController extends GetxController {
     }
     return null;
   }
-  void checkConnectivity() async {
-    isLoading.value = true;
-    Utils.dismissKeyboard();
-    // loginUser();
-    try {
-      var temp = formKeySignIn.currentState;
-      if (temp != null && temp.validate()) {
-        var isConnected =
-        await Utils.checkInternetConnectivity();
-        if (isConnected) {
-          errorMsg.value = Strings.emptyString;
-          print("data =================>>>>>>>>>>>>>>>>>");
-          print("email ====================>>>>>>>>>>>>>>>>> ${emailController.text}");
-          print("password ====================>>>>>>>>>>>>>>>>> ${passwordController.text}");
-          // loginUser();
-        } else {
-          errorMsg.value = Strings.noConnection;
-        }
-      }
-    } catch (e) {
-      print(e);
-    }
-    isLoading.value = false;
-  }
   void navigateToSignUp(){
     Get.off(SignUpView());
   }
@@ -80,44 +52,49 @@ class SignInController extends GetxController {
     Get.offNamedUntil("/welcomeScreen", (route) => false);
   }
 
-
-
-
-
-
-
-
-
-  final ApiHelper _apiHelper = Get.find();
-
-
-
-
-
-
-
-
   navigateHome(){
     Get.offNamedUntil("/home", (route) => false);
   }
 
-  void loginUser() {
+  Future<void> checkConnectivity() async {
     Utils.dismissKeyboard();
-    final isValid = formKeySignIn.currentState!.validate();
-    if (!isValid) return;
-    formKeySignIn.currentState!.save();
+    isLoading.value = true;
+    try {
+      final isValid = formKeySignIn.currentState!.validate();
+      if (!isValid) return;
+      formKeySignIn.currentState!.save();
+        var isConnected =
+            await Utils.checkInternetConnectivity();
+        if (isConnected) {
+          errorMsg.value = Strings.emptyString;
+          print("data =================>>>>>>>>>>>>>>>>>");
+          // print("email ====================>>>>>>>>>>>>>>>>> ${emailController.text}");
+          // print("password ====================>>>>>>>>>>>>>>>>> ${passwordController.text}");
 
-    _apiHelper
-        .login(
-        LoginRequest(email: emailController.text, password: passwordController.text))
-        .futureValue((value) {
-      print("Login Response =============>>>>>>>>>>>>>>>.");
-      print("Login Response $value ");
-      Storage.saveValue(Constants.TOKEN, value);
-      navigateHome();
-    }, onError: (error) {
-      print("Login Response Error $error");
-    });
+          _apiHelper
+              .login(
+              // LoginRequest(email: emailController.text, password: passwordController.text))
+              LoginRequest(email: "k@gmail.com", password: "kunal123"))
+              .futureValue((value) {
+            print("Login Response =============>>>>>>>>>>>>>>>.");
+            print("Login Response $value ");
+            Storage.saveValue(Constants.TOKEN, value);
+            print("TOKEN =============>>>>>>>>>>>>>>>.");
+            print("Constants.TOKEN ${Constants.TOKEN} ");
+            print("value ${value} ");
+            // navigateHome();
+          }, onError: (error) {
+            print("Login Response Error $error");
+          });
+
+        } else {
+          errorMsg.value = Strings.noConnection;
+        }
+    } catch (e) {
+      print("===================>>>>>>>>>>>>>>> eeeeeeeeeeeeeeee");
+      print(e);
+    }
+    isLoading.value = false;
   }
 
 

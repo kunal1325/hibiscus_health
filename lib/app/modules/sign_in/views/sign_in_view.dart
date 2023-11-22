@@ -59,6 +59,7 @@ class SignInView extends GetView<SignInController> {
                         child: Column(
                           children: [
                             TextInputField(
+                              initialValue: "k@gmail.com",
                               fillColor: false,
                               hintText: Strings.emailHint,
                               labelText: Strings.email,
@@ -78,6 +79,7 @@ class SignInView extends GetView<SignInController> {
                             SizedBox(height: 30,),
                             Obx(() =>
                                 TextInputField(
+                                  initialValue: "kunal123",
                                   fillColor: false,
                                   hintText: Strings.passwordHint,
                                   labelText: Strings.password,
@@ -144,7 +146,7 @@ class SignInView extends GetView<SignInController> {
                         padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                         child: InkWell(
                             onTap: () {
-                              controller.loginUser();
+                              controller.checkConnectivity();
                             },
                             child: CustomButtons(
                               weight: Get.width- 40,
@@ -223,6 +225,10 @@ class SignInView extends GetView<SignInController> {
                   ],
                 )
               ),
+              Obx(() =>
+                  Utils.getProgressBar(context, controller.isLoading.value),
+              ),
+
             ],
           ),
         ),
