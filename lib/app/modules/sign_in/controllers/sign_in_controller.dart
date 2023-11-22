@@ -11,6 +11,14 @@ class SignInController extends GetxController {
   GlobalKey<FormState> formKeySignIn = GlobalKey<FormState>();
   var isLoading = false.obs;
   var errorMsg = Strings.emptyString.obs;
+
+
+
+
+
+
+
+
   void changeVisibility () {
     isPinInVisible.value = !isPinInVisible.value;
   }
@@ -39,6 +47,7 @@ class SignInController extends GetxController {
   void checkConnectivity() async {
     isLoading.value = true;
     Utils.dismissKeyboard();
+    // loginUser();
     try {
       var temp = formKeySignIn.currentState;
       if (temp != null && temp.validate()) {
@@ -49,6 +58,7 @@ class SignInController extends GetxController {
           print("data =================>>>>>>>>>>>>>>>>>");
           print("email ====================>>>>>>>>>>>>>>>>> ${emailController.text}");
           print("password ====================>>>>>>>>>>>>>>>>> ${passwordController.text}");
+          // loginUser();
         } else {
           errorMsg.value = Strings.noConnection;
         }
@@ -68,6 +78,46 @@ class SignInController extends GetxController {
   }
   navigateBack(){
     Get.offNamedUntil("/welcomeScreen", (route) => false);
+  }
+
+
+
+
+
+
+
+
+
+  final ApiHelper _apiHelper = Get.find();
+
+
+
+
+
+
+
+
+  navigateHome(){
+    Get.offNamedUntil("/home", (route) => false);
+  }
+
+  void loginUser() {
+    Utils.dismissKeyboard();
+    final isValid = formKeySignIn.currentState!.validate();
+    if (!isValid) return;
+    formKeySignIn.currentState!.save();
+
+    _apiHelper
+        .login(
+        LoginRequest(email: emailController.text, password: passwordController.text))
+        .futureValue((value) {
+      print("Login Response =============>>>>>>>>>>>>>>>.");
+      print("Login Response $value ");
+      Storage.saveValue(Constants.TOKEN, value);
+      navigateHome();
+    }, onError: (error) {
+      print("Login Response Error $error");
+    });
   }
 
 

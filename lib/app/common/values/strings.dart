@@ -121,6 +121,17 @@ abstract class Strings {
   static const WillOnlyTakeASecond = "Will only take a second";
 
 
+  ///Api calling
+
+  static const unauthorized = 'Unauthorized. Please login again!';
+
+  static const String error = 'Error';
+  static const success = 'Success';
+  static const String somethingWentWrong = 'Something went wrong.';
+  static const String ok = 'Ok';
+
+
+
 
 
 

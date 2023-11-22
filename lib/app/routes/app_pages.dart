@@ -5,7 +5,7 @@ import '../../import.dart';
 part 'app_routes.dart';
 
 abstract class AppPages {
-  static const initial = Routes.landingScreen;
+  static const initial = Routes.signIn;
 
   static final routes = [
     GetPage(

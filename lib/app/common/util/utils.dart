@@ -130,6 +130,52 @@ abstract class Utils {
     );
   }
 
+  static void showDialog(
+      String? message, {
+        String title = Strings.error,
+        bool success = false,
+        VoidCallback? onTap,
+      }) =>
+      Get.defaultDialog(
+        barrierDismissible: false,
+        onWillPop: () async {
+          Get.back();
+
+          onTap?.call();
+
+          return true;
+        },
+        title: success ? Strings.success : title,
+        content: Text(
+          message ?? Strings.somethingWentWrong,
+          textAlign: TextAlign.center,
+          maxLines: 6,
+          style: GoogleFonts.inter(
+            fontSize: 14,
+            fontWeight: FontWeight.w700,
+            color: AppColors.avgSecColor,
+
+          ),
+        ),
+        confirm: Align(
+          alignment: Alignment.centerRight,
+          child: CustomInkwellWidget.text(
+            onTap: () {
+              Get.back();
+
+              onTap?.call();
+            },
+            title: Strings.ok,
+            textStyle: GoogleFonts.inter(
+              fontSize: 14,
+              fontWeight: FontWeight.w700,
+              color: AppColors.avgSecColor,
+
+            ),
+          ),
+        ),
+      );
+
 
 
 }

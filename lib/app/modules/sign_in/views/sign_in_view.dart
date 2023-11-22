@@ -71,6 +71,9 @@ class SignInView extends GetView<SignInController> {
                               obscureText: false,
                               suffixIcon: SizedBox(),
                               prefixIcon: SizedBox(),
+                              onSaved: (value) {
+                                controller.emailController.text = value!;
+                              },
                             ),
                             SizedBox(height: 30,),
                             Obx(() =>
@@ -91,6 +94,9 @@ class SignInView extends GetView<SignInController> {
                                   prefixIcon: SizedBox(),
                                   onEditingComplete: (){
                                     controller.checkConnectivity();
+                                  },
+                                  onSaved: (value) {
+                                    controller.passwordController.text = value!;
                                   },
                                 ),
                             ),
@@ -138,7 +144,7 @@ class SignInView extends GetView<SignInController> {
                         padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                         child: InkWell(
                             onTap: () {
-                              controller.checkConnectivity();
+                              controller.loginUser();
                             },
                             child: CustomButtons(
                               weight: Get.width- 40,
