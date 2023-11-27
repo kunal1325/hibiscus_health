@@ -142,7 +142,7 @@ class SignUpController extends GetxController {
   }
   String? isValidPhone(String? text) {
     if (text!.isEmpty) {
-      return Strings.emptyPhoneNameError;
+      return Strings.emptyPhoneNumberError;
     }
     else
       return null;

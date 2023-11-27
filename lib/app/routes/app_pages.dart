@@ -1,5 +1,3 @@
-import 'package:hibiscus_health/app/modules/sign_up/views/complete_profile.dart';
-
 import '../../import.dart';
 
 part 'app_routes.dart';
@@ -67,6 +65,11 @@ abstract class AppPages {
       name: _Paths.processToLogin,
       page: () => ProcessToLoginView(),
       binding: ResetPasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.helpUs,
+      page: () => HelpUsView(),
+      binding: HelpUsBinding(),
     ),
   ];
 }
