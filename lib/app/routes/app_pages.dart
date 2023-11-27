@@ -63,5 +63,10 @@ abstract class AppPages {
       page: () => UpdatePasswordView(),
       binding: ResetPasswordBinding(),
     ),
+    GetPage(
+      name: _Paths.processToLogin,
+      page: () => ProcessToLoginView(),
+      binding: ResetPasswordBinding(),
+    ),
   ];
 }

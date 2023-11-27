@@ -139,6 +139,8 @@ abstract class Strings {
   static const String emptyConfirmNewPasswordError = 'Please enter Confirm new password';
   static const String shortConfirmNewPasswordError = 'Confirm New Password must have more than 8 characters.';
   static const String invalidConfirmNewPasswordError = 'Confirm New Password must contain both letters and numbers';
+  static const String passwordUpdatedSuccessfully = 'Password updated successfully!';
+  static const String proceedLogin = 'Proceed to login';
 
 
 

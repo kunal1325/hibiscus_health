@@ -90,4 +90,12 @@ class ResetPasswordController extends GetxController {
     Get.toNamed("/updatePassword");
   }
 
+  void navigateToProcessToLogin(){
+    Get.offNamedUntil("/processToLogin", (route) => false);
+  }
+
+  void navigateToSignIn(){
+    Get.offNamedUntil("/signIn", (route) => false);
+  }
+
 }

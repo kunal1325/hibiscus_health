@@ -148,7 +148,7 @@ class UpdatePasswordView extends GetView<ResetPasswordController> {
                               ),
                               InkWell(
                                   onTap: () {
-                                    // controller.navigationAction("/signIn");
+                                    controller.navigateToProcessToLogin();
                                   },
                                   child: CustomButtons(
                                     weight: Get.width - 40,

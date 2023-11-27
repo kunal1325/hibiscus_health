@@ -101,3 +101,4 @@ export 'app/modules/reset_password/bindings/reset_password_binding.dart';
 export 'app/modules/reset_password/controllers/reset_password_controller.dart';
 export 'app/modules/reset_password/views/reset_password_view.dart';
 export 'app/modules/reset_password/views/update_password_view.dart';
+export 'app/modules/reset_password/views/proceed_to_login.dart';
