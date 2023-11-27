@@ -80,7 +80,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
 
                               Form(
                                 autovalidateMode: AutovalidateMode.disabled,
-                                key: controller.formKeySignIn,
+                                key: controller.formKeyResetPassword,
                                 child: Column(
                                   children: [
                                     TextInputField(
@@ -105,7 +105,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                               ),
                               InkWell(
                                   onTap: () {
-                                    // controller.navigationAction("/signIn");
+                                    controller.navigateToUpdatePassword();
                                   },
                                   child: CustomButtons(
                                     weight: Get.width - 40,
@@ -113,9 +113,9 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                                     color: AppColors.kSecColor,
                                     shadowColor: AppColors.kSecColor,
                                     borderRadius: 6,
-                                    title: Strings.startMyJourney,
+                                    title: Strings.sendResetCode,
                                     fontSize: 16,
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w600,
                                     fontColor: AppColors.kPrimaryColor,
                                     withShadow: false,
                                   )),
