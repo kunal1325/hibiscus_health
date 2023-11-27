@@ -31,6 +31,7 @@ export 'package:country_pickers/country.dart';
 export 'package:country_pickers/country_pickers.dart';
 export 'package:phone_number/phone_number.dart';
 export 'package:flutter_spinkit/flutter_spinkit.dart';
+export 'package:drop_shadow/drop_shadow.dart';
 
 /// Strings
 
@@ -83,6 +84,7 @@ export 'app/modules/sign_in/views/sign_in_view.dart';
 export 'app/modules/sign_up/bindings/sign_up_binding.dart';
 export 'app/modules/sign_up/controllers/sign_up_controller.dart';
 export 'app/modules/sign_up/views/sign_up_view.dart';
+export 'app/modules/sign_up/views/complete_profile.dart';
 
 /// Privacy First Screen
 export 'app/modules/privacy_page/bindings/privacy_first_binding.dart';
@@ -94,5 +96,9 @@ export 'app/modules/start_my_journey/bindings/start_my_journey_binding.dart';
 export 'app/modules/start_my_journey/controllers/start_my_journey_controller.dart';
 export 'app/modules/start_my_journey/views/start_my_journey_view.dart';
 
-
-
+/// Reset Password
+export 'app/modules/reset_password/bindings/reset_password_binding.dart';
+export 'app/modules/reset_password/controllers/reset_password_controller.dart';
+export 'app/modules/reset_password/views/reset_password_view.dart';
+export 'app/modules/reset_password/views/update_password_view.dart';
+export 'app/modules/reset_password/views/proceed_to_login.dart';

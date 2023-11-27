@@ -120,6 +120,31 @@ abstract class Strings {
   ///Loader
   static const WillOnlyTakeASecond = "Will only take a second";
 
+  ///Reset Password
+  static const resetPassword = "Reset Password";
+  static const resetPasswordDescription = "Enter the email associated with your account and we will email you a reset link";
+  static const updatePassword = "Update Password";
+  static const updatePasswordDescription = "Create a new unique password";
+  static const enterOtpHint = "******";
+  static const enterOtp = "Enter OTP Code";
+  static const newPassword = "New Password";
+  static const confirmNewPassword = "Confirm New Password";
+  static const sendResetCode = "Send Reset Code";
+  static const setNewPassword = "Set New Password";
+  static const String emptyOtpError = 'Please enter OTP ';
+  static const String shortOtpError = 'Otp must have more than 6 characters.';
+  static const String emptyNewPasswordError = 'Please enter new password';
+  static const String shortNewPasswordError = 'New Password must have more than 8 characters.';
+  static const String invalidNewPasswordError = 'New Password must contain both letters and numbers';
+  static const String emptyConfirmNewPasswordError = 'Please enter Confirm new password';
+  static const String shortConfirmNewPasswordError = 'Confirm New Password must have more than 8 characters.';
+  static const String invalidConfirmNewPasswordError = 'Confirm New Password must contain both letters and numbers';
+  static const String passwordUpdatedSuccessfully = 'Password updated successfully!';
+  static const String proceedLogin = 'Proceed to login';
+
+
+
+
 
 
 

@@ -65,6 +65,9 @@ dependencies:
   #for loader
   flutter_spinkit:
 
+  #for drop shadow
+  drop_shadow:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

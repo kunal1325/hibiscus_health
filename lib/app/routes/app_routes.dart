@@ -15,4 +15,7 @@ abstract class _Paths {
   static const privacyFirst = '/privacyFirst';
   static const startMyJourney = '/startMyJourney';
   static const completeProfile = '/completeProfile';
+  static const resetPassword = '/resetPassword';
+  static const updatePassword = '/updatePassword';
+  static const processToLogin = '/processToLogin';
 }
