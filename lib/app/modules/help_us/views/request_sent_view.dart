@@ -29,6 +29,7 @@ class RequestSubmittedView extends GetView<HelpUsController> {
                       padding: const EdgeInsets.symmetric(horizontal: 11),
                       child: Text(
                         Strings.requestSent,
+                        textAlign: TextAlign.center,
                         style: GoogleFonts.inter(
                           fontSize: 26,
                           fontWeight: FontWeight.bold,
@@ -41,6 +42,7 @@ class RequestSubmittedView extends GetView<HelpUsController> {
                       padding: const EdgeInsets.symmetric(horizontal: 11),
                       child: Text(
                         Strings.requestSentDescription,
+                        textAlign: TextAlign.center,
                         style: GoogleFonts.inter(
                           fontSize: 15,
                           fontWeight: FontWeight.w400,

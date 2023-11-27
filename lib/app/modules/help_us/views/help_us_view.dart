@@ -308,7 +308,7 @@ class HelpUsView extends GetView<HelpUsController> {
                       ),
                     ),
 
-
+                    SizedBox(height: 40,),
                   ],
                 ),
               ),

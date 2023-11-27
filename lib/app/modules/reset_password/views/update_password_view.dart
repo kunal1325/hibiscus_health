@@ -23,6 +23,20 @@ class UpdatePasswordView extends GetView<ResetPasswordController> {
               color: Colors.black.withOpacity(0.3),
               child: Stack(
                 children: [
+                  Positioned.fill(
+                    top: Get.width / 4,
+                    child: Align(
+                      alignment: Alignment.topCenter,
+                      child: DropShadow(
+                        blurRadius: 0.2,
+                        offset: const Offset(1, 1),
+                        spread: 1,
+                        color: AppColors.kPrimaryColor,
+                        child: Utils.assetSVGImage(AppImages.logoWhite,
+                            width: 141, height: 57),
+                      ),
+                    ),
+                  ),
                   Positioned(
                       bottom: 0,
                       child: Container(
@@ -166,20 +180,7 @@ class UpdatePasswordView extends GetView<ResetPasswordController> {
                           ),
                         ),
                       )),
-                  Positioned.fill(
-                    top: Get.width / 4,
-                    child: Align(
-                      alignment: Alignment.topCenter,
-                      child: DropShadow(
-                        blurRadius: 0.2,
-                        offset: const Offset(1, 1),
-                        spread: 1,
-                        color: AppColors.kPrimaryColor,
-                        child: Utils.assetSVGImage(AppImages.logoWhite,
-                            width: 141, height: 57),
-                      ),
-                    ),
-                  ),
+
                   Positioned(
                     top: 49,
                     left: 18,
