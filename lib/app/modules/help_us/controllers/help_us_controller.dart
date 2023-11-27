@@ -69,8 +69,8 @@ class HelpUsController extends GetxController {
     }
     isLoading.value = false;
   }
-  void navigateToSignUp(){
-    Get.off(SignUpView());
+  void navigateToRequestSubmitted(){
+    Get.off(RequestSubmittedView());
   }
 
 

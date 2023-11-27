@@ -231,7 +231,7 @@ class SignUpController extends GetxController {
     Get.off(SignInView());
   }
   void navigateToGetHelp(){
-    Get.toNamed("/home");
+    Get.toNamed("/helpUs");
   }
   void navigateToPrivacyFirst(){
     Get.toNamed("/privacyFirst");
@@ -247,6 +247,10 @@ class SignUpController extends GetxController {
   }
   navigateBackFromCompleteProfile(){
     Get.offNamedUntil("/signUp", (route) => false);
+  }
+
+  navigateToStartMyJourney(){
+    Get.off(StartMyJourneyView());
   }
 
 

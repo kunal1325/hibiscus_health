@@ -328,7 +328,7 @@ class CompleteProfileView extends GetView<SignUpController> {
                         padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                         child: InkWell(
                             onTap: () {
-                              // controller.checkConnectivity();
+                              controller.navigateToStartMyJourney();
                             },
                             child: CustomButtons(
                               weight: Get.width- 40,

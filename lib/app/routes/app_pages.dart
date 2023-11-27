@@ -71,5 +71,9 @@ abstract class AppPages {
       page: () => HelpUsView(),
       binding: HelpUsBinding(),
     ),
+    GetPage(
+      name: _Paths.requestSubmitted,
+      page: () => RequestSubmittedView(),
+    ),
   ];
 }

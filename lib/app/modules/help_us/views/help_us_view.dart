@@ -291,7 +291,7 @@ class HelpUsView extends GetView<HelpUsController> {
                       padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                       child: InkWell(
                           onTap: () {
-                            controller.checkConnectivity();
+                            controller.navigateToRequestSubmitted();
                           },
                           child: CustomButtons(
                             weight: Get.width- 40,
