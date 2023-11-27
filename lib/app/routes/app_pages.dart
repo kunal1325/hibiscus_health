@@ -53,5 +53,10 @@ abstract class AppPages {
       page: () => CompleteProfileView(),
       binding: SignUpBinding(),
     ),
+    GetPage(
+      name: _Paths.resetPassword,
+      page: () => ResetPasswordView(),
+      binding: ResetPasswordBinding(),
+    ),
   ];
 }

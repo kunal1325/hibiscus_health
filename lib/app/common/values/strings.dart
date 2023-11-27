@@ -121,6 +121,19 @@ abstract class Strings {
   static const WillOnlyTakeASecond = "Will only take a second";
 
 
+  static const resetPassword = "Reset Password";
+  static const resetPasswordDescription = "Enter the email associated with your account and we will email you a reset link";
+  static const updatePassword = "Update Password";
+  static const updatePasswordDescription = "Create a new unique password";
+  static const enterOtp = "Enter OTP Code";
+  static const newPassword = "New Password";
+  static const confirmNewPassword = "Confirm New Password";
+  static const sendResetCode = "Send Reset Code";
+  static const setNewPassword = "Set New Password";
+
+  ///Reset Password
+
+
 
 
 

@@ -94,5 +94,7 @@ export 'app/modules/start_my_journey/bindings/start_my_journey_binding.dart';
 export 'app/modules/start_my_journey/controllers/start_my_journey_controller.dart';
 export 'app/modules/start_my_journey/views/start_my_journey_view.dart';
 
-
-
+/// Reset Password
+export 'app/modules/reset_password/bindings/reset_password_binding.dart';
+export 'app/modules/reset_password/controllers/reset_password_controller.dart';
+export 'app/modules/reset_password/views/reset_password_view.dart';
