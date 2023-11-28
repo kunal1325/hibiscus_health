@@ -350,6 +350,8 @@ class CompleteProfileView extends GetView<SignUpController> {
                         children: [
                           Text(
                             Strings.trouble,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 3,
                             style: GoogleFonts.inter(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
@@ -371,6 +373,8 @@ class CompleteProfileView extends GetView<SignUpController> {
                                     children: [
                                       Text(
                                         Strings.getHelp,
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 3,
                                         style: GoogleFonts.inter(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w700,
@@ -384,8 +388,10 @@ class CompleteProfileView extends GetView<SignUpController> {
                             ),
                           ),
                         ],
-                      )
-
+                      ),
+                      SizedBox(
+                        height: 35,
+                      ),
 
                     ],
                   ),

@@ -10,4 +10,8 @@ class StartMyJourneyController extends GetxController {
     StartMyJourneyModel(Strings.firstAssessment, Strings.firstAssessmentDescription)
   ];
 
+  void navigateToFaceScan(){
+    Get.offAllNamed("/home");
+  }
+
 }
