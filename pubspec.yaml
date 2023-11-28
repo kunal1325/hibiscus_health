@@ -46,9 +46,37 @@ dependencies:
   #for date formatting
   intl:
 
+  #for SVG Images
+  flutter_svg:
+
+  #for google fonts
+  google_fonts:
+
+  #for launcher icon
+  flutter_launcher_icons:
+
+  #for checking connection
+  connectivity_plus:
+
+  #for picking country code
+  country_pickers:
+  phone_number:
+
+  #for loader
+  flutter_spinkit:
+
+  #for drop shadow
+  drop_shadow:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/pngs/icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -69,7 +97,10 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
+  assets:
+    - assets/images/
+    - assets/images/pngs/
+    - assets/images/svgs/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

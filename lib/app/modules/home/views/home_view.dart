@@ -8,7 +8,6 @@ class HomeView extends GetView<HomeController> {
         builder: (controller) {
           return SafeArea(
             child: Scaffold(
-              backgroundColor: AppColors.kPrimaryColor,
               body: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -18,7 +17,7 @@ class HomeView extends GetView<HomeController> {
                       style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
-                          color: AppColors.white
+                          color: AppColors.black
                       ),
                     ),
                     Obx(() => Text(
@@ -26,29 +25,17 @@ class HomeView extends GetView<HomeController> {
                           style: const TextStyle(
                             fontSize: 24,
                             fontWeight: FontWeight.w700,
-                            color: AppColors.white
+                            color: AppColors.black
                           ),
                         )),
                   ],
                 ),
               ),
-              floatingActionButton: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  FloatingActionButton(
-                    onPressed: controller.incrementCounter,
-                    backgroundColor: AppColors.kSecColor,
-                    tooltip: Strings.increment,
-                    child: const Icon(Icons.add, color: AppColors.black,),
-                  ),
-                  const SizedBox(height: 10,),
-                  FloatingActionButton(
-                    onPressed: controller.decrementCounter,
-                    backgroundColor: AppColors.kSecColor,
-                    tooltip: Strings.decrement,
-                    child: const Icon(Icons.remove, color: AppColors.black,),
-                  ),
-                ],
+              floatingActionButton: FloatingActionButton(
+                onPressed: controller.incrementCounter,
+                backgroundColor: AppColors.kSecColor,
+                tooltip: Strings.increment,
+                child: const Icon(Icons.add, color: AppColors.black,),
               ),
             ),
           );
