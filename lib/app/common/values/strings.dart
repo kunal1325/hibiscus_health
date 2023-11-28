@@ -62,7 +62,7 @@ abstract class Strings {
   static const String emptyConfirmPasswordError = 'Please enter confirm password';
   static const String invalidConfirmPasswordError = 'Confirm password must contain both letters and numbers.';
   static const String shortConfirmPasswordError = 'Confirm Password must have more than 8 characters.';
-  static const String passwordNotMatchedError = 'Both passwords are not matching.';
+  static const String passwordNotMatchedError = 'Password not matched.';
 
   //Privacy First
 

@@ -52,20 +52,22 @@ class OnBoardingView extends GetView<OnBoardingController> {
                         ),
                       ),
                     )),//skip
-                const Positioned(
+                Positioned(
                     bottom: 0,
-                    child: BlurBoxWidget(height: 215),
-                ),//blur container
-                Positioned.fill(
-                  bottom: 135,
-                  child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                    child: BlurBoxWidget(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Obx(() =>
-                              Text(
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Obx(() =>
+                                  Expanded(
+                                    child: Text(
                                       controller.onboardingPages[controller.selectedPageIndex.value].title,
+                                      textAlign: TextAlign.center,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 4,
                                       style: GoogleFonts.inter(
                                         fontSize: 24,
                                         fontWeight: FontWeight.bold,
@@ -78,91 +80,86 @@ class OnBoardingView extends GetView<OnBoardingController> {
                                           ),
                                         ],
                                       ),
+                                    ),
                                   ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 44,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: List.generate(
+                              controller.onboardingPages.length,
+                                  (index) => Obx(() {
+                                return Container(
+                                  margin: const EdgeInsets.all(4),
+                                  width: 10,
+                                  height: 10,
+                                  decoration: BoxDecoration(
+                                    color: controller.selectedPageIndex.value == index
+                                        ? AppColors.white
+                                        : Colors.grey[700],
+                                    shape: BoxShape.circle,
+                                  ),
+                                );
+                              }),
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Obx(
+                                      () =>InkWell(
+                                    onTap: controller.isFirstPage ? null : controller.backwardAction,
+                                    child: SizedBox(
+                                      height: 52,
+                                      child: Center(
+                                        child: Text(controller.isFirstPage ? "" : Strings.previous,
+                                          style: GoogleFonts.inter(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500,
+                                            color: AppColors.previous,
+                                            shadows: [
+                                              const Shadow(
+                                                color: AppColors.black,      // Choose the color of the shadow
+                                                blurRadius: 4.0,          // Adjust the blur radius for the shadow effect
+                                                offset: Offset(0.0, 2.0), // Set the horizontal and vertical offset for the shadow
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                              ), //previous
+                              InkWell(
+                                onTap: controller.forwardAction,
+                                child: SizedBox(
+                                  height: 52,
+                                  child: Center(
+                                    child: Text(Strings.next,
+                                      style: GoogleFonts.inter(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500,
+                                        color: AppColors.kSecColor,
+                                        shadows: [
+                                          const Shadow(
+                                            color: AppColors.black,      // Choose the color of the shadow
+                                            blurRadius: 4.0,          // Adjust the blur radius for the shadow effect
+                                            offset: Offset(0.0, 2.0), // Set the horizontal and vertical offset for the shadow
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ) //next
+                            ],
                           ),
                         ],
                       ),
-                  ),
-                ), // Title
-                Positioned(
-                    left: 30,
-                    bottom: 20,
-                    child: Obx(
-                          () =>InkWell(
-                            onTap: controller.isFirstPage ? null : controller.backwardAction,
-                            child: SizedBox(
-                              width: 72,
-                              height: 52,
-                              child: Center(
-                                child: Text(controller.isFirstPage ? "" : Strings.previous,
-                                    style: GoogleFonts.inter(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,
-                                      color: AppColors.previous,
-                                      shadows: [
-                                        const Shadow(
-                                          color: AppColors.black,      // Choose the color of the shadow
-                                          blurRadius: 4.0,          // Adjust the blur radius for the shadow effect
-                                          offset: Offset(0.0, 2.0), // Set the horizontal and vertical offset for the shadow
-                                        ),
-                                      ],
-                                    ),
-                                ),
-                              ),
-                            ),
-                          )
-                    ),),//previous
-                Positioned.fill(
-                  bottom: 80,
-                  child: Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(
-                          controller.onboardingPages.length,
-                              (index) => Obx(() {
-                            return Container(
-                              margin: const EdgeInsets.all(4),
-                              width: 10,
-                              height: 10,
-                              decoration: BoxDecoration(
-                                color: controller.selectedPageIndex.value == index
-                                    ? AppColors.white
-                                    : Colors.grey[700],
-                                shape: BoxShape.circle,
-                              ),
-                            );
-                          }),
-                        ),
-                      ),
-                  ),
-                ),//carousal
-                Positioned(
-                    right: 30,
-                    bottom: 20,
-                    child: InkWell(
-                      onTap: controller.forwardAction,
-                      child: SizedBox(
-                        width: 72,
-                        height: 52,
-                        child: Center(
-                          child: Text(Strings.next,
-                              style: GoogleFonts.inter(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.kSecColor,
-                                shadows: [
-                                  const Shadow(
-                                    color: AppColors.black,      // Choose the color of the shadow
-                                    blurRadius: 4.0,          // Adjust the blur radius for the shadow effect
-                                    offset: Offset(0.0, 2.0), // Set the horizontal and vertical offset for the shadow
-                                  ),
-                                ],
-                              ),
-                          ),
-                        ),
-                      ),
-                    )),//next
+                    ),
+                ),
               ],
             ),
           ),

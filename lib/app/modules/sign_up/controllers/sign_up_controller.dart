@@ -116,7 +116,8 @@ class SignUpController extends GetxController {
           print("email ====================>>>>>>>>>>>>>>>>> ${emailController.text}");
           print("password ====================>>>>>>>>>>>>>>>>> ${passwordController.text}");
           print("confirm password ====================>>>>>>>>>>>>>>>>> ${confirmPasswordController.text}");
-          navigateToPrivacyFirst();
+          // Utils.showSnackBarFun(Get.context, Strings.alreadyTakenError);
+          // navigateToPrivacyFirst();
         } else {
           errorMsg.value = Strings.noConnection;
         }
