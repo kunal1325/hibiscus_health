@@ -102,3 +102,9 @@ export 'app/modules/reset_password/controllers/reset_password_controller.dart';
 export 'app/modules/reset_password/views/reset_password_view.dart';
 export 'app/modules/reset_password/views/update_password_view.dart';
 export 'app/modules/reset_password/views/proceed_to_login.dart';
+
+/// Help Us
+export 'app/modules/help_us/bindings/help_us_binding.dart';
+export 'app/modules/help_us/controllers/help_us_controller.dart';
+export 'app/modules/help_us/views/help_us_view.dart';
+export 'app/modules/help_us/views/request_sent_view.dart';

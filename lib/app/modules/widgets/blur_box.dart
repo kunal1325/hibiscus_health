@@ -2,8 +2,9 @@ import '../../../import.dart';
 
 class BlurBoxWidget extends StatelessWidget {
 
-  final double height;
-  const BlurBoxWidget({super.key, required this.height});
+  final double? height;
+  final Widget? child;
+  const BlurBoxWidget({super.key, this.height, this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +14,7 @@ class BlurBoxWidget extends StatelessWidget {
         child: Container(
           width: Get.width,
           height: height,
+          padding: EdgeInsets.only(top: 50, right: 25, left: 25, bottom: 25),
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
@@ -24,6 +26,7 @@ class BlurBoxWidget extends StatelessWidget {
               end: Alignment.bottomCenter,
             ),
           ),
+          child: Center(child: child),
         ),
       ),
     );

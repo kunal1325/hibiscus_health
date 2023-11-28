@@ -62,7 +62,7 @@ abstract class Strings {
   static const String emptyConfirmPasswordError = 'Please enter confirm password';
   static const String invalidConfirmPasswordError = 'Confirm password must contain both letters and numbers.';
   static const String shortConfirmPasswordError = 'Confirm Password must have more than 8 characters.';
-  static const String passwordNotMatchedError = 'Both passwords are not matching.';
+  static const String passwordNotMatchedError = 'Password not matched.';
 
   //Privacy First
 
@@ -102,7 +102,7 @@ abstract class Strings {
   static const String completeSignUp = 'Complete sign up';
   static const String emptyFirstNameError = 'Please enter First Name';
   static const String emptyLastNameError = 'Please enter Last Name';
-  static const String emptyPhoneNameError = 'Please enter Phone Number';
+  static const String emptyPhoneNumberError = 'Please enter Phone Number';
   static const String emptyDobNameError = 'Please enter Date Of Birth';
   static const String emptyNutritionistCodeNameError = 'Please enter Nutritionist code';
   static const plus_one  = "+1";
@@ -141,6 +141,21 @@ abstract class Strings {
   static const String invalidConfirmNewPasswordError = 'Confirm New Password must contain both letters and numbers';
   static const String passwordUpdatedSuccessfully = 'Password updated successfully!';
   static const String proceedLogin = 'Proceed to login';
+
+
+
+  static const String helpPage = 'Help Page';
+  static const String helpPageDescription = 'Fill this form with issues you are facing and someone from our team will get in touch ';
+  static const String fullNameHint = 'John Snow';
+  static const String fullName = 'Full Name';
+  static const String issue = 'Issue';
+  static const String messageHint  = 'I am facing issue with ..............';
+  static const String message = 'Message';
+  static const String requestSent = 'You request has been sent!';
+  static const String requestSentDescription = 'You have completed today’s check-in!';
+  static const String done = 'Done';
+
+  static const String emptyFullNameError = 'Please enter Full Name';
 
 
 

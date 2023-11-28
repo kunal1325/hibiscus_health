@@ -64,7 +64,7 @@ abstract class Utils {
       dismissDirection: DismissDirection.up,
       behavior: SnackBarBehavior.floating,
       margin: EdgeInsets.only(
-          bottom: MediaQuery.of(context).size.height - 225,
+          bottom: MediaQuery.of(context).size.height - (MediaQuery.of(context).size.height/6.3),
       ),
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);

@@ -116,7 +116,8 @@ class SignUpController extends GetxController {
           print("email ====================>>>>>>>>>>>>>>>>> ${emailController.text}");
           print("password ====================>>>>>>>>>>>>>>>>> ${passwordController.text}");
           print("confirm password ====================>>>>>>>>>>>>>>>>> ${confirmPasswordController.text}");
-          navigateToPrivacyFirst();
+          // Utils.showSnackBarFun(Get.context, Strings.alreadyTakenError);
+          // navigateToPrivacyFirst();
         } else {
           errorMsg.value = Strings.noConnection;
         }
@@ -142,7 +143,7 @@ class SignUpController extends GetxController {
   }
   String? isValidPhone(String? text) {
     if (text!.isEmpty) {
-      return Strings.emptyPhoneNameError;
+      return Strings.emptyPhoneNumberError;
     }
     else
       return null;
@@ -231,7 +232,7 @@ class SignUpController extends GetxController {
     Get.off(SignInView());
   }
   void navigateToGetHelp(){
-    Get.toNamed("/home");
+    Get.toNamed("/helpUs");
   }
   void navigateToPrivacyFirst(){
     Get.toNamed("/privacyFirst");
@@ -247,6 +248,10 @@ class SignUpController extends GetxController {
   }
   navigateBackFromCompleteProfile(){
     Get.offNamedUntil("/signUp", (route) => false);
+  }
+
+  navigateToStartMyJourney(){
+    Get.off(StartMyJourneyView());
   }
 
 

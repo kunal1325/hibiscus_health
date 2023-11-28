@@ -27,5 +27,8 @@ abstract class AppImages {
   static const String dummy = 'assets/images/pngs/dummy.png';
   static const String checked = 'assets/images/svgs/checked.svg';
 
+  ///Help Us
+
+  static const String help_us = 'assets/images/pngs/help_us.png';
 
 }

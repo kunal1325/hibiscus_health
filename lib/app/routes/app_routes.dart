@@ -18,4 +18,6 @@ abstract class _Paths {
   static const resetPassword = '/resetPassword';
   static const updatePassword = '/updatePassword';
   static const processToLogin = '/processToLogin';
+  static const helpUs = '/helpUs';
+  static const requestSubmitted = '/requestSubmitted';
 }
