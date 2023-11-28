@@ -27,7 +27,7 @@ class SplashView extends GetView<SplashController> {
               child: FadeTransition(
                 //Use your animation here
                 opacity: controller.animation,
-                child: Utils.assetSVGImage(AppImages.logoWhite)
+                child: Utils.assetSVGImage(AppImages.logoWhite, width: 182, height: 74)
               ),
             ),
           ),
