@@ -5,14 +5,13 @@ class CompleteProfileView extends GetView<SignUpController> {
 
   @override
   Widget build(BuildContext context) {
-    SignUpController().getDataFromSession();
+
     return GetBuilder<SignUpController>(
       init: SignUpController(),
       builder: (controller) => WillPopScope(
         onWillPop: () => controller.navigateBackFromCompleteProfile(),
         child: Scaffold(
           backgroundColor: AppColors.white,
-          resizeToAvoidBottomInset: false,
           body: Stack(
             alignment: Alignment.topCenter,
             children: [

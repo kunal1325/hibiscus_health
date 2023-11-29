@@ -48,6 +48,7 @@ class SignUpController extends GetxController {
     regions = await store.getRegions();
     super.onInit();
   }
+
   void checkConnectivity() async {
     isLoading.value = true;
     // navigateToPrivacyFirst();
@@ -70,8 +71,6 @@ class SignUpController extends GetxController {
           print("Phone ====================>>>>>>>>>>>>>>>>> ${ccController.text} ${phoneController.text}");
           print("Dob ====================>>>>>>>>>>>>>>>>> ${dobController.text}");
           print("Dietitian Code ====================>>>>>>>>>>>>>>>>> ${dietitianController.text}");
-          // Utils.showSnackBarFun(Get.context, Strings.alreadyTakenError);
-          // navigateToPrivacyFirst();
         } else {
           errorMsg.value = Strings.noConnection;
         }
@@ -89,9 +88,6 @@ class SignUpController extends GetxController {
       var temp = formKeySignUp.currentState;
       if (temp != null && temp.validate()) {
         errorMsg.value = Strings.emptyString;
-        Storage.saveValue(Constants.email, emailController.text);
-        Storage.saveValue(Constants.password, passwordController.text);
-        Storage.saveValue(Constants.confirmPassword, confirmPasswordController.text);
         navigateToPrivacyFirst();
       }
     } catch (e) {
@@ -99,17 +95,6 @@ class SignUpController extends GetxController {
       print(e);
     }
   }
-
-  void getDataFromSession() {
-    var email = Storage.getValue(Constants.email);
-    var password = Storage.getValue(Constants.password);
-    var confirmPassword = Storage.getValue(Constants.confirmPassword);
-    print("getDataFromSession =================>>>>>>>>>>>>>>>>> ");
-    print("email =================>>>>>>>>>>>>>>>>> $email");
-    print("password =================>>>>>>>>>>>>>>>>> $password");
-    print("confirmPassword =================>>>>>>>>>>>>>>>>> $confirmPassword");
-  }
-
 
   ///Sign Up functions
   void changePasswordEyeIcon () {
