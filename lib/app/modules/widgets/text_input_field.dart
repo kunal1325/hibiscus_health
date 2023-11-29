@@ -20,7 +20,7 @@ class TextInputField extends StatelessWidget {
 
   TextInputField({super.key, required this.fillColor, this.enabled, required this.hintText, required this.labelText, required this.keyboardType, required this.textInputAction,
    required this.obscureText, required this.suffixIcon, required this.prefixIcon,
-    required this.focusNode, this.requestFocusNode, required this.controller, required this.validator, this.onEditingComplete});
+    required this.focusNode, this.requestFocusNode, required this.controller, this.validator, this.onEditingComplete});
 
   @override
   Widget build(BuildContext context) {
