@@ -5,13 +5,13 @@ class CompleteProfileView extends GetView<SignUpController> {
 
   @override
   Widget build(BuildContext context) {
+
     return GetBuilder<SignUpController>(
       init: SignUpController(),
       builder: (controller) => WillPopScope(
         onWillPop: () => controller.navigateBackFromCompleteProfile(),
         child: Scaffold(
           backgroundColor: AppColors.white,
-          resizeToAvoidBottomInset: false,
           body: Stack(
             alignment: Alignment.topCenter,
             children: [
@@ -62,13 +62,12 @@ class CompleteProfileView extends GetView<SignUpController> {
                               enabled: false,
                               fillColor: true,
                               hintText: Strings.emailHint,
-                              labelText: Strings.emailHint,
+                              labelText: Strings.emptyString,
                               keyboardType: TextInputType.emailAddress,
                               textInputAction: TextInputAction.next,
                               focusNode: controller.emailFocusNode,
                               requestFocusNode: controller.passwordFocusNode,
                               controller: controller.emailController,
-                              validator: controller.isValidEmail,
                               obscureText: false,
                               suffixIcon: SizedBox(),
                               prefixIcon: SizedBox(),
@@ -291,7 +290,7 @@ class CompleteProfileView extends GetView<SignUpController> {
                                   keyboardType: TextInputType.datetime,
                                   controller: controller.dobController,
                                   onFieldSubmitted: (_) {
-                                    FocusScope.of(context).requestFocus(controller.nutritionistFocusNode,);
+                                    FocusScope.of(context).requestFocus(controller.dietitianFocusNode,);
                                   },
                                   validator: controller.isValidDob,
                                 ),
@@ -307,13 +306,13 @@ class CompleteProfileView extends GetView<SignUpController> {
                             SizedBox(height: 29,),
                             TextInputField(
                               fillColor: false,
-                              hintText: Strings.nutritionistCodeHint,
-                              labelText: Strings. nutritionistCode,
+                              hintText: Strings.dietitianCodeHint,
+                              labelText: Strings. dietitianCode,
                               keyboardType: TextInputType.visiblePassword,
                               textInputAction: TextInputAction.done,
-                              focusNode: controller.nutritionistFocusNode,
-                              controller: controller.nutritionistController,
-                              validator: controller.isValidNutritionistCode,
+                              focusNode: controller.dietitianFocusNode,
+                              controller: controller.dietitianController,
+                              validator: controller.isValidDietitianCode,
                               obscureText: false,
                               suffixIcon: SizedBox(),
                               prefixIcon: SizedBox(),
@@ -328,7 +327,8 @@ class CompleteProfileView extends GetView<SignUpController> {
                         padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                         child: InkWell(
                             onTap: () {
-                              controller.navigateToStartMyJourney();
+                              // controller.navigateToStartMyJourney();
+                              controller.checkConnectivity();
                             },
                             child: CustomButtons(
                               weight: Get.width- 40,
@@ -411,7 +411,6 @@ class CompleteProfileView extends GetView<SignUpController> {
                   ),
                 ),
               ),
-              Utils.getProgressBar(context, false),
             ],
           ),
         ),

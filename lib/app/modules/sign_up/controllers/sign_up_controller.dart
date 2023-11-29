@@ -1,6 +1,5 @@
 import '../../../../import.dart';
 
-
 class SignUpController extends GetxController {
 
   ///Common variables
@@ -24,12 +23,12 @@ class SignUpController extends GetxController {
   final lNameFocusNode = FocusNode();
   final phoneFocusNode = FocusNode();
   final dobFocusNode = FocusNode();
-  final nutritionistFocusNode = FocusNode();
+  final dietitianFocusNode = FocusNode();
   final fNameController = TextEditingController();
   final lNameController = TextEditingController();
   final phoneController = TextEditingController();
   final dobController = TextEditingController();
-  final nutritionistController = TextEditingController();
+  final dietitianController = TextEditingController();
   DateTime? selectedDate;
   var selectedCountry = Country(
       iso3Code: Strings.USA,
@@ -50,6 +49,52 @@ class SignUpController extends GetxController {
     super.onInit();
   }
 
+  void checkConnectivity() async {
+    isLoading.value = true;
+    // navigateToPrivacyFirst();
+    // return;
+    Utils.dismissKeyboard();
+    try {
+      // var temp = formKeySignUp.currentState;
+      var temp = formKeyCompleteProfile.currentState;
+      if (temp != null && temp.validate()) {
+        var isConnected =
+        await Utils.checkInternetConnectivity();
+        if (isConnected) {
+          errorMsg.value = Strings.emptyString;
+          print("data =================>>>>>>>>>>>>>>>>>");
+          print("email ====================>>>>>>>>>>>>>>>>> ${emailController.text}");
+          print("password ====================>>>>>>>>>>>>>>>>> ${passwordController.text}");
+          print("confirm password ====================>>>>>>>>>>>>>>>>> ${confirmPasswordController.text}");
+          print("first name ====================>>>>>>>>>>>>>>>>> ${fNameController.text}");
+          print("Last name ====================>>>>>>>>>>>>>>>>> ${lNameController.text}");
+          print("Phone ====================>>>>>>>>>>>>>>>>> ${ccController.text} ${phoneController.text}");
+          print("Dob ====================>>>>>>>>>>>>>>>>> ${dobController.text}");
+          print("Dietitian Code ====================>>>>>>>>>>>>>>>>> ${dietitianController.text}");
+        } else {
+          errorMsg.value = Strings.noConnection;
+        }
+      }
+    } catch (e) {
+      print("Error =================>>>>>>>>>>>>>>>>>");
+      print(e);
+    }
+    isLoading.value = false;
+  }
+
+  void saveDataToSession() {
+    Utils.dismissKeyboard();
+    try {
+      var temp = formKeySignUp.currentState;
+      if (temp != null && temp.validate()) {
+        errorMsg.value = Strings.emptyString;
+        navigateToPrivacyFirst();
+      }
+    } catch (e) {
+      print("Error =================>>>>>>>>>>>>>>>>>");
+      print(e);
+    }
+  }
 
   ///Sign Up functions
   void changePasswordEyeIcon () {
@@ -100,33 +145,6 @@ class SignUpController extends GetxController {
 
 
   ///Complete Profile functions
-  void checkConnectivity() async {
-    isLoading.value = true;
-    navigateToPrivacyFirst();
-    return;
-    Utils.dismissKeyboard();
-    try {
-      var temp = formKeySignUp.currentState;
-      if (temp != null && temp.validate()) {
-        var isConnected =
-        await Utils.checkInternetConnectivity();
-        if (isConnected) {
-          errorMsg.value = Strings.emptyString;
-          print("data =================>>>>>>>>>>>>>>>>>");
-          print("email ====================>>>>>>>>>>>>>>>>> ${emailController.text}");
-          print("password ====================>>>>>>>>>>>>>>>>> ${passwordController.text}");
-          print("confirm password ====================>>>>>>>>>>>>>>>>> ${confirmPasswordController.text}");
-          // Utils.showSnackBarFun(Get.context, Strings.alreadyTakenError);
-          // navigateToPrivacyFirst();
-        } else {
-          errorMsg.value = Strings.noConnection;
-        }
-      }
-    } catch (e) {
-      print(e);
-    }
-    isLoading.value = false;
-  }
   String? isValidFName(String? text) {
     if (text!.isEmpty) {
       return Strings.emptyFirstNameError;
@@ -143,7 +161,10 @@ class SignUpController extends GetxController {
   }
   String? isValidPhone(String? text) {
     if (text!.isEmpty) {
-      return Strings.emptyPhoneNumberError;
+      return Strings.shortPhoneNumberError;
+    }
+    if (text.length < 10) {
+      return Strings.shortPhoneNumberError;
     }
     else
       return null;
@@ -155,9 +176,17 @@ class SignUpController extends GetxController {
     else
       return null;
   }
-  String? isValidNutritionistCode(String? text) {
+  String? isValidDietitianCode(String? text) {
     if (text!.isEmpty) {
-      return Strings.emptyNutritionistCodeNameError;
+      return Strings.emptyDietitianCodeNameError;
+    }
+    if (text.length <= 7) {
+      return Strings.shortDietitianCodeError;
+    }
+    final hasLetter = text.contains(RegExp(r'[a-zA-Z]'));
+    final hasNumber = text.contains(RegExp(r'[0-9]'));
+    if (!hasLetter || !hasNumber) {
+      return Strings.invalidDietitianCodeError;
     }
     else
       return null;
@@ -165,7 +194,7 @@ class SignUpController extends GetxController {
   Future<void> selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
+      initialDate: DateTime(2000, 01, 01),
       firstDate: DateTime(1900),
       lastDate: DateTime.now(),
     );
@@ -173,7 +202,7 @@ class SignUpController extends GetxController {
         selectedDate = picked;
         dobController.text = '${picked.month} / ${picked.day} / ${picked.year}';
     }
-    FocusScope.of(context).requestFocus(nutritionistFocusNode);
+    FocusScope.of(context).requestFocus(dietitianFocusNode);
   }
   void openCountryPickerDialog() => showDialog(
     context: Get.context!,
@@ -249,7 +278,6 @@ class SignUpController extends GetxController {
   navigateBackFromCompleteProfile(){
     Get.offNamedUntil("/signUp", (route) => false);
   }
-
   navigateToStartMyJourney(){
     Get.off(StartMyJourneyView());
   }

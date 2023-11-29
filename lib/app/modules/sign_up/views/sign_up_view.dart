@@ -11,7 +11,6 @@ class SignUpView extends GetView<SignUpController> {
         onWillPop: () => controller.navigateBackFromSignUp(),
         child: Scaffold(
           backgroundColor: AppColors.white,
-          resizeToAvoidBottomInset: false,
           body: Stack(
             alignment: Alignment.topCenter,
             children: [
@@ -201,7 +200,8 @@ class SignUpView extends GetView<SignUpController> {
                         padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                         child: InkWell(
                             onTap: () {
-                              controller.checkConnectivity();
+                              controller.saveDataToSession();
+                              // controller.navigateToPrivacyFirst();
                             },
                             child: CustomButtons(
                               weight: Get.width- 40,

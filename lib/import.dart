@@ -12,6 +12,7 @@ export 'app/common/util/initializer.dart';
 export 'app/common/util/utils.dart';
 export 'app/common/storage/storage.dart';
 export 'app/common/util/store.dart';
+export 'app/common/constants.dart';
 
 
 ///Widgets
