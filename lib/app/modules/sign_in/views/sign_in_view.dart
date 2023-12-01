@@ -71,6 +71,7 @@ class SignInView extends GetView<SignInController> {
                               obscureText: false,
                               suffixIcon: SizedBox(),
                               prefixIcon: SizedBox(),
+                              onSaved: (value) => controller.emailController.text = value!,
                             ),
                             SizedBox(height: 30,),
                             Obx(() =>
@@ -92,6 +93,7 @@ class SignInView extends GetView<SignInController> {
                                   onEditingComplete: (){
                                     controller.checkConnectivity();
                                   },
+                                  onSaved: (value) => controller.passwordController.text = value!,
                                 ),
                             ),
                           ],
@@ -223,6 +225,10 @@ class SignInView extends GetView<SignInController> {
                   ],
                 )
               ),
+              // Obx(() =>
+              //     Utils.getProgressBar(context, controller.isLoading.value),
+              // ),
+
             ],
           ),
         ),

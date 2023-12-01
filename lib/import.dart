@@ -54,6 +54,7 @@ export 'app/data/models/onboarding_info.dart';
 export 'app/data/models/privacy_first_model.dart';
 export 'app/data/models/start_my_journey_model.dart';
 export 'app/data/models/phone_parse_model.dart';
+export 'app/data/models/api_response_model/user_model.dart';
 
 
 /// Home Screen
@@ -96,6 +97,36 @@ export 'app/modules/privacy_page/views/privacy_first_view.dart';
 export 'app/modules/start_my_journey/bindings/start_my_journey_binding.dart';
 export 'app/modules/start_my_journey/controllers/start_my_journey_controller.dart';
 export 'app/modules/start_my_journey/views/start_my_journey_view.dart';
+
+
+
+
+
+/////API Calling
+
+export 'app/data/models/login_request.dart';
+export 'app/data/api_helper.dart';
+export 'app/common/constants.dart';
+export 'app/data/errors/api_errors.dart';
+export 'app/data/interface_controller/api_interface_controller.dart';
+export 'app/data/api_helper_impl.dart';
+export 'app/data/api_response.dart';
+export 'app/modules/widgets/custom_inkwell_widget.dart';
+export 'app/common/util/extensions.dart';
+export 'app/data/models/token_response.dart';
+
+/////API Calling
+
+export 'app/data/models/login_request.dart';
+export 'app/data/api_helper.dart';
+export 'app/common/constants.dart';
+export 'app/data/errors/api_errors.dart';
+export 'app/data/interface_controller/api_interface_controller.dart';
+export 'app/data/api_helper_impl.dart';
+export 'app/data/api_response.dart';
+export 'app/modules/widgets/custom_inkwell_widget.dart';
+export 'app/common/util/extensions.dart';
+export 'app/data/models/token_response.dart';
 
 /// Reset Password
 export 'app/modules/reset_password/bindings/reset_password_binding.dart';
