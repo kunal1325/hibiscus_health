@@ -75,23 +75,27 @@ class SignInController extends GetxController {
               Storage.saveValue(Constants.refreshToken, userResponse.token?.refresh);
               Storage.saveValue(Constants.userId, userResponse.userID);
               Storage.saveValue(Constants.dietitianId, userResponse.dietitianID);
-
               navigateHome();
+              isLoading.value = false;
             }else{
               Utils.showSnackBarFun(Get.context, userResponse.msg ?? "Something Went Wrong !!!");
+              isLoading.value = false;
             }
           }, onError: (error) {
             print("Login Response Error $error");
+            isLoading.value = false;
           });
 
         } else {
           errorMsg.value = Strings.noConnection;
+          Utils.showSnackBarFun(Get.context, Strings.noConnection);
+          isLoading.value = false;
         }
     } catch (e) {
       print("===================>>>>>>>>>>>>>>> eeeeeeeeeeeeeeee");
       print(e);
+      isLoading.value = false;
     }
-    isLoading.value = false;
   }
 
 

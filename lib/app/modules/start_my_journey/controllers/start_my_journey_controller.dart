@@ -11,7 +11,9 @@ class StartMyJourneyController extends GetxController {
   ];
 
   void navigateToFaceScan(){
-    Get.offAllNamed("/home");
+    Storage.clearStorage();
+    Get.offAllNamed("/splash");
+    // Get.offAllNamed("/home");
   }
 
 }

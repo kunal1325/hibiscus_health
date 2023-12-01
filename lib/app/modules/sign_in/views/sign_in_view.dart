@@ -225,9 +225,15 @@ class SignInView extends GetView<SignInController> {
                   ],
                 )
               ),
-              // Obx(() =>
-              //     Utils.getProgressBar(context, controller.isLoading.value),
-              // ),
+              Obx(() =>
+                  Visibility(
+                    maintainSize: true,
+                    maintainAnimation: true,
+                    maintainState: true,
+                    visible: controller.isLoading.value,
+                    child: Utils.getProgressBar(context),
+                  )
+              ),
 
             ],
           ),

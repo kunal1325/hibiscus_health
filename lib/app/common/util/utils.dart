@@ -101,36 +101,30 @@ abstract class Utils {
       ),
     );
   }
-  static Widget getProgressBar(BuildContext context, bool visible) {
-    return Visibility(
-      maintainSize: true,
-      maintainAnimation: true,
-      maintainState: true,
-      visible: visible,
-      child: Container(
-          width: Get.width,
-          height: Get.height,
-          color: AppColors.kPrimaryColor.withOpacity(0.8),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SpinKitSpinningLines(
-                size: 60.0,
+  static Widget getProgressBar(BuildContext context) {
+    return Container(
+        width: Get.width,
+        height: Get.height,
+        color: AppColors.kPrimaryColor.withOpacity(0.8),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SpinKitSpinningLines(
+              size: 60.0,
+              color: AppColors.white,
+              lineWidth: 2,
+            ),
+            SizedBox(height: 14,),
+            Text(
+              Strings.WillOnlyTakeASecond,
+              style: GoogleFonts.inter(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
                 color: AppColors.white,
-                lineWidth: 2,
               ),
-              SizedBox(height: 14,),
-              Text(
-                Strings.WillOnlyTakeASecond,
-                style: GoogleFonts.inter(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.white,
-                ),
-              ),
-            ],
-          )
-      ),
+            ),
+          ],
+        )
     );
   }
 
