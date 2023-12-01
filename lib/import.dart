@@ -52,6 +52,7 @@ export 'app/data/models/onboarding_info.dart';
 export 'app/data/models/privacy_first_model.dart';
 export 'app/data/models/start_my_journey_model.dart';
 export 'app/data/models/phone_parse_model.dart';
+export 'app/data/models/api_response_model/user_model.dart';
 
 
 /// Home Screen

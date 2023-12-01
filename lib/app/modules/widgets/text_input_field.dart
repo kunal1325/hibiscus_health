@@ -105,7 +105,7 @@ class TextInputField extends StatelessWidget {
       keyboardType: keyboardType,
       textInputAction: textInputAction,
       focusNode: focusNode,
-      // controller: controller,
+      controller: controller,
       onFieldSubmitted: (_) {
         FocusScope.of(context).requestFocus(requestFocusNode);
       },

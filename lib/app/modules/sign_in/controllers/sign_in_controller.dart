@@ -11,10 +11,7 @@ class SignInController extends GetxController {
   GlobalKey<FormState> formKeySignIn = GlobalKey<FormState>();
   var isLoading = false.obs;
   var errorMsg = Strings.emptyString.obs;
-
   final ApiHelper _apiHelper = Get.find();
-
-
   void changeVisibility () {
     isPinInVisible.value = !isPinInVisible.value;
   }
@@ -51,10 +48,11 @@ class SignInController extends GetxController {
   navigateBack(){
     Get.offNamedUntil("/welcomeScreen", (route) => false);
   }
-
   navigateHome(){
-    Get.offNamedUntil("/home", (route) => false);
+    // Get.offNamedUntil("/startMyJourney", (route) => false);
+    Get.toNamed("/startMyJourney");
   }
+
 
   Future<void> checkConnectivity() async {
     Utils.dismissKeyboard();
@@ -67,22 +65,23 @@ class SignInController extends GetxController {
             await Utils.checkInternetConnectivity();
         if (isConnected) {
           errorMsg.value = Strings.emptyString;
-          print("data =================>>>>>>>>>>>>>>>>>");
-          // print("email ====================>>>>>>>>>>>>>>>>> ${emailController.text}");
-          // print("password ====================>>>>>>>>>>>>>>>>> ${passwordController.text}");
 
           _apiHelper
               .login(
-              // LoginRequest(email: emailController.text, password: passwordController.text))
-              LoginRequest(email: "k@gmail.com", password: "kunal123"))
+              LoginRequest(email: emailController.text, password: passwordController.text))
               .futureValue((value) {
-            print("Login Response =============>>>>>>>>>>>>>>>.");
-            print("Login Response $value ");
-            Storage.saveValue(Constants.TOKEN, value);
-            print("TOKEN =============>>>>>>>>>>>>>>>.");
-            print("Constants.TOKEN ${Constants.TOKEN} ");
-            print("value ${value} ");
-            // navigateHome();
+            var userResponse = UserModel.fromJson(value);
+
+            if(userResponse.status == 200 && userResponse.msg == "Login Success"){
+              Storage.saveValue(Constants.accessToken, userResponse.token?.access);
+              Storage.saveValue(Constants.refreshToken, userResponse.token?.refresh);
+              Storage.saveValue(Constants.userId, userResponse.userID);
+              Storage.saveValue(Constants.dietitianId, userResponse.dietitianID);
+
+              navigateHome();
+            }else{
+              Utils.showSnackBarFun(Get.context, userResponse.msg ?? "Something Went Wrong !!!");
+            }
           }, onError: (error) {
             print("Login Response Error $error");
           });
@@ -98,5 +97,14 @@ class SignInController extends GetxController {
   }
 
 
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    Storage.removeValue(Constants.accessToken);
+    Storage.removeValue(Constants.refreshToken);
+    Storage.removeValue(Constants.userId);
+    Storage.removeValue(Constants.dietitianId);
+    super.onInit();
+  }
 
 }

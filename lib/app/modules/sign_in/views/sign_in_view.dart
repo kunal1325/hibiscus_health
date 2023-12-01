@@ -59,7 +59,6 @@ class SignInView extends GetView<SignInController> {
                         child: Column(
                           children: [
                             TextInputField(
-                              initialValue: "k@gmail.com",
                               fillColor: false,
                               hintText: Strings.emailHint,
                               labelText: Strings.email,
@@ -72,14 +71,11 @@ class SignInView extends GetView<SignInController> {
                               obscureText: false,
                               suffixIcon: SizedBox(),
                               prefixIcon: SizedBox(),
-                              onSaved: (value) {
-                                controller.emailController.text = value!;
-                              },
+                              onSaved: (value) => controller.emailController.text = value!,
                             ),
                             SizedBox(height: 30,),
                             Obx(() =>
                                 TextInputField(
-                                  initialValue: "kunal123",
                                   fillColor: false,
                                   hintText: Strings.passwordHint,
                                   labelText: Strings.password,
@@ -97,9 +93,7 @@ class SignInView extends GetView<SignInController> {
                                   onEditingComplete: (){
                                     controller.checkConnectivity();
                                   },
-                                  onSaved: (value) {
-                                    controller.passwordController.text = value!;
-                                  },
+                                  onSaved: (value) => controller.passwordController.text = value!,
                                 ),
                             ),
                           ],
@@ -225,9 +219,9 @@ class SignInView extends GetView<SignInController> {
                   ],
                 )
               ),
-              Obx(() =>
-                  Utils.getProgressBar(context, controller.isLoading.value),
-              ),
+              // Obx(() =>
+              //     Utils.getProgressBar(context, controller.isLoading.value),
+              // ),
 
             ],
           ),

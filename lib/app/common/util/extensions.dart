@@ -11,13 +11,10 @@ extension FutureExt<T> on Future<Response<T>?> {
     final _interface = Get.find<ApiInterfaceController>();
     _interface.error = null;
 
-    // if (showLoading) LoadingDialog.showLoadingDialog();
-
     this.timeout(
       Constants.timeout,
       onTimeout: () {
-        // LoadingDialog.closeLoadingDialog();
-        // Utils.showSnackBar(Strings.connectionTimeout);
+        Utils.showSnackBar(Strings.connectionTimeout);
         _retry(_interface, retryFunction!);
         throw const ApiError(
           type: ErrorType.connectTimeout,
@@ -25,22 +22,25 @@ extension FutureExt<T> on Future<Response<T>?> {
         );
       },
     ).then((value) {
-      // LoadingDialog.closeLoadingDialog();
 
       if (value?.body != null) {
         final result = ApiResponse.getResponse<T>(value!);
         if (result != null) {
-          print("Extension ===============> ");
-          print(" ===============> ");
-          print("$result");
+          // print("Extension ===============> ");
+          // print("$result");
           response(result);
         }
+      }else{
+        print(" ===============> body null $value");
+        Utils.showDialog(
+          "Something Went Wrong !!!",
+          onTap: () => Get.back()
+        );
       }
 
       _interface.update();
     })
         .catchError((e) {
-      // LoadingDialog.closeLoadingDialog();
 
       if (e == null) return;
 
