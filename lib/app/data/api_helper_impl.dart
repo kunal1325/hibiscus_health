@@ -3,20 +3,31 @@ import '../../import.dart';
 class ApiHelperImpl extends GetConnect implements ApiHelper {
   @override
   void onInit() {
-    httpClient.baseUrl = Constants.baseURLTest;
+    httpClient.baseUrl = Constants.baseURLDev;
+    // httpClient.baseUrl = Constants.baseURLStaging;
+    // httpClient.baseUrl = Constants.baseURLProd;
+    // httpClient.baseUrl = Constants.baseURLTest;
     httpClient.timeout = Constants.timeout;
 
     addRequestModifier();
 
     httpClient.addResponseModifier((request, response) {
-      // printInfo(
-      //   info: 'Status Code: ${response.statusCode}\n'
-      //       'Data: ${response.bodyString?.toString() ?? ''}',
-      // );
+      printInfo(
+        info: 'Status Code: ${response.statusCode}\n'
+            'Data: ${response.bodyString?.toString() ?? ''}',
+      );
       if (response.statusCode == 401) {
         Storage.clearStorage();
         Get.offAllNamed(
           Routes.signIn,
+        );
+      }
+      if (response.statusCode == 404) {
+        Utils.showDialog(
+           "Something Went Wrong !!! Like 404",
+          onTap: () {
+            Get.back();
+          },
         );
       }
 
@@ -33,12 +44,12 @@ class ApiHelperImpl extends GetConnect implements ApiHelper {
         request.headers['Authorization'] = "Bearer ${tokenResponse.result}";
       }
 
-      // printInfo(
-      //   info: 'REQUEST ║ ${request.method.toUpperCase()}\n'
-      //       'url: ${request.url}\n'
-      //       'Headers: ${request.headers}\n'
-      //       'Body: ${request.files?.toString() ?? ''}\n',
-      // );
+      printInfo(
+        info: 'REQUEST ║ ${request.method.toUpperCase()}\n'
+            'url: ${request.url}\n'
+            'Headers: ${request.headers}\n'
+            'Body: ${request.files?.toString() ?? ''}\n',
+      );
 
       return request;
     });

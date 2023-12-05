@@ -54,7 +54,6 @@ abstract class Utils {
   static showSnackBarFun(context, String title) {
     SnackBar snackBar = SnackBar(
       content: Container(
-        height: 105,
         child: Center(
           child: Text(
             title,

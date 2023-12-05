@@ -1,5 +1,5 @@
 abstract class Constants {
-  static const String baseURLDev = 'https://hibiscus-health-core-mobile-api-dev/';
+  static const String baseURLDev = 'http://coremobileapidev.hibiscushealth.com/';
   static const String baseURLStaging = 'https://hibiscus-health-core-mobile-api-staging/';
   static const String baseURLProd = 'https://hibiscus-health-core-mobile-api-prod/';
   static const String baseURLTest = 'http://3.95.83.73:8000/';

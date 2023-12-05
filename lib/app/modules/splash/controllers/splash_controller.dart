@@ -29,14 +29,15 @@ class SplashController extends GetxController  with GetSingleTickerProviderState
   }
 
   onDoneLoading() async {
-    navigateToRout(1);
+    var userId = Storage.getValue(Constants.userId);
+    navigateToRout(userId);
   }
 
   navigateToRout(userId) {
-    if (userId == "") {
-      Get.back();
-    } else {
+    if (userId == null || userId == "userId") {
       Get.offAndToNamed("/onBoarding");
+    } else {
+      Get.offAndToNamed("/startMyJourney");
     }
   }
 
