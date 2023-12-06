@@ -73,6 +73,8 @@ class SignInController extends GetxController {
               Storage.saveValue(Constants.refreshToken, userResponse.token?.refresh);
               Storage.saveValue(Constants.userId, userResponse.userID);
               Storage.saveValue(Constants.dietitianId, userResponse.dietitianID);
+              Storage.saveValue(Constants.patientName, userResponse.patientName);
+              Storage.saveValue(Constants.dietitianName, userResponse.dietitianName);
               navigateHome();
               isLoading.value = false;
             }else{

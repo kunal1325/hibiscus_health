@@ -91,6 +91,8 @@ class SignUpController extends GetxController {
             Storage.saveValue(Constants.refreshToken, userResponse.token?.refresh);
             Storage.saveValue(Constants.userId, userResponse.userID);
             Storage.saveValue(Constants.dietitianId, userResponse.dietitianID);
+            Storage.saveValue(Constants.patientName, userResponse.patientName);
+            Storage.saveValue(Constants.dietitianName, userResponse.dietitianName);
             navigateToStartMyJourney();
             isLoading.value = false;
           }else{

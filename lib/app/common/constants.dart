@@ -10,5 +10,7 @@ abstract class Constants {
   static const String refreshToken = 'authToken';
   static const String userId = 'userId';
   static const String dietitianId = 'dietitianID';
+  static const String patientName = 'patientName';
+  static const String dietitianName = 'dietitianName';
 
 }

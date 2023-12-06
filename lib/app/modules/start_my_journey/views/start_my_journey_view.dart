@@ -56,14 +56,14 @@ class StartMyJourneyView extends GetView<StartMyJourneyController> {
                                 SizedBox(
                                   height: 5,
                                 ),
-                                Text(
-                                  "${Strings.welcome} Kunal!",
+                                Obx(() => Text(
+                                  "${Strings.welcome} ${controller.patientName.value}",
                                   style: GoogleFonts.inter(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                     color: AppColors.black,
                                   ),
-                                ),
+                                ),),
                                 SizedBox(
                                   height: 5,
                                 ),
@@ -132,7 +132,6 @@ class StartMyJourneyView extends GetView<StartMyJourneyController> {
                                               ),
                                               child: Row(
                                                     children: [
-                                                      SizedBox(width: 10,),
                                                       ClipRRect(
                                                         borderRadius: BorderRadius.circular(20.0),
                                                         child: Utils.assetImage(
@@ -141,14 +140,14 @@ class StartMyJourneyView extends GetView<StartMyJourneyController> {
                                                             height: 25)
                                                       ),
                                                       SizedBox(width: 10,),
-                                                      Text(
-                                                        "Dr Tamika",
+                                                      Obx(() => Text(
+                                                        "${controller.dietitianName.value}",
                                                         style: GoogleFonts.inter(
                                                           fontSize: 14,
                                                           fontWeight: FontWeight.w600,
                                                           color: AppColors.darkSecColor,
                                                         ),
-                                                      ),
+                                                      ),)
                                                     ],
                                               ),
                                             ),
@@ -196,10 +195,12 @@ class StartMyJourneyView extends GetView<StartMyJourneyController> {
                               ],
                             ),
                           ),
-                        )),
+                        )
+                    ),
                     // Blur box
                   ],
-                )),
+                )
+            ),
           ),
         ),
       ),
