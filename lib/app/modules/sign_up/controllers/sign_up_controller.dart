@@ -38,6 +38,7 @@ class SignUpController extends GetxController {
   TextEditingController ccController = TextEditingController(text: "+1");
   Region selectedRegion = Region(Strings.US, 1);
   List<Region> regions = [];
+  final ApiHelper _apiHelper = Get.find();
   var store = Store(PhoneNumberUtil());
 
   ///Common Functions
@@ -50,36 +51,64 @@ class SignUpController extends GetxController {
   }
 
   void checkConnectivity() async {
-    isLoading.value = true;
-    // navigateToPrivacyFirst();
-    // return;
     Utils.dismissKeyboard();
     try {
-      // var temp = formKeySignUp.currentState;
-      var temp = formKeyCompleteProfile.currentState;
-      if (temp != null && temp.validate()) {
-        var isConnected =
-        await Utils.checkInternetConnectivity();
-        if (isConnected) {
-          errorMsg.value = Strings.emptyString;
-          print("data =================>>>>>>>>>>>>>>>>>");
-          print("email ====================>>>>>>>>>>>>>>>>> ${emailController.text}");
-          print("password ====================>>>>>>>>>>>>>>>>> ${passwordController.text}");
-          print("confirm password ====================>>>>>>>>>>>>>>>>> ${confirmPasswordController.text}");
-          print("first name ====================>>>>>>>>>>>>>>>>> ${fNameController.text}");
-          print("Last name ====================>>>>>>>>>>>>>>>>> ${lNameController.text}");
-          print("Phone ====================>>>>>>>>>>>>>>>>> ${ccController.text} ${phoneController.text}");
-          print("Dob ====================>>>>>>>>>>>>>>>>> ${dobController.text}");
-          print("Dietitian Code ====================>>>>>>>>>>>>>>>>> ${dietitianController.text}");
-        } else {
-          errorMsg.value = Strings.noConnection;
-        }
+      final isValid = formKeyCompleteProfile.currentState!.validate();
+      if (!isValid) return;
+      formKeyCompleteProfile.currentState!.save();
+
+      var isConnected =
+      await Utils.checkInternetConnectivity();
+      if (isConnected) {
+        errorMsg.value = Strings.emptyString;
+        isLoading.value = true;
+        print("data =================>>>>>>>>>>>>>>>>>");
+        print("email ====================>>>>>>>>>>>>>>>>> ${emailController.text}");
+        print("password ====================>>>>>>>>>>>>>>>>> ${passwordController.text}");
+        print("confirm password ====================>>>>>>>>>>>>>>>>> ${confirmPasswordController.text}");
+        print("first name ====================>>>>>>>>>>>>>>>>> ${fNameController.text}");
+        print("Last name ====================>>>>>>>>>>>>>>>>> ${lNameController.text}");
+        print("Phone ====================>>>>>>>>>>>>>>>>> ${ccController.text} ${phoneController.text}");
+        print("Dob ====================>>>>>>>>>>>>>>>>> ${dobController.text}");
+        print("Dietitian Code ====================>>>>>>>>>>>>>>>>> ${dietitianController.text}");
+
+        _apiHelper
+            .register(RegisterRequest(
+            email: emailController.text,
+          first_name: fNameController.text,
+          last_name: lNameController.text,
+          phone_number: "${ccController.text} ${phoneController.text}",
+          password: passwordController.text,
+          password2: confirmPasswordController.text,
+          user_role: "PATIENT",
+          unique_code: dietitianController.text
+        ))
+            .futureValue((value) {
+          var userResponse = UserModel.fromJson(value);
+
+          if(userResponse.status == 200 && userResponse.msg == "Registration Success"){
+            Storage.saveValue(Constants.accessToken, userResponse.token?.access);
+            Storage.saveValue(Constants.refreshToken, userResponse.token?.refresh);
+            Storage.saveValue(Constants.userId, userResponse.userID);
+            Storage.saveValue(Constants.dietitianId, userResponse.dietitianID);
+            navigateToStartMyJourney();
+            isLoading.value = false;
+          }else{
+            Utils.showSnackBarFun(Get.context, userResponse.msg ?? "Something Went Wrong !!!");
+            isLoading.value = false;
+          }
+        });
+
+      } else {
+          Utils.showSnackBarFun(Get.context, Strings.noConnection);
+          isLoading.value = false;
       }
     } catch (e) {
       print("Error =================>>>>>>>>>>>>>>>>>");
       print(e);
+      Utils.showSnackBarFun(Get.context, "Something Went Wrong!");
+      isLoading.value = false;
     }
-    isLoading.value = false;
   }
 
   void saveDataToSession() {
@@ -183,11 +212,11 @@ class SignUpController extends GetxController {
     if (text.length <= 7) {
       return Strings.shortDietitianCodeError;
     }
-    final hasLetter = text.contains(RegExp(r'[a-zA-Z]'));
-    final hasNumber = text.contains(RegExp(r'[0-9]'));
-    if (!hasLetter || !hasNumber) {
-      return Strings.invalidDietitianCodeError;
-    }
+    // final hasLetter = text.contains(RegExp(r'[a-zA-Z]'));
+    // final hasNumber = text.contains(RegExp(r'[0-9]'));
+    // if (!hasLetter || !hasNumber) {
+    //   return Strings.invalidDietitianCodeError;
+    // }
     else
       return null;
   }

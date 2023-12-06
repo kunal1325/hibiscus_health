@@ -316,6 +316,9 @@ class CompleteProfileView extends GetView<SignUpController> {
                               obscureText: false,
                               suffixIcon: SizedBox(),
                               prefixIcon: SizedBox(),
+                              onEditingComplete: (){
+                                controller.checkConnectivity();
+                              },
                             ), //Nutritionist Code
                             SizedBox(height: 29,),
                           ],
@@ -327,7 +330,6 @@ class CompleteProfileView extends GetView<SignUpController> {
                         padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                         child: InkWell(
                             onTap: () {
-                              // controller.navigateToStartMyJourney();
                               controller.checkConnectivity();
                             },
                             child: CustomButtons(
@@ -410,6 +412,15 @@ class CompleteProfileView extends GetView<SignUpController> {
                     size: 24,
                   ),
                 ),
+              ),
+              Obx(() =>
+                  Visibility(
+                    maintainSize: true,
+                    maintainAnimation: true,
+                    maintainState: true,
+                    visible: controller.isLoading.value,
+                    child: Utils.getProgressBar(context),
+                  )
               ),
             ],
           ),

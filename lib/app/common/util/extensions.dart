@@ -26,8 +26,8 @@ extension FutureExt<T> on Future<Response<T>?> {
       if (value?.body != null) {
         final result = ApiResponse.getResponse<T>(value!);
         if (result != null) {
-          // print("Extension ===============> ");
-          // print("$result");
+          print("Extension ===============> ");
+          print("$result");
           response(result);
         }
       }else{

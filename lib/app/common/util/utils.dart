@@ -156,19 +156,23 @@ abstract class Utils {
         ),
         confirm: Align(
           alignment: Alignment.centerRight,
-          child: CustomInkwellWidget.text(
-            onTap: () {
-              Get.back();
-
-              onTap?.call();
-            },
-            title: Strings.ok,
-            textStyle: GoogleFonts.inter(
-              fontSize: 14,
-              fontWeight: FontWeight.w700,
-              color: AppColors.avgSecColor,
-
-            ),
+          child: InkWell(
+              onTap: () {
+                Get.back();
+                onTap?.call();
+              },
+              child: CustomButtons(
+                weight: Get.width- 40,
+                height: 50,
+                color: AppColors.kSecColor,
+                shadowColor: AppColors.kSecColor,
+                borderRadius: 10,
+                title: Strings.login,
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+                fontColor: AppColors.kPrimaryColor,
+                withShadow: false,
+              )
           ),
         ),
       );

@@ -1,6 +1,8 @@
-export 'package:flutter/material.dart';
-export 'package:flutter/services.dart';
-export 'dart:convert';
+///-------------------- Common --------------------
+export 'app/common/constants.dart';
+
+///Storage
+export 'app/common/storage/storage.dart';
 
 ///Values
 export 'app/common/values/app_colors.dart';
@@ -10,14 +12,36 @@ export 'app/common/values/strings.dart';
 ///Utils
 export 'app/common/util/initializer.dart';
 export 'app/common/util/utils.dart';
-export 'app/common/storage/storage.dart';
 export 'app/common/util/store.dart';
-export 'app/common/constants.dart';
+export 'app/common/util/extensions.dart';
+
+///-------------------- Data --------------------
+export 'app/data/api_helper.dart';
+export 'app/data/api_helper_impl.dart';
+export 'app/data/api_response.dart';
+
+///Errors
+export 'app/data/errors/api_errors.dart';
+
+///InterFace controller
+export 'app/data/interface_controller/api_interface_controller.dart';
+
+///Models
+export 'app/data/models/onboarding_info.dart';
+export 'app/data/models/privacy_first_model.dart';
+export 'app/data/models/start_my_journey_model.dart';
+export 'app/data/models/phone_parse_model.dart';
+export 'app/data/models/token_response.dart';
+
+///Api Response Model
+export 'app/data/models/api_response_model/user_model.dart';
+
+///Request Models
+export 'app/data/models/request_models/registration_request_model.dart';
+export 'app/data/models/request_models/login_request.dart';
 
 
-///Widgets
-
-///Libraries
+///-------------------- Libraries --------------------
 export 'package:flutter/foundation.dart';
 export 'package:flutter/rendering.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,29 +57,19 @@ export 'package:country_pickers/country_pickers.dart';
 export 'package:phone_number/phone_number.dart';
 export 'package:flutter_spinkit/flutter_spinkit.dart';
 export 'package:drop_shadow/drop_shadow.dart';
+export 'package:flutter/material.dart';
+export 'package:flutter/services.dart';
+export 'dart:convert';
 
-/// Strings
+///-------------------- Routes --------------------
+export 'app/routes/app_pages.dart';
 
-/// Colors
-
+///-------------------- Modules --------------------
 ///Widgets
 export 'app/modules/widgets/blur_box.dart';
 export 'app/modules/widgets/exit_dialog.dart';
 export 'app/modules/widgets/custom_button.dart';
 export 'app/modules/widgets/text_input_field.dart';
-
-
-
-/// App Pages
-export 'app/routes/app_pages.dart';
-
-///Models
-export 'app/data/models/onboarding_info.dart';
-export 'app/data/models/privacy_first_model.dart';
-export 'app/data/models/start_my_journey_model.dart';
-export 'app/data/models/phone_parse_model.dart';
-export 'app/data/models/api_response_model/user_model.dart';
-
 
 /// Home Screen
 export 'app/modules/home/bindings/home_binding.dart';
@@ -97,36 +111,6 @@ export 'app/modules/privacy_page/views/privacy_first_view.dart';
 export 'app/modules/start_my_journey/bindings/start_my_journey_binding.dart';
 export 'app/modules/start_my_journey/controllers/start_my_journey_controller.dart';
 export 'app/modules/start_my_journey/views/start_my_journey_view.dart';
-
-
-
-
-
-/////API Calling
-
-export 'app/data/models/login_request.dart';
-export 'app/data/api_helper.dart';
-export 'app/common/constants.dart';
-export 'app/data/errors/api_errors.dart';
-export 'app/data/interface_controller/api_interface_controller.dart';
-export 'app/data/api_helper_impl.dart';
-export 'app/data/api_response.dart';
-export 'app/modules/widgets/custom_inkwell_widget.dart';
-export 'app/common/util/extensions.dart';
-export 'app/data/models/token_response.dart';
-
-/////API Calling
-
-export 'app/data/models/login_request.dart';
-export 'app/data/api_helper.dart';
-export 'app/common/constants.dart';
-export 'app/data/errors/api_errors.dart';
-export 'app/data/interface_controller/api_interface_controller.dart';
-export 'app/data/api_helper_impl.dart';
-export 'app/data/api_response.dart';
-export 'app/modules/widgets/custom_inkwell_widget.dart';
-export 'app/common/util/extensions.dart';
-export 'app/data/models/token_response.dart';
 
 /// Reset Password
 export 'app/modules/reset_password/bindings/reset_password_binding.dart';

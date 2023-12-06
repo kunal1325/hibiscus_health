@@ -11,7 +11,6 @@ class SignInView extends GetView<SignInController> {
         onWillPop: () => controller.navigateBack(),
         child: Scaffold(
           backgroundColor: AppColors.white,
-          resizeToAvoidBottomInset: false,
           body: Stack(
             alignment: Alignment.topCenter,
             children: [
@@ -156,6 +155,53 @@ class SignInView extends GetView<SignInController> {
                             )
                         ),
                       ),
+                      SizedBox(height: 50,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            Strings.areYouANewUser,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 3,
+                            style: GoogleFonts.inter(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.kPrimaryColorText,
+                            ),
+                          ),
+                          Theme(
+                            data: ThemeData(
+                              splashColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                            ),
+                            child: InkWell(
+                              onTap: controller.navigateToSignUp,
+                              child: Container(
+                                width: 70,
+                                height: 70,
+                                child: Center(
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          Strings.signUp,
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 3,
+                                          style: GoogleFonts.inter(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                            color: AppColors.kPrimaryColor,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                       SizedBox(height: 120,),
 
                     ],
@@ -175,55 +221,6 @@ class SignInView extends GetView<SignInController> {
                     size: 24,
                   ),
                 ),
-              ),
-              Positioned(
-                bottom: 29,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      Strings.areYouANewUser,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 3,
-                      style: GoogleFonts.inter(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.kPrimaryColorText,
-                      ),
-                    ),
-                    Theme(
-                      data: ThemeData(
-                        splashColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                      ),
-                      child: InkWell(
-                        onTap: controller.navigateToSignUp,
-                        child: Container(
-                          width: 70,
-                          height: 70,
-                          child: Center(
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    Strings.signUp,
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 3,
-                                    style: GoogleFonts.inter(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold,
-                                      color: AppColors.kPrimaryColor,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                )
               ),
               Obx(() =>
                   Visibility(

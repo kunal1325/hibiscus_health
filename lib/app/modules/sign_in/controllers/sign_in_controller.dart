@@ -47,14 +47,12 @@ class SignInController extends GetxController {
     Get.offNamedUntil("/welcomeScreen", (route) => false);
   }
   navigateHome(){
-    // Get.offNamedUntil("/startMyJourney", (route) => false);
     Get.toNamed("/startMyJourney");
   }
 
 
   Future<void> checkConnectivity() async {
     Utils.dismissKeyboard();
-    isLoading.value = true;
     try {
       final isValid = formKeySignIn.currentState!.validate();
       if (!isValid) return;
@@ -63,7 +61,7 @@ class SignInController extends GetxController {
             await Utils.checkInternetConnectivity();
         if (isConnected) {
           errorMsg.value = Strings.emptyString;
-
+          isLoading.value = true;
           _apiHelper
               .login(
               LoginRequest(email: emailController.text, password: passwordController.text))

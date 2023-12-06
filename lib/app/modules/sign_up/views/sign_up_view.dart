@@ -121,8 +121,7 @@ class SignUpView extends GetView<SignUpController> {
                                   ),
                                   prefixIcon: SizedBox(),
                                   onEditingComplete: (){
-                                    // FocusManager.instance.primaryFocus?.unfocus();
-                                    controller.checkConnectivity();
+                                    controller.saveDataToSession();
                                   },
                                 ),
                             ),
@@ -201,7 +200,6 @@ class SignUpView extends GetView<SignUpController> {
                         child: InkWell(
                             onTap: () {
                               controller.saveDataToSession();
-                              // controller.navigateToPrivacyFirst();
                             },
                             child: CustomButtons(
                               weight: Get.width- 40,
