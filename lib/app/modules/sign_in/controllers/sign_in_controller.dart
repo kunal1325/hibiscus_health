@@ -38,7 +38,7 @@ class SignInController extends GetxController {
     return null;
   }
   void navigateToSignUp(){
-    Get.off(SignUpView());
+     Get.off(() => SignUpView());
   }
   void navigateToForgotPassword(){
     Get.toNamed("/resetPassword");

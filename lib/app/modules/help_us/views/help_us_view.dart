@@ -9,7 +9,6 @@ class HelpUsView extends GetView<HelpUsController> {
       init: HelpUsController(),
       builder: (controller) => Scaffold(
         backgroundColor: AppColors.white,
-        resizeToAvoidBottomInset: false,
         body: Stack(
           alignment: Alignment.topCenter,
           children: [
@@ -79,6 +78,7 @@ class HelpUsView extends GetView<HelpUsController> {
                             obscureText: false,
                             suffixIcon: SizedBox(),
                             prefixIcon: SizedBox(),
+                            onSaved: (value) => controller.fullNameController.text = value!,
                           ),
                           SizedBox(height: 18,),
                           TextInputField(
@@ -94,6 +94,7 @@ class HelpUsView extends GetView<HelpUsController> {
                             obscureText: false,
                             suffixIcon: SizedBox(),
                             prefixIcon: SizedBox(),
+                            onSaved: (value) => controller.emailController.text = value!,
                           ),
                           SizedBox(height: 18,),
                           TextFormField(
@@ -166,10 +167,11 @@ class HelpUsView extends GetView<HelpUsController> {
                               ),
                             ),
                             keyboardType: TextInputType.number,
-                            textInputAction: TextInputAction.next,
+                            textInputAction: TextInputAction.done,
                             focusNode: controller.phoneFocusNode,
                             controller: controller.phoneController,
                             validator: controller.isValidPhone,
+                            onSaved: (value) => controller.phoneController.text = value!,
                           ),
                           SizedBox(height: 18,),
                           Container(
@@ -281,6 +283,10 @@ class HelpUsView extends GetView<HelpUsController> {
                                 ),
                               ),
                             ),
+                            onSaved: (value) => controller.msgController.text = value!,
+                            onEditingComplete: (){
+                              controller.checkConnectivity();
+                            },
                           )
                         ],
                       ),
@@ -291,7 +297,7 @@ class HelpUsView extends GetView<HelpUsController> {
                       padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                       child: InkWell(
                           onTap: () {
-                            controller.navigateToRequestSubmitted();
+                            controller.checkConnectivity();
                           },
                           child: CustomButtons(
                             weight: Get.width- 40,
@@ -313,7 +319,15 @@ class HelpUsView extends GetView<HelpUsController> {
                 ),
               ),
             ),
-
+            Obx(() =>
+                Visibility(
+                  maintainSize: true,
+                  maintainAnimation: true,
+                  maintainState: true,
+                  visible: controller.isLoading.value,
+                  child: Utils.getProgressBar(context),
+                )
+            ),
           ],
         ),
       ),

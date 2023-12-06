@@ -108,12 +108,12 @@ abstract class Utils {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SpinKitSpinningLines(
-              size: 60.0,
+            SpinKitRing(
+              size: 35.0,
               color: AppColors.white,
               lineWidth: 2,
             ),
-            SizedBox(height: 14,),
+            SizedBox(height: 20,),
             Text(
               Strings.WillOnlyTakeASecond,
               style: GoogleFonts.inter(

@@ -11,6 +11,11 @@ abstract class Routes {
   static const privacyFirst = _Paths.privacyFirst;
   static const startMyJourney = _Paths.startMyJourney;
   static const completeProfile = _Paths.completeProfile;
+  static const resetPassword = _Paths.resetPassword;
+  static const updatePassword = _Paths.updatePassword;
+  static const processToLogin = _Paths.processToLogin;
+  static const helpUs = _Paths.helpUs;
+  static const requestSubmitted = _Paths.requestSubmitted;
 }
 
 abstract class _Paths {

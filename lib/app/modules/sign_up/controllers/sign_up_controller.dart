@@ -289,7 +289,7 @@ class SignUpController extends GetxController {
 
   ///Navigation from Sign Up
   void navigateToSignIn(){
-    Get.off(SignInView());
+     Get.off(() => SignInView());
   }
   void navigateToGetHelp(){
     Get.toNamed("/helpUs");
@@ -310,7 +310,7 @@ class SignUpController extends GetxController {
     Get.offNamedUntil("/signUp", (route) => false);
   }
   navigateToStartMyJourney(){
-    Get.off(StartMyJourneyView());
+     Get.off(() => StartMyJourneyView());
   }
 
 
