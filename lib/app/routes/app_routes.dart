@@ -16,6 +16,9 @@ abstract class Routes {
   static const processToLogin = _Paths.processToLogin;
   static const helpUs = _Paths.helpUs;
   static const requestSubmitted = _Paths.requestSubmitted;
+  static const libraryScreen = _Paths.library;
+  static const articleTemplate1Screen = _Paths.articleTemplate1;
+  static const articleTemplate2Screen = _Paths.articleTemplate2;
 }
 
 abstract class _Paths {
@@ -33,4 +36,7 @@ abstract class _Paths {
   static const processToLogin = '/processToLogin';
   static const helpUs = '/helpUs';
   static const requestSubmitted = '/requestSubmitted';
+  static const library = '/library';
+  static const articleTemplate1 = '/articletemplate1';
+  static const articleTemplate2 = '/articeltemplate2';
 }

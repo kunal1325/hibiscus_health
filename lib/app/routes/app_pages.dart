@@ -3,7 +3,8 @@ import '../../import.dart';
 part 'app_routes.dart';
 
 abstract class AppPages {
-  static const initial = Routes.splash;
+  static const initial = Routes.libraryScreen;
+  //Routes.splash;
 
   static final routes = [
     GetPage(
@@ -74,6 +75,21 @@ abstract class AppPages {
     GetPage(
       name: _Paths.requestSubmitted,
       page: () => RequestSubmittedView(),
+    ),
+    GetPage(
+      name: _Paths.library,
+      page: () => const LibraryView(),
+      binding: LibraryBinding(),
+    ),
+    GetPage(
+      name: _Paths.articleTemplate1,
+      page: () => const ArticleTemplateView1(),
+      binding: ArticleTemplate1Binding(),
+    ),
+    GetPage(
+      name: _Paths.articleTemplate2,
+      page: () => const ArticleTemplateView2(),
+      binding: ArticleTemplate2Binding(),
     ),
   ];
 }

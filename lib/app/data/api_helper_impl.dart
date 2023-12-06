@@ -3,7 +3,8 @@ import '../../import.dart';
 class ApiHelperImpl extends GetConnect implements ApiHelper {
   @override
   void onInit() {
-    httpClient.baseUrl = Constants.baseURLDev;
+    httpClient.baseUrl = Constants.baseUrlStrapi;
+    // httpClient.baseUrl = Constants.baseURLDev;
     // httpClient.baseUrl = Constants.baseURLStaging;
     // httpClient.baseUrl = Constants.baseURLProd;
     // httpClient.baseUrl = Constants.baseURLTest;
@@ -24,7 +25,7 @@ class ApiHelperImpl extends GetConnect implements ApiHelper {
       }
       if (response.statusCode == 404) {
         Utils.showDialog(
-           "Something Went Wrong !!! Like 404",
+          "Something Went Wrong !!! Like 404",
           onTap: () {
             Get.back();
           },
@@ -69,4 +70,24 @@ class ApiHelperImpl extends GetConnect implements ApiHelper {
     return post('helpus/', json.encode(helpUsRequest.toJson()));
   }
 
+  @override
+  Future<Response<dynamic>> getArticle(int pageNumber, int pageSize,
+      String filterCategory, String searchKeyword) {
+    final queryParameters = {
+      "populate": "deep",
+      'pagination[page]': pageNumber.toString(),
+      'pagination[pageSize]': pageSize.toString(),
+      if (searchKeyword.isNotEmpty)
+        'filters[Title][\$containsi]': searchKeyword,
+      if (filterCategory.isNotEmpty && filterCategory.toLowerCase() != "all")
+        'filters[Category][\$containsi]': filterCategory
+    };
+    return get(Constants.articleUrl, query: queryParameters);
+  }
+
+  @override
+  Future<Response<dynamic>> getCategories() {
+    final queryParam = {'fields[1]': 'category_name'};
+    return get(Constants.categoryUrl, query: queryParam);
+  }
 }

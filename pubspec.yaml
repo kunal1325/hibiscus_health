@@ -68,6 +68,16 @@ dependencies:
   #for drop shadow
   drop_shadow:
 
+  #For shimmer placeholders
+  shimmer:
+
+  #For cached network image
+  cached_network_image:
+
+  #For infinite scroll/pagination
+  infinite_scroll_pagination:
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
