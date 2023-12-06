@@ -59,7 +59,7 @@ class RequestSubmittedView extends GetView<HelpUsController> {
                     padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                     child: InkWell(
                         onTap: () {
-                          Get.off(WelcomeView());
+                           Get.off(() => WelcomeView());
                         },
                         child: CustomButtons(
                           weight: Get.width- 40,

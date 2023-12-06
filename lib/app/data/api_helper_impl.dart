@@ -65,4 +65,8 @@ class ApiHelperImpl extends GetConnect implements ApiHelper {
     return post('register/', json.encode(registerRequest.toJson()));
   }
 
+  Future<Response<dynamic>> helpUs(HelpUsRequest helpUsRequest) {
+    return post('helpus/', json.encode(helpUsRequest.toJson()));
+  }
+
 }
