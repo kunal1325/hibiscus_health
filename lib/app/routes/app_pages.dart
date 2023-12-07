@@ -3,7 +3,7 @@ import '../../import.dart';
 part 'app_routes.dart';
 
 abstract class AppPages {
-  static const initial = Routes.libraryScreen;
+  static const initial = Routes.splash;
   //Routes.splash;
 
   static final routes = [

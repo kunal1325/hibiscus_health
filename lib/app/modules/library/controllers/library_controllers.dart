@@ -1,8 +1,7 @@
 import 'package:hibiscus_health/import.dart';
 
 class LibraryController extends GetxController {
-  final ApiHelper _apiHelper = Get.put<ApiHelper>(ApiHelperImpl());
-
+  final ApiHelper _apiHelper = Get.find();
   List<ArticleModel> articleList = List<ArticleModel>.empty(growable: true).obs;
   List<CategoryModel> categoryList =
       List<CategoryModel>.empty(growable: true).obs;
