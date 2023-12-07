@@ -157,3 +157,8 @@ export 'app/modules/article_template1/views/article_template1.view.dart';
 export 'app/modules/article_template2/controller/article_template2_controller.dart';
 export 'app/modules/article_template2/bindings/article_template2_bindings.dart';
 export 'app/modules/article_template2/views/article_template2.view.dart';
+
+///Coming Soon
+export 'app/modules/coming_soon/controllers/coming_soon_controller.dart';
+export 'app/modules/coming_soon/bindings/coming_soon_binding.dart';
+export 'app/modules/coming_soon/views/coming_soon_views.dart';

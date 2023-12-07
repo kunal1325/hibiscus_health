@@ -3,6 +3,7 @@ import '../../import.dart';
 part 'app_routes.dart';
 
 abstract class AppPages {
+  // static const initial = Routes.comingSoon;
   static const initial = Routes.libraryScreen;
   //Routes.splash;
 
@@ -90,6 +91,11 @@ abstract class AppPages {
       name: _Paths.articleTemplate2,
       page: () => const ArticleTemplateView2(),
       binding: ArticleTemplate2Binding(),
+    ),
+    GetPage(
+      name: _Paths.comingSoon,
+      page: () => const ComingSoonView(),
+      binding: ComingSoonBinding(),
     ),
   ];
 }

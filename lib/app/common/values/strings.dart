@@ -80,6 +80,10 @@ abstract class Strings {
   static const String learn = "Learn";
   static const String browseContent = "Browse Content";
   static const String references = "References";
+  static const String noResultsForTopic = "No results for the topic";
+  static const String backToContent = "Back to content";
+  static const String returnHome = "Return home";
+  static const String comingSoon = "Coming Soon";
 
   //Privacy First
 

@@ -43,6 +43,8 @@ abstract class AppImages {
   static const String greenVerified = "assets/images/svgs/greenVerified.svg";
   static const String hibiscusIcon = "assets/images/svgs/hibiscusIcon.svg";
   static const String hibiscusFlower = "assets/images/svgs/hibiscusFlower.svg";
+  static const String comingSoonIcon = "assets/images/pngs/comingSoonIcon.png";
+  static const String searchIcon = "assets/images/pngs/searchIcon.png";
 
   static const String defaultArticleImage =
       "assets/images/pngs/article_default.png";

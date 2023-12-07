@@ -19,6 +19,7 @@ abstract class Routes {
   static const libraryScreen = _Paths.library;
   static const articleTemplate1Screen = _Paths.articleTemplate1;
   static const articleTemplate2Screen = _Paths.articleTemplate2;
+  static const comingSoon = _Paths.comingSoon;
 }
 
 abstract class _Paths {
@@ -39,4 +40,5 @@ abstract class _Paths {
   static const library = '/library';
   static const articleTemplate1 = '/articletemplate1';
   static const articleTemplate2 = '/articeltemplate2';
+  static const comingSoon = '/comingsoon';
 }

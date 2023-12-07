@@ -13,10 +13,9 @@ class ApiHelperImpl extends GetConnect implements ApiHelper {
     addRequestModifier();
 
     httpClient.addResponseModifier((request, response) {
-      printInfo(
-        info: 'Status Code: ${response.statusCode}\n'
-            'Data: ${response.bodyString?.toString() ?? ''}',
-      );
+      printInfo(info: 'Status Code: ${response.statusCode}\n'
+          // 'Data: ${response.bodyString?.toString() ?? ''}',
+          );
       if (response.statusCode == 401) {
         Storage.clearStorage();
         Get.offAllNamed(
@@ -87,7 +86,11 @@ class ApiHelperImpl extends GetConnect implements ApiHelper {
 
   @override
   Future<Response<dynamic>> getCategories() {
-    final queryParam = {'fields[1]': 'category_name'};
+    final queryParam = {
+      'fields[1]': 'category_name',
+      'pagination[pageSize]': '100',
+      'sort[1]': 'category_name',
+    };
     return get(Constants.categoryUrl, query: queryParam);
   }
 }

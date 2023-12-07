@@ -8,38 +8,22 @@ class LibraryController extends GetxController {
       List<CategoryModel>.empty(growable: true).obs;
 
   static const pageSize = 26;
+
   var isCategoryLoading = false.obs;
-  var isLoading = false.obs;
+  var isArticlesLoading = false.obs;
   var isSearching = false.obs;
-  bool isFirst = false;
 
   var isChipSelected = 0.obs;
   TextEditingController searchKey = TextEditingController();
-  final passwordFocusNode = FocusNode();
 
   late PageController pageController;
   var currentIndex = 0.obs;
-  var selectedIndex = 3.obs;
+  var selectedIndex = 0.obs;
 
   // var isBusy = false.obs;
   var unreadNotificationFlag = false.obs;
 
   List<String> screensToGo = ['/articletemplate1', '/articeltemplate2'];
-
-  // List<String> subContentType = [
-  //   Strings.all,
-  //   'Kidney',
-  //   'Hypothyroidism',
-  //   'Hyperthyroidism',
-  //   'Hypertension',
-  //   'ESRD',
-  //   'Diabetes',
-  //   'Weight',
-  //   'Insulin',
-  //   'Mental health',
-  //   'Obesity'
-  // ];
-
 
   onSelectedIndexChanged(int index) {
     currentIndex.value = index;
@@ -50,52 +34,57 @@ class LibraryController extends GetxController {
   }
 
   @override
-  void onReady() {
+  void onInit() {
     getCategories();
-    getArticles();
-    super.onReady();
+    super.onInit();
   }
 
   Future<void> getCategories() async {
     isCategoryLoading.value = true;
-
+    isArticlesLoading.value = true;
     _apiHelper.getCategories().futureValue((value) {
-      print("👍👍👍👍👍👍👍👍👍👍");
       var categoryResponse = CategoryData.fromJson(value);
 
       categoryList.assignAll(categoryResponse.data ?? []);
-      print("👍👍👍👍👍👍👍👍${categoryList}");
+      getArticles();
+      isCategoryLoading.value = false;
     }, onError: (error) {
       if (kDebugMode) {
         print("Get Categories $error");
       }
+      isCategoryLoading.value = false;
     });
-    isCategoryLoading.value = false;
   }
 
   Future<void> getArticles(
       {int pageNumber = 1,
       String filterCategory = "",
       String searchKeyword = ""}) async {
-    isLoading.value = true;
-
+    isArticlesLoading.value = true;
     _apiHelper
         .getArticle(pageNumber, pageSize, filterCategory, searchKeyword)
         .futureValue((value) {
       var articlesResponse = ArticleData.fromJson(value);
 
       articleList.assignAll(articlesResponse.data ?? []);
+      isArticlesLoading.value = false;
     }, onError: (error) {
       if (kDebugMode) {
         print("Get Articles $error");
       }
+      isArticlesLoading.value = false;
     });
-    isLoading.value = false;
   }
 
   @override
   void onClose() {
     super.onClose();
+  }
+
+  void resetFilters() {
+    isChipSelected.value = 0;
+    searchKey.text = "";
+    getArticles();
   }
 
   void onSearch(String val) {
@@ -111,7 +100,6 @@ class LibraryController extends GetxController {
   void onChipSelected(int ind) {
     isChipSelected.value = ind;
 
-    print("🐢🐢🐢🐢🐢🐢🐢🐢🐢🐢🐢🐢${searchKey.text}");
     getArticles(
         pageNumber: 1,
         filterCategory: categoryList[ind].attributes?.categoryName ?? "",
@@ -121,6 +109,8 @@ class LibraryController extends GetxController {
   String? isSearchValueValid(String? text) {
     if (text!.isEmpty) {
       return "Search field empty";
+    } else if (text.length < 2) {
+      return "Enter at least 3 letters";
     } else {
       return null;
     }
