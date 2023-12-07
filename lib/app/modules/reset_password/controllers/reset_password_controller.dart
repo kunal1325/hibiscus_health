@@ -24,7 +24,7 @@ class ResetPasswordController extends GetxController {
 
   // Common Variables
   var isLoading = false.obs;
-  var errorMsg = Strings.emptyString.obs;
+  final ApiHelper _apiHelper = Get.find();
 
   // Reset Password Functions
   String? isValidEmail(String? text) {
@@ -96,6 +96,83 @@ class ResetPasswordController extends GetxController {
 
   void navigateToSignIn(){
     Get.offNamedUntil("/signIn", (route) => false);
+  }
+
+  void validateResetPasswordForm() async {
+    try {
+      final isValid = formKeyResetPassword.currentState!.validate();
+      if (!isValid) return;
+      formKeyResetPassword.currentState!.save();
+      var isConnected =
+          await Utils.checkInternetConnectivity();
+      if (isConnected) {
+        Utils.dismissKeyboard();
+        isLoading.value = true;
+        _apiHelper
+            .requestOtp(RegisterRequest(
+          email: emailController.text,
+        )).futureValue((value) {
+          var userResponse = UserModel.fromJson(value);
+          if(userResponse.status == 200){
+            navigateToUpdatePassword();
+            isLoading.value = false;
+          }else{
+            Utils.showSnackBarFun(Get.context, userResponse.msg ?? "Something Went Wrong !!!");
+            isLoading.value = false;
+          }
+        });
+      } else {
+        Utils.showSnackBarFun(Get.context, Strings.noConnection);
+      }
+    } catch (e) {
+      print("Error =================>>>>>>>>>>>>>>>>>");
+      print(e);
+      isLoading.value = false;
+    }
+  }
+
+  void checkConnectivity() async {
+    try {
+      final isValid = formKeyUpdatePassword.currentState!.validate();
+      if (!isValid) return;
+      formKeyUpdatePassword.currentState!.save();
+
+      var isConnected =
+      await Utils.checkInternetConnectivity();
+      if (isConnected) {
+        Utils.dismissKeyboard();
+        isLoading.value = true;
+        print("data =================>>>>>>>>>>>>>>>>>");
+        print("email ====================>>>>>>>>>>>>>>>>> ${emailController.text}");
+        print("otp ====================>>>>>>>>>>>>>>>>> ${otpController.text}");
+        print("password ====================>>>>>>>>>>>>>>>>> ${newPasswordController.text}");
+        print("confirm password ====================>>>>>>>>>>>>>>>>> ${confirmNewPasswordController.text}");
+
+        _apiHelper
+            .updatePassword(UpdatePasswordRequest(
+          email: emailController.text,
+          otp: otpController.text,
+          new_password: confirmNewPasswordController.text,
+        )).futureValue((value) {
+          var userResponse = UserModel.fromJson(value);
+          if(userResponse.status == 200 && userResponse.msg == "Password reset successfully."){
+            navigateToProcessToLogin();
+            isLoading.value = false;
+          }else{
+            Utils.showSnackBarFun(Get.context, userResponse.msg ?? "Something Went Wrong !!!");
+            isLoading.value = false;
+          }
+        });
+      } else {
+        Utils.showSnackBarFun(Get.context, Strings.noConnection);
+        isLoading.value = false;
+      }
+    } catch (e) {
+      print("Error =================>>>>>>>>>>>>>>>>>");
+      print(e);
+      Utils.showSnackBarFun(Get.context, "Something Went Wrong!");
+      isLoading.value = false;
+    }
   }
 
 }

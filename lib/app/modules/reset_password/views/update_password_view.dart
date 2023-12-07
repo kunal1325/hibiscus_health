@@ -148,7 +148,7 @@ class UpdatePasswordView extends GetView<ResetPasswordController> {
                                           ),
                                           prefixIcon: SizedBox(),
                                           onEditingComplete: (){
-                                            // controller.checkConnectivity();
+                                            controller.checkConnectivity();
                                           },
                                         ),
                                     ),
@@ -161,7 +161,7 @@ class UpdatePasswordView extends GetView<ResetPasswordController> {
                               ),
                               InkWell(
                                   onTap: () {
-                                    controller.navigateToProcessToLogin();
+                                    controller.checkConnectivity();
                                   },
                                   child: CustomButtons(
                                     weight: Get.width - 40,
@@ -182,7 +182,6 @@ class UpdatePasswordView extends GetView<ResetPasswordController> {
                           ),
                         ),
                       )),
-
                   Positioned(
                     top: 49,
                     left: 18,
@@ -196,6 +195,15 @@ class UpdatePasswordView extends GetView<ResetPasswordController> {
                         size: 24,
                       ),
                     ),
+                  ),
+                  Obx(() =>
+                      Visibility(
+                        maintainSize: true,
+                        maintainAnimation: true,
+                        maintainState: true,
+                        visible: controller.isLoading.value,
+                        child: Utils.getProgressBar(context),
+                      )
                   ),
                   // Blur box
                 ],

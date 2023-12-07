@@ -37,9 +37,10 @@ export 'app/data/models/token_response.dart';
 export 'app/data/models/api_response_model/user_model.dart';
 
 ///Request Models
-export 'app/data/models/request_models/registration_request_model.dart';
+export 'app/data/models/request_models/registration_request.dart';
 export 'app/data/models/request_models/login_request.dart';
-export 'app/data/models/request_models/help_us_request_model.dart';
+export 'app/data/models/request_models/help_us_request.dart';
+export 'app/data/models/request_models/update_password_request.dart';
 
 
 ///-------------------- Libraries --------------------

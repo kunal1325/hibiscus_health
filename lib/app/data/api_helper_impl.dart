@@ -69,4 +69,12 @@ class ApiHelperImpl extends GetConnect implements ApiHelper {
     return post('helpus/', json.encode(helpUsRequest.toJson()));
   }
 
+  Future<Response<dynamic>> requestOtp(RegisterRequest registerRequest) {
+    return post('otp/request/', json.encode(registerRequest.toJson()));
+  }
+
+  Future<Response<dynamic>> updatePassword(UpdatePasswordRequest updatePasswordRequest) {
+    return post('otp/verify-reset-password/', json.encode(updatePasswordRequest.toJson()));
+  }
+
 }

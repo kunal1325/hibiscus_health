@@ -62,15 +62,6 @@ class SignUpController extends GetxController {
       if (isConnected) {
         errorMsg.value = Strings.emptyString;
         isLoading.value = true;
-        print("data =================>>>>>>>>>>>>>>>>>");
-        print("email ====================>>>>>>>>>>>>>>>>> ${emailController.text}");
-        print("password ====================>>>>>>>>>>>>>>>>> ${passwordController.text}");
-        print("confirm password ====================>>>>>>>>>>>>>>>>> ${confirmPasswordController.text}");
-        print("first name ====================>>>>>>>>>>>>>>>>> ${fNameController.text}");
-        print("Last name ====================>>>>>>>>>>>>>>>>> ${lNameController.text}");
-        print("Phone ====================>>>>>>>>>>>>>>>>> ${ccController.text} ${phoneController.text}");
-        print("Dob ====================>>>>>>>>>>>>>>>>> ${dobController.text}");
-        print("Dietitian Code ====================>>>>>>>>>>>>>>>>> ${dietitianController.text}");
 
         _apiHelper
             .register(RegisterRequest(
