@@ -78,6 +78,10 @@ abstract class Strings {
   static const reviewedBy = "REVIEWED BY";
   static const String articleBy = "By Hibiscus Health";
   static const String learn = "Learn";
+  static const String progress = "Progress";
+  static const String checkin = "Check-In";
+  static const String more = "More";
+  static const String home = "Home";
   static const String browseContent = "Browse Content";
   static const String references = "References";
   static const String noResultsForTopic = "No results for the topic";

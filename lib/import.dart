@@ -88,6 +88,7 @@ export 'app/modules/widgets/library_card.dart';
 export 'app/modules/widgets/article_points.dart';
 export 'app/modules/widgets/article_summary.dart';
 export 'app/modules/widgets/reviewed_by_doctor.dart';
+export 'app/modules/widgets/coming_soon.dart';
 
 /// Home Screen
 export 'app/modules/home/bindings/home_binding.dart';
@@ -143,10 +144,35 @@ export 'app/modules/help_us/controllers/help_us_controller.dart';
 export 'app/modules/help_us/views/help_us_view.dart';
 export 'app/modules/help_us/views/request_sent_view.dart';
 
+///Landing Page
+export 'app/modules/landing_screen/controllers/landing_screen_controller.dart';
+export 'app/modules/landing_screen/bindings/landing_binding.dart';
+export 'app/modules/landing_screen/views/landing_screen.dart';
+
 ///Library
 export 'app/modules/library/bindings/library_bindings.dart';
 export 'app/modules/library/controllers/library_controllers.dart';
 export 'app/modules/library/views/library_views.dart';
+
+///progress
+export 'app/modules/progress/controllers/progress_controller.dart';
+export 'app/modules/progress/bindings/progress_binding.dart';
+export 'app/modules/progress/views/progress_view.dart';
+
+///Check In
+export 'app/modules/checkin/controllers/checkin_controller.dart';
+export 'app/modules/checkin/bindings/checkin_binding.dart';
+export 'app/modules/checkin/views/checkin_view.dart';
+
+///Learn
+export 'app/modules/learn/controllers/learn_controller.dart';
+export 'app/modules/learn/bindings/learn_binding.dart';
+export 'app/modules/learn/views/learn_view.dart';
+
+///More
+export 'app/modules/more/controllers/more_controller.dart';
+export 'app/modules/more/bindings/more_binding.dart';
+export 'app/modules/more/views/more_view.dart';
 
 ///Article Template 1
 export 'app/modules/article_template1/controller/article_template1_controller.dart';
@@ -158,7 +184,7 @@ export 'app/modules/article_template2/controller/article_template2_controller.da
 export 'app/modules/article_template2/bindings/article_template2_bindings.dart';
 export 'app/modules/article_template2/views/article_template2.view.dart';
 
-///Coming Soon
-export 'app/modules/coming_soon/controllers/coming_soon_controller.dart';
-export 'app/modules/coming_soon/bindings/coming_soon_binding.dart';
-export 'app/modules/coming_soon/views/coming_soon_views.dart';
+// ///Coming Soon
+// export 'app/modules/coming_soon/controllers/coming_soon_controller.dart';
+// export 'app/modules/coming_soon/bindings/coming_soon_binding.dart';
+// export 'app/modules/coming_soon/views/coming_soon_views.dart';

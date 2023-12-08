@@ -7,7 +7,7 @@ class LibraryController extends GetxController {
   List<CategoryModel> categoryList =
       List<CategoryModel>.empty(growable: true).obs;
 
-  static const pageSize = 26;
+  static const pageSize = 80;
 
   var isCategoryLoading = false.obs;
   var isArticlesLoading = false.obs;
@@ -16,22 +16,9 @@ class LibraryController extends GetxController {
   var isChipSelected = 0.obs;
   TextEditingController searchKey = TextEditingController();
 
-  late PageController pageController;
-  var currentIndex = 0.obs;
-  var selectedIndex = 0.obs;
-
-  // var isBusy = false.obs;
   var unreadNotificationFlag = false.obs;
 
   List<String> screensToGo = ['/articletemplate1', '/articeltemplate2'];
-
-  onSelectedIndexChanged(int index) {
-    currentIndex.value = index;
-    selectedIndex.value = index;
-    pageController.jumpToPage(index);
-    pageController.animateToPage(index,
-        duration: const Duration(seconds: 300), curve: Curves.slowMiddle);
-  }
 
   @override
   void onInit() {

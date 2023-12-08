@@ -4,7 +4,8 @@ part 'app_routes.dart';
 
 abstract class AppPages {
   // static const initial = Routes.comingSoon;
-  static const initial = Routes.libraryScreen;
+  // static const initial = Routes.libraryScreen;
+  static const initial = Routes.landingPage;
   //Routes.splash;
 
   static final routes = [
@@ -93,9 +94,29 @@ abstract class AppPages {
       binding: ArticleTemplate2Binding(),
     ),
     GetPage(
-      name: _Paths.comingSoon,
-      page: () => const ComingSoonView(),
-      binding: ComingSoonBinding(),
+      name: _Paths.progress,
+      page: () => ProgressView(),
+      binding: ProgressBinding(),
+    ),
+    GetPage(
+      name: _Paths.checkin,
+      page: () => CheckinView(),
+      binding: CheckinBinding(),
+    ),
+    GetPage(
+      name: _Paths.learn,
+      page: () => LearnView(),
+      binding: LearnBinding(),
+    ),
+    GetPage(
+      name: _Paths.more,
+      page: () => MoreView(),
+      binding: MoreBinding(),
+    ),
+    GetPage(
+      name: _Paths.landingPage,
+      page: () => LandingScreen(),
+      binding: LandingBinding(),
     ),
   ];
 }

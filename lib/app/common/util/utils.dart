@@ -180,8 +180,7 @@ abstract class Utils {
     ),
   );
 
-  static bottomNavigationBar(var controller, bool unreadNotificationFlag) =>
-      Container(
+  static bottomNavigationBar(var controller) => Container(
         color: AppColors.white,
         child: Container(
           decoration: const BoxDecoration(

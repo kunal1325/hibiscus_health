@@ -1,4 +1,3 @@
-import 'package:get_storage/get_storage.dart';
 import 'package:hibiscus_health/import.dart';
 
 class LibraryView extends GetView<LibraryController> {
@@ -13,12 +12,9 @@ class LibraryView extends GetView<LibraryController> {
           child: Scaffold(
             appBar: AppBar(
               backgroundColor: AppColors.kPrimaryColor,
-              leading: !controller.isSearching.value
-                  ? iosBackButton
-                  : const SizedBox(),
               elevation: 0,
               toolbarHeight: 80,
-              title: const Text(Strings.learn),
+              title: const Text(Strings.home),
               centerTitle: true,
               actions: [
                 IconButton(
@@ -330,8 +326,6 @@ class LibraryView extends GetView<LibraryController> {
                 ),
               ),
             ),
-            bottomNavigationBar: Obx(() => Utils.bottomNavigationBar(
-                controller, controller.unreadNotificationFlag.value)),
           ),
         );
       },
