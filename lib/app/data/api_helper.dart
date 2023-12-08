@@ -1,6 +1,5 @@
 import '../../import.dart';
 
-
 abstract class ApiHelper {
   Future<Response> login(LoginRequest loginRequest);
   Future<Response> register(RegisterRequest registerRequest);
@@ -8,4 +7,8 @@ abstract class ApiHelper {
   Future<Response> requestOtp(RegisterRequest registerRequest);
   Future<Response> updatePassword(UpdatePasswordRequest updatePasswordRequest);
 
+  Future<Response> getArticle(int pageNumber, int pageSize,
+      String filterCategory, String searchKeyword);
+
+  Future<Response> getCategories();
 }

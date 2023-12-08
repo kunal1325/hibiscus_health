@@ -16,6 +16,15 @@ abstract class Routes {
   static const processToLogin = _Paths.processToLogin;
   static const helpUs = _Paths.helpUs;
   static const requestSubmitted = _Paths.requestSubmitted;
+  static const libraryScreen = _Paths.library;
+  static const progressScreen = _Paths.progress;
+  static const checkinScreen = _Paths.checkin;
+  static const learnScreen = _Paths.learn;
+  static const moreScreen = _Paths.more;
+  static const articleTemplate1Screen = _Paths.articleTemplate1;
+  static const articleTemplate2Screen = _Paths.articleTemplate2;
+  // static const comingSoon = _Paths.comingSoon;
+  static const landingPage = _Paths.landingPage;
 }
 
 abstract class _Paths {
@@ -33,4 +42,13 @@ abstract class _Paths {
   static const processToLogin = '/processToLogin';
   static const helpUs = '/helpUs';
   static const requestSubmitted = '/requestSubmitted';
+  static const library = '/library';
+  static const progress = '/progress';
+  static const checkin = '/checkin';
+  static const learn = '/learn';
+  static const more = '/more';
+  static const articleTemplate1 = '/articletemplate1';
+  static const articleTemplate2 = '/articeltemplate2';
+  // static const comingSoon = '/comingsoon';
+  static const landingPage = '/landingpage';
 }
