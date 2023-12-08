@@ -37,6 +37,7 @@ abstract class Strings {
   static const String password = 'Password';
   static const String forgotPassword = 'Forgot Password?';
   static const String login = 'Login';
+  static const String retry = 'Retry';
   static const String areYouANewUser = 'Are you a new user? ';
   static const String signUp = 'Sign Up';
   static const String emailHint = 'grace@gmail.com';

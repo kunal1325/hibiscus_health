@@ -372,24 +372,27 @@ abstract class Utils {
           ),
         ),
         confirm: Align(
-          alignment: Alignment.centerRight,
-          child: InkWell(
-              onTap: () {
-                Get.back();
-                onTap?.call();
-              },
-              child: CustomButtons(
-                weight: Get.width - 40,
-                height: 50,
-                color: AppColors.kSecColor,
-                shadowColor: AppColors.kSecColor,
-                borderRadius: 10,
-                title: Strings.login,
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                fontColor: AppColors.kPrimaryColor,
-                withShadow: false,
-              )),
+          alignment: Alignment.center,
+          child: Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: InkWell(
+                onTap: () {
+                  Get.back();
+                  onTap?.call();
+                },
+                child: CustomButtons(
+                  weight: Get.width - 50,
+                  height: 40,
+                  color: AppColors.kSecColor,
+                  shadowColor: AppColors.kSecColor,
+                  borderRadius: 10,
+                  title: Strings.ok,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  fontColor: AppColors.kPrimaryColor,
+                  withShadow: false,
+                )),
+          ),
         ),
       );
 }
