@@ -3,7 +3,8 @@ import '../../import.dart';
 part 'app_routes.dart';
 
 abstract class AppPages {
-  static const initial = Routes.resetPassword;
+  static const initial = Routes.splash;
+  //Routes.splash;
 
   static final routes = [
     GetPage(
@@ -74,6 +75,46 @@ abstract class AppPages {
     GetPage(
       name: _Paths.requestSubmitted,
       page: () => RequestSubmittedView(),
+    ),
+    GetPage(
+      name: _Paths.library,
+      page: () => const LibraryView(),
+      binding: LibraryBinding(),
+    ),
+    GetPage(
+      name: _Paths.articleTemplate1,
+      page: () => const ArticleTemplateView1(),
+      binding: ArticleTemplate1Binding(),
+    ),
+    GetPage(
+      name: _Paths.articleTemplate2,
+      page: () => const ArticleTemplateView2(),
+      binding: ArticleTemplate2Binding(),
+    ),
+    GetPage(
+      name: _Paths.progress,
+      page: () => ProgressView(),
+      binding: ProgressBinding(),
+    ),
+    GetPage(
+      name: _Paths.checkin,
+      page: () => CheckinView(),
+      binding: CheckinBinding(),
+    ),
+    GetPage(
+      name: _Paths.learn,
+      page: () => LearnView(),
+      binding: LearnBinding(),
+    ),
+    GetPage(
+      name: _Paths.more,
+      page: () => MoreView(),
+      binding: MoreBinding(),
+    ),
+    GetPage(
+      name: _Paths.landingPage,
+      page: () => LandingScreen(),
+      binding: LandingBinding(),
     ),
   ];
 }

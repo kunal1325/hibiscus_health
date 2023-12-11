@@ -16,16 +16,14 @@ class HelpUsController extends GetxController {
 
   var dropdownValues = [
     Strings.issue,
-    "Two",
-    "Three",
-    "Four",
-    "Five"
+    "Sign In Issue",
+    "Sign Up Issue",
+    "Reset Password Issue",
+    "Others"
   ].obs;
 
   var dropdownValue = Strings.issue.obs;
   final ApiHelper _apiHelper = Get.find();
-
-
   String? isValidFullName(String? text) {
     if (text!.isEmpty) {
       return Strings.emptyFullNameError;
@@ -95,7 +93,7 @@ class HelpUsController extends GetxController {
     }
   }
   void navigateToRequestSubmitted(){
-     Get.off(() => RequestSubmittedView());
+    Get.offAllNamed("/requestSubmitted");
   }
 
 
