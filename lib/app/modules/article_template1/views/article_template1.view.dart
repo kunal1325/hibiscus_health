@@ -11,7 +11,7 @@ class ArticleTemplateView1 extends GetView<ArticleTemplateView1> {
           return SafeArea(
             child: Scaffold(
               appBar: AppBar(
-                toolbarHeight: 100,
+                toolbarHeight: 80,
                 backgroundColor: AppColors.kPrimaryColor,
                 elevation: 0,
                 // shape: const RoundedRectangleBorder(
@@ -53,8 +53,8 @@ class ArticleTemplateView1 extends GetView<ArticleTemplateView1> {
                           ClipRRect(
                             borderRadius: BorderRadius.circular(15),
                             child: controller.article.image != null
-                                ? Image.network(
-                                    controller.article.image!,
+                                ? CachedNetworkImage(
+                                    imageUrl: controller.article.image!,
                                     height: 200,
                                     width: Get.width,
                                     fit: BoxFit.cover,

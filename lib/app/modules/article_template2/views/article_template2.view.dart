@@ -11,14 +11,9 @@ class ArticleTemplateView2 extends GetView<ArticleTemplateView2> {
           return SafeArea(
               child: Scaffold(
             appBar: AppBar(
-              toolbarHeight: 100,
+              toolbarHeight: 80,
               backgroundColor: AppColors.kPrimaryColor,
               elevation: 0,
-              // shape: const RoundedRectangleBorder(
-              //   borderRadius: BorderRadius.vertical(
-              //     bottom: Radius.circular(20),
-              //   ),
-              // ),
               title: const Text('Article'),
               centerTitle: true,
               leading: iosBackButton,
@@ -115,8 +110,8 @@ class ArticleTemplateView2 extends GetView<ArticleTemplateView2> {
                               ClipRRect(
                                 borderRadius: BorderRadius.circular(15),
                                 child: controller.article.image != null
-                                    ? Image.network(
-                                        controller.article.image!,
+                                    ? CachedNetworkImage(
+                                        imageUrl: controller.article.image!,
                                         height: 200,
                                         width: Get.width,
                                         fit: BoxFit.cover,
@@ -128,7 +123,6 @@ class ArticleTemplateView2 extends GetView<ArticleTemplateView2> {
                               controller.article.introduction != null
                                   ? Text(
                                       "${controller.article.introduction}",
-                                      //Strings.articlePart1,
                                       style: Utils.kParagraphTextStyle,
                                     )
                                   : const SizedBox(),
@@ -227,7 +221,6 @@ class ArticleTemplateView2 extends GetView<ArticleTemplateView2> {
                                                           width: Get.width,
                                                           subheading:
                                                               "${controller.article.titleBulletPoint![ind].bulletPoint![index].title}",
-                                                          // Strings.article5Subpart3Headings[index],
                                                           content:
                                                               "${controller.article.titleBulletPoint![ind].bulletPoint![index].description}",
                                                           extraSpaceForSubpoint:
@@ -241,7 +234,6 @@ class ArticleTemplateView2 extends GetView<ArticleTemplateView2> {
                                                     },
                                                   )
                                                 : const SizedBox(),
-                                            // const SizedBox(height: 20),
                                           ],
                                         );
                                       },
@@ -264,7 +256,6 @@ class ArticleTemplateView2 extends GetView<ArticleTemplateView2> {
                                   ? const SizedBox()
                                   : Text(
                                       "${controller.article.conclusion}",
-                                      //Strings.articlePart1,
                                       style: Utils.kParagraphTextStyle,
                                     ),
                               const SizedBox(height: 20),

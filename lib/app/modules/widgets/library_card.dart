@@ -21,7 +21,7 @@ class LibraryCard extends StatelessWidget {
             : AppColors.kPrimaryColor,
         borderRadius: BorderRadius.circular(15),
         image: DecorationImage(
-          image: NetworkImage(image),
+          image: CachedNetworkImageProvider(image),
           fit: BoxFit.cover,
         ),
       ),
