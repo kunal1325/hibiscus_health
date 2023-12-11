@@ -93,7 +93,8 @@ class HelpUsController extends GetxController {
     }
   }
   void navigateToRequestSubmitted(){
-    Get.offAllNamed("/requestSubmitted");
+    // Get.offAllNamed("/requestSubmitted");
+    Get.offAndToNamed("/requestSubmitted");
   }
 
 
