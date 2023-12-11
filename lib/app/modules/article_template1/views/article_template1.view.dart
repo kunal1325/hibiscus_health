@@ -52,14 +52,23 @@ class ArticleTemplateView1 extends GetView<ArticleTemplateView1> {
                           const SizedBox(height: 20),
                           ClipRRect(
                             borderRadius: BorderRadius.circular(15),
-                            child: controller.article.image != null
-                                ? CachedNetworkImage(
-                                    imageUrl: controller.article.image!,
-                                    height: 200,
-                                    width: Get.width,
-                                    fit: BoxFit.cover,
-                                  )
-                                : Image.asset(AppImages.defaultArticleImage),
+                            child: CachedNetworkImage(
+                              imageUrl: controller.article.image ?? "",
+                              height: 200,
+                              width: Get.width,
+                              fit: BoxFit.cover,
+                              placeholder: (context, url) => Padding(
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 85,
+                                    horizontal: (Get.width - 30) / 2),
+                                child: SizedBox(
+                                    height: 25,
+                                    width: 25,
+                                    child: CircularProgressIndicator()),
+                              ),
+                              errorWidget: (context, url, error) =>
+                                  Image.asset(AppImages.defaultArticleImage),
+                            ),
                           ),
                           const SizedBox(height: 20),
                           Text(
