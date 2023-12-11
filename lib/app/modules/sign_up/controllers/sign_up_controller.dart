@@ -38,7 +38,7 @@ class SignUpController extends GetxController {
   TextEditingController ccController = TextEditingController(text: "+1");
   Region selectedRegion = Region(Strings.US, 1);
   List<Region> regions = [];
-  final ApiHelper _apiHelper = Get.find();
+  final ApiHelper _apiHelper = Get.put<ApiHelper>(ApiHelperImpl());
   var store = Store(PhoneNumberUtil());
 
   ///Common Functions

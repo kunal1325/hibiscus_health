@@ -11,7 +11,8 @@ class SignInController extends GetxController {
   GlobalKey<FormState> formKeySignIn = GlobalKey<FormState>();
   var isLoading = false.obs;
   var errorMsg = Strings.emptyString.obs;
-  final ApiHelper _apiHelper = Get.find();
+  // final ApiHelper _apiHelper = Get.put<ApiHelper>(ApiHelperImpl());
+  final ApiHelper _apiHelper = Get.put<ApiHelper>(ApiHelperImpl());
   void changeVisibility () {
     isPinInVisible.value = !isPinInVisible.value;
   }
