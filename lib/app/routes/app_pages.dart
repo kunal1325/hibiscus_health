@@ -50,7 +50,6 @@ abstract class AppPages {
     GetPage(
       name: _Paths.completeProfile,
       page: () => CompleteProfileView(),
-      binding: SignUpBinding(),
     ),
     GetPage(
       name: _Paths.resetPassword,
@@ -60,12 +59,10 @@ abstract class AppPages {
     GetPage(
       name: _Paths.updatePassword,
       page: () => UpdatePasswordView(),
-      binding: ResetPasswordBinding(),
     ),
     GetPage(
       name: _Paths.processToLogin,
       page: () => ProcessToLoginView(),
-      binding: ResetPasswordBinding(),
     ),
     GetPage(
       name: _Paths.helpUs,

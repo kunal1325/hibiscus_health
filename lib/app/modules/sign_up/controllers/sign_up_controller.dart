@@ -297,11 +297,8 @@ class SignUpController extends GetxController {
   navigateBackFromSignUp(){
     Get.offNamedUntil("/welcomeScreen", (route) => false);
   }
-  navigateBackFromCompleteProfile(){
-    Get.offNamedUntil("/signUp", (route) => false);
-  }
   navigateToStartMyJourney(){
-     Get.off(() => StartMyJourneyView());
+    Get.toNamed("/startMyJourney");
   }
 
 

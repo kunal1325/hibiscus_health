@@ -55,9 +55,6 @@ dependencies:
   #for launcher icon
   flutter_launcher_icons:
 
-  #for checking connection
-  connectivity_plus:
-
   #for picking country code
   country_pickers:
   phone_number:

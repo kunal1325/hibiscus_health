@@ -9,7 +9,7 @@ class CompleteProfileView extends GetView<SignUpController> {
     return GetBuilder<SignUpController>(
       init: SignUpController(),
       builder: (controller) => WillPopScope(
-        onWillPop: () => controller.navigateBackFromCompleteProfile(),
+        onWillPop: () => controller.navigateBackFromSignUp(),
         child: Scaffold(
           backgroundColor: AppColors.white,
           body: Stack(
@@ -404,7 +404,7 @@ class CompleteProfileView extends GetView<SignUpController> {
                 left: 18,
                 child: InkWell(
                   onTap: () {
-                    controller.navigateBackFromCompleteProfile();
+                    controller.navigateBackFromSignUp();
                   },
                   child: Icon(
                     Icons.arrow_back_ios_new_rounded,

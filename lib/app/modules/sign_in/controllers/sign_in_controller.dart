@@ -49,8 +49,6 @@ class SignInController extends GetxController {
   navigateHome(){
     Get.toNamed("/startMyJourney");
   }
-
-
   Future<void> checkConnectivity() async {
     Utils.dismissKeyboard();
     try {
@@ -97,8 +95,6 @@ class SignInController extends GetxController {
       isLoading.value = false;
     }
   }
-
-
   @override
   void onInit() {
     // TODO: implement onInit
