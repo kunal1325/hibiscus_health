@@ -13,11 +13,6 @@ class StartMyJourneyController extends GetxController {
   var dietitianName = "".obs;
 
   void navigateToFaceScan() {
-    // Storage.clearStorage();
-    Storage.removeValue(Constants.finalBaseUrlTag);
-    Storage.saveValue(Constants.finalBaseUrlTag, "baseUrlStrapi");
-    Get.put<ApiHelper>(ApiHelperImpl());
-    Get.delete<ApiHelper>();
     Get.offAllNamed("/landingpage");
   }
 

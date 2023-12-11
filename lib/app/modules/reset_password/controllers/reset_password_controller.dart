@@ -22,8 +22,7 @@ class ResetPasswordController extends GetxController {
 
   // Common Variables
   var isLoading = false.obs;
-  // final ApiHelper _apiHelper = Get.find();
-  final ApiHelper _apiHelper = Get.put<ApiHelper>(ApiHelperImpl());
+  final ApiHelper _apiHelper = Get.find();
 
   // Reset Password Functions
   String? isValidEmail(String? text) {

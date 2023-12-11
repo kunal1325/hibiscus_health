@@ -35,14 +35,8 @@ class SplashController extends GetxController  with GetSingleTickerProviderState
 
   navigateToRout(userId) {
     if (userId == null || userId == "userId") {
-      Storage.saveValue(Constants.finalBaseUrlTag, "baseURLDev");
-      var finalBaseUrlTag = Storage.getValue(Constants.finalBaseUrlTag);
-      print("finalBaseUrlTag========================>>>>>>>>>>>>>>>>>================== $finalBaseUrlTag");
       Get.offAndToNamed("/onBoarding");
     } else {
-      Storage.saveValue(Constants.finalBaseUrlTag, "baseUrlStrapi");
-      var finalBaseUrlTag = Storage.getValue(Constants.finalBaseUrlTag);
-      print("finalBaseUrlTag========================>>>>>>>>>>>>>>>>>================== $finalBaseUrlTag");
       Get.offAndToNamed("/library");
     }
   }
