@@ -35,9 +35,9 @@ class SplashController extends GetxController  with GetSingleTickerProviderState
 
   navigateToRout(userId) {
     if (userId == null || userId == "userId") {
-      Get.offAndToNamed("/onBoarding");
+      Get.offAndToNamed(Routes.onBoarding);
     } else {
-      Get.offAndToNamed("/landingpage");
+      Get.offAndToNamed(Routes.landingPage);
     }
   }
 

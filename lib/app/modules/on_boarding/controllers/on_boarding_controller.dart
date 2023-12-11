@@ -9,7 +9,8 @@ class OnBoardingController extends GetxController {
 
   forwardAction() {
     if (isLastPage) {
-      Get.offAndToNamed("/welcomeScreen");
+      //Get.offAndToNamed("/welcomeScreen");
+      Get.toNamed(Routes.welcomeScreen);
     } else {
       pageController.nextPage(duration: 300.milliseconds, curve: Curves.ease);
     }
@@ -24,7 +25,9 @@ class OnBoardingController extends GetxController {
   }
 
   skipAction() {
-    Get.offAndToNamed("/welcomeScreen");
+    //Get.offAndToNamed("/welcomeScreen");
+    Get.toNamed(Routes.welcomeScreen);
+
   }
 
   List<OnboardingInfo> onboardingPages = [

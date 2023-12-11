@@ -89,17 +89,16 @@ class ResetPasswordController extends GetxController {
   // Navigation
 
   void navigateToUpdatePassword() {
-    Get.toNamed("/updatePassword");
+    Get.offAndToNamed(Routes.updatePassword);
   }
 
   void navigateToProcessToLogin() {
-    // Get.offNamedUntil("/processToLogin", (route) => false);
-    Get.offAndToNamed("/processToLogin");
+    Get.offAndToNamed(Routes.processToLogin);
   }
 
   void navigateToSignIn() {
-    // Get.offNamedUntil("/signIn", (route) => false);
-    Get.offAndToNamed("/signIn");
+    // Get.off("/signIn");
+    Get.offAllNamed(Routes.signIn);
   }
 
   void validateResetPasswordForm() async {
@@ -146,15 +145,6 @@ class ResetPasswordController extends GetxController {
       if (isConnected) {
         Utils.dismissKeyboard();
         isLoading.value = true;
-        print("data =================>>>>>>>>>>>>>>>>>");
-        print(
-            "email ====================>>>>>>>>>>>>>>>>> ${emailController.text}");
-        print(
-            "otp ====================>>>>>>>>>>>>>>>>> ${otpController.text}");
-        print(
-            "password ====================>>>>>>>>>>>>>>>>> ${newPasswordController.text}");
-        print(
-            "confirm password ====================>>>>>>>>>>>>>>>>> ${confirmNewPasswordController.text}");
 
         _apiHelper
             .updatePassword(UpdatePasswordRequest(

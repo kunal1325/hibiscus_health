@@ -38,18 +38,6 @@ class SignInController extends GetxController {
     }
     return null;
   }
-  void navigateToSignUp(){
-     Get.off(() => SignUpView());
-  }
-  void navigateToForgotPassword(){
-    Get.toNamed("/resetPassword");
-  }
-  navigateBack(){
-    Get.offNamedUntil("/welcomeScreen", (route) => false);
-  }
-  navigateHome(){
-    Get.toNamed("/startMyJourney");
-  }
   Future<void> checkConnectivity() async {
     Utils.dismissKeyboard();
     try {
@@ -96,14 +84,18 @@ class SignInController extends GetxController {
       isLoading.value = false;
     }
   }
-  @override
-  void onInit() {
-    // TODO: implement onInit
-    Storage.removeValue(Constants.accessToken);
-    Storage.removeValue(Constants.refreshToken);
-    Storage.removeValue(Constants.userId);
-    Storage.removeValue(Constants.dietitianId);
-    super.onInit();
+
+  void navigateToSignUp(){
+    Get.offNamed(Routes.signUp);
+  }
+  void navigateToForgotPassword(){
+    Get.toNamed(Routes.resetPassword);
+  }
+  navigateBack(){
+    Get.offNamed(Routes.welcomeScreen);
+  }
+  navigateHome(){
+    Get.toNamed(Routes.startMyJourney);
   }
 
 }
