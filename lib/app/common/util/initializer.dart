@@ -42,7 +42,11 @@ abstract class Initializer {
 class InitialBindings extends Bindings {
   @override
   void dependencies() {
-    Get.put<ApiHelper>(ApiHelperImpl());
+    // Get.put<ApiHelper>(ApiHelperImpl());
+
+    Get.lazyPut<ApiHelper>(
+      () => ApiHelperImpl(),
+    );
 
     Get.lazyPut<ApiInterfaceController>(
       () => ApiInterfaceController(),

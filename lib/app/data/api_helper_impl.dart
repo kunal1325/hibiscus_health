@@ -3,7 +3,6 @@ import '../../import.dart';
 class ApiHelperImpl extends GetConnect implements ApiHelper {
   @override
   void onInit() {
-
     httpClient.baseUrl = Constants.baseURLDev;
     httpClient.timeout = Constants.timeout;
 
@@ -18,6 +17,9 @@ class ApiHelperImpl extends GetConnect implements ApiHelper {
         Get.offAllNamed(
           Routes.signIn,
         );
+      }
+      if (response.statusCode == 226) {
+        Utils.showSnackBarFun(Get.context, "This Email Already Exist....!");
       }
       if (response.statusCode == 404) {
         Utils.showDialog(
@@ -90,12 +92,14 @@ class ApiHelperImpl extends GetConnect implements ApiHelper {
     };
     return get(Constants.categoryUrl, query: queryParam);
   }
+
   Future<Response<dynamic>> requestOtp(RegisterRequest registerRequest) {
     return post('otp/request/', json.encode(registerRequest.toJson()));
   }
 
-  Future<Response<dynamic>> updatePassword(UpdatePasswordRequest updatePasswordRequest) {
-    return post('otp/verify-reset-password/', json.encode(updatePasswordRequest.toJson()));
+  Future<Response<dynamic>> updatePassword(
+      UpdatePasswordRequest updatePasswordRequest) {
+    return post('otp/verify-reset-password/',
+        json.encode(updatePasswordRequest.toJson()));
   }
-
 }

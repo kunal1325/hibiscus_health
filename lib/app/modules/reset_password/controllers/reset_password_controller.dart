@@ -93,11 +93,13 @@ class ResetPasswordController extends GetxController {
   }
 
   void navigateToProcessToLogin() {
-    Get.offNamedUntil("/processToLogin", (route) => false);
+    // Get.offNamedUntil("/processToLogin", (route) => false);
+    Get.offAndToNamed("/processToLogin");
   }
 
   void navigateToSignIn() {
-    Get.offNamedUntil("/signIn", (route) => false);
+    // Get.offNamedUntil("/signIn", (route) => false);
+    Get.offAndToNamed("/signIn");
   }
 
   void validateResetPasswordForm() async {
