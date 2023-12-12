@@ -1,4 +1,4 @@
-package com.hibiscusHealth.hibiscus_health
+package com.nutritionApp.hibiscus_health
 
 import io.flutter.embedding.android.FlutterActivity
 
