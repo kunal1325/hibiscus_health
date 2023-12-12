@@ -1,4 +1,4 @@
-package com.example.hibiscus_health
+package com.exampleStaging.hibiscus_health
 
 import io.flutter.embedding.android.FlutterActivity
 
