@@ -22,11 +22,7 @@ class LibraryCard extends StatelessWidget {
         imageUrl: image,
         imageBuilder: (context, imageProvider) => Container(
           decoration: BoxDecoration(
-            color:
-                // image == "" || image != "null"
-                //     ? AppColors.kGreyText
-                //     :
-                AppColors.kPrimaryColor,
+            color: AppColors.kPrimaryColor,
             image: DecorationImage(
               image: imageProvider,
               fit: BoxFit.cover,
@@ -67,7 +63,7 @@ class LibraryCard extends StatelessWidget {
           ),
         ),
         placeholder: (context, url) => Padding(
-          padding: const EdgeInsets.symmetric(vertical: 38, horizontal: 70),
+          padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 60),
           child: SizedBox(
               height: 25, width: 25, child: CircularProgressIndicator()),
         ),
