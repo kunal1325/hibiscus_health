@@ -13,18 +13,17 @@ class HelpUsController extends GetxController {
 
   GlobalKey<FormState> formKeyHelpUs = GlobalKey<FormState>();
   var isLoading = false.obs;
-  var errorMsg = Strings.emptyString.obs;
 
   var dropdownValues = [
     Strings.issue,
-    "Two",
-    "Three",
-    "Four",
-    "Five"
+    "Sign In Issue",
+    "Sign Up Issue",
+    "Reset Password Issue",
+    "Others"
   ].obs;
 
   var dropdownValue = Strings.issue.obs;
-
+  final ApiHelper _apiHelper = Get.put<ApiHelper>(ApiHelperImpl());
   String? isValidFullName(String? text) {
     if (text!.isEmpty) {
       return Strings.emptyFullNameError;
@@ -47,30 +46,57 @@ class HelpUsController extends GetxController {
     else
       return null;
   }
-
   void checkConnectivity() async {
-    isLoading.value = true;
     Utils.dismissKeyboard();
     try {
-      var temp = formKeyHelpUs.currentState;
-      if (temp != null && temp.validate()) {
-        var isConnected =
-        await Utils.checkInternetConnectivity();
-        if (isConnected) {
-          errorMsg.value = Strings.emptyString;
-          print("data =================>>>>>>>>>>>>>>>>>");
-          print("email ====================>>>>>>>>>>>>>>>>> ${emailController.text}");
-        } else {
-          errorMsg.value = Strings.noConnection;
-        }
+      final isValid = formKeyHelpUs.currentState!.validate();
+      if (!isValid) return;
+      if (dropdownValue.value == Strings.issue) {
+        Utils.showSnackBarFun(Get.context, "Please select Issue you are facing from dropdown.");
+        return;
+      }
+      formKeyHelpUs.currentState!.save();
+
+      var isConnected =
+      await Utils.checkInternetConnectivity();
+      if (isConnected) {
+        isLoading.value = true;
+
+        _apiHelper
+            .helpUs(
+            HelpUsRequest(
+              full_name: fullNameController.text,
+              email: emailController.text,
+              phone_number: phoneController.text,
+              issue: dropdownValue.value,
+              message: msgController.text,
+            ))
+            .futureValue((value) {
+          var userResponse = UserModel.fromJson(value);
+          if(userResponse.status == 200){
+            navigateToRequestSubmitted();
+            isLoading.value = false;
+          }else{
+            Utils.showSnackBarFun(Get.context, userResponse.msg ?? "Something Went Wrong !!!");
+            isLoading.value = false;
+          }
+        }, onError: (error) {
+          print("Login Response Error $error");
+          isLoading.value = false;
+        });
+      } else {
+        Utils.showSnackBarFun(Get.context, Strings.noConnection);
       }
     } catch (e) {
       print(e);
+      isLoading.value = false;
     }
-    isLoading.value = false;
   }
   void navigateToRequestSubmitted(){
-    Get.off(RequestSubmittedView());
+    Get.offAndToNamed(Routes.requestSubmitted);
+  }
+  void navigateToWelcomeScreen(){
+    Get.offAllNamed(Routes.welcomeScreen);
   }
 
 

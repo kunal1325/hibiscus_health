@@ -3,7 +3,6 @@ import '../../../import.dart';
 
 abstract class Initializer {
   static void init(VoidCallback runApp) {
-
     runZonedGuarded(() async {
       WidgetsFlutterBinding.ensureInitialized();
       FlutterError.onError = (details) {
@@ -43,6 +42,10 @@ abstract class Initializer {
 class InitialBindings extends Bindings {
   @override
   void dependencies() {
+    Get.put<ApiHelper>(ApiHelperImpl());
 
+    Get.put<ApiInterfaceController>(
+       ApiInterfaceController(),
+    );
   }
 }

@@ -103,6 +103,9 @@ class PrivacyFirstView extends GetView<PrivacyFirstController> {
                                 withShadow: false,
                               )
                           ),
+                          SizedBox(
+                            height: 35,
+                          ),
                         ],
                       ),
                     ),

@@ -10,21 +10,23 @@ class TextInputField extends StatelessWidget {
   final TextInputAction textInputAction;
   final bool obscureText;
   final Widget suffixIcon;
-
+  final String? initialValue;
   final Widget prefixIcon;
   final FocusNode focusNode;
   final FocusNode? requestFocusNode;
   final TextEditingController controller;
   final String? Function(String?)? validator;
+  final String? Function(String?)? onSaved;
   final Function()? onEditingComplete;
 
   TextInputField({super.key, required this.fillColor, this.enabled, required this.hintText, required this.labelText, required this.keyboardType, required this.textInputAction,
-   required this.obscureText, required this.suffixIcon, required this.prefixIcon,
-    required this.focusNode, this.requestFocusNode, required this.controller, required this.validator, this.onEditingComplete});
+   required this.obscureText, required this.suffixIcon, required this.prefixIcon, this.initialValue, this.onSaved,
+    required this.focusNode, this.requestFocusNode, required this.controller, this.validator, this.onEditingComplete});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: initialValue,
       enabled: enabled,
       obscureText: obscureText,
       decoration: InputDecoration(
@@ -108,6 +110,7 @@ class TextInputField extends StatelessWidget {
       },
       onEditingComplete: onEditingComplete,
       validator: validator,
+      onSaved: onSaved
     );
   }
 }

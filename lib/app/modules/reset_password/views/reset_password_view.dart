@@ -35,7 +35,6 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                       bottom: 0,
                       child: Container(
                         width: Get.width,
-                        height: Get.height / 2.6,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(17),
@@ -95,6 +94,9 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                                       obscureText: false,
                                       suffixIcon: SizedBox(),
                                       prefixIcon: SizedBox(),
+                                      onEditingComplete: () {
+                                        controller.validateResetPasswordForm();
+                                      },
                                     ),
                                   ],
                                 ),
@@ -105,7 +107,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                               ),
                               InkWell(
                                   onTap: () {
-                                    controller.navigateToUpdatePassword();
+                                    controller.validateResetPasswordForm();
                                   },
                                   child: CustomButtons(
                                     weight: Get.width - 40,
@@ -119,11 +121,23 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                                     fontColor: AppColors.kPrimaryColor,
                                     withShadow: false,
                                   )),
+                              SizedBox(
+                                height: 35,
+                              ),
                             ],
                           ),
                         ),
-                      )),
-                  // Blur box
+                      )
+                  ), // Blur box
+                  Obx(() =>
+                      Visibility(
+                        maintainSize: true,
+                        maintainAnimation: true,
+                        maintainState: true,
+                        visible: controller.isLoading.value,
+                        child: Utils.getProgressBar(context),
+                      )
+                  ),
                 ],
               )),
         ),

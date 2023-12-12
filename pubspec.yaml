@@ -55,9 +55,6 @@ dependencies:
   #for launcher icon
   flutter_launcher_icons:
 
-  #for checking connection
-  connectivity_plus:
-
   #for picking country code
   country_pickers:
   phone_number:
@@ -67,6 +64,16 @@ dependencies:
 
   #for drop shadow
   drop_shadow:
+
+  #For shimmer placeholders
+  shimmer:
+
+  #For cached network image
+  cached_network_image:
+
+  #For infinite scroll/pagination
+  infinite_scroll_pagination:
+
 
 dev_dependencies:
   flutter_test:

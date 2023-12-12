@@ -48,9 +48,9 @@ class CustomButtons extends StatelessWidget {
             shadows: [
               const Shadow(
                 color: AppColors.black, // Choose the color of the shadow
-                blurRadius: 2.0, // Adjust the blur radius for the shadow effect
+                blurRadius: 1.0, // Adjust the blur radius for the shadow effect
                 offset: Offset(0.0,
-                    0.3), // Set the horizontal and vertical offset for the shadow
+                    0.2), // Set the horizontal and vertical offset for the shadow
               ),
             ],
           ),

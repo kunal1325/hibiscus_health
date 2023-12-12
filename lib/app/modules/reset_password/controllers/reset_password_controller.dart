@@ -1,8 +1,6 @@
-
 import '../../../../import.dart';
 
 class ResetPasswordController extends GetxController {
-
   // Reset Password Variables
 
   final emailFocusNode = FocusNode();
@@ -24,7 +22,7 @@ class ResetPasswordController extends GetxController {
 
   // Common Variables
   var isLoading = false.obs;
-  var errorMsg = Strings.emptyString.obs;
+  final ApiHelper _apiHelper = Get.put<ApiHelper>(ApiHelperImpl());
 
   // Reset Password Functions
   String? isValidEmail(String? text) {
@@ -37,12 +35,14 @@ class ResetPasswordController extends GetxController {
   }
 
 // Update Password Functions
-  void changeNewPasswordEyeIcon () {
+  void changeNewPasswordEyeIcon() {
     isNewPasswordVisible.value = !isNewPasswordVisible.value;
   }
-  void changeConfirmNewPasswordEyeIcon () {
+
+  void changeConfirmNewPasswordEyeIcon() {
     isConfirmNewPasswordVisible.value = !isConfirmNewPasswordVisible.value;
   }
+
   String? isValidOtp(String? text) {
     if (text!.isEmpty) {
       return Strings.emptyOtpError;
@@ -52,6 +52,7 @@ class ResetPasswordController extends GetxController {
     }
     return null;
   }
+
   String? isValidNewPassword(String? text) {
     if (text!.isEmpty) {
       return Strings.emptyNewPasswordError;
@@ -66,6 +67,7 @@ class ResetPasswordController extends GetxController {
     }
     return null;
   }
+
   String? isValidConfirmNewPassword(String? text) {
     if (text!.isEmpty) {
       return Strings.emptyConfirmNewPasswordError;
@@ -86,16 +88,91 @@ class ResetPasswordController extends GetxController {
 
   // Navigation
 
-  void navigateToUpdatePassword(){
-    Get.toNamed("/updatePassword");
+  void navigateToUpdatePassword() {
+    Get.offAndToNamed(Routes.updatePassword);
   }
 
-  void navigateToProcessToLogin(){
-    Get.offNamedUntil("/processToLogin", (route) => false);
+  void navigateToProcessToLogin() {
+    Get.offAndToNamed(Routes.processToLogin);
   }
 
-  void navigateToSignIn(){
-    Get.offNamedUntil("/signIn", (route) => false);
+  void navigateToSignIn() {
+    // Get.off("/signIn");
+    Get.offAllNamed(Routes.signIn);
   }
 
+  void validateResetPasswordForm() async {
+    try {
+      final isValid = formKeyResetPassword.currentState!.validate();
+      if (!isValid) return;
+      formKeyResetPassword.currentState!.save();
+      var isConnected = await Utils.checkInternetConnectivity();
+      if (isConnected) {
+        Utils.dismissKeyboard();
+        isLoading.value = true;
+        _apiHelper
+            .requestOtp(RegisterRequest(
+          email: emailController.text,
+        ))
+            .futureValue((value) {
+          var userResponse = UserModel.fromJson(value);
+          if (userResponse.status == 200) {
+            navigateToUpdatePassword();
+            isLoading.value = false;
+          } else {
+            Utils.showSnackBarFun(
+                Get.context, userResponse.msg ?? "Something Went Wrong !!!");
+            isLoading.value = false;
+          }
+        });
+      } else {
+        Utils.showSnackBarFun(Get.context, Strings.noConnection);
+      }
+    } catch (e) {
+      print("Error =================>>>>>>>>>>>>>>>>>");
+      print(e);
+      isLoading.value = false;
+    }
+  }
+
+  void checkConnectivity() async {
+    try {
+      final isValid = formKeyUpdatePassword.currentState!.validate();
+      if (!isValid) return;
+      formKeyUpdatePassword.currentState!.save();
+
+      var isConnected = await Utils.checkInternetConnectivity();
+      if (isConnected) {
+        Utils.dismissKeyboard();
+        isLoading.value = true;
+
+        _apiHelper
+            .updatePassword(UpdatePasswordRequest(
+          email: emailController.text,
+          otp: otpController.text,
+          new_password: confirmNewPasswordController.text,
+        ))
+            .futureValue((value) {
+          var userResponse = UserModel.fromJson(value);
+          if (userResponse.status == 200 &&
+              userResponse.msg == "Password reset successfully.") {
+            navigateToProcessToLogin();
+            isLoading.value = false;
+          } else {
+            Utils.showSnackBarFun(
+                Get.context, userResponse.msg ?? "Something Went Wrong !!!");
+            isLoading.value = false;
+          }
+        });
+      } else {
+        Utils.showSnackBarFun(Get.context, Strings.noConnection);
+        isLoading.value = false;
+      }
+    } catch (e) {
+      print("Error =================>>>>>>>>>>>>>>>>>");
+      print(e);
+      Utils.showSnackBarFun(Get.context, "Something Went Wrong!");
+      isLoading.value = false;
+    }
+  }
 }

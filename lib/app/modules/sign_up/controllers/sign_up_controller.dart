@@ -1,6 +1,5 @@
 import '../../../../import.dart';
 
-
 class SignUpController extends GetxController {
 
   ///Common variables
@@ -24,12 +23,12 @@ class SignUpController extends GetxController {
   final lNameFocusNode = FocusNode();
   final phoneFocusNode = FocusNode();
   final dobFocusNode = FocusNode();
-  final nutritionistFocusNode = FocusNode();
+  final dietitianFocusNode = FocusNode();
   final fNameController = TextEditingController();
   final lNameController = TextEditingController();
   final phoneController = TextEditingController();
   final dobController = TextEditingController();
-  final nutritionistController = TextEditingController();
+  final dietitianController = TextEditingController();
   DateTime? selectedDate;
   var selectedCountry = Country(
       iso3Code: Strings.USA,
@@ -39,6 +38,7 @@ class SignUpController extends GetxController {
   TextEditingController ccController = TextEditingController(text: "+1");
   Region selectedRegion = Region(Strings.US, 1);
   List<Region> regions = [];
+  final ApiHelper _apiHelper = Get.put<ApiHelper>(ApiHelperImpl());
   var store = Store(PhoneNumberUtil());
 
   ///Common Functions
@@ -50,6 +50,73 @@ class SignUpController extends GetxController {
     super.onInit();
   }
 
+  void checkConnectivity() async {
+    Utils.dismissKeyboard();
+    try {
+      final isValid = formKeyCompleteProfile.currentState!.validate();
+      if (!isValid) return;
+      formKeyCompleteProfile.currentState!.save();
+
+      var isConnected =
+      await Utils.checkInternetConnectivity();
+      if (isConnected) {
+        errorMsg.value = Strings.emptyString;
+        isLoading.value = true;
+
+        _apiHelper
+            .register(RegisterRequest(
+            email: emailController.text,
+          first_name: fNameController.text,
+          last_name: lNameController.text,
+          phone_number: "${ccController.text} ${phoneController.text}",
+          password: passwordController.text,
+          password2: confirmPasswordController.text,
+          user_role: "PATIENT",
+          unique_code: dietitianController.text
+        ))
+            .futureValue((value) {
+          var userResponse = UserModel.fromJson(value);
+
+          if(userResponse.status == 200 && userResponse.msg == "Registration Success"){
+            Storage.saveValue(Constants.accessToken, userResponse.token?.access);
+            Storage.saveValue(Constants.refreshToken, userResponse.token?.refresh);
+            Storage.saveValue(Constants.userId, userResponse.userID);
+            Storage.saveValue(Constants.dietitianId, userResponse.dietitianID);
+            Storage.saveValue(Constants.patientName, userResponse.patientName);
+            Storage.saveValue(Constants.dietitianName, userResponse.dietitianName);
+            navigateToStartMyJourney();
+            isLoading.value = false;
+          }else{
+            Utils.showSnackBarFun(Get.context, userResponse.msg ?? "Something Went Wrong !!!");
+            isLoading.value = false;
+          }
+        });
+
+      } else {
+          Utils.showSnackBarFun(Get.context, Strings.noConnection);
+          isLoading.value = false;
+      }
+    } catch (e) {
+      print("Error =================>>>>>>>>>>>>>>>>>");
+      print(e);
+      Utils.showSnackBarFun(Get.context, "Something Went Wrong!");
+      isLoading.value = false;
+    }
+  }
+
+  void saveDataToSession() {
+    Utils.dismissKeyboard();
+    try {
+      var temp = formKeySignUp.currentState;
+      if (temp != null && temp.validate()) {
+        errorMsg.value = Strings.emptyString;
+        navigateToPrivacyFirst();
+      }
+    } catch (e) {
+      print("Error =================>>>>>>>>>>>>>>>>>");
+      print(e);
+    }
+  }
 
   ///Sign Up functions
   void changePasswordEyeIcon () {
@@ -100,33 +167,6 @@ class SignUpController extends GetxController {
 
 
   ///Complete Profile functions
-  void checkConnectivity() async {
-    isLoading.value = true;
-    navigateToPrivacyFirst();
-    return;
-    Utils.dismissKeyboard();
-    try {
-      var temp = formKeySignUp.currentState;
-      if (temp != null && temp.validate()) {
-        var isConnected =
-        await Utils.checkInternetConnectivity();
-        if (isConnected) {
-          errorMsg.value = Strings.emptyString;
-          print("data =================>>>>>>>>>>>>>>>>>");
-          print("email ====================>>>>>>>>>>>>>>>>> ${emailController.text}");
-          print("password ====================>>>>>>>>>>>>>>>>> ${passwordController.text}");
-          print("confirm password ====================>>>>>>>>>>>>>>>>> ${confirmPasswordController.text}");
-          // Utils.showSnackBarFun(Get.context, Strings.alreadyTakenError);
-          // navigateToPrivacyFirst();
-        } else {
-          errorMsg.value = Strings.noConnection;
-        }
-      }
-    } catch (e) {
-      print(e);
-    }
-    isLoading.value = false;
-  }
   String? isValidFName(String? text) {
     if (text!.isEmpty) {
       return Strings.emptyFirstNameError;
@@ -143,7 +183,10 @@ class SignUpController extends GetxController {
   }
   String? isValidPhone(String? text) {
     if (text!.isEmpty) {
-      return Strings.emptyPhoneNumberError;
+      return Strings.shortPhoneNumberError;
+    }
+    if (text.length < 10) {
+      return Strings.shortPhoneNumberError;
     }
     else
       return null;
@@ -155,17 +198,25 @@ class SignUpController extends GetxController {
     else
       return null;
   }
-  String? isValidNutritionistCode(String? text) {
+  String? isValidDietitianCode(String? text) {
     if (text!.isEmpty) {
-      return Strings.emptyNutritionistCodeNameError;
+      return Strings.emptyDietitianCodeNameError;
     }
+    if (text.length <= 7) {
+      return Strings.shortDietitianCodeError;
+    }
+    // final hasLetter = text.contains(RegExp(r'[a-zA-Z]'));
+    // final hasNumber = text.contains(RegExp(r'[0-9]'));
+    // if (!hasLetter || !hasNumber) {
+    //   return Strings.invalidDietitianCodeError;
+    // }
     else
       return null;
   }
   Future<void> selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
+      initialDate: DateTime(2000, 01, 01),
       firstDate: DateTime(1900),
       lastDate: DateTime.now(),
     );
@@ -173,7 +224,7 @@ class SignUpController extends GetxController {
         selectedDate = picked;
         dobController.text = '${picked.month} / ${picked.day} / ${picked.year}';
     }
-    FocusScope.of(context).requestFocus(nutritionistFocusNode);
+    FocusScope.of(context).requestFocus(dietitianFocusNode);
   }
   void openCountryPickerDialog() => showDialog(
     context: Get.context!,
@@ -229,13 +280,13 @@ class SignUpController extends GetxController {
 
   ///Navigation from Sign Up
   void navigateToSignIn(){
-    Get.off(SignInView());
+     Get.offNamed(Routes.signIn);
   }
   void navigateToGetHelp(){
-    Get.toNamed("/helpUs");
+    Get.toNamed(Routes.helpUs);
   }
   void navigateToPrivacyFirst(){
-    Get.toNamed("/privacyFirst");
+    Get.toNamed(Routes.privacyFirst);
   }
   void openTermsOfService(){
 
@@ -244,14 +295,10 @@ class SignUpController extends GetxController {
 
   }
   navigateBackFromSignUp(){
-    Get.offNamedUntil("/welcomeScreen", (route) => false);
+    Get.offNamedUntil(Routes.welcomeScreen, (route) => false);
   }
-  navigateBackFromCompleteProfile(){
-    Get.offNamedUntil("/signUp", (route) => false);
-  }
-
   navigateToStartMyJourney(){
-    Get.off(StartMyJourneyView());
+    Get.toNamed(Routes.startMyJourney);
   }
 
 

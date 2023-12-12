@@ -37,7 +37,6 @@ class ProcessToLoginView extends GetView<ResetPasswordController> {
                         bottom: 0,
                         child: Container(
                           width: Get.width,
-                          height: Get.height / 1.9,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(17),
@@ -93,6 +92,9 @@ class ProcessToLoginView extends GetView<ResetPasswordController> {
                                       fontColor: AppColors.kPrimaryColor,
                                       withShadow: false,
                                     )),
+                                SizedBox(
+                                  height: 35,
+                                ),
                               ],
                             ),
                           ),

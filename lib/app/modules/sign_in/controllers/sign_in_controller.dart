@@ -11,6 +11,8 @@ class SignInController extends GetxController {
   GlobalKey<FormState> formKeySignIn = GlobalKey<FormState>();
   var isLoading = false.obs;
   var errorMsg = Strings.emptyString.obs;
+  // final ApiHelper _apiHelper = Get.put<ApiHelper>(ApiHelperImpl());
+  final ApiHelper _apiHelper = Get.put<ApiHelper>(ApiHelperImpl());
   void changeVisibility () {
     isPinInVisible.value = !isPinInVisible.value;
   }
@@ -36,38 +38,64 @@ class SignInController extends GetxController {
     }
     return null;
   }
-  void checkConnectivity() async {
-    isLoading.value = true;
+  Future<void> checkConnectivity() async {
     Utils.dismissKeyboard();
     try {
-      var temp = formKeySignIn.currentState;
-      if (temp != null && temp.validate()) {
+      final isValid = formKeySignIn.currentState!.validate();
+      if (!isValid) return;
+      formKeySignIn.currentState!.save();
         var isConnected =
-        await Utils.checkInternetConnectivity();
+            await Utils.checkInternetConnectivity();
         if (isConnected) {
           errorMsg.value = Strings.emptyString;
-          print("data =================>>>>>>>>>>>>>>>>>");
-          print("email ====================>>>>>>>>>>>>>>>>> ${emailController.text}");
-          print("password ====================>>>>>>>>>>>>>>>>> ${passwordController.text}");
+          isLoading.value = true;
+          _apiHelper
+              .login(
+              LoginRequest(email: emailController.text, password: passwordController.text))
+              .futureValue((value) {
+            var userResponse = UserModel.fromJson(value);
+
+            if(userResponse.status == 200 && userResponse.msg == "Login Success"){
+              Storage.saveValue(Constants.accessToken, userResponse.token?.access);
+              Storage.saveValue(Constants.refreshToken, userResponse.token?.refresh);
+              Storage.saveValue(Constants.userId, userResponse.userID);
+              Storage.saveValue(Constants.dietitianId, userResponse.dietitianID);
+              Storage.saveValue(Constants.patientName, userResponse.patientName);
+              Storage.saveValue(Constants.dietitianName, userResponse.dietitianName);
+              navigateHome();
+              isLoading.value = false;
+            }else{
+              Utils.showSnackBarFun(Get.context, userResponse.msg ?? "Something Went Wrong !!!");
+              isLoading.value = false;
+            }
+          }, onError: (error) {
+            print("Login Response Error $error");
+            isLoading.value = false;
+          });
+
         } else {
           errorMsg.value = Strings.noConnection;
+          Utils.showSnackBarFun(Get.context, Strings.noConnection);
+          isLoading.value = false;
         }
-      }
     } catch (e) {
+      print("===================>>>>>>>>>>>>>>> eeeeeeeeeeeeeeee");
       print(e);
+      isLoading.value = false;
     }
-    isLoading.value = false;
   }
+
   void navigateToSignUp(){
-    Get.off(SignUpView());
+    Get.offNamed(Routes.signUp);
   }
   void navigateToForgotPassword(){
-    Get.toNamed("/resetPassword");
+    Get.toNamed(Routes.resetPassword);
   }
   navigateBack(){
-    Get.offNamedUntil("/welcomeScreen", (route) => false);
+    Get.offNamed(Routes.welcomeScreen);
   }
-
-
+  navigateHome(){
+    Get.toNamed(Routes.startMyJourney);
+  }
 
 }

@@ -11,7 +11,6 @@ class SignUpView extends GetView<SignUpController> {
         onWillPop: () => controller.navigateBackFromSignUp(),
         child: Scaffold(
           backgroundColor: AppColors.white,
-          resizeToAvoidBottomInset: false,
           body: Stack(
             alignment: Alignment.topCenter,
             children: [
@@ -122,8 +121,7 @@ class SignUpView extends GetView<SignUpController> {
                                   ),
                                   prefixIcon: SizedBox(),
                                   onEditingComplete: (){
-                                    // FocusManager.instance.primaryFocus?.unfocus();
-                                    controller.checkConnectivity();
+                                    controller.saveDataToSession();
                                   },
                                 ),
                             ),
@@ -157,8 +155,8 @@ class SignUpView extends GetView<SignUpController> {
                                     Strings.termsOfService,
                                     style: GoogleFonts.inter(
                                       fontSize: 12,
-                                      fontWeight: FontWeight.w600,
-                                      color: AppColors.kPrimaryColorText,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.kSecColorText,
                                     ),
                                   ),
                                 ),
@@ -171,19 +169,23 @@ class SignUpView extends GetView<SignUpController> {
                                   color: AppColors.kSecColorText,
                                 ),
                               ),
-                              Theme(
-                                data: ThemeData(
-                                  splashColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                ),
-                                child: InkWell(
-                                  onTap: controller.openPrivacyPolicy,
-                                  child: Text(
-                                    Strings.privacyPolicy,
-                                    style: GoogleFonts.inter(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.w600,
-                                      color: AppColors.kPrimaryColorText,
+                              Expanded(
+                                child: Theme(
+                                  data: ThemeData(
+                                    splashColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                  ),
+                                  child: InkWell(
+                                    onTap: controller.openPrivacyPolicy,
+                                    child: Text(
+                                      Strings.privacyPolicy,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 3,
+                                      style: GoogleFonts.inter(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                        color: AppColors.kSecColorText,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -197,7 +199,7 @@ class SignUpView extends GetView<SignUpController> {
                         padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                         child: InkWell(
                             onTap: () {
-                              controller.checkConnectivity();
+                              controller.saveDataToSession();
                             },
                             child: CustomButtons(
                               weight: Get.width- 40,
@@ -220,6 +222,8 @@ class SignUpView extends GetView<SignUpController> {
                         children: [
                           Text(
                             Strings.alreadyAUser,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 3,
                             style: GoogleFonts.inter(
                               fontSize: 15,
                               fontWeight: FontWeight.w400,
@@ -251,6 +255,8 @@ class SignUpView extends GetView<SignUpController> {
                         children: [
                           Text(
                             Strings.trouble,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 3,
                             style: GoogleFonts.inter(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
@@ -272,6 +278,7 @@ class SignUpView extends GetView<SignUpController> {
                                     children: [
                                       Text(
                                         Strings.getHelp,
+                                        textAlign: TextAlign.center,
                                         style: GoogleFonts.inter(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w700,
@@ -285,8 +292,10 @@ class SignUpView extends GetView<SignUpController> {
                             ),
                           ),
                         ],
-                      )
-
+                      ),
+                      SizedBox(
+                        height: 35,
+                      ),
 
                     ],
                   ),

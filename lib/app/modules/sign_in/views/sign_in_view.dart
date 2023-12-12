@@ -11,7 +11,6 @@ class SignInView extends GetView<SignInController> {
         onWillPop: () => controller.navigateBack(),
         child: Scaffold(
           backgroundColor: AppColors.white,
-          resizeToAvoidBottomInset: false,
           body: Stack(
             alignment: Alignment.topCenter,
             children: [
@@ -71,6 +70,7 @@ class SignInView extends GetView<SignInController> {
                               obscureText: false,
                               suffixIcon: SizedBox(),
                               prefixIcon: SizedBox(),
+                              onSaved: (value) => controller.emailController.text = value!,
                             ),
                             SizedBox(height: 30,),
                             Obx(() =>
@@ -92,6 +92,7 @@ class SignInView extends GetView<SignInController> {
                                   onEditingComplete: (){
                                     controller.checkConnectivity();
                                   },
+                                  onSaved: (value) => controller.passwordController.text = value!,
                                 ),
                             ),
                           ],
@@ -120,7 +121,7 @@ class SignInView extends GetView<SignInController> {
                                           Strings.forgotPassword,
                                           style: GoogleFonts.inter(
                                             fontSize: 14,
-                                            fontWeight: FontWeight.w500,
+                                            fontWeight: FontWeight.w400,
                                             color: AppColors.kPrimaryColor,
                                           ),
                                         ),
@@ -148,13 +149,60 @@ class SignInView extends GetView<SignInController> {
                               borderRadius: 10,
                               title: Strings.login,
                               fontSize: 16,
-                              fontWeight: FontWeight.w500,
+                              fontWeight: FontWeight.w600,
                               fontColor: AppColors.kPrimaryColor,
                               withShadow: false,
                             )
                         ),
                       ),
-
+                      SizedBox(height: 50,),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            Strings.areYouANewUser,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 3,
+                            style: GoogleFonts.inter(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                              color: AppColors.kPrimaryColorText,
+                            ),
+                          ),
+                          Theme(
+                            data: ThemeData(
+                              splashColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                            ),
+                            child: InkWell(
+                              onTap: controller.navigateToSignUp,
+                              child: Container(
+                                width: 70,
+                                height: 70,
+                                child: Center(
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          Strings.signUp,
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 3,
+                                          style: GoogleFonts.inter(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                            color: AppColors.kPrimaryColor,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 120,),
 
                     ],
                   ),
@@ -174,49 +222,16 @@ class SignInView extends GetView<SignInController> {
                   ),
                 ),
               ),
-              Positioned(
-                bottom: 29,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      Strings.areYouANewUser,
-                      style: GoogleFonts.inter(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.kPrimaryColorText,
-                      ),
-                    ),
-                    Theme(
-                      data: ThemeData(
-                        splashColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                      ),
-                      child: InkWell(
-                        onTap: controller.navigateToSignUp,
-                        child: Container(
-                          width: 70,
-                          height: 50,
-                          child: Center(
-                            child: Row(
-                              children: [
-                                Text(
-                                  Strings.signUp,
-                                  style: GoogleFonts.inter(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColors.kPrimaryColor,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                )
+              Obx(() =>
+                  Visibility(
+                    maintainSize: true,
+                    maintainAnimation: true,
+                    maintainState: true,
+                    visible: controller.isLoading.value,
+                    child: Utils.getProgressBar(context),
+                  )
               ),
+
             ],
           ),
         ),
