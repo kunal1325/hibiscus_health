@@ -3,7 +3,7 @@ import '../../import.dart';
 class ApiHelperImpl extends GetConnect implements ApiHelper {
   @override
   void onInit() {
-    httpClient.baseUrl = Constants.baseURLDev;
+    httpClient.baseUrl = Constants.baseURLStaging;
     httpClient.timeout = Constants.timeout;
 
     addRequestModifier();
