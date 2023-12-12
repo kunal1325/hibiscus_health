@@ -21,10 +21,7 @@ class MoreView extends GetView<MoreController> {
               centerTitle: true,
               actions: [
                 IconButton(
-                  onPressed: () {
-                    Storage.clearStorage();
-                    Get.offAndToNamed("/welcomeScreen");
-                  },
+                  onPressed: () => controller.navigateToWelcomeScreen(),
                   icon: const Icon(Icons.logout,
                       size: 25, color: AppColors.white),
                 )

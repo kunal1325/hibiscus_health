@@ -99,12 +99,18 @@ class LibraryView extends GetView<LibraryController> {
                                             shrinkWrap: true,
                                             itemBuilder: (context, ind) {
                                               return Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
                                                   Container(
                                                     height: 38,
-                                                    width: 70,
-                                                    margin: EdgeInsets.only(
-                                                        left: 10, right: 10),
+                                                    width: 64,
+                                                    margin: ind != 0
+                                                        ? EdgeInsets.only(
+                                                            left: 10, right: 10)
+                                                        : EdgeInsets.only(
+                                                            right: 10),
                                                     decoration: BoxDecoration(
                                                       color:
                                                           Colors.grey.shade300,

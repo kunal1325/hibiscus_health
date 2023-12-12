@@ -6,7 +6,7 @@ class LibraryController extends GetxController {
   List<CategoryModel> categoryList =
       List<CategoryModel>.empty(growable: true).obs;
 
-  static const pageSize = 80;
+  static const pageSize = 120;
 
   var isCategoryLoading = false.obs;
   var isArticlesLoading = false.obs;

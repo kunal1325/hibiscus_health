@@ -280,13 +280,13 @@ class SignUpController extends GetxController {
 
   ///Navigation from Sign Up
   void navigateToSignIn(){
-     Get.off(() => SignInView());
+     Get.offNamed(Routes.signIn);
   }
   void navigateToGetHelp(){
-    Get.toNamed("/helpUs");
+    Get.toNamed(Routes.helpUs);
   }
   void navigateToPrivacyFirst(){
-    Get.toNamed("/privacyFirst");
+    Get.toNamed(Routes.privacyFirst);
   }
   void openTermsOfService(){
 
@@ -295,10 +295,10 @@ class SignUpController extends GetxController {
 
   }
   navigateBackFromSignUp(){
-    Get.offNamedUntil("/welcomeScreen", (route) => false);
+    Get.offNamedUntil(Routes.welcomeScreen, (route) => false);
   }
   navigateToStartMyJourney(){
-    Get.toNamed("/startMyJourney");
+    Get.toNamed(Routes.startMyJourney);
   }
 
 
