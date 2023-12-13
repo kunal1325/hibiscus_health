@@ -32,6 +32,7 @@ export 'app/data/models/privacy_first_model.dart';
 export 'app/data/models/start_my_journey_model.dart';
 export 'app/data/models/phone_parse_model.dart';
 export 'app/data/models/token_response.dart';
+export 'app/data/models/offline_instruction_model.dart';
 
 ///Api Response Model
 export 'app/data/models/api_response_model/user_model.dart';
@@ -90,6 +91,7 @@ export 'app/modules/widgets/article_points.dart';
 export 'app/modules/widgets/article_summary.dart';
 export 'app/modules/widgets/reviewed_by_doctor.dart';
 export 'app/modules/widgets/coming_soon.dart';
+export 'app/modules/widgets/offline_widget.dart';
 
 /// Home Screen
 export 'app/modules/home/bindings/home_binding.dart';

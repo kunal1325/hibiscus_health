@@ -205,11 +205,24 @@ abstract class Strings {
   static const String emptyFullNameError = 'Please enter Full Name';
 
   ///Api calling
-
   static const unauthorized = 'Unauthorized. Please login again!';
-
   static const String error = 'Error';
   static const success = 'Success';
   static const String somethingWentWrong = 'Something went wrong.';
   static const String ok = 'Ok';
+
+  ///Offline
+  static const String offlineTitle = 'Looks like you are offline. ';
+  static const String offlineDescription = 'Check your internet connection and try again';
+  static const String offlineInstructionTitleOne = 'Check Connectivity: ';
+  static const String offlineInstructionDescriptionOne = 'Ensure you have a stable internet connection.';
+  static const String offlineInstructionTitleTwo = 'Switch Networks: ';
+  static const String offlineInstructionDescriptionTwo = 'If Wi-Fi is on , try switching to cellular data.';
+  static const String offlineInstructionTitleThree = "Disable VPN: ";
+  static const String offlineInstructionDescriptionThree = "If you're using a VPN, consider disabling it.";
+  static const String offlineInstructionTitleFour = 'Restart Device: ';
+  static const String offlineInstructionDescriptionFour = 'Restart your device and relaunch the app';
+
+
+
 }
