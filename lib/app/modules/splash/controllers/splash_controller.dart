@@ -25,7 +25,7 @@ class SplashController extends GetxController  with GetSingleTickerProviderState
   }
 
   Future<Timer> loadData() async {
-    return Timer(const Duration(seconds: 400), onDoneLoading);
+    return Timer(const Duration(seconds: 4), onDoneLoading);
   }
 
   onDoneLoading() async {

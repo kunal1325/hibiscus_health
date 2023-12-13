@@ -22,16 +22,22 @@ class OfflineScreen extends StatelessWidget {
     bool status = await DataConnectivityService()
         .checkInternetConnectivity();
     if (status) {
+      isConnected.value = true;
       connectivityStreamController
           .add(DataConnectionStatus.connected);
-      isConnected.value = true;
+    }else{
+      loadData();
     }
-    loadData();
+
   }
 
-  setLoaderOff(){
-    isConnected.value ? null : Utils.showSnackBarFun(Get.context, "${Strings.stillNoConnection}");
+  setLoaderOff() async {
     isLoading.value = false;
+    bool status = await DataConnectivityService()
+        .checkInternetConnectivity();
+    if (!status) {
+      isConnected.value ? null : Utils.showSnackBarFun(Get.context, "${Strings.stillNoConnection}");
+    }
   }
 
   Future<Timer> loadData() async {
