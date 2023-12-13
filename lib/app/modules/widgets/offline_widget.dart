@@ -5,6 +5,7 @@ class OfflineScreen extends StatelessWidget {
   OfflineScreen({super.key});
 
   final isLoading = false.obs;
+  final isConnected = false.obs;
 
   final List<OfflineInstructionModel> offlineInstructionModel = [
     OfflineInstructionModel(Strings.offlineInstructionTitleOne, Strings.offlineInstructionDescriptionOne),
@@ -23,12 +24,13 @@ class OfflineScreen extends StatelessWidget {
     if (status) {
       connectivityStreamController
           .add(DataConnectionStatus.connected);
+      isConnected.value = true;
     }
     loadData();
   }
 
-  void setLoaderOff(){
-    Utils.showSnackBarFun(Get.context, "${Strings.stillNoConnection}");
+  setLoaderOff(){
+    isConnected.value ? null : Utils.showSnackBarFun(Get.context, "${Strings.stillNoConnection}");
     isLoading.value = false;
   }
 
