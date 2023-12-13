@@ -4,6 +4,7 @@ abstract class Strings {
   static const connectionTimeout =
       'Connection timeout. Please try again after some time.';
   static const noConnection = 'No connection. Please turn on your internet!';
+  static const stillNoConnection = 'Still No connection. Please check all the points mention bellow!! ';
   static const unAuthorize = 'Unauthorized. Please login again!';
   static const String appName = 'Hibiscus Health';
   static const String emptyString = '';
@@ -222,7 +223,5 @@ abstract class Strings {
   static const String offlineInstructionDescriptionThree = "If you're using a VPN, consider disabling it.";
   static const String offlineInstructionTitleFour = 'Restart Device: ';
   static const String offlineInstructionDescriptionFour = 'Restart your device and relaunch the app';
-
-
 
 }
