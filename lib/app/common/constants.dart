@@ -2,12 +2,11 @@ abstract class Constants {
   static const String baseURLDev =
       'https://coremobileapidev.hibiscushealth.com/';
   static const String baseURLStaging =
-      'https://coremobileapidev.hibiscushealth.com/';
+      'https://coremobileapistaging.hibiscushealth.com/';
   static const String baseURLProd =
       'https://hibiscus-health-core-mobile-api-prod/';
   static const String baseURLTest = 'http://3.95.83.73:8000/';
 
-  
   static const String articleUrl = "api/articles";
   static const String categoryUrl = "api/category-lists";
 
