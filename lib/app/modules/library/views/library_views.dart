@@ -14,7 +14,7 @@ class LibraryView extends GetView<LibraryController> {
               backgroundColor: AppColors.kPrimaryColor,
               elevation: 0,
               toolbarHeight: 80,
-              title: const Text(Strings.home),
+              title: const Text(Strings.home,),
               centerTitle: true,
               actions: [
                 IconButton(
