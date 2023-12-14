@@ -116,7 +116,7 @@ class ResetPasswordController extends GetxController {
         ))
             .futureValue((value) {
           var userResponse = UserModel.fromJson(value);
-          if (userResponse.status == 200) {
+          if (userResponse.status == 200 && userResponse.msg == "OTP sent successfully.") {
             navigateToUpdatePassword();
             isLoading.value = false;
           } else {
