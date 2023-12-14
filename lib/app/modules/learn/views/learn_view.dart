@@ -18,7 +18,14 @@ class LearnView extends GetView<LearnController> {
               backgroundColor: AppColors.kPrimaryColor,
               elevation: 0,
               toolbarHeight: 80,
-              title: const Text(Strings.learn),
+              title: Text(
+                  Strings.learn,
+                style: GoogleFonts.inter(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.white,
+                ),
+              ),
               centerTitle: true,
             ),
             body: ComingSoon(

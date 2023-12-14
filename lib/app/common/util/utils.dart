@@ -198,7 +198,7 @@ abstract class Utils {
               indicatorColor: AppColors.transparent,
               shadowColor: Colors.transparent,
               animationDuration: const Duration(seconds: 0),
-              height: 80,
+              height: 90,
               selectedIndex: controller.selectedIndex.value,
               onDestinationSelected: (index) {
                 controller.onSelectedIndexChanged(index);

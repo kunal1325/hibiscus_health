@@ -17,7 +17,14 @@ class MoreView extends GetView<MoreController> {
               backgroundColor: AppColors.kPrimaryColor,
               elevation: 0,
               toolbarHeight: 80,
-              title: const Text(Strings.more),
+              title: Text(
+                  Strings.more,
+                style: GoogleFonts.inter(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.white,
+                ),
+              ),
               centerTitle: true,
               actions: [
                 IconButton(
