@@ -7,8 +7,12 @@ class StartMyJourneyView extends GetView<StartMyJourneyController> {
   Widget build(BuildContext context) {
     return GetBuilder<StartMyJourneyController>(
       init: StartMyJourneyController(),
-      builder: (controller) => WillPopScope(
-        onWillPop: () => showExitPopup(Get.context),
+      builder: (controller) => PopScope(
+        canPop:false,
+        onPopInvoked: (didPop) {
+          showExitPopup(Get.context);
+          return;
+        },
         child: Scaffold(
           body: Container(
             width: MediaQuery.of(context).size.width,

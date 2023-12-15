@@ -5,8 +5,12 @@ class OnBoardingView extends GetView<OnBoardingController> {
   Widget build(BuildContext context) {
     return GetBuilder<OnBoardingController>(
       init: OnBoardingController(),
-      builder: (controller) => WillPopScope(
-        onWillPop: () => controller.backwardAction(),
+      builder: (controller) => PopScope(
+        canPop:false,
+        onPopInvoked: (didPop) {
+            controller.backwardAction();
+          return;
+        },
         child: Scaffold(
           body: Container(
             width: Get.width,
