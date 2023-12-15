@@ -20,11 +20,7 @@ class LearnView extends GetView<LearnController> {
               toolbarHeight: 80,
               title: Text(
                   Strings.learn,
-                style: GoogleFonts.inter(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.white,
-                ),
+                style: Utils.kBigText.copyWith(fontWeight: FontWeight.w500),
               ),
               centerTitle: true,
             ),

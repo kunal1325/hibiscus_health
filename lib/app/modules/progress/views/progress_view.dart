@@ -19,12 +19,8 @@ class ProgressView extends GetView<ProgressController> {
               elevation: 0,
               toolbarHeight: 80,
               title: Text(
-                  Strings.progress,
-                style: GoogleFonts.inter(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.white,
-                ),
+                Strings.progress,
+                style: Utils.kBigText.copyWith(fontWeight: FontWeight.w500),
               ),
               centerTitle: true,
             ),

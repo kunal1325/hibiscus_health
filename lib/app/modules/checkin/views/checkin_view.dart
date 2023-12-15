@@ -19,12 +19,8 @@ class CheckinView extends GetView<CheckinController> {
                 elevation: 0,
                 toolbarHeight: 80,
                 title: Text(
-                    Strings.checkin,
-                  style: GoogleFonts.inter(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    color: AppColors.white,
-                  ),
+                  Strings.checkin,
+                  style: Utils.kBigText.copyWith(fontWeight: FontWeight.w500),
                 ),
                 centerTitle: true,
               ),
