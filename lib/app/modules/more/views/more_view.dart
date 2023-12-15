@@ -17,13 +17,22 @@ class MoreView extends GetView<MoreController> {
               backgroundColor: AppColors.kPrimaryColor,
               elevation: 0,
               toolbarHeight: 80,
-              title: const Text(Strings.more),
+              title: Text(
+                Strings.more,
+                style: Utils.kBigText.copyWith(fontWeight: FontWeight.w500),
+              ),
               centerTitle: true,
               actions: [
-                IconButton(
-                  onPressed: () => controller.navigateToWelcomeScreen(),
-                  icon: const Icon(Icons.logout,
-                      size: 25, color: AppColors.white),
+                Theme(
+                  data: ThemeData(
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                  ),
+                  child: IconButton(
+                    onPressed: () => controller.navigateToWelcomeScreen(),
+                    icon: const Icon(Icons.logout,
+                        size: 25, color: AppColors.white),
+                  ),
                 )
               ],
             ),

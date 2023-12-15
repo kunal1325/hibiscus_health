@@ -13,7 +13,7 @@ class StartMyJourneyController extends GetxController {
   var dietitianName = "".obs;
 
   void navigateToFaceScan() {
-    Get.offAndToNamed(Routes.landingPage);
+    Get.offAll(LandingScreen());
   }
 
   void getData() {

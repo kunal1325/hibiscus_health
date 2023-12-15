@@ -14,16 +14,25 @@ class LibraryView extends GetView<LibraryController> {
               backgroundColor: AppColors.kPrimaryColor,
               elevation: 0,
               toolbarHeight: 80,
-              title: const Text(Strings.home),
+              title: Text(
+                Strings.home,
+                style: Utils.kBigText.copyWith(fontWeight: FontWeight.w500),
+              ),
               centerTitle: true,
               actions: [
-                IconButton(
-                  onPressed: () {
-                    controller.isSearching.value =
-                        !controller.isSearching.value;
-                  },
-                  icon: const Icon(Icons.search,
-                      size: 30, color: AppColors.white),
+                Theme(
+                  data: ThemeData(
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                  ),
+                  child: IconButton(
+                    onPressed: () {
+                      controller.isSearching.value =
+                          !controller.isSearching.value;
+                    },
+                    icon: const Icon(Icons.search,
+                        size: 30, color: AppColors.white),
+                  ),
                 )
               ],
             ),
