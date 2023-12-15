@@ -18,7 +18,10 @@ class LearnView extends GetView<LearnController> {
               backgroundColor: AppColors.kPrimaryColor,
               elevation: 0,
               toolbarHeight: 80,
-              title: const Text(Strings.learn),
+              title: Text(
+                  Strings.learn,
+                style: Utils.kBigText.copyWith(fontWeight: FontWeight.w500),
+              ),
               centerTitle: true,
             ),
             body: ComingSoon(

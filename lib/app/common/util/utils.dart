@@ -133,6 +133,13 @@ abstract class Utils {
         ));
   }
 
+  static TextStyle kBigText = GoogleFonts.inter(
+    textStyle: const TextStyle(
+      fontSize: 19,
+      color: AppColors.white,
+    ),
+  );
+
   static TextStyle kHeadingTextStyle = GoogleFonts.inter(
     textStyle: const TextStyle(
       fontSize: 17,
@@ -193,153 +200,159 @@ abstract class Utils {
               topLeft: Radius.circular(15.0),
               topRight: Radius.circular(15.0),
             ),
-            child: NavigationBar(
-              backgroundColor: AppColors.kPrimaryColor,
-              indicatorColor: AppColors.transparent,
-              shadowColor: Colors.transparent,
-              animationDuration: const Duration(seconds: 0),
-              height: 80,
-              selectedIndex: controller.selectedIndex.value,
-              onDestinationSelected: (index) {
-                controller.onSelectedIndexChanged(index);
-              },
-              destinations: [
-                NavigationDestination(
-                  selectedIcon: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      assetImage(AppImages.home,
-                          height: 20, color: AppColors.kSecColor),
-                      const SizedBox(height: 5),
-                      const Text(
-                        "Home",
-                        style: TextStyle(color: AppColors.kSecColor),
-                      )
-                    ],
+            child: Theme(
+              data: ThemeData(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+              ),
+              child: NavigationBar(
+                backgroundColor: AppColors.kPrimaryColor,
+                indicatorColor: AppColors.transparent,
+                shadowColor: Colors.transparent,
+                animationDuration: const Duration(seconds: 0),
+                height: 90,
+                selectedIndex: controller.selectedIndex.value,
+                onDestinationSelected: (index) {
+                  controller.onSelectedIndexChanged(index);
+                },
+                destinations: [
+                  NavigationDestination(
+                    selectedIcon: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        assetImage(AppImages.home,
+                            height: 20, color: AppColors.kSecColor),
+                        const SizedBox(height: 5),
+                        const Text(
+                          "Home",
+                          style: TextStyle(color: AppColors.kSecColor),
+                        )
+                      ],
+                    ),
+                    icon: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        assetImage(AppImages.home,
+                            height: 20, color: AppColors.grey),
+                        const SizedBox(height: 5),
+                        const Text(
+                          "Home",
+                          style: TextStyle(color: Colors.grey),
+                        )
+                      ],
+                    ),
+                    label: '',
                   ),
-                  icon: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      assetImage(AppImages.home,
-                          height: 20, color: AppColors.grey),
-                      const SizedBox(height: 5),
-                      const Text(
-                        "Home",
-                        style: TextStyle(color: Colors.grey),
-                      )
-                    ],
+                  NavigationDestination(
+                    selectedIcon: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        assetImage(AppImages.progress,
+                            height: 20, color: AppColors.kSecColor),
+                        const SizedBox(height: 5),
+                        const Text(
+                          "Progress",
+                          style: TextStyle(color: AppColors.kSecColor),
+                        )
+                      ],
+                    ),
+                    icon: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        assetImage(AppImages.progress,
+                            height: 20, color: AppColors.grey),
+                        const SizedBox(height: 5),
+                        const Text(
+                          "Progress",
+                          style: TextStyle(color: Colors.grey),
+                        )
+                      ],
+                    ),
+                    label: '',
                   ),
-                  label: '',
-                ),
-                NavigationDestination(
-                  selectedIcon: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      assetImage(AppImages.progress,
-                          height: 20, color: AppColors.kSecColor),
-                      const SizedBox(height: 5),
-                      const Text(
-                        "Progress",
-                        style: TextStyle(color: AppColors.kSecColor),
-                      )
-                    ],
+                  NavigationDestination(
+                    selectedIcon: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        assetImage(AppImages.checkIn,
+                            height: 20, color: AppColors.kSecColor),
+                        const SizedBox(height: 5),
+                        const Text(
+                          "Check-in",
+                          style: TextStyle(color: AppColors.kSecColor),
+                        )
+                      ],
+                    ),
+                    icon: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        assetImage(AppImages.checkIn,
+                            height: 20, color: AppColors.grey),
+                        const SizedBox(height: 5),
+                        const Text(
+                          "Check-in",
+                          style: TextStyle(color: Colors.grey),
+                        )
+                      ],
+                    ),
+                    label: '',
                   ),
-                  icon: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      assetImage(AppImages.progress,
-                          height: 20, color: AppColors.grey),
-                      const SizedBox(height: 5),
-                      const Text(
-                        "Progress",
-                        style: TextStyle(color: Colors.grey),
-                      )
-                    ],
+                  NavigationDestination(
+                    selectedIcon: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        assetImage(AppImages.learn,
+                            height: 20, color: AppColors.kSecColor),
+                        const SizedBox(height: 5),
+                        const Text(
+                          "Learn",
+                          style: TextStyle(color: AppColors.kSecColor),
+                        )
+                      ],
+                    ),
+                    icon: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        assetImage(AppImages.learn,
+                            height: 20, color: AppColors.grey),
+                        const SizedBox(height: 5),
+                        const Text(
+                          "Learn",
+                          style: TextStyle(color: Colors.grey),
+                        )
+                      ],
+                    ),
+                    label: '',
                   ),
-                  label: '',
-                ),
-                NavigationDestination(
-                  selectedIcon: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      assetImage(AppImages.checkIn,
-                          height: 20, color: AppColors.kSecColor),
-                      const SizedBox(height: 5),
-                      const Text(
-                        "Check-in",
-                        style: TextStyle(color: AppColors.kSecColor),
-                      )
-                    ],
+                  NavigationDestination(
+                    selectedIcon: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        assetImage(AppImages.more,
+                            height: 20, color: AppColors.kSecColor),
+                        const SizedBox(height: 5),
+                        const Text(
+                          "More",
+                          style: TextStyle(color: AppColors.kSecColor),
+                        )
+                      ],
+                    ),
+                    icon: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        assetImage(AppImages.more,
+                            height: 20, color: AppColors.grey),
+                        const SizedBox(height: 5),
+                        const Text(
+                          "More",
+                          style: TextStyle(color: Colors.grey),
+                        )
+                      ],
+                    ),
+                    label: '',
                   ),
-                  icon: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      assetImage(AppImages.checkIn,
-                          height: 20, color: AppColors.grey),
-                      const SizedBox(height: 5),
-                      const Text(
-                        "Check-in",
-                        style: TextStyle(color: Colors.grey),
-                      )
-                    ],
-                  ),
-                  label: '',
-                ),
-                NavigationDestination(
-                  selectedIcon: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      assetImage(AppImages.learn,
-                          height: 20, color: AppColors.kSecColor),
-                      const SizedBox(height: 5),
-                      const Text(
-                        "Learn",
-                        style: TextStyle(color: AppColors.kSecColor),
-                      )
-                    ],
-                  ),
-                  icon: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      assetImage(AppImages.learn,
-                          height: 20, color: AppColors.grey),
-                      const SizedBox(height: 5),
-                      const Text(
-                        "Learn",
-                        style: TextStyle(color: Colors.grey),
-                      )
-                    ],
-                  ),
-                  label: '',
-                ),
-                NavigationDestination(
-                  selectedIcon: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      assetImage(AppImages.more,
-                          height: 20, color: AppColors.kSecColor),
-                      const SizedBox(height: 5),
-                      const Text(
-                        "More",
-                        style: TextStyle(color: AppColors.kSecColor),
-                      )
-                    ],
-                  ),
-                  icon: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      assetImage(AppImages.more,
-                          height: 20, color: AppColors.grey),
-                      const SizedBox(height: 5),
-                      const Text(
-                        "More",
-                        style: TextStyle(color: Colors.grey),
-                      )
-                    ],
-                  ),
-                  label: '',
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

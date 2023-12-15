@@ -18,7 +18,10 @@ class ProgressView extends GetView<ProgressController> {
               backgroundColor: AppColors.kPrimaryColor,
               elevation: 0,
               toolbarHeight: 80,
-              title: const Text(Strings.progress),
+              title: Text(
+                Strings.progress,
+                style: Utils.kBigText.copyWith(fontWeight: FontWeight.w500),
+              ),
               centerTitle: true,
             ),
             body: ComingSoon(

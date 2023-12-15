@@ -18,7 +18,10 @@ class CheckinView extends GetView<CheckinController> {
                 backgroundColor: AppColors.kPrimaryColor,
                 elevation: 0,
                 toolbarHeight: 80,
-                title: const Text(Strings.checkin),
+                title: Text(
+                  Strings.checkin,
+                  style: Utils.kBigText.copyWith(fontWeight: FontWeight.w500),
+                ),
                 centerTitle: true,
               ),
               body: ComingSoon(
