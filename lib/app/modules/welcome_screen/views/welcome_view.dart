@@ -7,8 +7,12 @@ class WelcomeView extends GetView<WelcomeController> {
   Widget build(BuildContext context) {
     return GetBuilder<WelcomeController>(
       init: WelcomeController(),
-      builder: (controller) => WillPopScope(
-        onWillPop: () => showExitPopup(Get.context),
+      builder: (controller) => PopScope(
+        canPop:false,
+        onPopInvoked: (didPop) {
+            showExitPopup(Get.context);
+          return;
+        },
         child: Scaffold(
           body: Container(
             width: MediaQuery.of(context).size.width,

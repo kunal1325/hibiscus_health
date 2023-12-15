@@ -8,9 +8,15 @@ class LandingScreen extends GetView<LandingScreenController> {
         builder: (controller) {
           return SafeArea(
               child: Scaffold(
-                  body: WillPopScope(
-                    onWillPop: () {
-                      return Future.value(true);
+                  body: PopScope(
+                    canPop:false,
+                    onPopInvoked: (didPop) {
+                      if (controller.currentIndex.value == 0) {
+                        showExitPopup(Get.context);
+                      } else {
+                        controller.pageController.jumpToPage(0);
+                        Future.value((false));
+                      }
                     },
                     child: SizedBox.expand(
                       child: PageView(

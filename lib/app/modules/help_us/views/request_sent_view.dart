@@ -7,8 +7,12 @@ class RequestSubmittedView extends GetView<HelpUsController> {
   Widget build(BuildContext context) {
     return GetBuilder<HelpUsController>(
       init: HelpUsController(),
-      builder: (controller) => WillPopScope(
-        onWillPop: () => showExitPopup(Get.context),
+      builder: (controller) => PopScope(
+        canPop:false,
+        onPopInvoked: (didPop) {
+            showExitPopup(Get.context);
+          return;
+        },
         child: Scaffold(
           backgroundColor: AppColors.white,
           resizeToAvoidBottomInset: false,

@@ -7,8 +7,12 @@ class SignUpView extends GetView<SignUpController> {
   Widget build(BuildContext context) {
     return GetBuilder<SignUpController>(
       init: SignUpController(),
-      builder: (controller) => WillPopScope(
-        onWillPop: () => controller.navigateBackFromSignUp(),
+      builder: (controller) => PopScope(
+        canPop:false,
+        onPopInvoked: (didPop) {
+            controller.navigateBackFromSignUp();
+          return;
+        },
         child: Scaffold(
           backgroundColor: AppColors.white,
           body: Stack(

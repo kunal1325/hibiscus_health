@@ -8,8 +8,12 @@ class CompleteProfileView extends GetView<SignUpController> {
 
     return GetBuilder<SignUpController>(
       init: SignUpController(),
-      builder: (controller) => WillPopScope(
-        onWillPop: () => controller.navigateBackFromSignUp(),
+      builder: (controller) => PopScope(
+        canPop:false,
+        onPopInvoked: (didPop) {
+            controller.navigateBackFromSignUp();
+          return;
+        },
         child: Scaffold(
           backgroundColor: AppColors.white,
           body: Stack(
