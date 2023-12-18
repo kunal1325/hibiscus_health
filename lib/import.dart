@@ -32,6 +32,7 @@ export 'app/data/models/privacy_first_model.dart';
 export 'app/data/models/start_my_journey_model.dart';
 export 'app/data/models/phone_parse_model.dart';
 export 'app/data/models/token_response.dart';
+export 'app/data/models/face_scan_text_model.dart';
 
 ///Api Response Model
 export 'app/data/models/api_response_model/user_model.dart';
@@ -185,7 +186,7 @@ export 'app/modules/article_template2/controller/article_template2_controller.da
 export 'app/modules/article_template2/bindings/article_template2_bindings.dart';
 export 'app/modules/article_template2/views/article_template2.view.dart';
 
-// ///Coming Soon
-// export 'app/modules/coming_soon/controllers/coming_soon_controller.dart';
-// export 'app/modules/coming_soon/bindings/coming_soon_binding.dart';
-// export 'app/modules/coming_soon/views/coming_soon_views.dart';
+/// Face Scan
+export 'app/modules/face_scan/bindings/face_scan_binding.dart';
+export 'app/modules/face_scan/controllers/face_scan_controller.dart';
+export 'app/modules/face_scan/views/face_scan_view.dart';

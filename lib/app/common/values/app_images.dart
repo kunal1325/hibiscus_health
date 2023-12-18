@@ -29,7 +29,6 @@ abstract class AppImages {
   static const String checked = 'assets/images/svgs/checked.svg';
 
   ///Help Us
-
   static const String help_us = 'assets/images/pngs/help_us.png';
 
   ///Bottom Navigation Bar
@@ -48,4 +47,8 @@ abstract class AppImages {
 
   static const String defaultArticleImage =
       "assets/images/pngs/article_default.png";
+
+  ///Face Scan
+  static const String faceScan = 'assets/images/pngs/face_scan.png';
+  static const String scanFailed = 'assets/images/svgs/scan_failed.svg';
 }

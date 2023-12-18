@@ -202,7 +202,6 @@ abstract class Strings {
   static const String requestSentDescription =
       'You have completed today’s check-in!';
   static const String done = 'Done';
-
   static const String emptyFullNameError = 'Please enter Full Name';
 
   ///Api calling
@@ -213,4 +212,18 @@ abstract class Strings {
   static const success = 'Success';
   static const String somethingWentWrong = 'Something went wrong.';
   static const String ok = 'Ok';
+
+  ///Face Scan
+
+  static const String faceScan = 'Face Scan';
+  static const String faceScanDescription =
+      'You are almost there! Center your face in the frame and follow the on screen instructions.';
+  static const String faceScanListOne =
+      'Take off your glasses, hat or any items that is covering your face.';
+  static const String faceScanListTwo = 'Make sure your face is well lit';
+  static const String startCamera = 'Start Camera';
+  static const String scanFailed = 'Scan failed';
+  static const String scanFailedDescription =
+      'Center your face and use a good source of light';
+  static const String tryAgain = 'Try again';
 }

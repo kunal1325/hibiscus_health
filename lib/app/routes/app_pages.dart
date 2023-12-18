@@ -3,7 +3,7 @@ import '../../import.dart';
 part 'app_routes.dart';
 
 abstract class AppPages {
-  static const initial = Routes.splash;
+  static const initial = Routes.faceScan;
   //Routes.splash;
 
   static final routes = [
@@ -72,6 +72,11 @@ abstract class AppPages {
     GetPage(
       name: _Paths.requestSubmitted,
       page: () => RequestSubmittedView(),
+    ),
+    GetPage(
+      name: _Paths.faceScan,
+      page: () => FaceScanView(),
+      binding: FaceScanBinding(),
     ),
     GetPage(
       name: _Paths.library,

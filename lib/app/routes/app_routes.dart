@@ -25,6 +25,7 @@ abstract class Routes {
   static const articleTemplate2Screen = _Paths.articleTemplate2;
   // static const comingSoon = _Paths.comingSoon;
   static const landingPage = _Paths.landingPage;
+  static const faceScan = _Paths.faceScan;
 }
 
 abstract class _Paths {
@@ -51,4 +52,5 @@ abstract class _Paths {
   static const articleTemplate2 = '/articeltemplate2';
   // static const comingSoon = '/comingsoon';
   static const landingPage = '/landingpage';
+  static const faceScan = '/faceScan';
 }
