@@ -14,7 +14,10 @@ class ArticleTemplateView2 extends GetView<ArticleTemplateView2> {
               toolbarHeight: 80,
               backgroundColor: AppColors.kPrimaryColor,
               elevation: 0,
-              title: const Text('Article'),
+              title: Text(
+                'Article',
+                style: Utils.kBigText.copyWith(fontWeight: FontWeight.w500),
+              ),
               centerTitle: true,
               leading: iosBackButton,
             ),
