@@ -32,6 +32,7 @@ export 'app/data/models/privacy_first_model.dart';
 export 'app/data/models/start_my_journey_model.dart';
 export 'app/data/models/phone_parse_model.dart';
 export 'app/data/models/token_response.dart';
+export 'app/data/models/offline_instruction_model.dart';
 
 ///Api Response Model
 export 'app/data/models/api_response_model/user_model.dart';
@@ -43,6 +44,9 @@ export 'app/data/models/request_models/registration_request.dart';
 export 'app/data/models/request_models/login_request.dart';
 export 'app/data/models/request_models/help_us_request.dart';
 export 'app/data/models/request_models/update_password_request.dart';
+
+///Services
+export 'app/data/services/data_connectivity_service.dart';
 
 ///-------------------- Libraries --------------------
 export 'package:flutter/foundation.dart';
@@ -74,6 +78,9 @@ export 'dart:convert';
 export 'package:shimmer/shimmer.dart';
 export 'package:cached_network_image/cached_network_image.dart';
 export 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+export 'package:data_connection_checker_tv/data_connection_checker.dart';
+export 'package:provider/provider.dart';
+
 
 ///-------------------- Routes --------------------
 export 'app/routes/app_pages.dart';
@@ -90,6 +97,8 @@ export 'app/modules/widgets/article_points.dart';
 export 'app/modules/widgets/article_summary.dart';
 export 'app/modules/widgets/reviewed_by_doctor.dart';
 export 'app/modules/widgets/coming_soon.dart';
+export 'app/modules/widgets/offline_widget.dart';
+export 'app/modules/widgets/connectivity_check_widget.dart';
 
 /// Home Screen
 export 'app/modules/home/bindings/home_binding.dart';
