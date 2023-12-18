@@ -15,7 +15,7 @@ class ArticleTemplateView2 extends GetView<ArticleTemplateView2> {
               backgroundColor: AppColors.kPrimaryColor,
               elevation: 0,
               title: Text(
-                'Article',
+                Strings.article,
                 style: Utils.kBigText.copyWith(fontWeight: FontWeight.w500),
               ),
               centerTitle: true,
