@@ -76,6 +76,7 @@ abstract class Strings {
   static const String passwordNotMatchedError = 'Password not matched.';
 
   ///Article Screen
+  static const article = "Article";
   static const reviewedBy = "REVIEWED BY";
   static const String articleBy = "By Hibiscus Health";
   static const String learn = "Learn";
