@@ -8,8 +8,12 @@ class RequestSubmittedView extends GetView<HelpUsController> {
     return GetBuilder<HelpUsController>(
       init: HelpUsController(),
       builder: (controller) =>  ConnectivityCheckWidget(
-          body: WillPopScope(
-            onWillPop: () => showExitPopup(Get.context),
+          body: PopScope(
+            canPop:false,
+            onPopInvoked: (didPop) {
+              showExitPopup(Get.context);
+              return;
+            },
             child: Scaffold(
               backgroundColor: AppColors.white,
               resizeToAvoidBottomInset: false,

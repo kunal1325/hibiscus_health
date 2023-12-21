@@ -31,6 +31,7 @@ class DataConnectivityService {
       }
     } on SocketException catch (e) {
       // FirebaseCrashlytics.instance.recordError(e, StackTrace.current);
+        print(e);
       return false;
     }
   }

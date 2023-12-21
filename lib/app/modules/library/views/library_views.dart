@@ -74,9 +74,7 @@ class LibraryView extends GetView<LibraryController> {
                                           icon: const Icon(Icons.close,
                                               color: AppColors.kPrimaryColor)),
                                     ),
-                                    validator: (val) {
-                                      controller.isSearchValueValid(val);
-                                    },
+                                    validator: controller.isSearchValueValid,
                                     onFieldSubmitted: (val) {
                                       controller.onSearch(val);
                                     },
@@ -138,8 +136,7 @@ class LibraryView extends GetView<LibraryController> {
                                         height: 38,
                                         child: ListView.builder(
                                           itemCount:
-                                              controller.categoryList.length ??
-                                                  0,
+                                              controller.categoryList.length,
                                           scrollDirection: Axis.horizontal,
                                           physics:
                                               const ClampingScrollPhysics(),
@@ -250,7 +247,7 @@ class LibraryView extends GetView<LibraryController> {
                                                 mainAxisSpacing: 20,
                                                 childAspectRatio: 1.6),
                                         itemCount:
-                                            controller.articleList.length ?? 0,
+                                            controller.articleList.length,
                                         itemBuilder:
                                             (BuildContext context, int index) {
                                           return InkWell(

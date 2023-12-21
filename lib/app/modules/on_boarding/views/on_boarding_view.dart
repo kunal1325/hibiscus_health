@@ -6,8 +6,12 @@ class OnBoardingView extends GetView<OnBoardingController> {
     return GetBuilder<OnBoardingController>(
       init: OnBoardingController(),
       builder: (controller) =>  ConnectivityCheckWidget(
-          body: WillPopScope(
-            onWillPop: () => controller.backwardAction(),
+          body: PopScope(
+            canPop:false,
+            onPopInvoked: (didPop) {
+              controller.backwardAction();
+              return;
+            },
             child: Scaffold(
               body: Container(
                 width: Get.width,

@@ -8,9 +8,13 @@ class ProcessToLoginView extends GetView<ResetPasswordController> {
     return GetBuilder<ResetPasswordController>(
       init: ResetPasswordController(),
       builder: (controller) =>  ConnectivityCheckWidget(
-          body: WillPopScope(
-            onWillPop: () => showExitPopup(Get.context),
-            child: Scaffold(
+          body: PopScope(
+                canPop: false,
+                onPopInvoked: (didPop) {
+                  showExitPopup(Get.context);
+                  return;
+                },
+                child: Scaffold(
               body: Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,

@@ -9,7 +9,7 @@ class ValidatePhone {
 
 class ParseResult {
   PhoneNumber? phoneNumber;
-  String errorCode;
+  String? errorCode;
 
   ParseResult._({
     this.phoneNumber,

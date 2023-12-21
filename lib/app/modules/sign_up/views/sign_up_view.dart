@@ -8,8 +8,12 @@ class SignUpView extends GetView<SignUpController> {
     return GetBuilder<SignUpController>(
       init: SignUpController(),
       builder: (controller) => ConnectivityCheckWidget(
-          body: WillPopScope(
-            onWillPop: () => controller.navigateBackFromSignUp(),
+          body: PopScope(
+            canPop:false,
+            onPopInvoked: (didPop) {
+              controller.navigateBackFromSignUp();
+              return;
+            },
             child: Scaffold(
               backgroundColor: AppColors.white,
               body: Stack(
