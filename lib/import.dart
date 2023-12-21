@@ -33,6 +33,7 @@ export 'app/data/models/start_my_journey_model.dart';
 export 'app/data/models/phone_parse_model.dart';
 export 'app/data/models/token_response.dart';
 export 'app/data/models/offline_instruction_model.dart';
+export 'app/data/models/face_scan_description_model.dart';
 
 ///Api Response Model
 export 'app/data/models/api_response_model/user_model.dart';
@@ -80,6 +81,7 @@ export 'package:cached_network_image/cached_network_image.dart';
 export 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 export 'package:data_connection_checker_tv/data_connection_checker.dart';
 export 'package:provider/provider.dart';
+export 'package:step_progress_indicator/step_progress_indicator.dart';
 
 
 ///-------------------- Routes --------------------
@@ -194,7 +196,22 @@ export 'app/modules/article_template2/controller/article_template2_controller.da
 export 'app/modules/article_template2/bindings/article_template2_bindings.dart';
 export 'app/modules/article_template2/views/article_template2.view.dart';
 
-// ///Coming Soon
-// export 'app/modules/coming_soon/controllers/coming_soon_controller.dart';
-// export 'app/modules/coming_soon/bindings/coming_soon_binding.dart';
-// export 'app/modules/coming_soon/views/coming_soon_views.dart';
+///Data Collection Page
+export 'app/modules/data_collection/bindings/data_collection_binding.dart';
+export 'app/modules/data_collection/controllers/data_collection_controller.dart';
+export 'app/modules/data_collection/views/data_collection_view.dart';
+
+///Personal Data
+export 'app/modules/personal_data/bindings/personal_data_binding.dart';
+export 'app/modules/personal_data/controllers/personal_data_controller.dart';
+export 'app/modules/personal_data/views/personal_data_view.dart';
+
+///Bio data
+export 'app/modules/bio_data/bindings/bio_data_binding.dart';
+export 'app/modules/bio_data/controllers/bio_data_controller.dart';
+export 'app/modules/bio_data/views/bio_data_view.dart';
+
+///Face Scan
+export 'app/modules/face_scan_description/bindings/face_scan_description_binding.dart';
+export 'app/modules/face_scan_description/controllers/face_scan_description_controller.dart';
+export 'app/modules/face_scan_description/views/face_scan_description_view.dart';

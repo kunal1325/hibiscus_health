@@ -225,4 +225,21 @@ abstract class Strings {
   static const String offlineInstructionTitleFour = 'Restart Device: ';
   static const String offlineInstructionDescriptionFour = 'Restart your device and relaunch the app';
 
+  ///Face Scan
+
+  static const String faceScan = 'Face Scan';
+  static const String faceScanDescription =
+      'You are almost there! Center your face in the frame and follow the on screen instructions.';
+  static const String faceScanListOne =
+      'Take off your glasses, hat or any items that is covering your face.';
+  static const String faceScanListTwo = 'Make sure your face is well lit';
+  static const String startCamera = 'Start Camera';
+  static const String scanFailed = 'Scan failed';
+  static const String scanFailedDescription =
+      'Center your face and use a good source of light';
+  static const String tryAgain = 'Try again';
+  static const String proceedToFaceScan = 'Proceed to Face Scan';
+
+
+
 }

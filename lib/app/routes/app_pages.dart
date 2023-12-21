@@ -3,7 +3,7 @@ import '../../import.dart';
 part 'app_routes.dart';
 
 abstract class AppPages {
-  static const initial = Routes.splash;
+  static const initial = Routes.dataCollection;
   //Routes.splash;
 
   static final routes = [
@@ -112,6 +112,11 @@ abstract class AppPages {
       name: _Paths.landingPage,
       page: () => LandingScreen(),
       binding: LandingBinding(),
+    ),
+    GetPage(
+      name: _Paths.dataCollection,
+      page: () => DataCollectionView(),
+      binding: DataCollectionBinding(),
     ),
   ];
 }

@@ -23,8 +23,8 @@ abstract class Routes {
   static const moreScreen = _Paths.more;
   static const articleTemplate1Screen = _Paths.articleTemplate1;
   static const articleTemplate2Screen = _Paths.articleTemplate2;
-  // static const comingSoon = _Paths.comingSoon;
   static const landingPage = _Paths.landingPage;
+  static const dataCollection = _Paths.dataCollection;
 }
 
 abstract class _Paths {
@@ -49,6 +49,6 @@ abstract class _Paths {
   static const more = '/more';
   static const articleTemplate1 = '/articletemplate1';
   static const articleTemplate2 = '/articeltemplate2';
-  // static const comingSoon = '/comingsoon';
   static const landingPage = '/landingpage';
+  static const dataCollection = '/dataCollection';
 }
