@@ -65,14 +65,23 @@ dependencies:
   #for drop shadow
   drop_shadow:
 
-  #For shimmer placeholders
+  #for shimmer placeholders
   shimmer:
 
-  #For cached network image
+  #for cached network image
   cached_network_image:
 
-  #For infinite scroll/pagination
+  #for infinite scroll/pagination
   infinite_scroll_pagination:
+
+  #for asking permission
+  permission_handler:
+
+  #for picking Image
+  image_picker:
+
+  #for opening a web view
+  webview_flutter:
 
 
 dev_dependencies:

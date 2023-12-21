@@ -1,4 +1,3 @@
-
 import '../../../../import.dart';
 
 class FaceScanController extends GetxController {
@@ -12,7 +11,9 @@ class FaceScanController extends GetxController {
 
   changeScanStatus() {
     isScanFailed.value = !isScanFailed.value;
+    Get.toNamed(Routes.anuraWebViewScan);
   }
+
 
 
 }

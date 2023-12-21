@@ -118,5 +118,10 @@ abstract class AppPages {
       page: () => LandingScreen(),
       binding: LandingBinding(),
     ),
+    GetPage(
+      name: _Paths.anuraWebViewScan,
+      page: () => AnuraWebView(),
+      binding: AnuraWebViewBinding(),
+    ),
   ];
 }

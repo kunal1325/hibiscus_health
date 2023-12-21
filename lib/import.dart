@@ -188,5 +188,7 @@ export 'app/modules/article_template2/views/article_template2.view.dart';
 
 /// Face Scan
 export 'app/modules/face_scan/bindings/face_scan_binding.dart';
+export 'app/modules/face_scaning_with_webview/anura_web_view_binding.dart';
+export 'package:hibiscus_health/app/modules/face_scaning_with_webview/anura_web_view.dart';
 export 'app/modules/face_scan/controllers/face_scan_controller.dart';
 export 'app/modules/face_scan/views/face_scan_view.dart';

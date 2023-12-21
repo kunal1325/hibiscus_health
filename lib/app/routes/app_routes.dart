@@ -26,6 +26,7 @@ abstract class Routes {
   // static const comingSoon = _Paths.comingSoon;
   static const landingPage = _Paths.landingPage;
   static const faceScan = _Paths.faceScan;
+  static const anuraWebViewScan = _Paths.anuraWebViewScan;
 }
 
 abstract class _Paths {
@@ -53,4 +54,5 @@ abstract class _Paths {
   // static const comingSoon = '/comingsoon';
   static const landingPage = '/landingpage';
   static const faceScan = '/faceScan';
+  static const anuraWebViewScan = '/anuraWebViewScan';
 }
