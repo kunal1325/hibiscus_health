@@ -4,9 +4,11 @@ class ComingSoon extends StatelessWidget {
   const ComingSoon({
     super.key,
     required this.onClick,
+    this.buttonTitle = Strings.returnHome,
   });
 
   final void Function() onClick;
+  final String? buttonTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,7 @@ class ComingSoon extends StatelessWidget {
                   color: AppColors.kSecColor,
                   shadowColor: AppColors.kSecColor,
                   borderRadius: 30,
-                  title: Strings.returnHome,
+                  title: buttonTitle ?? "",
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                   fontColor: AppColors.kPrimaryColor,

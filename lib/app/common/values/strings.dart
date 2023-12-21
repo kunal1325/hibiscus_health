@@ -91,6 +91,13 @@ abstract class Strings {
   static const String returnHome = "Return home";
   static const String comingSoon = "Coming Soon";
 
+  ///Checkin Screen
+  static const String whatsCheckInTime =
+      "What time do you want to check in/ read?";
+  static const String pickNotificationTime =
+      "Pick a time when you can focus on reading without distractions, and we will send you a notification";
+  static const String setReminder = "Set Reminder";
+
   //Privacy First
 
   static const String privacyFirst = 'Privacy First';

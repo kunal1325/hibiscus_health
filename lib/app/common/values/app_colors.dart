@@ -11,6 +11,8 @@ abstract class AppColors {
   static const Color grey = Colors.grey;
   static const Color transparent = Colors.transparent;
 
+  static const Color brickRed = Color(0xffDA400D);
+
   static const Color kBgColor = Color(0xffF4F7F8);
 
   static const Color kGreyText = Color(0xff888888);

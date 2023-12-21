@@ -45,7 +45,9 @@ abstract class AppImages {
   static const String hibiscusFlower = "assets/images/svgs/hibiscusFlower.svg";
   static const String comingSoonIcon = "assets/images/pngs/comingSoonIcon.png";
   static const String searchIcon = "assets/images/pngs/searchIcon.png";
-
   static const String defaultArticleImage =
       "assets/images/pngs/article_default.png";
+
+  //Check-In
+  static const String checkinTimeIcon = "assets/images/pngs/checkinTime.png";
 }
