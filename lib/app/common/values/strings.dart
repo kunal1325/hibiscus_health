@@ -239,6 +239,19 @@ abstract class Strings {
       'Center your face and use a good source of light';
   static const String tryAgain = 'Try again';
   static const String proceedToFaceScan = 'Proceed to Face Scan';
+  static const String physicalAttributes = 'Physical Attributes';
+  static const String physicalAttributesDescription = 'Lorem ipsum dolor sit amet, consetur adipiscing elit, sed do eiusmod ';
+  static const String heightFt = 'Height (ft)';
+  static const String heightFtHint = '6';
+  static const String heightIn = 'Height (In)';
+  static const String heightInHint = '3';
+  static const String weightLbs = 'Weight (lbs)';
+  static const String weightLbsHint = '189';
+  static const String emptyHeightFtError = 'Please enter email address';
+  static const String emptyHeightInError = 'Please enter email address';
+  static const String emptyWeightError = 'Please enter email address';
+
+
 
 
 
