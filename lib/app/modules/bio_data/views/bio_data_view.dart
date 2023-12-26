@@ -63,7 +63,7 @@ class BioDataView extends GetView<BioDataController> {
                                             : AppColors.kDarkGreenColorText,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 14,
-                                        title: String`s.maleCapital,
+                                        title: Strings.maleCapital,
                                         borderRadius: 25,
                                         paddingHorizontal: 30,
                                         paddingVertical: 15,
