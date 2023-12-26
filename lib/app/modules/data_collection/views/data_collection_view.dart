@@ -73,7 +73,7 @@ class DataCollectionView extends GetView<DataCollectionController> {
                                   ? Expanded(
                                   child: Padding(
                                     padding: const EdgeInsets.all(12.0),
-                                    child: PersonalDataView(),
+                                    child: PhysicalAttributesView(),
                                   ))
                                   : SizedBox(),
                               controller.processIndex.value == 1
@@ -96,6 +96,7 @@ class DataCollectionView extends GetView<DataCollectionController> {
                                 child: InkWell(
                                     onTap: () {
                                       controller.onNextPressed();
+                                      // controller.onTapButton();
                                     },
                                     child: CustomButtons(
                                       weight: Get.width- 40,

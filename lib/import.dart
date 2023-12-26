@@ -45,6 +45,7 @@ export 'app/data/models/request_models/registration_request.dart';
 export 'app/data/models/request_models/login_request.dart';
 export 'app/data/models/request_models/help_us_request.dart';
 export 'app/data/models/request_models/update_password_request.dart';
+export 'app/data/models/request_models/data_collection_model.dart';
 
 ///Services
 export 'app/data/services/data_connectivity_service.dart';
@@ -202,9 +203,9 @@ export 'app/modules/data_collection/controllers/data_collection_controller.dart'
 export 'app/modules/data_collection/views/data_collection_view.dart';
 
 ///Personal Data
-export 'app/modules/personal_data/bindings/personal_data_binding.dart';
-export 'app/modules/personal_data/controllers/personal_data_controller.dart';
-export 'app/modules/personal_data/views/personal_data_view.dart';
+export 'app/modules/physical_attributes/bindings/physical_attributes_binding.dart';
+export 'app/modules/physical_attributes/controllers/physical_attributes_controller.dart';
+export 'app/modules/physical_attributes/views/physical_attributes_view.dart';
 
 ///Bio data
 export 'app/modules/bio_data/bindings/bio_data_binding.dart';

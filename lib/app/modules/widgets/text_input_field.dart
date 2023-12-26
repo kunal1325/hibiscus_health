@@ -9,6 +9,7 @@ class TextInputField extends StatelessWidget {
   final TextInputType keyboardType;
   final TextInputAction textInputAction;
   final bool obscureText;
+  final int? maxLength;
   final Widget suffixIcon;
   final String? initialValue;
   final Widget prefixIcon;
@@ -20,7 +21,7 @@ class TextInputField extends StatelessWidget {
   final Function()? onEditingComplete;
 
   TextInputField({super.key, required this.fillColor, this.enabled, required this.hintText, required this.labelText, required this.keyboardType, required this.textInputAction,
-   required this.obscureText, required this.suffixIcon, required this.prefixIcon, this.initialValue, this.onSaved,
+   required this.obscureText, required this.suffixIcon, required this.prefixIcon, this.initialValue, this.onSaved, this.maxLength,
     required this.focusNode, this.requestFocusNode, required this.controller, this.validator, this.onEditingComplete});
 
   @override
@@ -29,12 +30,14 @@ class TextInputField extends StatelessWidget {
       initialValue: initialValue,
       enabled: enabled,
       obscureText: obscureText,
+      maxLength: maxLength,
       decoration: InputDecoration(
         filled: fillColor ? true : false,
         fillColor: fillColor ? Colors.grey[200] : null,
         errorMaxLines: 2,
         hintText: hintText,
         labelText: labelText,
+        counterText: "",
         suffixIcon: suffixIcon,
         prefix: prefixIcon,
         contentPadding: EdgeInsets.only(

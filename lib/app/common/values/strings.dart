@@ -247,9 +247,9 @@ abstract class Strings {
   static const String heightInHint = '3';
   static const String weightLbs = 'Weight (lbs)';
   static const String weightLbsHint = '189';
-  static const String emptyHeightFtError = 'Please enter email address';
-  static const String emptyHeightInError = 'Please enter email address';
-  static const String emptyWeightError = 'Please enter email address';
+  static const String emptyHeightFtError = 'Please enter height Ft';
+  static const String emptyHeightInError = 'Please enter height In';
+  static const String emptyWeightError = 'Please enter your weight';
 
 
 

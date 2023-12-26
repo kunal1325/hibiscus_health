@@ -1,7 +1,10 @@
 
 import '../../../../import.dart';
 
-class PersonalDataController extends GetxController {
+class PhysicalAttributesController extends GetxController {
+
+  final DataCollectionController dataCollectionController =
+  Get.find<DataCollectionController>();
 
   final heightFtFocusNode = FocusNode();
   final heightInFocusNode = FocusNode();
@@ -9,7 +12,6 @@ class PersonalDataController extends GetxController {
   final heightFtController = TextEditingController();
   final heightInController = TextEditingController();
   final weightController = TextEditingController();
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   String? isValidHeightFt(String? text) {
     if (text!.isEmpty) {

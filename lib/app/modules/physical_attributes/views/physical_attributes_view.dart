@@ -1,12 +1,12 @@
 import '../../../../import.dart';
 
-class PersonalDataView extends GetView<PersonalDataController> {
-  const PersonalDataView({super.key});
+class PhysicalAttributesView extends GetView<PhysicalAttributesController> {
+  const PhysicalAttributesView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<PersonalDataController>(
-      init: PersonalDataController(),
+    return GetBuilder<PhysicalAttributesController>(
+      init: PhysicalAttributesController(),
       builder: (controller) => ConnectivityCheckWidget(
           body: Scaffold(
             backgroundColor: AppColors.white,
@@ -63,7 +63,7 @@ class PersonalDataView extends GetView<PersonalDataController> {
                       ),
                       Form(
                         autovalidateMode: AutovalidateMode.disabled,
-                        // key: controller.formKeySignIn,
+                        key: controller.dataCollectionController.physicalAttributesFormKey,
                         child: Column(
                           children: [
                             Row(
@@ -71,6 +71,7 @@ class PersonalDataView extends GetView<PersonalDataController> {
                                 SizedBox(
                                   child: TextInputField(
                                     fillColor: false,
+                                    maxLength: 3,
                                     hintText: Strings.heightFtHint,
                                     labelText: Strings.heightFt,
                                     keyboardType: TextInputType.number,
@@ -89,6 +90,7 @@ class PersonalDataView extends GetView<PersonalDataController> {
                                 SizedBox(
                                   child: TextInputField(
                                     fillColor: false,
+                                    maxLength: 2,
                                     hintText: Strings.heightInHint,
                                     labelText: Strings.heightIn,
                                     keyboardType: TextInputType.number,
@@ -110,6 +112,7 @@ class PersonalDataView extends GetView<PersonalDataController> {
                             SizedBox(height: 30,),
                             TextInputField(
                               fillColor: false,
+                              maxLength: 3,
                               hintText: Strings.weightLbsHint,
                               labelText: Strings.weightLbs,
                               keyboardType: TextInputType.number,
@@ -121,7 +124,15 @@ class PersonalDataView extends GetView<PersonalDataController> {
                               obscureText: false,
                               suffixIcon: SizedBox(),
                               prefixIcon: SizedBox(),
-                              onSaved: (value) => controller.weightController.text = value!,
+                              onSaved: (value) {
+                                controller.weightController.text = value!;
+                                var heightFt = (int.parse(controller.heightFtController.text)*30.48);
+                                var heightIn = (int.parse(controller.heightInController.text)*2.54);
+                                var weight = int.parse(controller.weightController.text);
+                                var heightCm = (heightFt + heightIn).round();
+                                controller.dataCollectionController.savePhysicalAttributesDataToModel(heightCm,weight);
+                                return null;
+                              },
                             ),
                           ],
                         ),
