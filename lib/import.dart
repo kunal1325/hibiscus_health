@@ -102,6 +102,7 @@ export 'app/modules/widgets/reviewed_by_doctor.dart';
 export 'app/modules/widgets/coming_soon.dart';
 export 'app/modules/widgets/offline_widget.dart';
 export 'app/modules/widgets/connectivity_check_widget.dart';
+export 'app/modules/widgets/select_button_text_widget.dart';
 
 /// Home Screen
 export 'app/modules/home/bindings/home_binding.dart';

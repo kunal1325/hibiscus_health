@@ -250,8 +250,27 @@ abstract class Strings {
   static const String emptyHeightFtError = 'Please enter height Ft';
   static const String emptyHeightInError = 'Please enter height In';
   static const String emptyWeightError = 'Please enter your weight';
+  static const String answerTheseQuestions = 'Answer these questions';
+  static const String gender = 'What is your sex at birth? *';
+  static const String smoke = 'Do you smoke? *';
+  static const String hypertension = 'Do you have hypertension? *';
+  static const String bloodPressureMedication = 'Are you taking blood pressure medication? *';
+  static const String diabetic = 'Are you diabetic? *';
+  static const String notSelected = 'Not Selected';
+  static const String compulsoryQuestionsError = 'All the questions are compulsory, Please provide suitable answer for these questions to start face scan';
 
-
+  static const String no = 'no';
+  static const String noCapital = 'No';
+  static const String yes = 'yes';
+  static const String yesCapital = 'Yes';
+  static const String type1 = 'type1';
+  static const String type1Capital = 'Type 1';
+  static const String type2 = 'type2';
+  static const String type2Capital = 'Type 2';
+  static const String male = 'male';
+  static const String maleCapital = 'Male';
+  static const String female = 'female';
+  static const String femaleCapital = 'Female';
 
 
 

@@ -2,6 +2,8 @@ import '../../../../import.dart';
 
 class DataCollectionController extends GetxController {
 
+  final BioDataController bioDataController = Get.put(BioDataController());
+
   var isLoading = false.obs;
   var processIndex = 0.obs;
   var isScanFailed = false.obs;
@@ -56,21 +58,26 @@ class DataCollectionController extends GetxController {
   }
 
   void savePhysicalAttributesDataToModel(int height, int weight) {
-    dataCollectionModel = new DataCollectionModel();
     dataCollectionModel.height = height;
     dataCollectionModel.weight = weight;
-    // print("dataCollectionModel ================>>>> After ${dataCollectionModel.height} and ${dataCollectionModel.weight}");
     processIndex.value++;
   }
 
   void saveBioDataToModel() {
-    // print("DataCollectionModel ===================>>>>>>> Before");
-    // print(DataCollectionModel);
-    // final isValid = physicalAttributesFormKey.currentState!.validate();
-    // if (!isValid) return;
-    // physicalAttributesFormKey.currentState!.save();
-    // print("DataCollectionModel ===================>>>>>>> After");
-    // print(DataCollectionModel);
+    if(bioDataController.gender == Strings.notSelected
+        && bioDataController.smoke == Strings.notSelected
+        && bioDataController.hypertension == Strings.notSelected
+        && bioDataController.bloodPressure == Strings.notSelected
+        && bioDataController.diabetic == Strings.notSelected
+    )
+      {
+        Utils.showSnackBarFun(Get.context, Strings.compulsoryQuestionsError);
+        return;
+      }
+    dataCollectionModel.gender = bioDataController.gender.value;
+    dataCollectionModel.smoking = bioDataController.smoke.value == "yes" ? "1" : "0";
+    dataCollectionModel.bloodPressureMedication = bioDataController.bloodPressure.value == "yes" ? "1" : "0";
+    dataCollectionModel.diabetes = bioDataController.diabetic.value == "no" ? false : true;
     processIndex.value++;
   }
 
