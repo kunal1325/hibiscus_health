@@ -3,6 +3,7 @@ import '../../../../import.dart';
 class DataCollectionController extends GetxController {
 
   final BioDataController bioDataController = Get.put(BioDataController());
+  final StartMyJourneyController startMyJourneyController = Get.find();
 
   var isLoading = false.obs;
   var processIndex = 0.obs;
@@ -82,8 +83,11 @@ class DataCollectionController extends GetxController {
   }
 
   void faceScanPage() {
-    if (processIndex.value == 2) {
+    if (processIndex.value == 2 && isScanFailed.value == false) {
       isScanFailed.value = !isScanFailed.value;
+    }else{
+      startMyJourneyController.isFaceScanCompleted.value = true;
+      Get.offAll(StartMyJourneyView());
     }
   }
 

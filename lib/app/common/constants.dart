@@ -19,4 +19,6 @@ abstract class Constants {
   static const String dietitianId = 'dietitianID';
   static const String patientName = 'patientName';
   static const String dietitianName = 'dietitianName';
+
+  static const String isFaceScanCompleted = 'isFaceScanCompleted';
 }

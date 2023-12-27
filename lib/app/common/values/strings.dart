@@ -272,6 +272,11 @@ abstract class Strings {
   static const String female = 'female';
   static const String femaleCapital = 'Female';
 
+  static const String tryLater = 'Try Later';
+  static const String checkIn = 'Check-in';
+  static const String faceScanCompleted = 'Face scan completed!';
+  static const String resultsReady = 'The results are ready!';
+
 
 
 }
