@@ -17,8 +17,9 @@ class FaceScanController extends GetxController {
 
   getCameraPermission() async {
     final permission = Permission.camera;
+    final permissionMic = Permission.microphone;
 
-    if (await permission.isDenied) {
+    if (await permission.isDenied || await permissionMic.isDenied) {
       await permission.request();
     }
   }

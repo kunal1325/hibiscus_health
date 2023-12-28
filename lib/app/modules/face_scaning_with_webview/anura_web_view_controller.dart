@@ -1,4 +1,8 @@
 import 'package:webview_flutter/webview_flutter.dart';
+// Import for Android features.
+import 'package:webview_flutter_android/webview_flutter_android.dart';
+// Import for iOS features.
+import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
 import '../../../../import.dart';
 
@@ -17,7 +21,25 @@ class AnuraWebViewController extends GetxController {
   void onInit() {
     // TODO: implement onInit
     isLoading.value = true;
-    controller.value = WebViewController()
+
+    PlatformWebViewControllerCreationParams params =
+        PlatformWebViewControllerCreationParams();
+    if (WebViewPlatform.instance is WebKitWebViewPlatform) {
+      params = WebKitWebViewControllerCreationParams
+          .fromPlatformWebViewControllerCreationParams(params);
+    } else {
+      params = const PlatformWebViewControllerCreationParams();
+    }
+
+    final WebViewController newController =
+        WebViewController.fromPlatformCreationParams(
+      params,
+      onPermissionRequest: (request) {
+        request.grant();
+      },
+    );
+
+    newController
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setBackgroundColor(const Color(0x00000000))
       ..setNavigationDelegate(
@@ -54,6 +76,8 @@ class AnuraWebViewController extends GetxController {
         ),
       )
       ..loadRequest(Uri.parse(url2.value));
+
+    controller.value = newController;
     super.onInit();
   }
 
