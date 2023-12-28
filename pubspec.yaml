@@ -81,6 +81,10 @@ dependencies:
   #for step indicator
   step_progress_indicator:
 
+  #for basic api calling
+  http:
+  dio:
+
 
 dev_dependencies:
   flutter_test:
