@@ -75,6 +75,7 @@ export 'dart:convert';
 export 'package:shimmer/shimmer.dart';
 export 'package:cached_network_image/cached_network_image.dart';
 export 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+export 'package:permission_handler/permission_handler.dart';
 
 ///-------------------- Routes --------------------
 export 'app/routes/app_pages.dart';
