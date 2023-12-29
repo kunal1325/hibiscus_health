@@ -95,8 +95,8 @@ class DataCollectionView extends GetView<DataCollectionController> {
                               Center(
                                 child: InkWell(
                                     onTap: () {
-                                      // controller.onNextPressed();
-                                      controller.onTapButton();
+                                      controller.onNextPressed();
+                                      // controller.onTapButton();
                                     },
                                     child: CustomButtons(
                                       weight: Get.width- 40,

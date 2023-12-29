@@ -1,7 +1,5 @@
 import '../../../../import.dart';
 import 'package:http/http.dart' as http;
-import 'dart:io';
-import 'package:dio/dio.dart';
 
 import '../../../data/models/api_response_model/face_scan_requirement_model.dart';
 

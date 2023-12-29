@@ -3,7 +3,7 @@ import '../../import.dart';
 part 'app_routes.dart';
 
 abstract class AppPages {
-  static const initial = Routes.home;
+  static const initial = Routes.startMyJourney;
   //Routes.splash;
 
   static final routes = [

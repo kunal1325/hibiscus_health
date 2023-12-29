@@ -83,6 +83,7 @@ export 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 export 'package:data_connection_checker_tv/data_connection_checker.dart';
 export 'package:provider/provider.dart';
 export 'package:step_progress_indicator/step_progress_indicator.dart';
+export 'package:permission_handler/permission_handler.dart';
 
 
 ///-------------------- Routes --------------------

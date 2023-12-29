@@ -83,7 +83,9 @@ dependencies:
 
   #for basic api calling
   http:
-  dio:
+
+  #for asking permission
+  permission_handler:
 
 
 dev_dependencies:
