@@ -29,11 +29,7 @@ class DataCollectionController extends GetxController {
       processIndex.value++;
       return false;
     } else if (processIndex.value == 2) {
-      showAlertDialog(
-          Get.context!,
-          "”Hibiscus Health” Would Like to Access to the Camera",
-          "To take pictures and detect your face",
-          false);
+      requestPermission(Get.context);
       isScanFailed.value = !isScanFailed.value;
       return false;
     } else {
@@ -103,10 +99,15 @@ class DataCollectionController extends GetxController {
     if (await permission.isGranted) {
       print("isGranted ================>");
     } else if (await permission.isDenied) {
-      await permission.request();
+      print("isDenied ================>");
+      showPermissionDialog(
+          Get.context!,
+          "”Hibiscus Health” Would Like to Access to the Camera",
+          "To take pictures and detect your face",
+          false);
     } else if (await permission.isPermanentlyDenied) {
       print("isPermanentlyDenied ================>");
-      showAlertDialog(
+      showPermissionDialog(
           Get.context!,
           "Allow Hibiscus Health to access your camera ?",
           "You need to allow camera access in parameters for face scan in the app",
@@ -114,34 +115,21 @@ class DataCollectionController extends GetxController {
     }
   }
 
-  showAlertDialog(
+  Future<void> requestPermissionAfterDeny(context) async {
+    final permission = Permission.camera;
+    await permission.request();
+  }
+
+  showPermissionDialog(
       BuildContext context, String title, String content, bool denied) {
-    // set up the button
-    Widget okButton = TextButton(
-      child: Text("OK"),
-      onPressed: () {
-        requestPermission(Get.context);
-      },
-    );
-
-    // set up the AlertDialog
     AlertDialog alert = AlertDialog(
-      title: Text("Allow Hibiscus Health to access your camera ?"),
-      content: Text(
-          "You need to allow camera access in parameters for face scan in the app"),
-      actions: [
-        okButton,
-      ],
-    );
-
-    AlertDialog alert2 = AlertDialog(
-      title: Text(title),
+      title: Text(title, textAlign: TextAlign.center,),
       titleTextStyle: GoogleFonts.inter(
         fontSize: 16,
         fontWeight: FontWeight.bold,
         color: AppColors.kPrimaryColor,
       ),
-      content: Text(content),
+      content: Text(content, textAlign: TextAlign.center,),
       contentTextStyle: GoogleFonts.inter(
         fontSize: 16,
         fontWeight: FontWeight.w500,
@@ -149,26 +137,30 @@ class DataCollectionController extends GetxController {
       ),
       actionsOverflowButtonSpacing: 5,
       actions: [
-        ElevatedButton(
-            onPressed: () {
-              Get.back();
-            },
-            child: Text("Don’t Allow")),
-        ElevatedButton(
-            onPressed: () {
-              denied
-                  ? {Get.back(), openAppSettings()}
-                  : {Get.back(), requestPermission(Get.context)};
-            },
-            child: Text(denied ? "Settings" : "OK")),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  Get.back();
+                },
+                child: Text("Don’t Allow")),
+            ElevatedButton(
+                onPressed: () async {
+                  denied
+                      ? {Get.back(), openAppSettings()}
+                      : {Get.back(), requestPermissionAfterDeny(context)};
+                },
+                child: Text(denied ? " Settings " : "   Allow   ")),
+          ],
+        )
       ],
     );
-
     // show the dialog
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return alert2;
+        return alert;
       },
     );
   }
