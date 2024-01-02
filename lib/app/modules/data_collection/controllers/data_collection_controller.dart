@@ -98,6 +98,7 @@ class DataCollectionController extends GetxController {
       final permission = Permission.camera;
       if (await permission.isGranted) {
         print("isGranted ================>");
+        Get.offAll(StartMyJourneyView());
       } else if (await permission.isDenied) {
         print("isDenied ================>");
         showPermissionDialog(
