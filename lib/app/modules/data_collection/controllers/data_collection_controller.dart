@@ -95,24 +95,24 @@ class DataCollectionController extends GetxController {
   }
 
   Future<void> requestPermission(context) async {
-    final permission = Permission.camera;
-    if (await permission.isGranted) {
-      print("isGranted ================>");
-    } else if (await permission.isDenied) {
-      print("isDenied ================>");
-      showPermissionDialog(
-          Get.context!,
-          "”Hibiscus Health” Would Like to Access to the Camera",
-          "To take pictures and detect your face",
-          false);
-    } else if (await permission.isPermanentlyDenied) {
-      print("isPermanentlyDenied ================>");
-      showPermissionDialog(
-          Get.context!,
-          "Allow Hibiscus Health to access your camera ?",
-          "You need to allow camera access in parameters for face scan in the app",
-          true);
-    }
+      final permission = Permission.camera;
+      if (await permission.isGranted) {
+        print("isGranted ================>");
+      } else if (await permission.isDenied) {
+        print("isDenied ================>");
+        showPermissionDialog(
+            Get.context!,
+            "”Hibiscus Health” Would Like to Access to the Camera",
+            "To take pictures and detect your face",
+            false);
+      } else if (await permission.isPermanentlyDenied) {
+        print("isPermanentlyDenied ================>");
+        showPermissionDialog(
+            Get.context!,
+            "Allow Hibiscus Health to access your camera ?",
+            "You need to allow camera access in parameters for face scan in the app",
+            true);
+      }
   }
 
   Future<void> requestPermissionAfterDeny(context) async {
@@ -164,4 +164,5 @@ class DataCollectionController extends GetxController {
       },
     );
   }
+
 }
