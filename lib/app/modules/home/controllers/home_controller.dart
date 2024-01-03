@@ -1,8 +1,6 @@
 import '../../../../import.dart';
 import 'package:http/http.dart' as http;
 
-import '../../../data/models/api_response_model/face_scan_requirement_model.dart';
-
 class HomeController extends GetxController {
 
   var counter = 0.obs;

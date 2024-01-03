@@ -39,6 +39,7 @@ export 'app/data/models/face_scan_description_model.dart';
 export 'app/data/models/api_response_model/user_model.dart';
 export 'app/data/models/api_response_model/article_model.dart';
 export 'app/data/models/api_response_model/category_model.dart';
+export 'app/data/models/api_response_model/face_scan_requirement_model.dart';
 
 ///Request Models
 export 'app/data/models/request_models/registration_request.dart';

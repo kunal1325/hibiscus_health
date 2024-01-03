@@ -1,4 +1,5 @@
 import '../../../../import.dart';
+import 'package:http/http.dart' as http;
 
 class DataCollectionController extends GetxController {
   final BioDataController bioDataController = Get.put(BioDataController());
@@ -12,6 +13,16 @@ class DataCollectionController extends GetxController {
   GlobalKey<FormState> bioDataFormKey = GlobalKey<FormState>();
 
   DataCollectionModel dataCollectionModel = new DataCollectionModel();
+
+  final ApiHelper _apiHelper = Get.put<ApiHelper>(ApiHelperImpl());
+
+  FaceScanRequirementModel? faceScanRequirementModel;
+
+  var configId = "".obs;
+  var token = "".obs;
+  var refreshToken = "".obs;
+  var encryptProfileData = "".obs;
+  var faceScanWebUrl = "".obs;
 
   Future<bool> onBackPressed() async {
     if (processIndex.value >= 1 && processIndex.value <= 3) {
@@ -88,45 +99,62 @@ class DataCollectionController extends GetxController {
       isScanFailed.value = !isScanFailed.value;
     } else {
       requestPermission(Get.context);
-      Storage.saveValue(Constants.isFaceScanCompleted, true);
     }
   }
 
   Future<void> requestPermission(context) async {
-      final permission = Permission.camera;
-      if (await permission.isGranted) {
-        print("isGranted ================>");
-        Get.offAll(StartMyJourneyView());
-      } else if (await permission.isDenied) {
-        showPermissionDialog(
-            Get.context!,
-            "”Hibiscus Health” Would Like to Access to the Camera",
-            "To take pictures and detect your face",
-            false);
-      } else if (await permission.isPermanentlyDenied) {
-        showPermissionDialog(
-            Get.context!,
-            "Allow Hibiscus Health to access your camera ?",
-            "You need to allow camera access in parameters for face scan in the app",
-            true);
-      }
+    final permission = Permission.camera;
+    if (await permission.isGranted) {
+      print("isGranted ================>");
+      getConfigIdApi();
+    } else if (await permission.isDenied) {
+      showPermissionDialog(
+          Get.context!,
+          "”Hibiscus Health” Would Like to Access to the Camera",
+          "To take pictures and detect your face",
+          false);
+    } else if (await permission.isPermanentlyDenied) {
+      showPermissionDialog(
+          Get.context!,
+          "Allow Hibiscus Health to access your camera ?",
+          "You need to allow camera access in parameters for face scan in the app",
+          true);
+    } else if (await permission.isLimited) {
+      print("isLimited ================>");
+    } else if (await permission.isProvisional) {
+      print("isLimited ================>");
+    } else if (await permission.isRestricted) {
+      print("isLimited ================>");
+    } else {
+      print("permission ================> $permission");
+    }
   }
 
   Future<void> requestPermissionAfterDeny(context) async {
     final permission = Permission.camera;
     await permission.request();
+    if (await permission.isGranted) {
+      print("isGranted ================>");
+      getConfigIdApi();
+    }
   }
 
   showPermissionDialog(
       BuildContext context, String title, String content, bool denied) {
     AlertDialog alert = AlertDialog(
-      title: Text(title, textAlign: TextAlign.center,),
+      title: Text(
+        title,
+        textAlign: TextAlign.center,
+      ),
       titleTextStyle: GoogleFonts.inter(
         fontSize: 16,
         fontWeight: FontWeight.bold,
         color: AppColors.kPrimaryColor,
       ),
-      content: Text(content, textAlign: TextAlign.center,),
+      content: Text(
+        content,
+        textAlign: TextAlign.center,
+      ),
       contentTextStyle: GoogleFonts.inter(
         fontSize: 16,
         fontWeight: FontWeight.w500,
@@ -140,7 +168,8 @@ class DataCollectionController extends GetxController {
             ElevatedButton(
                 onPressed: () {
                   Get.back();
-                  Utils.showSnackBarFun(Get.context,"Without Camera Permission, We are not able to get you face scan completed. So for go further, Please provide camera access permission.");
+                  Utils.showSnackBarFun(Get.context,
+                      "Without Camera Permission, We are not able to get you face scan completed. So for go further, Please provide camera access permission.");
                 },
                 child: Text("Don’t Allow")),
             ElevatedButton(
@@ -162,5 +191,107 @@ class DataCollectionController extends GetxController {
       },
     );
   }
+
+  Future<void> getConfigIdApi() async {
+    try {
+      isLoading(true);
+      http.Response response = await http.get(
+        Uri.tryParse('http://assessment.hibiscushealth.com/api/configId')!,
+      );
+      if (response.statusCode == 200) {
+        var result = jsonDecode(response.body);
+        faceScanRequirementModel = FaceScanRequirementModel.fromJson(result);
+        print(' getConfigIdApi =============>>>>');
+        configId.value = faceScanRequirementModel?.configId ?? "";
+      } else {
+        Utils.showSnackBarFun(Get.context, Strings.somethingWentWrong);
+      }
+    } catch (e) {
+      print('Error while getting data is $e');
+    } finally {
+      getTokenApi();
+    }
+  }
+
+  Future<void> getTokenApi() async {
+    try {
+      http.Request req = http.Request(
+          "Post", Uri.parse("http://assessment.hibiscushealth.com/api/token"))
+        ..followRedirects = false;
+      http.Client baseClient = http.Client();
+      http.StreamedResponse response1 = await baseClient.send(req);
+      Uri redirectUri = Uri.parse(response1.headers['location']!);
+
+      var response = await http.post(redirectUri,
+          headers: {'Content-Type': "application/json; charset=utf-8"});
+
+      if (response.statusCode == 200) {
+        var result = jsonDecode(response.body);
+        faceScanRequirementModel = FaceScanRequirementModel.fromJson(result);
+        print(' getTokenApi =============>>>>');
+        token.value = faceScanRequirementModel?.token ?? "";
+        refreshToken.value = faceScanRequirementModel?.refreshToken ?? "";
+      } else {
+        print('response statusCode ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error while getting data is $e');
+    } finally {
+      getEncryptProfileApi();
+    }
+  }
+
+  Future<void> getEncryptProfileApi() async {
+    try{
+      http.Request req = http.Request("Post", Uri.parse("http://assessment.hibiscushealth.com/api/encrypt-profile"))..followRedirects = false;
+      http.Client baseClient = http.Client();
+      http.StreamedResponse response1 = await baseClient.send(req);
+      Uri redirectUri = Uri.parse(response1.headers['location']!);
+
+      var response = await http.post(redirectUri,
+          headers: {'Content-Type': "application/json; charset=utf-8"},
+          body: json.encode(DataCollectionModel(
+              identifier: "Kunal.hh@gmail.com",
+              age: 26,
+              height: dataCollectionModel.height,
+              weight: dataCollectionModel.weight,
+              gender: dataCollectionModel.gender,
+              smoking: dataCollectionModel.smoking,
+              bloodPressureMedication: dataCollectionModel.bloodPressureMedication,
+              diabetes: dataCollectionModel.diabetes
+          ))
+      );
+
+      if(response.statusCode == 200){
+        var result = jsonDecode(response.body);
+        faceScanRequirementModel =  FaceScanRequirementModel.fromJson(result);
+        print(' getEncryptProfileApi =============>>>>');
+        encryptProfileData.value = faceScanRequirementModel?.encryptedProfile ?? "";
+      }else{
+        print('response statusCode ${response.statusCode}');
+      }
+    }catch(e){
+      print('Error while getting data is $e');
+    }finally{
+      faceScanRequirementModel = FaceScanRequirementModel(
+          configId: configId.value,
+          token: token.value,
+          refreshToken: Uri.encodeComponent(refreshToken.value),
+          encryptedProfile: Uri.encodeComponent(encryptProfileData.value)
+      );
+      Storage.saveValue(Constants.isFaceScanCompleted, true);
+      isLoading(false);
+      faceScanWebUrl.value = "https://awe.na-east.nuralogix.ai/c/${faceScanRequirementModel?.configId}/${faceScanRequirementModel?.encryptedProfile}/${faceScanRequirementModel?.token}/${faceScanRequirementModel?.refreshToken}/${faceScanRequirementModel?.configId}";
+      print(' faceScanWebUrl =============>>>>\n');
+      printWrapped(faceScanWebUrl.value);
+      // Get.offAll(() => StartMyJourneyView());
+    }
+  }
+
+  void printWrapped(String text) {
+    final pattern = RegExp('.{1,800}'); // 800 is the size of each chunk
+    pattern.allMatches(text).forEach((match) => print(match.group(0)));
+  }
+
 
 }
