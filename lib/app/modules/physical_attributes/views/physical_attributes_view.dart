@@ -71,7 +71,7 @@ class PhysicalAttributesView extends GetView<PhysicalAttributesController> {
                                 SizedBox(
                                   child: TextInputField(
                                     fillColor: false,
-                                    maxLength: 3,
+                                    maxLength: 1,
                                     hintText: Strings.heightFtHint,
                                     labelText: Strings.heightFt,
                                     keyboardType: TextInputType.number,
@@ -118,7 +118,6 @@ class PhysicalAttributesView extends GetView<PhysicalAttributesController> {
                               keyboardType: TextInputType.number,
                               textInputAction: TextInputAction.done,
                               focusNode: controller.weightFocusNode,
-                              requestFocusNode: controller.weightFocusNode,
                               controller: controller.weightController,
                               validator: controller.isValidWeight,
                               obscureText: false,
@@ -132,6 +131,9 @@ class PhysicalAttributesView extends GetView<PhysicalAttributesController> {
                                 var heightCm = (heightFt + heightIn).round();
                                 controller.dataCollectionController.savePhysicalAttributesDataToModel(heightCm,weight);
                                 return null;
+                              },
+                              onEditingComplete: (){
+                                Utils.dismissKeyboard();
                               },
                             ),
                           ],

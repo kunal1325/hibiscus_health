@@ -11,11 +11,10 @@ class StartMyJourneyController extends GetxController {
 
   var patientName = "".obs;
   var dietitianName = "".obs;
-
   var isFaceScanCompleted = false.obs;
 
   void navigateToFaceScan() {
-    Get.toNamed(Routes.dataCollection);
+    Get.offAll(() => DataCollectionView());
   }
 
   void navigateToLanding() {

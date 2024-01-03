@@ -2,7 +2,6 @@ import '../../../../import.dart';
 
 class DataCollectionController extends GetxController {
   final BioDataController bioDataController = Get.put(BioDataController());
-  final StartMyJourneyController startMyJourneyController = Get.find();
 
   var isLoading = false.obs;
   var processIndex = 0.obs;
@@ -66,10 +65,10 @@ class DataCollectionController extends GetxController {
   }
 
   void saveBioDataToModel() {
-    if (bioDataController.gender == Strings.notSelected &&
-        bioDataController.smoke == Strings.notSelected &&
-        bioDataController.hypertension == Strings.notSelected &&
-        bioDataController.bloodPressure == Strings.notSelected &&
+    if (bioDataController.gender == Strings.notSelected ||
+        bioDataController.smoke == Strings.notSelected ||
+        bioDataController.hypertension == Strings.notSelected ||
+        bioDataController.bloodPressure == Strings.notSelected ||
         bioDataController.diabetic == Strings.notSelected) {
       Utils.showSnackBarFun(Get.context, Strings.compulsoryQuestionsError);
       return;
@@ -89,8 +88,7 @@ class DataCollectionController extends GetxController {
       isScanFailed.value = !isScanFailed.value;
     } else {
       requestPermission(Get.context);
-      startMyJourneyController.isFaceScanCompleted.value = true;
-      // Get.offAll(StartMyJourneyView());
+      Storage.saveValue(Constants.isFaceScanCompleted, true);
     }
   }
 
@@ -100,14 +98,12 @@ class DataCollectionController extends GetxController {
         print("isGranted ================>");
         Get.offAll(StartMyJourneyView());
       } else if (await permission.isDenied) {
-        print("isDenied ================>");
         showPermissionDialog(
             Get.context!,
             "”Hibiscus Health” Would Like to Access to the Camera",
             "To take pictures and detect your face",
             false);
       } else if (await permission.isPermanentlyDenied) {
-        print("isPermanentlyDenied ================>");
         showPermissionDialog(
             Get.context!,
             "Allow Hibiscus Health to access your camera ?",
@@ -144,6 +140,7 @@ class DataCollectionController extends GetxController {
             ElevatedButton(
                 onPressed: () {
                   Get.back();
+                  Utils.showSnackBarFun(Get.context,"Without Camera Permission, We are not able to get you face scan completed. So for go further, Please provide camera access permission.");
                 },
                 child: Text("Don’t Allow")),
             ElevatedButton(
