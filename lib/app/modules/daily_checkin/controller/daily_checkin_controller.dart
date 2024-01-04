@@ -1,0 +1,99 @@
+import 'package:hibiscus_health/app/common/util/extensions.dart';
+import 'package:hibiscus_health/import.dart';
+
+class DailyCheckinController extends GetxController {
+  final ApiHelper _apiHelper = Get.put<ApiHelper>(ApiHelperImpl());
+
+  List<DailyCheckIns> checkInQuestions =
+      List<DailyCheckIns>.empty(growable: true).obs;
+
+  List<List<String>> options = List<List<String>>.empty(growable: true).obs;
+
+  List<String> answers = List<String>.empty(growable: true).obs;
+
+  static const pageSize = 20;
+  var currentQuestionIndex = 0.obs;
+  var selectedOptionIndex = 100.obs;
+
+  var isLoading = false.obs;
+
+  @override
+  void onInit() {
+    getQuestions();
+    super.onInit();
+  }
+
+  void addOptions() {
+    checkInQuestions.forEach((element) {
+      if (element.fields != null ||
+          element.fields!.options != null ||
+          element.fields!.options!.isNotEmpty)
+        options.add(element.fields!.options!.split('|'));
+    });
+
+    // print("😶‍🌫️😶‍🌫️😶‍🌫️😶‍🌫️😶‍🌫️ ${options.length}");
+  }
+
+  Future<void> getQuestions() async {
+    isLoading.value = true;
+    _apiHelper.getDailyCheckInQuestions().futureValue((value) {
+      checkInQuestions
+          .addAll(CheckInResponse.fromJson(value).dailyCheckIns ?? []);
+      addOptions();
+      isLoading.value = false;
+    }, onError: (error) {
+      if (kDebugMode) {
+        isLoading.value = false;
+        print("Get Questions $error");
+      }
+    });
+  }
+
+  void postAnswers() async {
+    List<AnsModel> modelAnswers = [];
+
+    for (int i = 0; i < answers.length; i++) {
+      modelAnswers.add(
+          AnsModel(pk: checkInQuestions[i].pk.toString(), answer: answers[i]));
+    }
+
+    var userId;
+    if (Storage.hasData(Constants.userId)) {
+      userId = Storage.getValue(Constants.userId);
+    }
+
+    var ansRes = AnsResponse(
+        queModelId: checkInQuestions[0].fields?.parent.toString(),
+        userId: userId.toString(),
+        response: modelAnswers);
+
+    isLoading.value = true;
+
+    // _apiHelper
+    //     .postCheckInAnswers(AnswerResponse(
+    //   uid: "GET THE UID FROM THE STORAGE",
+    //   response: modelAnswers,
+    // ))
+    try {
+      _apiHelper.postCheckInAnswers(ansRes).futureValue((value) {
+        print("😴😴😴😴😴😴😴😴${value}");
+        // var postResponse = jsonDecode(value);
+
+        print("❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️");
+        if (value["msg"] == "Successfully Done Thanks!." &&
+            value["status"] == 200) {
+          print("👽");
+          print(value["msg"]);
+          print(value["status"]);
+          isLoading.value = false;
+        }
+      }, onError: (error) {
+        print("Daily checkin response error $error");
+        isLoading.value = false;
+      });
+    } catch (e) {
+      print(e);
+      isLoading.value = false;
+    }
+  }
+}

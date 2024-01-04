@@ -37,12 +37,14 @@ export 'app/data/models/token_response.dart';
 export 'app/data/models/api_response_model/user_model.dart';
 export 'app/data/models/api_response_model/article_model.dart';
 export 'app/data/models/api_response_model/category_model.dart';
+export 'app/data/models/api_response_model/chekin_model.dart';
 
 ///Request Models
 export 'app/data/models/request_models/registration_request.dart';
 export 'app/data/models/request_models/login_request.dart';
 export 'app/data/models/request_models/help_us_request.dart';
 export 'app/data/models/request_models/update_password_request.dart';
+export 'app/data/models/request_models/answers_model.dart';
 
 ///-------------------- Libraries --------------------
 export 'package:flutter/foundation.dart';
@@ -74,6 +76,7 @@ export 'dart:convert';
 export 'package:shimmer/shimmer.dart';
 export 'package:cached_network_image/cached_network_image.dart';
 export 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+export 'package:step_progress_indicator/step_progress_indicator.dart';
 
 ///-------------------- Routes --------------------
 export 'app/routes/app_pages.dart';
@@ -185,7 +188,7 @@ export 'app/modules/article_template2/controller/article_template2_controller.da
 export 'app/modules/article_template2/bindings/article_template2_bindings.dart';
 export 'app/modules/article_template2/views/article_template2.view.dart';
 
-// ///Coming Soon
-// export 'app/modules/coming_soon/controllers/coming_soon_controller.dart';
-// export 'app/modules/coming_soon/bindings/coming_soon_binding.dart';
-// export 'app/modules/coming_soon/views/coming_soon_views.dart';
+//Daily Check-in
+export 'app/modules/daily_checkin/binding/daily_checkin_binding.dart';
+export 'app/modules/daily_checkin/controller/daily_checkin_controller.dart';
+export 'app/modules/daily_checkin/view/daily_checkin_view.dart';

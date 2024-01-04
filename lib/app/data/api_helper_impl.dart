@@ -106,15 +106,14 @@ class ApiHelperImpl extends GetConnect implements ApiHelper {
 
   @override
   Future<Response> getDailyCheckInQuestions() async {
-    print("🤦‍♂️🤦‍♂️🤦‍♂️🤦‍♂️🤦‍♂️🤦‍♂️");
     var data = await get('dailycheckin/');
-    print("🤦‍♂️🤦‍♂️🤦‍♂️");
-    print(data);
     return get('dailycheckin/');
   }
 
   @override
   Future<Response<dynamic>> postCheckInAnswers(AnsResponse answers) {
+    print("🤦‍♂️🤦‍♂️🤦‍♂️🤦‍♂️🤦‍♂️🤦‍♂️");
+    print(json.encode(answers.toJson()));
     return post('dailycheckin/', json.encode(answers.toJson()));
   }
 }
