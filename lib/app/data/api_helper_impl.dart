@@ -115,7 +115,6 @@ class ApiHelperImpl extends GetConnect implements ApiHelper {
 
   @override
   Future<Response<dynamic>> postCheckInAnswers(AnsResponse answers) {
-    // TODO: Put the right post endpoint for posting answers
     return post('dailycheckin/', json.encode(answers.toJson()));
   }
 }
