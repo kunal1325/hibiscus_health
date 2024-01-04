@@ -266,8 +266,14 @@ class DailyCheckinView extends GetView<DailyCheckinController> {
                                   : (controller.currentQuestionIndex ==
                                           controller.checkInQuestions.length - 1
                                       ? () {
-                                          print("😰😰😰😰");
                                           controller.postAnswers();
+                                          if (kDebugMode) {
+                                            print("😊😊😊 Posted answers");
+                                          }
+                                          controller.selectedOptionIndex.value =
+                                              100;
+                                          controller
+                                              .currentQuestionIndex.value++;
                                         }
                                       : () {
                                           controller.selectedOptionIndex.value =
