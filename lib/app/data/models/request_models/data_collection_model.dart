@@ -18,7 +18,7 @@ class DataCollectionModel {
     weight = json['weight'];
     gender = json['gender'];
     smoking = json['smoking'];
-    bloodPressureMedication = json['bloodPressureMedication'];
+    bloodPressureMedication = json['bloodpressuremedication'];
     diabetes = json['diabetes'];
   }
 
@@ -30,7 +30,7 @@ class DataCollectionModel {
     data['weight'] = this.weight;
     data['gender'] = this.gender;
     data['smoking'] = this.smoking;
-    data['bloodPressureMedication'] = this.bloodPressureMedication;
+    data['bloodpressuremedication'] = this.bloodPressureMedication;
     data['diabetes'] = this.diabetes;
     return data;
   }

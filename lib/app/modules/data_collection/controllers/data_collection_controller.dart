@@ -95,6 +95,8 @@ class DataCollectionController extends GetxController {
   }
 
   void faceScanPage() {
+    dataCollectionModel.identifier = Storage.getValue(Constants.userEmail);
+    dataCollectionModel.age = int.parse(Storage.getValue(Constants.age));
     if (processIndex.value == 2 && isScanFailed.value == false) {
       isScanFailed.value = !isScanFailed.value;
     } else {
@@ -248,24 +250,24 @@ class DataCollectionController extends GetxController {
       http.StreamedResponse response1 = await baseClient.send(req);
       Uri redirectUri = Uri.parse(response1.headers['location']!);
 
+      var requestBody = jsonEncode(DataCollectionModel(
+          identifier: dataCollectionModel.identifier,
+          age: dataCollectionModel.age,
+          height: dataCollectionModel.height,
+          weight: dataCollectionModel.weight,
+          gender: dataCollectionModel.gender,
+          smoking: dataCollectionModel.smoking,
+          bloodPressureMedication: dataCollectionModel.bloodPressureMedication,
+          diabetes: dataCollectionModel.diabetes
+      ));
+
       var response = await http.post(redirectUri,
           headers: {'Content-Type': "application/json; charset=utf-8"},
-          body: json.encode(DataCollectionModel(
-              identifier: "Kunal.hh@gmail.com",
-              age: 26,
-              height: dataCollectionModel.height,
-              weight: dataCollectionModel.weight,
-              gender: dataCollectionModel.gender,
-              smoking: dataCollectionModel.smoking,
-              bloodPressureMedication: dataCollectionModel.bloodPressureMedication,
-              diabetes: dataCollectionModel.diabetes
-          ))
+          body: requestBody
       );
-
       if(response.statusCode == 200){
         var result = jsonDecode(response.body);
         faceScanRequirementModel =  FaceScanRequirementModel.fromJson(result);
-        print(' getEncryptProfileApi =============>>>>');
         encryptProfileData.value = faceScanRequirementModel?.encryptedProfile ?? "";
       }else{
         print('response statusCode ${response.statusCode}');
@@ -281,8 +283,8 @@ class DataCollectionController extends GetxController {
       );
       Storage.saveValue(Constants.isFaceScanCompleted, true);
       isLoading(false);
-      faceScanWebUrl.value = "https://awe.na-east.nuralogix.ai/c/${faceScanRequirementModel?.configId}/${faceScanRequirementModel?.encryptedProfile}/${faceScanRequirementModel?.token}/${faceScanRequirementModel?.refreshToken}/${faceScanRequirementModel?.configId}";
-      print(' faceScanWebUrl =============>>>>\n');
+      faceScanWebUrl.value = "https://awe.na-east.nuralogix.ai/c/${faceScanRequirementModel?.configId}/${faceScanRequirementModel?.encryptedProfile}/${faceScanRequirementModel?.token}/${faceScanRequirementModel?.refreshToken}";
+      print("faceScanWebUrl.value=================>");
       printWrapped(faceScanWebUrl.value);
       // Get.offAll(() => StartMyJourneyView());
     }
