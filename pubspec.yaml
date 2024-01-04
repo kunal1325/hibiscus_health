@@ -74,6 +74,8 @@ dependencies:
   #For infinite scroll/pagination
   infinite_scroll_pagination:
 
+  #For step indicator
+  step_progress_indicator:
 
 dev_dependencies:
   flutter_test:
