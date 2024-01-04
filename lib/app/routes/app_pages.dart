@@ -118,5 +118,10 @@ abstract class AppPages {
       page: () => DataCollectionView(),
       binding: DataCollectionBinding(),
     ),
+    GetPage(
+      name: _Paths.anuraWebView,
+      page: () => AnuraWebView(),
+      binding: AnuraWebViewBinding(),
+    )
   ];
 }

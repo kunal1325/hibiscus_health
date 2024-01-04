@@ -85,6 +85,9 @@ export 'package:data_connection_checker_tv/data_connection_checker.dart';
 export 'package:provider/provider.dart';
 export 'package:step_progress_indicator/step_progress_indicator.dart';
 export 'package:permission_handler/permission_handler.dart';
+export 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
+export 'package:webview_flutter/webview_flutter.dart';
+
 
 
 ///-------------------- Routes --------------------
@@ -219,3 +222,8 @@ export 'app/modules/bio_data/views/bio_data_view.dart';
 export 'app/modules/face_scan_description/bindings/face_scan_description_binding.dart';
 export 'app/modules/face_scan_description/controllers/face_scan_description_controller.dart';
 export 'app/modules/face_scan_description/views/face_scan_description_view.dart';
+
+///Face Scan Web View
+export 'app/modules/anura_web_view/bindings/anura_web_view_binding.dart';
+export 'app/modules/anura_web_view/controllers/anura_web_view_controller.dart';
+export 'app/modules/anura_web_view/views/anura_web_view.dart';

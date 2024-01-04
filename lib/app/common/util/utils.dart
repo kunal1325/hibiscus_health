@@ -52,6 +52,11 @@ abstract class Utils {
     SystemChannels.textInput.invokeMethod(Strings.textInput_hide);
   }
 
+  static printWrapped(String text) {
+    final pattern = RegExp('.{1,800}'); // 800 is the size of each chunk
+    pattern.allMatches(text).forEach((match) => print(match.group(0)));
+  }
+
   static showSnackBarFun(context, String title) {
     SnackBar snackBar = SnackBar(
       content: Container(

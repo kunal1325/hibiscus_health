@@ -87,6 +87,9 @@ dependencies:
   #for asking permission
   permission_handler:
 
+  #for opening a web view
+  webview_flutter:
+
 
 dev_dependencies:
   flutter_test:

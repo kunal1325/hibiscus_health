@@ -25,6 +25,7 @@ abstract class Routes {
   static const articleTemplate2Screen = _Paths.articleTemplate2;
   static const landingPage = _Paths.landingPage;
   static const dataCollection = _Paths.dataCollection;
+  static const anuraWebView = _Paths.anuraWebView;
 }
 
 abstract class _Paths {
@@ -51,4 +52,5 @@ abstract class _Paths {
   static const articleTemplate2 = '/articeltemplate2';
   static const landingPage = '/landingpage';
   static const dataCollection = '/dataCollection';
+  static const anuraWebView = '/anuraWebView';
 }
