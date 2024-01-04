@@ -1,5 +1,3 @@
-import 'package:hibiscus_health/import.dart';
-
 class CheckInResponse {
   List<DailyCheckIns>? dailyCheckIns;
 

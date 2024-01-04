@@ -106,7 +106,6 @@ class ApiHelperImpl extends GetConnect implements ApiHelper {
 
   @override
   Future<Response> getDailyCheckInQuestions() async {
-    var data = await get('dailycheckin/');
     return get('dailycheckin/');
   }
 
