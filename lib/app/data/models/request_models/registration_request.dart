@@ -7,6 +7,7 @@ class RegisterRequest {
   String? password2;
   String? user_role;
   String? unique_code;
+  String? DOB;
 
   RegisterRequest({
     this.email,
@@ -16,6 +17,7 @@ class RegisterRequest {
     this.password,
     this.password2,
     this.user_role,
+    this.DOB,
     this.unique_code
   });
 
@@ -28,6 +30,7 @@ class RegisterRequest {
     password2 = json['password2'];
     user_role = json['user_role'];
     unique_code = json['unique_code'];
+    DOB = json['DOB'];
   }
 
   Map<String, dynamic> toJson() {
@@ -40,6 +43,7 @@ class RegisterRequest {
     data['password2'] = this.password2;
     data['user_role'] = this.user_role;
     data['unique_code'] = this.unique_code;
+    data['DOB'] = this.DOB;
     return data;
   }
 }

@@ -16,6 +16,8 @@ class PhysicalAttributesController extends GetxController {
   String? isValidHeightFt(String? text) {
     if (text!.isEmpty) {
       return Strings.emptyHeightFtError;
+    } else if (int.parse(text) > 6) {
+      return Strings.invalidWeightError;
     } else
       return null;
   }
@@ -30,6 +32,8 @@ class PhysicalAttributesController extends GetxController {
   String? isValidWeight(String? text) {
     if (text!.isEmpty) {
       return Strings.emptyWeightError;
+    } else if (int.parse(text) > 300) {
+      return Strings.invalidWeightError;
     } else
       return null;
   }

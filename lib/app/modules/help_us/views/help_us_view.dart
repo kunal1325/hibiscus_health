@@ -68,6 +68,7 @@ class HelpUsView extends GetView<HelpUsController> {
                             children: [
                               TextInputField(
                                 fillColor: false,
+                                maxLength: 25,
                                 hintText: Strings.fullNameHint,
                                 labelText: Strings.fullName,
                                 keyboardType: TextInputType.name,
@@ -84,6 +85,7 @@ class HelpUsView extends GetView<HelpUsController> {
                               SizedBox(height: 18,),
                               TextInputField(
                                 fillColor: false,
+                                maxLength: 30,
                                 hintText: Strings.emailHint,
                                 labelText: Strings.email,
                                 keyboardType: TextInputType.emailAddress,
@@ -99,6 +101,7 @@ class HelpUsView extends GetView<HelpUsController> {
                               ),
                               SizedBox(height: 18,),
                               TextFormField(
+                                maxLength: 10,
                                 decoration: InputDecoration(
                                   hintText: Strings.phoneNumberHint,
                                   labelText: Strings.phoneNumber,
@@ -211,6 +214,7 @@ class HelpUsView extends GetView<HelpUsController> {
                               SizedBox(height: 18,),
                               TextFormField(
                                 maxLines: 8,
+                                maxLength: 1000,
                                 keyboardType: TextInputType.multiline,
                                 textInputAction: TextInputAction.done,
                                 focusNode: controller.msgFocusNode,

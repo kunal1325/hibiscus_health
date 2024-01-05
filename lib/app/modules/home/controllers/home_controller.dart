@@ -7,8 +7,6 @@ class HomeController extends GetxController {
 
   var isDataLoading = false.obs;
 
-  final ApiHelper _apiHelper = Get.put<ApiHelper>(ApiHelperImpl());
-
   FaceScanRequirementModel? faceScanRequirementModel;
 
   var configId = "".obs;

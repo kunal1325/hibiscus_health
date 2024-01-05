@@ -85,6 +85,7 @@ class ResetPasswordView extends GetView<ResetPasswordController> {
                                       children: [
                                         TextInputField(
                                           fillColor: false,
+                                          maxLength: 30,
                                           hintText: Strings.emailHint,
                                           labelText: Strings.email,
                                           keyboardType: TextInputType.emailAddress,

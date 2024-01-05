@@ -64,6 +64,7 @@ class SignUpView extends GetView<SignUpController> {
                               children: [
                                 TextInputField(
                                   fillColor: false,
+                                  maxLength: 30,
                                   hintText: Strings.emailHint,
                                   labelText: Strings.email,
                                   keyboardType: TextInputType.emailAddress,
@@ -80,6 +81,7 @@ class SignUpView extends GetView<SignUpController> {
                                 Obx(() =>
                                     TextInputField(
                                       fillColor: false,
+                                      maxLength: 15,
                                       hintText: Strings.passwordHint,
                                       labelText: Strings.password,
                                       keyboardType: TextInputType.text,
@@ -106,6 +108,7 @@ class SignUpView extends GetView<SignUpController> {
                                 Obx(() =>
                                     TextInputField(
                                       fillColor: false,
+                                      maxLength: 15,
                                       hintText: Strings.confirmPasswordHint,
                                       labelText: Strings.confirmPassword,
                                       keyboardType: TextInputType.text,

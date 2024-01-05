@@ -50,6 +50,14 @@ class AnuraWebViewController extends GetxController {
                 request.url.startsWith('https://info.hibiscushealth.com/results?results=') ||
                 request.url.startsWith('https://assessment.hibiscushealth.com/dashboard?results=')) {
               print("No Error in Face Scan ====================>>>>>>>>>>>>>>>\n");
+
+                var results = request.url;
+                var baseWebViewUrlResult = "https://assessment.hibiscushealth.com/dashboard?results=";
+              final String result = results.replaceFirst(baseWebViewUrlResult, '');
+                print("printWrapped WebViewUrl ====================>>>>>>>>>>>>>>>\n");
+                printWrapped("${result}");
+
+
               Storage.saveValue(Constants.isFaceScanCompleted, true);
               Get.offAll(() => StartMyJourneyView());
               return NavigationDecision.navigate;

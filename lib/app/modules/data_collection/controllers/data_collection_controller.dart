@@ -14,8 +14,6 @@ class DataCollectionController extends GetxController {
 
   DataCollectionModel dataCollectionModel = new DataCollectionModel();
 
-  final ApiHelper _apiHelper = Get.put<ApiHelper>(ApiHelperImpl());
-
   FaceScanRequirementModel? faceScanRequirementModel;
 
   var configId = "".obs;
@@ -97,11 +95,11 @@ class DataCollectionController extends GetxController {
   void faceScanPage() {
     dataCollectionModel.identifier = Storage.getValue(Constants.userEmail);
     dataCollectionModel.age = int.parse(Storage.getValue(Constants.age));
-    if (processIndex.value == 2 && isScanFailed.value == false) {
-      isScanFailed.value = !isScanFailed.value;
-    } else {
+    // if (processIndex.value == 2 && isScanFailed.value == false) {
+    //   isScanFailed.value = !isScanFailed.value;
+    // } else {
       requestPermission(Get.context);
-    }
+    // }
   }
 
   Future<void> requestPermission(context) async {

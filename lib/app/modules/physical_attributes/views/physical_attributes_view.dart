@@ -98,7 +98,7 @@ class PhysicalAttributesView extends GetView<PhysicalAttributesController> {
                                     focusNode: controller.heightInFocusNode,
                                     requestFocusNode: controller.weightFocusNode,
                                     controller: controller.heightInController,
-                                    validator: controller.isValidHeightFt,
+                                    validator: controller.isValidHeightIn,
                                     obscureText: false,
                                     suffixIcon: SizedBox(),
                                     prefixIcon: SizedBox(),

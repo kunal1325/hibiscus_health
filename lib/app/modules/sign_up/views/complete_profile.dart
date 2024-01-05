@@ -80,6 +80,7 @@ class CompleteProfileView extends GetView<SignUpController> {
                                 SizedBox(height: 12,),
                                 TextInputField(
                                   fillColor: false,
+                                  maxLength: 10,
                                   hintText: Strings.fNameHint,
                                   labelText: Strings.fName,
                                   keyboardType: TextInputType.name,
@@ -95,6 +96,7 @@ class CompleteProfileView extends GetView<SignUpController> {
                                 SizedBox(height: 12,),
                                 TextInputField(
                                   fillColor: false,
+                                  maxLength: 15,
                                   hintText: Strings.lNameHint,
                                   labelText: Strings.lName,
                                   keyboardType: TextInputType.name,
@@ -109,6 +111,7 @@ class CompleteProfileView extends GetView<SignUpController> {
                                 ), //LName
                                 SizedBox(height: 12,),
                                 TextFormField(
+                                  maxLength: 10,
                                   decoration: InputDecoration(
                                     hintText: Strings.phoneNumberHint,
                                     labelText: Strings.phoneNumber,
@@ -311,6 +314,7 @@ class CompleteProfileView extends GetView<SignUpController> {
                                 SizedBox(height: 29,),
                                 TextInputField(
                                   fillColor: false,
+                                  maxLength: 8,
                                   hintText: Strings.dietitianCodeHint,
                                   labelText: Strings. dietitianCode,
                                   keyboardType: TextInputType.visiblePassword,

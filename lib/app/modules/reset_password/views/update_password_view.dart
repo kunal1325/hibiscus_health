@@ -87,6 +87,7 @@ class UpdatePasswordView extends GetView<ResetPasswordController> {
                                       children: [
                                         TextInputField(
                                           fillColor: false,
+                                          maxLength: 6,
                                           hintText: Strings.enterOtpHint,
                                           labelText: Strings.enterOtp,
                                           keyboardType: TextInputType.number,
@@ -103,6 +104,7 @@ class UpdatePasswordView extends GetView<ResetPasswordController> {
                                         Obx(() =>
                                             TextInputField(
                                               fillColor: false,
+                                              maxLength: 15,
                                               hintText: Strings.passwordHint,
                                               labelText: Strings.password,
                                               keyboardType: TextInputType.text,
@@ -129,6 +131,7 @@ class UpdatePasswordView extends GetView<ResetPasswordController> {
                                         Obx(() =>
                                             TextInputField(
                                               fillColor: false,
+                                              maxLength: 15,
                                               hintText: Strings.confirmPasswordHint,
                                               labelText: Strings.confirmPassword,
                                               keyboardType: TextInputType.text,
