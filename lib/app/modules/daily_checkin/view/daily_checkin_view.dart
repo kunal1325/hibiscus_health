@@ -38,7 +38,7 @@ class DailyCheckinView extends GetView<DailyCheckinController> {
                                     ),
                                     const SizedBox(height: 20),
                                     Text(
-                                      "Great job ${"John"}!",
+                                      "Great job ${controller.patient}!",
                                       style: Utils.kBigText.copyWith(
                                           color: AppColors.white,
                                           fontWeight: FontWeight.w600),
@@ -61,19 +61,6 @@ class DailyCheckinView extends GetView<DailyCheckinController> {
                             : ListView.builder(
                                 itemCount: controller.checkInQuestions.length,
                                 itemBuilder: (context, ind) {
-                                  // print(
-                                  //     "🐲🐲🐲🐲🐲🐲🐲🐲 ${controller.answers}");
-                                  // if (ind == 5 &&
-                                  //     controller.answers.length > 5 &&
-                                  //     (controller.answers[3] !=
-                                  //             // "Yes, several times"
-                                  //             controller.options[3][0] ||
-                                  //         controller.answers[4] !=
-                                  //             // "No"
-                                  //             controller.options[4][1])) {
-                                  //   ind++;
-                                  // }
-                                  // else
                                   return Padding(
                                     padding: const EdgeInsets.all(0),
                                     child: Obx(
@@ -81,18 +68,6 @@ class DailyCheckinView extends GetView<DailyCheckinController> {
                                         visible: controller
                                                 .currentQuestionIndex.value ==
                                             ind,
-                                        // (ind != 5 &&
-                                        //         controller.currentQuestionIndex
-                                        //                 .value ==
-                                        //             ind) ||
-                                        //     (ind == 5 &&
-                                        //         controller.answers.length > 5 &&
-                                        //         (controller.answers[3] ==
-                                        //                 controller.options[3]
-                                        //                     [0] ||
-                                        //             controller.answers[4] ==
-                                        //                 controller.options[4]
-                                        //                     [1])),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
                                           crossAxisAlignment:
@@ -128,7 +103,6 @@ class DailyCheckinView extends GetView<DailyCheckinController> {
                                                       .withOpacity(0.5)),
                                               child: Center(
                                                 child: Text(
-                                                  // "${controller.checkInQuestions.checkinCategory}",
                                                   "${controller.checkInQuestions[ind].fields?.label}",
                                                   style: Utils
                                                       .kParagraphTextStyle
@@ -140,7 +114,6 @@ class DailyCheckinView extends GetView<DailyCheckinController> {
                                             ),
                                             const SizedBox(height: 50),
                                             Text(
-                                              // "${controller.checkInQuestions[ind].question}",
                                               "${controller.checkInQuestions[ind].fields?.question}",
                                               style: Utils.kVeryLargeText
                                                   .copyWith(
@@ -149,11 +122,7 @@ class DailyCheckinView extends GetView<DailyCheckinController> {
                                             const SizedBox(height: 30),
                                             Wrap(
                                               children: List.generate(
-                                                //TODO:Change the index acc to the current question
                                                 controller.options[ind].length,
-                                                // controller.checkInQuestions[ind]
-                                                //         .fields?.options?.length ??
-                                                //     0,
                                                 (index) => Padding(
                                                   padding:
                                                       const EdgeInsets.all(0.0),
@@ -167,7 +136,6 @@ class DailyCheckinView extends GetView<DailyCheckinController> {
                                                       ),
                                                       child: InkWell(
                                                         onTap: () {
-                                                          // TODO: SELECT THE ANS FOR THE GIVEN QUESTION AND SAVE IT IN A LIST
                                                           if (controller.answers
                                                                   .length ==
                                                               ind + 1) {
@@ -175,25 +143,11 @@ class DailyCheckinView extends GetView<DailyCheckinController> {
                                                                 ind] = controller
                                                                     .options[
                                                                 ind][index];
-
-                                                            // controller
-                                                            //     .checkInQuestions[
-                                                            //         ind]
-                                                            //     .fields
-                                                            //     ?.options ??
-                                                            // "";
                                                           } else {
                                                             controller.answers
                                                                 .add(controller
                                                                         .options[
                                                                     ind][index]);
-
-                                                            // controller
-                                                            //     .checkInQuestions[
-                                                            //         ind]
-                                                            //     .fields
-                                                            //     ?.options?[index] ??
-                                                            // "");
                                                           }
 
                                                           controller
@@ -258,44 +212,70 @@ class DailyCheckinView extends GetView<DailyCheckinController> {
                           () => Positioned(
                             bottom: 30,
                             child: InkWell(
-                              onTap: controller.currentQuestionIndex.value ==
-                                          controller.checkInQuestions.length ||
-                                      controller.selectedOptionIndex.value ==
-                                          100
-                                  ? null
-                                  : (controller.currentQuestionIndex ==
-                                          controller.checkInQuestions.length - 1
+                              onTap:
+                                  //When questions have been submitted
+                                  controller.currentQuestionIndex.value ==
+                                          controller.checkInQuestions.length
                                       ? () {
-                                          controller.postAnswers();
-                                          if (kDebugMode) {
-                                            print("😊😊😊 Posted answers");
-                                          }
-                                          controller.selectedOptionIndex.value =
-                                              100;
-                                          controller
-                                              .currentQuestionIndex.value++;
+                                          Get.toNamed(Routes.libraryScreen);
                                         }
-                                      : () {
-                                          controller.selectedOptionIndex.value =
-                                              100;
-                                          controller
-                                              .currentQuestionIndex.value++;
-                                        }),
+                                      //When no option has been selected
+                                      : (controller.selectedOptionIndex.value ==
+                                              100
+                                          ? null
+                                          : (
+                                              //When answered all the questions including 6th one
+                                              controller.currentQuestionIndex ==
+                                                      controller
+                                                              .checkInQuestions
+                                                              .length -
+                                                          1
+                                                  ? () {
+                                                      controller.postAnswers();
+                                                      controller
+                                                          .currentQuestionIndex
+                                                          .value++;
+                                                    }
+                                                  : () {
+                                                      //When answered 'A' for question 4 AND/OR 'B' for option 5
+                                                      if (controller
+                                                                  .currentQuestionIndex
+                                                                  .value ==
+                                                              4 &&
+                                                          (controller.answers[
+                                                                      3] !=
+                                                                  controller
+                                                                          .options[
+                                                                      3][0] &&
+                                                              controller.answers[
+                                                                      4] !=
+                                                                  controller
+                                                                          .options[
+                                                                      4][1])) {
+                                                        controller
+                                                            .postAnswers();
+                                                        controller
+                                                            .currentQuestionIndex
+                                                            .value += 2;
+                                                      } else {
+                                                        controller
+                                                            .currentQuestionIndex
+                                                            .value++;
+                                                        controller
+                                                            .selectedOptionIndex
+                                                            .value = 100;
+                                                      }
+                                                    })),
                               child: CustomButtons(
                                 weight: Get.width - 40,
                                 height: 50,
-                                color: controller.selectedOptionIndex.value ==
-                                            100 ||
-                                        controller.currentQuestionIndex.value ==
-                                            controller.checkInQuestions.length
-                                    ? AppColors.kSecColor.withOpacity(0.2)
-                                    : AppColors.kSecColor,
+                                color:
+                                    controller.selectedOptionIndex.value == 100
+                                        ? AppColors.kSecColor.withOpacity(0.2)
+                                        : AppColors.kSecColor,
                                 shadowColor: AppColors.transparent,
                                 borderRadius: 10,
-                                title: controller.currentQuestionIndex ==
-                                        controller.checkInQuestions.length - 1
-                                    ? Strings.submit
-                                    : Strings.next,
+                                title: Strings.next,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
                                 fontColor: AppColors.kPrimaryColor,

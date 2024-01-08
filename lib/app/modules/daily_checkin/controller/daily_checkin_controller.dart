@@ -14,6 +14,7 @@ class DailyCheckinController extends GetxController {
   static const pageSize = 20;
   var currentQuestionIndex = 0.obs;
   var selectedOptionIndex = 100.obs;
+  var patient;
 
   var isLoading = false.obs;
 
@@ -30,8 +31,6 @@ class DailyCheckinController extends GetxController {
           element.fields!.options!.isNotEmpty)
         options.add(element.fields!.options!.split('|'));
     });
-
-    // print("😶‍🌫️😶‍🌫️😶‍🌫️😶‍🌫️😶‍🌫️ ${options.length}");
   }
 
   Future<void> getQuestions() async {
@@ -57,6 +56,10 @@ class DailyCheckinController extends GetxController {
           AnsModel(pk: checkInQuestions[i].pk.toString(), answer: answers[i]));
     }
 
+    if (Storage.hasData(Constants.patientName)) {
+      patient = Storage.getValue(Constants.patientName);
+    }
+
     var userId;
     if (Storage.hasData(Constants.userId)) {
       userId = Storage.getValue(Constants.userId);
@@ -69,22 +72,14 @@ class DailyCheckinController extends GetxController {
 
     isLoading.value = true;
 
-    // _apiHelper
-    //     .postCheckInAnswers(AnswerResponse(
-    //   uid: "GET THE UID FROM THE STORAGE",
-    //   response: modelAnswers,
-    // ))
     try {
       _apiHelper.postCheckInAnswers(ansRes).futureValue((value) {
-        print("😴😴😴😴😴😴😴😴${value}");
-        // var postResponse = jsonDecode(value);
-
-        print("❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️");
         if (value["msg"] == "Successfully Done Thanks!." &&
             value["status"] == 200) {
-          print("👽");
-          print(value["msg"]);
-          print(value["status"]);
+          if (kDebugMode) {
+            print(value["msg"]);
+            print(value["status"]);
+          }
           isLoading.value = false;
         }
       }, onError: (error) {
