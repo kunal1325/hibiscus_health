@@ -22,4 +22,5 @@ abstract class Constants {
   static const String patientName = 'patientName';
   static const String dietitianName = 'dietitianName';
   static const String isFaceScanCompleted = 'isFaceScanCompleted';
+  static const String isScanFailed = 'isScanFailed';
 }

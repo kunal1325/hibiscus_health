@@ -87,7 +87,7 @@ class DataCollectionView extends GetView<DataCollectionController> {
                                   ? Expanded(
                                   child: Padding(
                                     padding: const EdgeInsets.all(12.0),
-                                    child: Obx(() => FaceScanDescriptionView(isScanFailed: controller.isScanFailed.value,),)
+                                    child: FaceScanDescriptionView()
                                   ))
                                   : SizedBox(),
               

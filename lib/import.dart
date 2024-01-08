@@ -47,6 +47,7 @@ export 'app/data/models/request_models/login_request.dart';
 export 'app/data/models/request_models/help_us_request.dart';
 export 'app/data/models/request_models/update_password_request.dart';
 export 'app/data/models/request_models/data_collection_model.dart';
+export 'app/data/models/request_models/sent_email_request.dart';
 
 ///Services
 export 'app/data/services/data_connectivity_service.dart';

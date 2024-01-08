@@ -310,15 +310,14 @@ class StartMyJourneyView extends GetView<StartMyJourneyController> {
                                             fontColor: AppColors.kPrimaryColor,
                                             withShadow: false,
                                           )),
-                                      SizedBox(
-                                        height: 35,
-                                      ),
-                                    ],
+                                  SizedBox(
+                                    height: 35,
                                   ),
-                          )
-                        ),
-                      ),
-                    ),
+                                ],
+                              ),
+                            )),
+                          ),
+                        )),
                   ],
                 ),
               ),

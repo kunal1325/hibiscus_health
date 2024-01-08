@@ -1,10 +1,8 @@
 import '../../../../import.dart';
 
 class FaceScanDescriptionView extends GetView<FaceScanDescriptionController> {
-
-  final bool isScanFailed;
   
-  const FaceScanDescriptionView({super.key,required this.isScanFailed});
+  const FaceScanDescriptionView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +12,7 @@ class FaceScanDescriptionView extends GetView<FaceScanDescriptionController> {
           body: Scaffold(
             backgroundColor: AppColors.white,
             body: SingleChildScrollView(
-              child: Column(
+              child: Obx(() =>  Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Row(
@@ -41,24 +39,24 @@ class FaceScanDescriptionView extends GetView<FaceScanDescriptionController> {
                         color: AppColors.kPrimaryColorText,
                         height: 1.3),
                   ),
-                  isScanFailed
+                  controller.isScanFailed.value
                       ? SizedBox(
                     height: Get.width / 2.2,
                   )
                       : SizedBox(
                     height: 30,
                   ),
-                  isScanFailed
+                  controller.isScanFailed.value
                       ? Utils.assetSVGImage(AppImages.scanFailed,
                       width: 85, height: 85)
                       : Utils.assetImage(AppImages.faceScan,
                       width: 320, height: 320),
-                  isScanFailed
+                  controller.isScanFailed.value
                       ? SizedBox(
                     height: 30,
                   )
                       : SizedBox(),
-                  isScanFailed
+                  controller.isScanFailed.value
                       ? Text(
                     Strings.scanFailed,
                     style: GoogleFonts.inter(
@@ -68,12 +66,12 @@ class FaceScanDescriptionView extends GetView<FaceScanDescriptionController> {
                         height: 1.3),
                   )
                       : SizedBox(),
-                  isScanFailed
+                  controller.isScanFailed.value
                       ? SizedBox()
                       : SizedBox(
                     height: 30,
                   ),
-                  isScanFailed
+                  controller.isScanFailed.value
                       ? Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 40, vertical: 20),
@@ -125,7 +123,7 @@ class FaceScanDescriptionView extends GetView<FaceScanDescriptionController> {
                       ),
                     ),
                   ),
-                  isScanFailed
+                  controller.isScanFailed.value
                       ? SizedBox(
                     height: Get.width / 3,
                   )
@@ -133,7 +131,7 @@ class FaceScanDescriptionView extends GetView<FaceScanDescriptionController> {
                     height: 47,
                   ),
                 ],
-              )
+              ))
             ),
           ),
       )

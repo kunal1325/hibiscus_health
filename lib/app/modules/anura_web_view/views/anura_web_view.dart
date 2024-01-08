@@ -33,7 +33,8 @@ class AnuraWebView extends GetView<AnuraWebViewController> {
                       child: GestureDetector(
                         onTap: () {
                           // controller.navigateBack();
-                          Get.back();
+                          Storage.saveValue(Constants.isScanFailed, true);
+                          Get.back(result: "triggerIt");
                         },
                         child: Icon(
                           Icons.arrow_back_ios_new_rounded,

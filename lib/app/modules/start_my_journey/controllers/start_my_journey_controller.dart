@@ -28,6 +28,7 @@ class StartMyJourneyController extends GetxController {
     if(temp != null && temp != "isFaceScanCompleted"){
       isFaceScanCompleted.value = temp;
     }
+    Storage.removeValue(Constants.isScanFailed);
   }
 
   @override
