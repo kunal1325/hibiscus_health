@@ -8,308 +8,309 @@ class ArticleTemplateView2 extends GetView<ArticleTemplateView2> {
     return GetBuilder<ArticleTemplate2Controller>(
         init: ArticleTemplate2Controller(),
         builder: (controller) {
-          return SafeArea(
-              child: Scaffold(
-            appBar: AppBar(
-              toolbarHeight: 80,
-              backgroundColor: AppColors.kPrimaryColor,
-              elevation: 0,
-              title: Text(
-                Strings.article,
-                style: Utils.kBigText.copyWith(fontWeight: FontWeight.w500),
-              ),
-              centerTitle: true,
-              leading: iosBackButton,
-            ),
-            body: Container(
-              color: AppColors.kPrimaryColor,
-              child: Container(
-                decoration: const BoxDecoration(
-                    color: AppColors.kBgColor,
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(20))),
-                child: Padding(
-                  padding: const EdgeInsets.all(0),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        const SizedBox(height: 5),
-                        Card(
-                          color: AppColors.kSummaryBg,
-                          margin: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 20),
-                          elevation: 0,
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(15),
-                            ),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
+          return  ConnectivityCheckWidget(
+              body: SafeArea(
+                  child: Scaffold(
+                    appBar: AppBar(
+                      toolbarHeight: 80,
+                      backgroundColor: AppColors.kPrimaryColor,
+                      elevation: 0,
+                      title: Text(
+                        Strings.article,
+                        style: Utils.kBigText.copyWith(fontWeight: FontWeight.w500),
+                      ),
+                      centerTitle: true,
+                      leading: iosBackButton,
+                    ),
+                    body: Container(
+                      color: AppColors.kPrimaryColor,
+                      child: Container(
+                        decoration: const BoxDecoration(
+                            color: AppColors.kBgColor,
+                            borderRadius:
+                            BorderRadius.vertical(top: Radius.circular(20))),
+                        child: Padding(
+                          padding: const EdgeInsets.all(0),
+                          child: SingleChildScrollView(
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  "${controller.article.title}",
-                                  maxLines: 10,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: Utils.kHeadingTextStyle,
-                                ),
-                                const SizedBox(height: 20),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                const SizedBox(height: 5),
+                                Card(
+                                  color: AppColors.kSummaryBg,
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 20, vertical: 20),
+                                  elevation: 0,
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(15),
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          Strings.articleBy,
-                                          style: Utils.kParagraphTextStyle
-                                              .copyWith(
-                                                  fontWeight: FontWeight.w600,
-                                                  color: AppColors.kLightBlue),
+                                          "${controller.article.title}",
+                                          maxLines: 10,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: Utils.kHeadingTextStyle,
                                         ),
-                                        Row(
+                                        const SizedBox(height: 20),
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              "${controller.article.readTime}",
-                                              style: Utils.kParagraphTextStyle
-                                                  .copyWith(
-                                                      color:
+                                            Row(
+                                              mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Text(
+                                                  Strings.articleBy,
+                                                  style: Utils.kParagraphTextStyle
+                                                      .copyWith(
+                                                      fontWeight: FontWeight.w600,
+                                                      color: AppColors.kLightBlue),
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      "${controller.article.readTime}",
+                                                      style: Utils.kParagraphTextStyle
+                                                          .copyWith(
+                                                          color:
                                                           AppColors.kLightBlue),
+                                                    ),
+                                                    IconButton(
+                                                        onPressed: () {},
+                                                        icon: const Icon(
+                                                            Icons.bookmark_border,
+                                                            size: 25,
+                                                            color:
+                                                            AppColors.kLightBlue)),
+                                                  ],
+                                                )
+                                              ],
                                             ),
-                                            IconButton(
-                                                onPressed: () {},
-                                                icon: const Icon(
-                                                    Icons.bookmark_border,
-                                                    size: 25,
-                                                    color:
-                                                        AppColors.kLightBlue)),
+                                            const SizedBox(height: 10),
+                                            ReviewedByDoctor(
+                                              doctorImage:
+                                              "${controller.article.reviewerImageResponse?.data?.first.attributes?.formats?.thumbnail?.url}",
+                                              doctorName:
+                                              "${controller.article.reviewerName}",
+                                              doctorQualification:
+                                              "${controller.article.reviewerExperience}",
+                                            ),
                                           ],
-                                        )
+                                        ),
                                       ],
                                     ),
-                                    const SizedBox(height: 10),
-                                    ReviewedByDoctor(
-                                      doctorImage:
-                                          "${controller.article.reviewerImageResponse?.data?.first.attributes?.formats?.thumbnail?.url}",
-                                      doctorName:
-                                          "${controller.article.reviewerName}",
-                                      doctorQualification:
-                                          "${controller.article.reviewerExperience}",
-                                    ),
-                                  ],
+                                  ),
                                 ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 5),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: Column(
-                            children: [
-                              ClipRRect(
-                                  borderRadius: BorderRadius.circular(15),
-                                  child: CachedNetworkImage(
-                                    imageUrl: controller.article.image ?? "",
-                                    height: 200,
-                                    width: Get.width,
-                                    fit: BoxFit.cover,
-                                    placeholder: (context, url) => Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          vertical: 85,
-                                          horizontal: (Get.width - 30) / 2),
-                                      child: SizedBox(
-                                          height: 25,
-                                          width: 25,
-                                          child: CircularProgressIndicator()),
-                                    ),
-                                    errorWidget: (context, url, error) =>
-                                        Image.asset(
-                                            AppImages.defaultArticleImage),
-                                  )),
-                              const SizedBox(height: 20),
-                              controller.article.introduction != null
-                                  ? Text(
-                                      "${controller.article.introduction}",
-                                      style: Utils.kParagraphTextStyle,
-                                    )
-                                  : const SizedBox(),
-                              controller.article.bulletPoints != null ||
-                                      controller.article.bulletPoints != []
-                                  ? const SizedBox(height: 15)
-                                  : const SizedBox(),
-                              controller.article.bulletPoints != null ||
-                                      controller.article.bulletPoints != []
-                                  ? ListView.separated(
-                                      shrinkWrap: true,
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                      itemCount: controller
-                                              .article.bulletPoints?.length ??
-                                          0,
-                                      itemBuilder: (context, i) {
-                                        return ArticlePoints(
+                                const SizedBox(height: 5),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                                  child: Column(
+                                    children: [
+                                      ClipRRect(
+                                          borderRadius: BorderRadius.circular(15),
+                                          child: CachedNetworkImage(
+                                            imageUrl: controller.article.image ?? "",
+                                            height: 200,
                                             width: Get.width,
-                                            subheading:
-                                                "${controller.article.bulletPoints?[i].title}",
-                                            content:
-                                                "${controller.article.bulletPoints?[i].description}");
-                                      },
-                                      separatorBuilder:
-                                          (BuildContext context, int index) =>
-                                              const SizedBox(height: 10),
-                                    )
-                                  : const SizedBox(),
-                              controller.article.titleBulletPoint != null ||
-                                      controller.article.titleBulletPoint != []
-                                  ? ListView.separated(
-                                      shrinkWrap: true,
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                      itemCount: controller.article
-                                              .titleBulletPoint?.length ??
-                                          0,
-                                      itemBuilder: (context, ind) {
-                                        return Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            const SizedBox(height: 20),
-                                            controller
-                                                        .article
-                                                        .titleBulletPoint?[ind]
-                                                        .mainTitle !=
-                                                    null
-                                                ? Text(
-                                                    "${controller.article.titleBulletPoint?[ind].mainTitle}",
-                                                    maxLines: 20,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    style: Utils
-                                                        .kParagraphTextStyle
-                                                        .copyWith(
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w600),
-                                                  )
-                                                : const SizedBox(),
-                                            controller
-                                                        .article
-                                                        .titleBulletPoint?[ind]
-                                                        .mainTitle !=
-                                                    null
-                                                ? const SizedBox(height: 10)
-                                                : const SizedBox(),
-                                            controller
-                                                            .article
-                                                            .titleBulletPoint?[
-                                                                ind]
-                                                            .bulletPoint !=
-                                                        null ||
-                                                    controller
-                                                            .article
-                                                            .titleBulletPoint![
-                                                                ind]
-                                                            .bulletPoint !=
-                                                        []
-                                                ? ListView.separated(
-                                                    itemCount: controller
-                                                            .article
-                                                            .titleBulletPoint![
-                                                                ind]
-                                                            .bulletPoint
-                                                            ?.length ??
-                                                        0,
-                                                    shrinkWrap: true,
-                                                    physics:
-                                                        const NeverScrollableScrollPhysics(),
-                                                    itemBuilder:
-                                                        (context, index) {
-                                                      return ArticlePoints(
-                                                          width: Get.width,
-                                                          subheading:
-                                                              "${controller.article.titleBulletPoint![ind].bulletPoint![index].title}",
-                                                          content:
-                                                              "${controller.article.titleBulletPoint![ind].bulletPoint![index].description}",
-                                                          extraSpaceForSubpoint:
-                                                              true);
-                                                    },
-                                                    separatorBuilder:
-                                                        (BuildContext context,
-                                                            int index) {
-                                                      return const SizedBox(
-                                                          height: 10);
-                                                    },
-                                                  )
-                                                : const SizedBox(),
-                                          ],
-                                        );
-                                      },
-                                      separatorBuilder:
-                                          (BuildContext context, int index) =>
-                                              const SizedBox(),
-                                    )
-                                  : const SizedBox(),
-                              (controller.article.titleBulletPoint != null ||
+                                            fit: BoxFit.cover,
+                                            placeholder: (context, url) => Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  vertical: 85,
+                                                  horizontal: (Get.width - 30) / 2),
+                                              child: SizedBox(
+                                                  height: 25,
+                                                  width: 25,
+                                                  child: CircularProgressIndicator()),
+                                            ),
+                                            errorWidget: (context, url, error) =>
+                                                Image.asset(
+                                                    AppImages.defaultArticleImage),
+                                          )),
+                                      const SizedBox(height: 20),
+                                      controller.article.introduction != null
+                                          ? Text(
+                                        "${controller.article.introduction}",
+                                        style: Utils.kParagraphTextStyle,
+                                      )
+                                          : const SizedBox(),
+                                      controller.article.bulletPoints != null ||
+                                          controller.article.bulletPoints != []
+                                          ? const SizedBox(height: 15)
+                                          : const SizedBox(),
+                                      controller.article.bulletPoints != null ||
+                                          controller.article.bulletPoints != []
+                                          ? ListView.separated(
+                                        shrinkWrap: true,
+                                        physics:
+                                        const NeverScrollableScrollPhysics(),
+                                        itemCount: controller
+                                            .article.bulletPoints?.length ??
+                                            0,
+                                        itemBuilder: (context, i) {
+                                          return ArticlePoints(
+                                              width: Get.width,
+                                              subheading:
+                                              "${controller.article.bulletPoints?[i].title}",
+                                              content:
+                                              "${controller.article.bulletPoints?[i].description}");
+                                        },
+                                        separatorBuilder:
+                                            (BuildContext context, int index) =>
+                                        const SizedBox(height: 10),
+                                      )
+                                          : const SizedBox(),
+                                      controller.article.titleBulletPoint != null ||
+                                          controller.article.titleBulletPoint != []
+                                          ? ListView.separated(
+                                        shrinkWrap: true,
+                                        physics:
+                                        const NeverScrollableScrollPhysics(),
+                                        itemCount: controller.article
+                                            .titleBulletPoint?.length ??
+                                            0,
+                                        itemBuilder: (context, ind) {
+                                          return Column(
+                                            crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                            children: [
+                                              const SizedBox(height: 20),
+                                              controller
+                                                  .article
+                                                  .titleBulletPoint?[ind]
+                                                  .mainTitle !=
+                                                  null
+                                                  ? Text(
+                                                "${controller.article.titleBulletPoint?[ind].mainTitle}",
+                                                maxLines: 20,
+                                                overflow:
+                                                TextOverflow.ellipsis,
+                                                style: Utils
+                                                    .kParagraphTextStyle
+                                                    .copyWith(
+                                                    fontWeight:
+                                                    FontWeight
+                                                        .w600),
+                                              )
+                                                  : const SizedBox(),
+                                              controller
+                                                  .article
+                                                  .titleBulletPoint?[ind]
+                                                  .mainTitle !=
+                                                  null
+                                                  ? const SizedBox(height: 10)
+                                                  : const SizedBox(),
+                                              controller
+                                                  .article
+                                                  .titleBulletPoint?[
+                                              ind]
+                                                  .bulletPoint !=
+                                                  null ||
+                                                  controller
+                                                      .article
+                                                      .titleBulletPoint![
+                                                  ind]
+                                                      .bulletPoint !=
+                                                      []
+                                                  ? ListView.separated(
+                                                itemCount: controller
+                                                    .article
+                                                    .titleBulletPoint![
+                                                ind]
+                                                    .bulletPoint
+                                                    ?.length ??
+                                                    0,
+                                                shrinkWrap: true,
+                                                physics:
+                                                const NeverScrollableScrollPhysics(),
+                                                itemBuilder:
+                                                    (context, index) {
+                                                  return ArticlePoints(
+                                                      width: Get.width,
+                                                      subheading:
+                                                      "${controller.article.titleBulletPoint![ind].bulletPoint![index].title}",
+                                                      content:
+                                                      "${controller.article.titleBulletPoint![ind].bulletPoint![index].description}",
+                                                      extraSpaceForSubpoint:
+                                                      true);
+                                                },
+                                                separatorBuilder:
+                                                    (BuildContext context,
+                                                    int index) {
+                                                  return const SizedBox(
+                                                      height: 10);
+                                                },
+                                              )
+                                                  : const SizedBox(),
+                                            ],
+                                          );
+                                        },
+                                        separatorBuilder:
+                                            (BuildContext context, int index) =>
+                                        const SizedBox(),
+                                      )
+                                          : const SizedBox(),
+                                      (controller.article.titleBulletPoint != null ||
                                           controller.article.titleBulletPoint !=
                                               []) &&
-                                      (controller.article.bulletPoints !=
+                                          (controller.article.bulletPoints !=
                                               null ||
-                                          controller.article.bulletPoints != [])
-                                  ? const SizedBox(height: 20)
-                                  : const SizedBox(),
-                              (controller.article.summary == null ||
+                                              controller.article.bulletPoints != [])
+                                          ? const SizedBox(height: 20)
+                                          : const SizedBox(),
+                                      (controller.article.summary == null ||
                                           controller.article.summary == "") ||
-                                      controller.article.conclusion == null
-                                  ? const SizedBox()
-                                  : Text(
-                                      "${controller.article.conclusion}",
-                                      style: Utils.kParagraphTextStyle,
-                                    ),
-                              const SizedBox(height: 20),
-                              controller.article.summary != null ||
-                                      controller.article.conclusion != null
-                                  ? ArticleSummary(
-                                      articleTip: controller.article.summary !=
-                                                  null &&
+                                          controller.article.conclusion == null
+                                          ? const SizedBox()
+                                          : Text(
+                                        "${controller.article.conclusion}",
+                                        style: Utils.kParagraphTextStyle,
+                                      ),
+                                      const SizedBox(height: 20),
+                                      controller.article.summary != null ||
+                                          controller.article.conclusion != null
+                                          ? ArticleSummary(
+                                          articleTip: controller.article.summary !=
+                                              null &&
                                               controller.article.summary != ""
-                                          ? "${controller.article.summary}"
-                                          : "${controller.article.conclusion}")
-                                  : const SizedBox(),
-                              const SizedBox(height: 15),
-                              controller.article.disclaimer != null
-                                  ? Text("${controller.article.disclaimer}",
-                                      style: Utils.kVerySmallText.copyWith(
-                                          fontStyle: FontStyle.italic))
-                                  : const SizedBox(),
-                              const SizedBox(height: 20),
-                              controller.refText != ""
-                                  ? Obx(() => InkWell(
+                                              ? "${controller.article.summary}"
+                                              : "${controller.article.conclusion}")
+                                          : const SizedBox(),
+                                      const SizedBox(height: 15),
+                                      controller.article.disclaimer != null
+                                          ? Text("${controller.article.disclaimer}",
+                                          style: Utils.kVerySmallText.copyWith(
+                                              fontStyle: FontStyle.italic))
+                                          : const SizedBox(),
+                                      const SizedBox(height: 20),
+                                      controller.refText != ""
+                                          ? Obx(() => InkWell(
                                         onTap: controller.toggle,
                                         child: Column(
                                           children: [
                                             Row(
                                               mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
+                                              MainAxisAlignment
+                                                  .spaceBetween,
                                               children: [
                                                 Text(
                                                   Strings.references,
                                                   style: Utils
                                                       .kParagraphTextStyle
                                                       .copyWith(
-                                                          fontWeight:
-                                                              FontWeight.bold),
+                                                      fontWeight:
+                                                      FontWeight.bold),
                                                 ),
                                                 Icon(
                                                   controller.isRefCollapsed.value
                                                       ? Icons
-                                                          .keyboard_arrow_down
+                                                      .keyboard_arrow_down
                                                       : Icons
-                                                          .keyboard_arrow_right,
+                                                      .keyboard_arrow_right,
                                                   size: 30,
                                                   color: AppColors
                                                       .kPrimaryColorText,
@@ -323,9 +324,9 @@ class ArticleTemplateView2 extends GetView<ArticleTemplateView2> {
                                               child: Card(
                                                 color: AppColors.white,
                                                 shape:
-                                                    const RoundedRectangleBorder(
+                                                const RoundedRectangleBorder(
                                                   borderRadius:
-                                                      BorderRadius.all(
+                                                  BorderRadius.all(
                                                     Radius.circular(15),
                                                   ),
                                                 ),
@@ -339,9 +340,9 @@ class ArticleTemplateView2 extends GetView<ArticleTemplateView2> {
                                                       controller.refText,
                                                       maxLines: 80,
                                                       overflow:
-                                                          TextOverflow.ellipsis,
+                                                      TextOverflow.ellipsis,
                                                       style:
-                                                          Utils.kVerySmallText,
+                                                      Utils.kVerySmallText,
                                                     ),
                                                   ),
                                                 ),
@@ -351,17 +352,18 @@ class ArticleTemplateView2 extends GetView<ArticleTemplateView2> {
                                           ],
                                         ),
                                       ))
-                                  : const SizedBox(),
-                            ],
+                                          : const SizedBox(),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
-                        )
-                      ],
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ),
-            ),
-          ));
+                  ))
+          );
         });
   }
 }

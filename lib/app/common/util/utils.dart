@@ -52,6 +52,11 @@ abstract class Utils {
     SystemChannels.textInput.invokeMethod(Strings.textInput_hide);
   }
 
+  static printWrapped(String text) {
+    final pattern = RegExp('.{1,800}'); // 800 is the size of each chunk
+    pattern.allMatches(text).forEach((match) => print(match.group(0)));
+  }
+
   static showSnackBarFun(context, String title) {
     SnackBar snackBar = SnackBar(
       content: Container(
@@ -71,7 +76,7 @@ abstract class Utils {
       behavior: SnackBarBehavior.floating,
       margin: EdgeInsets.only(
         bottom: MediaQuery.of(context).size.height -
-            (MediaQuery.of(context).size.height / 6.3),
+            (MediaQuery.of(context).size.height / 5.3),
       ),
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -105,11 +110,11 @@ abstract class Utils {
     );
   }
 
-  static Widget getProgressBar(BuildContext context) {
+  static Widget getProgressBar(BuildContext context, {double? withOpacity}) {
     return Container(
         width: Get.width,
         height: Get.height,
-        color: AppColors.kPrimaryColor.withOpacity(0.8),
+        color: AppColors.kPrimaryColor.withOpacity(withOpacity ?? 0.8),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -408,4 +413,6 @@ abstract class Utils {
           ),
         ),
       );
+
+
 }

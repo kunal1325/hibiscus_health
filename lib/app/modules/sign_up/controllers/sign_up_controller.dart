@@ -72,11 +72,11 @@ class SignUpController extends GetxController {
           password: passwordController.text,
           password2: confirmPasswordController.text,
           user_role: "PATIENT",
+          DOB: dobController.text,
           unique_code: dietitianController.text
         ))
             .futureValue((value) {
           var userResponse = UserModel.fromJson(value);
-
           if(userResponse.status == 200 && userResponse.msg == "Registration Success"){
             Storage.saveValue(Constants.accessToken, userResponse.token?.access);
             Storage.saveValue(Constants.refreshToken, userResponse.token?.refresh);
@@ -84,6 +84,8 @@ class SignUpController extends GetxController {
             Storage.saveValue(Constants.dietitianId, userResponse.dietitianID);
             Storage.saveValue(Constants.patientName, userResponse.patientName);
             Storage.saveValue(Constants.dietitianName, userResponse.dietitianName);
+            Storage.saveValue(Constants.userEmail, userResponse.email);
+            Storage.saveValue(Constants.age, userResponse.age.toString());
             navigateToStartMyJourney();
             isLoading.value = false;
           }else{
@@ -222,7 +224,7 @@ class SignUpController extends GetxController {
     );
     if (picked != null && picked != selectedDate) {
         selectedDate = picked;
-        dobController.text = '${picked.month} / ${picked.day} / ${picked.year}';
+        dobController.text = '${picked.month}/${picked.day}/${picked.year}';
     }
     FocusScope.of(context).requestFocus(dietitianFocusNode);
   }
