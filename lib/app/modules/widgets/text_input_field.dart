@@ -12,6 +12,7 @@ class TextInputField extends StatelessWidget {
   final int? maxLength;
   final Widget suffixIcon;
   final String? initialValue;
+  final List<TextInputFormatter>? inputFormatters;
   final Widget prefixIcon;
   final FocusNode focusNode;
   final FocusNode? requestFocusNode;
@@ -21,7 +22,7 @@ class TextInputField extends StatelessWidget {
   final Function()? onEditingComplete;
 
   TextInputField({super.key, required this.fillColor, this.enabled, required this.hintText, required this.labelText, required this.keyboardType, required this.textInputAction,
-   required this.obscureText, required this.suffixIcon, required this.prefixIcon, this.initialValue, this.onSaved, this.maxLength,
+   required this.obscureText, required this.suffixIcon, required this.prefixIcon, this.initialValue, this.onSaved, this.maxLength, this.inputFormatters,
     required this.focusNode, this.requestFocusNode, required this.controller, this.validator, this.onEditingComplete});
 
   @override
@@ -31,6 +32,7 @@ class TextInputField extends StatelessWidget {
       enabled: enabled,
       obscureText: obscureText,
       maxLength: maxLength,
+      inputFormatters: inputFormatters,
       decoration: InputDecoration(
         filled: fillColor ? true : false,
         fillColor: fillColor ? Colors.grey[200] : null,

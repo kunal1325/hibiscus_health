@@ -47,8 +47,9 @@ class AnuraWebViewController extends GetxController {
               isLoading.value = false;
             }
           },
-          onNavigationRequest: (NavigationRequest request) {
+          onNavigationRequest: (NavigationRequest request) async {
             isLoading.value = true;
+            print("request.url ====================>>>>>>>>>>>>>>>\n ${request.url}");
             if (request.url.startsWith('https://hibiscushealth.com/results?results=') ||
                 request.url.startsWith('https://info.hibiscushealth.com/results?results=') ||
                 request.url.startsWith('https://assessment.hibiscushealth.com/dashboard?results=')) {
@@ -57,10 +58,13 @@ class AnuraWebViewController extends GetxController {
                 var baseWebViewUrlResult = "https://assessment.hibiscushealth.com/dashboard?results=";
                 final String result = results.replaceFirst(baseWebViewUrlResult, '');
                 hash.value=result;
-                sentEmail();
+                await sentResultToEmail();
               }
               return NavigationDecision.navigate;
             }else{
+              if(request.url.startsWith('https://hibiscushealth.com/results?error=INVALID_BMI')){
+                Utils.showSnackBarFun(Get.context, "INVALID_BMI");
+              }
               print("Error in Face Scan ====================>>>>>>>>>>>>>>>\n ${request.url}");
               Storage.saveValue(Constants.isFaceScanCompleted, false);
               Storage.saveValue(Constants.isScanFailed, true);
@@ -78,7 +82,7 @@ class AnuraWebViewController extends GetxController {
     final pattern = RegExp('.{1,800}'); // 800 is the size of each chunk
     pattern.allMatches(text).forEach((match) => print(match.group(0)));
   }
-  Future<void> sentEmail() async {
+  Future<void> sentResultToEmail() async {
     try {
       var isConnected =
       await Utils.checkInternetConnectivity();
@@ -90,12 +94,14 @@ class AnuraWebViewController extends GetxController {
                 score: 73.4908,
                 hash: hash.value
             ))
-            .futureValue((value) {
+            .futureValue((value) async {
           var userResponse = UserModel.fromJson(value);
           if(userResponse.status == 200 && userResponse.msg == "Successfully Done Thanks!."){
-            Storage.saveValue(Constants.isFaceScanCompleted, true);
+            Storage.removeValue(Constants.isFaceScanCompleted);
             Storage.removeValue(Constants.isScanFailed);
-            Get.offAll(() => StartMyJourneyView());
+            print("200 ==============>>>>>>>>>>>> ");
+            Storage.saveValue(Constants.isFaceScanCompleted, true);
+            await Get.offAll(() => StartMyJourneyView());
             isLoading.value = false;
           }else{
             Utils.showSnackBarFun(Get.context, userResponse.msg ?? "Something Went Wrong !!!");

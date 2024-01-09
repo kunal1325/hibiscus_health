@@ -249,9 +249,10 @@ abstract class Strings {
   static const String weightLbsHint = '189';
   static const String emptyHeightFtError = 'Please enter height Ft';
   static const String invalidHeightFtError = 'Height Can not greater than 6 ft';
+  static const String invalidLessHeightFtError = 'Height Can not Less than 3 ft';
   static const String emptyHeightInError = 'Please enter height In';
   static const String emptyWeightError = 'Please enter your weight';
-  static const String invalidWeightError = 'Please enter your Correct weight';
+  static const String invalidWeightError = 'Please enter your Correct weight, In between 80 - 275 lbs';
   static const String answerTheseQuestions = 'Answer these questions';
   static const String gender = 'What is your sex at birth? *';
   static const String smoke = 'Do you smoke? *';

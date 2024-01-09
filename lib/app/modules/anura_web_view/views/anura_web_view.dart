@@ -49,7 +49,7 @@ class AnuraWebView extends GetView<AnuraWebViewController> {
                           maintainAnimation: true,
                           maintainState: true,
                           visible: controller.isLoading.value,
-                          child: Utils.getProgressBar(context),
+                          child: Utils.getProgressBar(context, withOpacity: 1.0),
                         )
                     ),
                   ],

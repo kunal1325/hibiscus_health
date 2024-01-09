@@ -66,11 +66,14 @@ class PhysicalAttributesView extends GetView<PhysicalAttributesController> {
                         key: controller.dataCollectionController.physicalAttributesFormKey,
                         child: Column(
                           children: [
-                            Row(
+                            Wrap(
                               children: [
                                 SizedBox(
                                   child: TextInputField(
                                     fillColor: false,
+                                    inputFormatters: <TextInputFormatter>[
+                                      FilteringTextInputFormatter.allow(RegExp("[0-9]")),
+                                    ],
                                     maxLength: 1,
                                     hintText: Strings.heightFtHint,
                                     labelText: Strings.heightFt,
@@ -87,9 +90,13 @@ class PhysicalAttributesView extends GetView<PhysicalAttributesController> {
                                   ),
                                   width: (Get.width/2) - 30,
                                 ),
+                                SizedBox(width: 10,),
                                 SizedBox(
                                   child: TextInputField(
                                     fillColor: false,
+                                    inputFormatters: <TextInputFormatter>[
+                                      FilteringTextInputFormatter.allow(RegExp("^([1-9]|1[011])\$")),
+                                    ],
                                     maxLength: 2,
                                     hintText: Strings.heightInHint,
                                     labelText: Strings.heightIn,
@@ -107,11 +114,14 @@ class PhysicalAttributesView extends GetView<PhysicalAttributesController> {
                                   width: (Get.width/2) - 30,
                                 ),
                               ],
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             ),
                             SizedBox(height: 30,),
                             TextInputField(
                               fillColor: false,
+                              inputFormatters: <TextInputFormatter>[
+                                FilteringTextInputFormatter.allow(RegExp("[0-9]")),
+                              ],
                               maxLength: 3,
                               hintText: Strings.weightLbsHint,
                               labelText: Strings.weightLbs,

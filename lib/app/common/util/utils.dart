@@ -110,11 +110,11 @@ abstract class Utils {
     );
   }
 
-  static Widget getProgressBar(BuildContext context) {
+  static Widget getProgressBar(BuildContext context, {double? withOpacity}) {
     return Container(
         width: Get.width,
         height: Get.height,
-        color: AppColors.kPrimaryColor.withOpacity(0.8),
+        color: AppColors.kPrimaryColor.withOpacity(withOpacity ?? 0.8),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
