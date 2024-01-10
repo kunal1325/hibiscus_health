@@ -217,7 +217,7 @@ class DailyCheckinView extends GetView<DailyCheckinController> {
                                   controller.currentQuestionIndex.value ==
                                           controller.checkInQuestions.length
                                       ? () {
-                                          Get.toNamed(Routes.libraryScreen);
+                                          Get.toNamed(Routes.landingPage);
                                         }
                                       //When no option has been selected
                                       : (controller.selectedOptionIndex.value ==

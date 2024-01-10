@@ -8,8 +8,7 @@ class ArticleTemplateView2 extends GetView<ArticleTemplateView2> {
     return GetBuilder<ArticleTemplate2Controller>(
         init: ArticleTemplate2Controller(),
         builder: (controller) {
-          return SafeArea(
-              child: Scaffold(
+          return Scaffold(
             appBar: AppBar(
               toolbarHeight: 80,
               backgroundColor: AppColors.kPrimaryColor,
@@ -361,7 +360,7 @@ class ArticleTemplateView2 extends GetView<ArticleTemplateView2> {
                 ),
               ),
             ),
-          ));
+          );
         });
   }
 }

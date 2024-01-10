@@ -6,32 +6,29 @@ class LandingScreen extends GetView<LandingScreenController> {
     return GetBuilder<LandingScreenController>(
         init: LandingScreenController(),
         builder: (controller) {
-          return SafeArea(
-              child: Scaffold(
-                  body: WillPopScope(
-                    onWillPop: () {
-                      return Future.value(true);
+          return Scaffold(
+              body: WillPopScope(
+                onWillPop: () {
+                  return Future.value(true);
+                },
+                child: SizedBox.expand(
+                  child: PageView(
+                    controller: controller.pageController,
+                    onPageChanged: (index) {
+                      controller.onSelectedIndexChanged(index);
                     },
-                    child: SizedBox.expand(
-                      child: PageView(
-                        controller: controller.pageController,
-                        onPageChanged: (index) {
-                          controller.onSelectedIndexChanged(index);
-                        },
-                        children: <Widget>[
-                          LibraryView(),
-                          ProgressView(
-                              pageController: controller.pageController),
-                          CheckinView(
-                              pageController: controller.pageController),
-                          LearnView(pageController: controller.pageController),
-                          MoreView(pageController: controller.pageController),
-                        ],
-                      ),
-                    ),
+                    children: <Widget>[
+                      LibraryView(),
+                      ProgressView(pageController: controller.pageController),
+                      CheckinView(pageController: controller.pageController),
+                      LearnView(pageController: controller.pageController),
+                      MoreView(pageController: controller.pageController),
+                    ],
                   ),
-                  bottomNavigationBar:
-                      Obx(() => Utils.bottomNavigationBar(controller))));
+                ),
+              ),
+              bottomNavigationBar:
+                  Obx(() => Utils.bottomNavigationBar(controller)));
         });
   }
 }
