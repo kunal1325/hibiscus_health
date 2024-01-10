@@ -74,8 +74,22 @@ dependencies:
   #For infinite scroll/pagination
   infinite_scroll_pagination:
 
-  #For step indicator
+  #for checking connectivity
+  data_connection_checker_tv:
+  provider:
+
+  #for step indicator
   step_progress_indicator:
+
+  #for basic api calling
+  http:
+
+  #for asking permission
+  permission_handler:
+
+  #for opening a web view
+  webview_flutter:
+
 
 dev_dependencies:
   flutter_test:

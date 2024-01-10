@@ -32,11 +32,14 @@ export 'app/data/models/privacy_first_model.dart';
 export 'app/data/models/start_my_journey_model.dart';
 export 'app/data/models/phone_parse_model.dart';
 export 'app/data/models/token_response.dart';
+export 'app/data/models/offline_instruction_model.dart';
+export 'app/data/models/face_scan_description_model.dart';
 
 ///Api Response Model
 export 'app/data/models/api_response_model/user_model.dart';
 export 'app/data/models/api_response_model/article_model.dart';
 export 'app/data/models/api_response_model/category_model.dart';
+export 'app/data/models/api_response_model/face_scan_requirement_model.dart';
 export 'app/data/models/api_response_model/chekin_model.dart';
 
 ///Request Models
@@ -44,6 +47,11 @@ export 'app/data/models/request_models/registration_request.dart';
 export 'app/data/models/request_models/login_request.dart';
 export 'app/data/models/request_models/help_us_request.dart';
 export 'app/data/models/request_models/update_password_request.dart';
+export 'app/data/models/request_models/data_collection_model.dart';
+export 'app/data/models/request_models/sent_email_request.dart';
+
+///Services
+export 'app/data/services/data_connectivity_service.dart';
 export 'app/data/models/request_models/answers_model.dart';
 
 ///-------------------- Libraries --------------------
@@ -76,6 +84,13 @@ export 'dart:convert';
 export 'package:shimmer/shimmer.dart';
 export 'package:cached_network_image/cached_network_image.dart';
 export 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+export 'package:data_connection_checker_tv/data_connection_checker.dart';
+export 'package:provider/provider.dart';
+export 'package:step_progress_indicator/step_progress_indicator.dart';
+export 'package:permission_handler/permission_handler.dart';
+export 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
+export 'package:webview_flutter/webview_flutter.dart';
+
 export 'package:step_progress_indicator/step_progress_indicator.dart';
 
 ///-------------------- Routes --------------------
@@ -93,6 +108,9 @@ export 'app/modules/widgets/article_points.dart';
 export 'app/modules/widgets/article_summary.dart';
 export 'app/modules/widgets/reviewed_by_doctor.dart';
 export 'app/modules/widgets/coming_soon.dart';
+export 'app/modules/widgets/offline_widget.dart';
+export 'app/modules/widgets/connectivity_check_widget.dart';
+export 'app/modules/widgets/select_button_text_widget.dart';
 
 /// Home Screen
 export 'app/modules/home/bindings/home_binding.dart';
@@ -188,7 +206,32 @@ export 'app/modules/article_template2/controller/article_template2_controller.da
 export 'app/modules/article_template2/bindings/article_template2_bindings.dart';
 export 'app/modules/article_template2/views/article_template2.view.dart';
 
-//Daily Check-in
+///Data Collection Page
+export 'app/modules/data_collection/bindings/data_collection_binding.dart';
+export 'app/modules/data_collection/controllers/data_collection_controller.dart';
+export 'app/modules/data_collection/views/data_collection_view.dart';
+
+///Personal Data
+export 'app/modules/physical_attributes/bindings/physical_attributes_binding.dart';
+export 'app/modules/physical_attributes/controllers/physical_attributes_controller.dart';
+export 'app/modules/physical_attributes/views/physical_attributes_view.dart';
+
+///Bio data
+export 'app/modules/bio_data/bindings/bio_data_binding.dart';
+export 'app/modules/bio_data/controllers/bio_data_controller.dart';
+export 'app/modules/bio_data/views/bio_data_view.dart';
+
+///Face Scan
+export 'app/modules/face_scan_description/bindings/face_scan_description_binding.dart';
+export 'app/modules/face_scan_description/controllers/face_scan_description_controller.dart';
+export 'app/modules/face_scan_description/views/face_scan_description_view.dart';
+
+///Face Scan Web View
+export 'app/modules/anura_web_view/bindings/anura_web_view_binding.dart';
+export 'app/modules/anura_web_view/controllers/anura_web_view_controller.dart';
+export 'app/modules/anura_web_view/views/anura_web_view.dart';
+
+///Daily Check In
 export 'app/modules/daily_checkin/binding/daily_checkin_binding.dart';
 export 'app/modules/daily_checkin/controller/daily_checkin_controller.dart';
 export 'app/modules/daily_checkin/view/daily_checkin_view.dart';

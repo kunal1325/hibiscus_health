@@ -45,7 +45,16 @@ abstract class AppImages {
   static const String hibiscusFlower = "assets/images/svgs/hibiscusFlower.svg";
   static const String comingSoonIcon = "assets/images/pngs/comingSoonIcon.png";
   static const String searchIcon = "assets/images/pngs/searchIcon.png";
-
   static const String defaultArticleImage =
       "assets/images/pngs/article_default.png";
+
+  ///Offline Screen
+  static const String offline = "assets/images/pngs/offline.png";
+
+  ///Face Scan
+  static const String faceScan = 'assets/images/pngs/face_scan.png';
+  static const String scanFailed = 'assets/images/svgs/scan_failed.svg';
+  static const String Figure = 'assets/images/pngs/Figure.png';
+  static const String FigureSvg = 'assets/images/svgs/Figure.svg';
+
 }

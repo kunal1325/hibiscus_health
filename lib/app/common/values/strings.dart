@@ -4,6 +4,7 @@ abstract class Strings {
   static const connectionTimeout =
       'Connection timeout. Please try again after some time.';
   static const noConnection = 'No connection. Please turn on your internet!';
+  static const stillNoConnection = 'Still No connection. Please check all the points mention bellow!! ';
   static const unAuthorize = 'Unauthorized. Please login again!';
   static const String appName = 'Hibiscus Health';
   static const String emptyString = '';
@@ -214,11 +215,79 @@ abstract class Strings {
   static const String emptyFullNameError = 'Please enter Full Name';
 
   ///Api calling
-
   static const unauthorized = 'Unauthorized. Please login again!';
-
   static const String error = 'Error';
   static const success = 'Success';
   static const String somethingWentWrong = 'Something went wrong.';
   static const String ok = 'Ok';
+
+  ///Offline
+  static const String offlineTitle = 'Looks like you are offline. ';
+  static const String offlineDescription = 'Check your internet connection and try again';
+  static const String offlineInstructionTitleOne = 'Check Connectivity: ';
+  static const String offlineInstructionDescriptionOne = 'Ensure you have a stable internet connection.';
+  static const String offlineInstructionTitleTwo = 'Switch Networks: ';
+  static const String offlineInstructionDescriptionTwo = 'If Wi-Fi is on , try switching to cellular data.';
+  static const String offlineInstructionTitleThree = "Disable VPN: ";
+  static const String offlineInstructionDescriptionThree = "If you're using a VPN, consider disabling it.";
+  static const String offlineInstructionTitleFour = 'Restart Device: ';
+  static const String offlineInstructionDescriptionFour = 'Restart your device and relaunch the app';
+
+  ///Face Scan
+
+  static const String faceScan = 'Face Scan';
+  static const String faceScanDescription =
+      'You are almost there! Center your face in the frame and follow the on screen instructions.';
+  static const String faceScanListOne =
+      'Take off your glasses, hat or any items that is covering your face.';
+  static const String faceScanListTwo = 'Make sure your face is well lit';
+  static const String startCamera = 'Start Camera';
+  static const String scanFailed = 'Scan failed';
+  static const String scanFailedDescription =
+      'Center your face and use a good source of light';
+  static const String tryAgain = 'Try again';
+  static const String proceedToFaceScan = 'Proceed to Face Scan';
+  static const String physicalAttributes = 'Physical Attributes';
+  static const String physicalAttributesDescription = 'Lorem ipsum dolor sit amet, consetur adipiscing elit, sed do eiusmod ';
+  static const String heightFt = 'Height (ft)';
+  static const String heightFtHint = '6';
+  static const String heightIn = 'Height (In)';
+  static const String heightInHint = '3';
+  static const String weightLbs = 'Weight (lbs)';
+  static const String weightLbsHint = '189';
+  static const String emptyHeightFtError = 'Please enter height Ft';
+  static const String invalidHeightFtError = 'Height Can not greater than 6 ft';
+  static const String invalidLessHeightFtError = 'Height Can not Less than 3 ft';
+  static const String emptyHeightInError = 'Please enter height In';
+  static const String emptyWeightError = 'Please enter your weight';
+  static const String invalidWeightError = 'Please enter your Correct weight, In between 80 - 275 lbs';
+  static const String answerTheseQuestions = 'Answer these questions';
+  static const String gender = 'What is your sex at birth? *';
+  static const String smoke = 'Do you smoke? *';
+  static const String hypertension = 'Do you have hypertension? *';
+  static const String bloodPressureMedication = 'Are you taking blood pressure medication? *';
+  static const String diabetic = 'Are you diabetic? *';
+  static const String notSelected = 'Not Selected';
+  static const String compulsoryQuestionsError = 'All the questions are compulsory, Please provide suitable answer for these questions to start face scan';
+
+  static const String no = 'no';
+  static const String noCapital = 'No';
+  static const String yes = 'yes';
+  static const String yesCapital = 'Yes';
+  static const String type1 = 'type1';
+  static const String type1Capital = 'Type 1';
+  static const String type2 = 'type2';
+  static const String type2Capital = 'Type 2';
+  static const String male = 'male';
+  static const String maleCapital = 'Male';
+  static const String female = 'female';
+  static const String femaleCapital = 'Female';
+
+  static const String tryLater = 'Try Later';
+  static const String checkIn = 'Check-in';
+  static const String faceScanCompleted = 'Face scan completed!';
+  static const String resultsReady = 'The results are ready!';
+
+
+
 }

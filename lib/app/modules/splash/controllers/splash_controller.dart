@@ -30,12 +30,15 @@ class SplashController extends GetxController  with GetSingleTickerProviderState
 
   onDoneLoading() async {
     var userId = Storage.getValue(Constants.userId);
-    navigateToRout(userId);
+    var isFaceScanCompleted = Storage.getValue(Constants.isFaceScanCompleted);
+    navigateToRout(userId, isFaceScanCompleted);
   }
 
-  navigateToRout(userId) {
+  navigateToRout(userId, isFaceScanCompleted) {
     if (userId == null || userId == "userId") {
       Get.offAndToNamed(Routes.onBoarding);
+    } else if (isFaceScanCompleted == null || isFaceScanCompleted == "isFaceScanComplete" || isFaceScanCompleted != true ) {
+      Get.offAndToNamed(Routes.startMyJourney);
     } else {
       Get.offAndToNamed(Routes.landingPage);
     }
