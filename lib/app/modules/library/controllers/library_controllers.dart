@@ -15,7 +15,10 @@ class LibraryController extends GetxController {
   var isChipSelected = 0.obs;
   TextEditingController searchKey = TextEditingController();
 
-  List<String> screensToGo = ['/articletemplate1', '/articeltemplate2'];
+  List<String> screensToGo = [
+    Routes.articleTemplate1Screen,
+    Routes.articleTemplate2Screen
+  ];
 
   @override
   void onInit() {

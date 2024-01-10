@@ -10,4 +10,7 @@ abstract class ApiHelper {
       String filterCategory, String searchKeyword);
   Future<Response> getCategories();
   Future<Response> sentEmail(SentEmailRequest sentEmailRequest);
+
+  Future<Response> getDailyCheckInQuestions();
+  Future<Response> postCheckInAnswers(AnsResponse answers);
 }
