@@ -3,9 +3,7 @@ import '../../import.dart';
 part 'app_routes.dart';
 
 abstract class AppPages {
-  static const initial = Routes.dailyCheckinScreen;
-  //Routes.splash;
-  //Routes.splash;
+  static const initial = Routes.splash;
 
   static final routes = [
     GetPage(
