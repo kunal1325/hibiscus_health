@@ -276,6 +276,8 @@ class StartMyJourneyView extends GetView<StartMyJourneyController> {
                                             InkWell(
                                               onTap: () {
                                                 // controller.navigateToFaceScan();
+                                                controller
+                                                    .navigateToDailyCheckIn();
                                               },
                                               child: CustomButtons(
                                                 weight: Get.width / 2,

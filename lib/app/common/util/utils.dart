@@ -138,6 +138,18 @@ abstract class Utils {
         ));
   }
 
+  static TextStyle kVeryLargeText = GoogleFonts.inter(
+    textStyle: const TextStyle(
+      fontSize: 24,
+    ),
+  );
+
+  static TextStyle kLargeText = GoogleFonts.inter(
+    textStyle: const TextStyle(
+      fontSize: 21,
+    ),
+  );
+
   static TextStyle kBigText = GoogleFonts.inter(
     textStyle: const TextStyle(
       fontSize: 19,

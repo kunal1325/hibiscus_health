@@ -102,8 +102,18 @@ class ApiHelperImpl extends GetConnect implements ApiHelper {
         json.encode(updatePasswordRequest.toJson()));
   }
 
-  @override
+    @override
   Future<Response<dynamic>> sentEmail(sentEmail) {
     return post('facescandata/', json.encode(sentEmail.toJson()));
+  }
+
+  @override
+  Future<Response> getDailyCheckInQuestions() async {
+    return get('dailycheckin/');
+  }
+
+  @override
+  Future<Response<dynamic>> postCheckInAnswers(AnsResponse answers) {
+    return post('dailycheckin/', json.encode(answers.toJson()));
   }
 }

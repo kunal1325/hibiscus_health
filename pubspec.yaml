@@ -78,9 +78,6 @@ dependencies:
   data_connection_checker_tv:
   provider:
 
-  #for step indicator
-  step_progress_indicator:
-
   #for basic api calling
   http:
 
@@ -90,6 +87,8 @@ dependencies:
   #for opening a web view
   webview_flutter:
 
+  #For step indicator
+  step_progress_indicator:
 
 dev_dependencies:
   flutter_test:

@@ -92,6 +92,14 @@ abstract class Strings {
   static const String returnHome = "Return home";
   static const String comingSoon = "Coming Soon";
 
+  ///Daily Check-in Module
+  static const String dailyCheckIn = "Daily Check-in";
+  static const String completedTodayCheckIn =
+      "You have completed today’s check-in!";
+  static const String reminderTomorrow =
+      "We will send a reminder tomorrow just in case";
+  static const String submit = "Submit";
+
   //Privacy First
 
   static const String privacyFirst = 'Privacy First';

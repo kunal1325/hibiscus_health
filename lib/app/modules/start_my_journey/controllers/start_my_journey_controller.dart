@@ -17,6 +17,10 @@ class StartMyJourneyController extends GetxController {
     Get.offAll(() => DataCollectionView());
   }
 
+  void navigateToDailyCheckIn() {
+    Get.offAll(() => DailyCheckinView());
+  }
+
   void navigateToLanding() {
     Get.offAll(() => LandingScreen());
   }
@@ -27,7 +31,7 @@ class StartMyJourneyController extends GetxController {
     dietitianName.value = Storage.getValue(Constants.dietitianName);
     var temp = Storage.getValue(Constants.isFaceScanCompleted);
     print("isFaceScanCompleted temp ================>>>>>>>>>>>>>>> $temp");
-    if(temp != null && temp != "isFaceScanCompleted"){
+    if (temp != null && temp != "isFaceScanCompleted") {
       isFaceScanCompleted.value = temp;
     }
     // Storage.removeValue(Constants.isScanFailed);
