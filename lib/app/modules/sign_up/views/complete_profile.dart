@@ -214,14 +214,14 @@ class CompleteProfileView extends GetView<SignUpController> {
                                   focusNode: controller.phoneFocusNode,
                                   onFieldSubmitted: (_) {
                                     Utils.dismissKeyboard();
-                                    controller.selectDate(context);
+                                    controller.selectDatePlatformWise(context);
                                   },
                                   controller: controller.phoneController,
                                   validator: controller.isValidPhone,
                                 ), //Phone Number
                                 SizedBox(height: 12),
                                 GestureDetector(
-                                  onTap: () => controller.selectDate(context),
+                                  onTap: () => controller.selectDatePlatformWise(context),
                                   child: AbsorbPointer(
                                     child: TextFormField(
                                       enabled: true,
