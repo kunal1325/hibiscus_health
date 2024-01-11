@@ -95,7 +95,7 @@ class PhysicalAttributesView extends GetView<PhysicalAttributesController> {
                                   child: TextInputField(
                                     fillColor: false,
                                     inputFormatters: <TextInputFormatter>[
-                                      FilteringTextInputFormatter.allow(RegExp("^([1-9]|1[011])\$")),
+                                      FilteringTextInputFormatter.allow(RegExp("^([0-9]|1[011])\$")),
                                     ],
                                     maxLength: 2,
                                     hintText: Strings.heightInHint,
