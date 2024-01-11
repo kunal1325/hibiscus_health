@@ -236,55 +236,51 @@ class DailyCheckinView extends GetView<DailyCheckinController> {
                             child: Positioned(
                               bottom: 30,
                               child: InkWell(
-                                onTap:
-                                    //When no option has been selected
-                                    (controller.selectedOptionIndex.value == 100
-                                        ? null
-                                        : (
-                                            //When answered all the questions including 6th one
-                                            controller.currentQuestionIndex ==
-                                                    controller.checkInQuestions
-                                                            .length -
-                                                        1
-                                                ? () {
-                                                    controller.postAnswers();
-                                                    controller
-                                                        .currentQuestionIndex
-                                                        .value++;
-                                                    controller
-                                                        .delayedNavigation();
-                                                  }
-                                                : () {
-                                                    //When answered 'A' for question 4 AND/OR 'B' for option 5
-                                                    if (controller
-                                                                .currentQuestionIndex
-                                                                .value ==
-                                                            4 &&
-                                                        (controller.answers[
-                                                                    3] !=
-                                                                controller
-                                                                        .options[
-                                                                    3][0] &&
-                                                            controller.answers[
-                                                                    4] !=
-                                                                controller
-                                                                        .options[
-                                                                    4][1])) {
-                                                      controller.postAnswers();
-                                                      controller
-                                                          .currentQuestionIndex
-                                                          .value += 2;
-                                                      controller
-                                                          .delayedNavigation();
-                                                    } else {
-                                                      controller
-                                                          .currentQuestionIndex
-                                                          .value++;
-                                                      controller
-                                                          .selectedOptionIndex
-                                                          .value = 100;
-                                                    }
-                                                  })),
+                                onTap: controller.onNextClick(),
+                                // //When no option has been selected
+                                // (controller.selectedOptionIndex.value == 100
+                                //     ? null
+                                //     : (
+                                //         //When answered all the questions including 6th one
+                                //         controller.currentQuestionIndex ==
+                                //                 controller.checkInQuestions
+                                //                         .length -
+                                //                     1
+                                //             ? () {
+                                //                 controller.postAnswers();
+                                //                 controller
+                                //                     .currentQuestionIndex
+                                //                     .value++;
+                                //               }
+                                //             : () {
+                                //                 //When answered 'A' for question 4 AND/OR 'B' for option 5
+                                //                 if (controller
+                                //                             .currentQuestionIndex
+                                //                             .value ==
+                                //                         4 &&
+                                //                     (controller.answers[
+                                //                                 3] !=
+                                //                             controller
+                                //                                     .options[
+                                //                                 3][0] &&
+                                //                         controller.answers[
+                                //                                 4] !=
+                                //                             controller
+                                //                                     .options[
+                                //                                 4][1])) {
+                                //                   controller.postAnswers();
+                                //                   controller
+                                //                       .currentQuestionIndex
+                                //                       .value += 2;
+                                //                 } else {
+                                //                   controller
+                                //                       .currentQuestionIndex
+                                //                       .value++;
+                                //                   controller
+                                //                       .selectedOptionIndex
+                                //                       .value = 100;
+                                //                 }
+                                //               })),
                                 child: CustomButtons(
                                   weight: Get.width - 40,
                                   height: 50,

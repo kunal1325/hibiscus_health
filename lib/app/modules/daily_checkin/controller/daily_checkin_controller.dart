@@ -14,11 +14,14 @@ class DailyCheckinController extends GetxController {
   var currentQuestionIndex = 0.obs;
   var selectedOptionIndex = 100.obs;
   var patient;
+  var userId;
 
   var isLoading = false.obs;
 
   @override
   void onInit() {
+    patient = Storage.getValue(Constants.patientName);
+    userId = Storage.getValue(Constants.userId);
     getQuestions();
     super.onInit();
   }
@@ -30,6 +33,40 @@ class DailyCheckinController extends GetxController {
   delayedNavigation() async {
     await Future.delayed(Duration(seconds: 3));
     navigateToContentLibrary();
+  }
+
+  oneUnansweredPost() {
+    postAnswers();
+    currentQuestionIndex.value += 2;
+  }
+
+  allAnsweredPost() {
+    postAnswers();
+    currentQuestionIndex.value++;
+  }
+
+  normalQuestionNext() {
+    currentQuestionIndex.value++;
+    selectedOptionIndex.value = 100;
+  }
+
+  void Function()? onNextClick() {
+    //When no option has been selected
+    if (selectedOptionIndex.value == 100) {
+      return null;
+    } else {
+      if (currentQuestionIndex == checkInQuestions.length - 1) {
+        return allAnsweredPost;
+      } else {
+        //When answered 'A' for question 4 AND/OR 'B' for option 5
+        if (currentQuestionIndex.value == 4 &&
+            (answers[3] != options[3][0] && answers[4] != options[4][1])) {
+          return oneUnansweredPost;
+        } else {
+          return normalQuestionNext;
+        }
+      }
+    }
   }
 
   void addOptions() {
@@ -49,8 +86,8 @@ class DailyCheckinController extends GetxController {
       addOptions();
       isLoading.value = false;
     }, onError: (error) {
+      isLoading.value = false;
       if (kDebugMode) {
-        isLoading.value = false;
         print("Get Questions $error");
       }
     });
@@ -64,24 +101,15 @@ class DailyCheckinController extends GetxController {
           AnsModel(pk: checkInQuestions[i].pk.toString(), answer: answers[i]));
     }
 
-    if (Storage.hasData(Constants.patientName)) {
-      patient = Storage.getValue(Constants.patientName);
-    }
-
-    var userId;
-    if (Storage.hasData(Constants.userId)) {
-      userId = Storage.getValue(Constants.userId);
-    }
-
-    var ansRes = AnsResponse(
-        queModelId: checkInQuestions[0].fields?.parent.toString(),
-        userId: userId.toString(),
-        response: modelAnswers);
-
     isLoading.value = true;
 
     try {
-      _apiHelper.postCheckInAnswers(ansRes).futureValue((value) {
+      _apiHelper
+          .postCheckInAnswers(AnsResponse(
+              queModelId: checkInQuestions[0].fields?.parent.toString(),
+              userId: userId.toString(),
+              response: modelAnswers))
+          .futureValue((value) {
         if (value["msg"] == "Successfully Done Thanks!." &&
             value["status"] == 200) {
           if (kDebugMode) {
@@ -89,6 +117,7 @@ class DailyCheckinController extends GetxController {
             print(value["status"]);
           }
           isLoading.value = false;
+          delayedNavigation();
         }
       }, onError: (error) {
         print("Daily checkin response error $error");
