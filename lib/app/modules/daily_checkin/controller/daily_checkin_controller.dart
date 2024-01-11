@@ -1,4 +1,3 @@
-import 'package:hibiscus_health/app/common/util/extensions.dart';
 import 'package:hibiscus_health/import.dart';
 
 class DailyCheckinController extends GetxController {

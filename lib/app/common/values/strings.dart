@@ -260,7 +260,7 @@ abstract class Strings {
   static const String invalidLessHeightFtError = 'Height Can not Less than 3 ft';
   static const String emptyHeightInError = 'Please enter height In';
   static const String emptyWeightError = 'Please enter your weight';
-  static const String invalidWeightError = 'Please enter your Correct weight, In between 80 - 275 lbs';
+  static const String invalidWeightError = 'Please enter your Correct weight, In between 176 - 606 lbs';
   static const String answerTheseQuestions = 'Answer these questions';
   static const String gender = 'What is your sex at birth? *';
   static const String smoke = 'Do you smoke? *';
@@ -287,6 +287,14 @@ abstract class Strings {
   static const String checkIn = 'Check-in';
   static const String faceScanCompleted = 'Face scan completed!';
   static const String resultsReady = 'The results are ready!';
+  static const String customAskingForPermissionTitle = '”Hibiscus Health” Would Like to Access to the Camera';
+  static const String customAskingForPermissionDescription = 'To take pictures and detect your face';
+  static const String customAskingForPermissionTitleAfterDenied = 'Allow Hibiscus Health to access your camera ?';
+  static const String customAskingForPermissionDescriptionAfterDenied = 'You need to allow camera access in parameters for face scan in the app';
+  static const String reasonForAskingForPermission = 'Without Camera Permission, We are not able to get you face scan completed. So for go further, Please provide camera access permission.';
+  static const String doNotAllow = 'Don’t Allow';
+  static const String allow = '   Allow   ';
+  static const String settings = ' Settings ';
 
 
 

@@ -1,4 +1,3 @@
-
 import '../../../../import.dart';
 
 class FaceScanDescriptionController extends GetxController {
@@ -20,7 +19,6 @@ class FaceScanDescriptionController extends GetxController {
   getFaceScanStatus(){
     var temp = Storage.getValue(Constants.isScanFailed);
     if(temp != null && temp != "isFaceScanCompleted"){
-      print("isFaceScanCompleted ===========>>> ${temp}");
       isScanFailed.value = temp;
     }else{
       isScanFailed.value = false;

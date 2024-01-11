@@ -49,23 +49,23 @@ class AnuraWebViewController extends GetxController {
           },
           onNavigationRequest: (NavigationRequest request) async {
             isLoading.value = true;
-            print("request.url ====================>>>>>>>>>>>>>>>\n ${request.url}");
-            if (request.url.startsWith('https://hibiscushealth.com/results?results=') ||
-                request.url.startsWith('https://info.hibiscushealth.com/results?results=') ||
-                request.url.startsWith('https://assessment.hibiscushealth.com/dashboard?results=')) {
-              if(request.url.startsWith('https://assessment.hibiscushealth.com/dashboard?results=')){
+            if(kDebugMode){
+              print("request.url ====================>>>>>>>>>>>>>>>\n ${request.url}");
+            }
+            if (request.url.startsWith(Constants.uRLForWebViewResultOne)) {
+              if(request.url.startsWith(Constants.uRLForWebViewResultTwo)){
                 var results = request.url;
-                var baseWebViewUrlResult = "https://assessment.hibiscushealth.com/dashboard?results=";
+                var baseWebViewUrlResult = Constants.uRLForWebViewResultTwo;
                 final String result = results.replaceFirst(baseWebViewUrlResult, '');
                 hash.value=result;
                 await sentResultToEmail();
+                return NavigationDecision.prevent;
               }
               return NavigationDecision.navigate;
             }else{
-              if(request.url.startsWith('https://hibiscushealth.com/results?error=INVALID_BMI')){
+              if(request.url.startsWith(Constants.uRLForWebViewErrorInvalidBmi)){
                 Utils.showSnackBarFun(Get.context, "INVALID_BMI");
               }
-              print("Error in Face Scan ====================>>>>>>>>>>>>>>>\n ${request.url}");
               Storage.saveValue(Constants.isFaceScanCompleted, false);
               Storage.saveValue(Constants.isScanFailed, true);
               Get.back(result: "triggerIt");
@@ -78,10 +78,7 @@ class AnuraWebViewController extends GetxController {
       ..loadRequest(Uri.parse(WebViewUrl.value));
     controller.value = newController.value;
   }
-  void printWrapped(String text) {
-    final pattern = RegExp('.{1,800}'); // 800 is the size of each chunk
-    pattern.allMatches(text).forEach((match) => print(match.group(0)));
-  }
+
   Future<void> sentResultToEmail() async {
     try {
       var isConnected =
@@ -99,7 +96,9 @@ class AnuraWebViewController extends GetxController {
           if(userResponse.status == 200 && userResponse.msg == "Successfully Done Thanks!."){
             Storage.removeValue(Constants.isFaceScanCompleted);
             Storage.removeValue(Constants.isScanFailed);
-            print("200 ==============>>>>>>>>>>>> ");
+            if(kDebugMode){
+              print("200 ==============>>>>>>>>>>>> ");
+            }
             Storage.saveValue(Constants.isFaceScanCompleted, true);
             await Get.offAll(() => StartMyJourneyView());
             isLoading.value = false;
@@ -110,7 +109,7 @@ class AnuraWebViewController extends GetxController {
             Get.back(result: "triggerIt");
           }
         }, onError: (error) {
-          print("Login Response Error $error");
+          print("sentResultToEmail Response Error $error");
           Storage.saveValue(Constants.isFaceScanCompleted, false);
           Storage.saveValue(Constants.isScanFailed, true);
           Get.back(result: "triggerIt");

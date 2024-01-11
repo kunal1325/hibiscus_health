@@ -138,6 +138,7 @@ class PhysicalAttributesView extends GetView<PhysicalAttributesController> {
                                 var heightFt = (int.parse(controller.heightFtController.text)*30.48);
                                 var heightIn = (int.parse(controller.heightInController.text)*2.54);
                                 var weight = int.parse(controller.weightController.text);
+                                weight = (weight * 0.454).round();
                                 var heightCm = (heightFt + heightIn).round();
                                 controller.dataCollectionController.savePhysicalAttributesDataToModel(heightCm,weight);
                                 return null;
