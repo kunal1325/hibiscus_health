@@ -22,6 +22,7 @@ class StartMyJourneyController extends GetxController {
   }
 
   void navigateToLanding() {
+    Storage.saveValue(Constants.lastTime, "lastTime");
     Get.offAll(() => LandingScreen());
   }
 

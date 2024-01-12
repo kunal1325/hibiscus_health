@@ -37,8 +37,8 @@ class SplashController extends GetxController  with GetSingleTickerProviderState
       Get.offAndToNamed(Routes.onBoarding);
     } else if (isFaceScanCompleted == null || isFaceScanCompleted == "isFaceScanComplete" || isFaceScanCompleted != true ) {
       Get.offAndToNamed(Routes.startMyJourney);
-    } else if (lastTime != null || lastTime != "lastTime") {
-      Duration diff = DateTime.now().difference(DateTime.parse(lastTime));
+    } else if (lastTime != null && lastTime != "lastTime") {
+      Duration diff = DateTime.now().difference( DateTime.parse(lastTime));
       if(diff.inHours >24){
         Get.offAndToNamed(Routes.dailyCheckinScreen);
       }else{

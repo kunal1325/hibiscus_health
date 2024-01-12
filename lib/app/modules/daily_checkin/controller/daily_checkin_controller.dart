@@ -116,7 +116,9 @@ class DailyCheckinController extends GetxController {
             print(value["msg"]);
             print(value["status"]);
           }
-          Storage.saveValue(Constants.lastTime, DateTime.now().toString());
+          Storage.removeValue(Constants.lastTime);
+          DateTime dt1 = DateTime.now();
+          Storage.saveValue(Constants.lastTime, dt1.toString());
           isLoading.value = false;
           delayedNavigation();
         }
