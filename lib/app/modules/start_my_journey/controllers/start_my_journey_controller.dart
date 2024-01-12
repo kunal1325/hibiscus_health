@@ -31,11 +31,9 @@ class StartMyJourneyController extends GetxController {
     patientName.value = Storage.getValue(Constants.patientName);
     dietitianName.value = Storage.getValue(Constants.dietitianName);
     var temp = Storage.getValue(Constants.isFaceScanCompleted);
-    print("isFaceScanCompleted temp ================>>>>>>>>>>>>>>> $temp");
     if (temp != null && temp != "isFaceScanCompleted") {
       isFaceScanCompleted.value = temp;
     }
-    // Storage.removeValue(Constants.isScanFailed);
   }
 
   @override
