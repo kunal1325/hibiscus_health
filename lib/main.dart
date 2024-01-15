@@ -10,16 +10,22 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      minTextAdapt: true,
-      builder: (BuildContext context, child) => GetMaterialApp(
-        defaultTransition: Transition.fade,
-        title: Strings.appName,
-        debugShowCheckedModeBanner: false,
-        initialRoute: AppPages.initial,
-        getPages: AppPages.routes,
-        initialBinding: InitialBindings(),
-      ),
+    return StreamProvider<DataConnectionStatus>(
+      create: (_) {
+        return DataConnectionChecker().onStatusChange;
+      },
+      initialData: DataConnectionStatus.connected,
+      child: ScreenUtilInit(
+        minTextAdapt: true,
+        builder: (BuildContext context, child) => GetMaterialApp(
+          defaultTransition: Transition.fade,
+          title: Strings.appName,
+          debugShowCheckedModeBanner: false,
+          initialRoute: AppPages.initial,
+          getPages: AppPages.routes,
+          initialBinding: InitialBindings(),
+        ),
+      )
     );
   }
 }

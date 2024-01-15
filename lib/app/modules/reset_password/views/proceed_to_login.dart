@@ -7,104 +7,110 @@ class ProcessToLoginView extends GetView<ResetPasswordController> {
   Widget build(BuildContext context) {
     return GetBuilder<ResetPasswordController>(
       init: ResetPasswordController(),
-      builder: (controller) => WillPopScope(
-        onWillPop: () => showExitPopup(Get.context),
-        child: Scaffold(
-          body: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(AppImages.bg2),
-                  fit: BoxFit.cover,
-                ),
-                color: AppColors.kPrimaryColor),
-            child: Container(
+      builder: (controller) =>  ConnectivityCheckWidget(
+          body: PopScope(
+                canPop: false,
+                onPopInvoked: (didPop) {
+                  showExitPopup(Get.context);
+                  return;
+                },
+                child: Scaffold(
+              body: Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
-                color: Colors.black.withOpacity(0.3),
-                child: Stack(
-                  children: [
-                    Positioned.fill(
-                      top: Get.width / 4,
-                      child: Align(
-                        alignment: Alignment.topCenter,
-                        child: Utils.assetSVGImage(AppImages.logoWhite,
-                            width: 141, height: 57),
-                      ),
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(AppImages.bg2),
+                      fit: BoxFit.cover,
                     ),
-                    Positioned(
-                        bottom: 0,
-                        child: Container(
-                          width: Get.width,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(17),
-                                topRight: Radius.circular(17)),
-                            color: AppColors.white,
+                    color: AppColors.kPrimaryColor),
+                child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    color: Colors.black.withOpacity(0.3),
+                    child: Stack(
+                      children: [
+                        Positioned.fill(
+                          top: Get.width / 4,
+                          child: Align(
+                            alignment: Alignment.topCenter,
+                            child: Utils.assetSVGImage(AppImages.logoWhite,
+                                width: 141, height: 57),
                           ),
-                          padding: EdgeInsets.symmetric(horizontal: 20),
-                          child: SingleChildScrollView(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  height: 70,
-                                ),
-                                Utils.assetSVGImage(
-                                    AppImages.checked,
-                                    width: 90,
-                                    height: 90),
-                                SizedBox(
-                                  height: 26,
-                                ),
-                                Container(
-                                  width: 180,
-                                  child: Center(
-                                    child: Text(
-                                      Strings.passwordUpdatedSuccessfully,
-                                      textAlign: TextAlign.center,
-                                      style: GoogleFonts.inter(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400,
-                                        color: AppColors.kPrimaryColorText,
-                                        height: 1.5
+                        ),
+                        Positioned(
+                            bottom: 0,
+                            child: Container(
+                              width: Get.width,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(17),
+                                    topRight: Radius.circular(17)),
+                                color: AppColors.white,
+                              ),
+                              padding: EdgeInsets.symmetric(horizontal: 20),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                      height: 70,
+                                    ),
+                                    Utils.assetSVGImage(
+                                        AppImages.checked,
+                                        width: 90,
+                                        height: 90),
+                                    SizedBox(
+                                      height: 26,
+                                    ),
+                                    Container(
+                                      width: 180,
+                                      child: Center(
+                                        child: Text(
+                                          Strings.passwordUpdatedSuccessfully,
+                                          textAlign: TextAlign.center,
+                                          style: GoogleFonts.inter(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w400,
+                                              color: AppColors.kPrimaryColorText,
+                                              height: 1.5
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
+                                    SizedBox(
+                                      height: 87,
+                                    ),
+                                    InkWell(
+                                        onTap: () {
+                                          controller.navigateToSignIn();
+                                        },
+                                        child: CustomButtons(
+                                          weight: Get.width - 40,
+                                          height: 50,
+                                          color: AppColors.kSecColor,
+                                          shadowColor: AppColors.kSecColor,
+                                          borderRadius: 6,
+                                          title: Strings.proceedLogin,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          fontColor: AppColors.kPrimaryColor,
+                                          withShadow: false,
+                                        )),
+                                    SizedBox(
+                                      height: 35,
+                                    ),
+                                  ],
                                 ),
-                                SizedBox(
-                                  height: 87,
-                                ),
-                                InkWell(
-                                    onTap: () {
-                                      controller.navigateToSignIn();
-                                    },
-                                    child: CustomButtons(
-                                      weight: Get.width - 40,
-                                      height: 50,
-                                      color: AppColors.kSecColor,
-                                      shadowColor: AppColors.kSecColor,
-                                      borderRadius: 6,
-                                      title: Strings.proceedLogin,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                      fontColor: AppColors.kPrimaryColor,
-                                      withShadow: false,
-                                    )),
-                                SizedBox(
-                                  height: 35,
-                                ),
-                              ],
-                            ),
-                          ),
-                        )),
-                    // Blur box
-                  ],
-                )),
+                              ),
+                            )),
+                        // Blur box
+                      ],
+                    )),
+              ),
+            ),
           ),
-        ),
-      ),
+      )
     );
   }
 }

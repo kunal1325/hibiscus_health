@@ -72,11 +72,11 @@ class SignUpController extends GetxController {
           password: passwordController.text,
           password2: confirmPasswordController.text,
           user_role: "PATIENT",
+          DOB: dobController.text,
           unique_code: dietitianController.text
         ))
             .futureValue((value) {
           var userResponse = UserModel.fromJson(value);
-
           if(userResponse.status == 200 && userResponse.msg == "Registration Success"){
             Storage.saveValue(Constants.accessToken, userResponse.token?.access);
             Storage.saveValue(Constants.refreshToken, userResponse.token?.refresh);
@@ -84,6 +84,8 @@ class SignUpController extends GetxController {
             Storage.saveValue(Constants.dietitianId, userResponse.dietitianID);
             Storage.saveValue(Constants.patientName, userResponse.patientName);
             Storage.saveValue(Constants.dietitianName, userResponse.dietitianName);
+            Storage.saveValue(Constants.userEmail, userResponse.email);
+            Storage.saveValue(Constants.age, userResponse.age.toString());
             navigateToStartMyJourney();
             isLoading.value = false;
           }else{
@@ -205,26 +207,58 @@ class SignUpController extends GetxController {
     if (text.length <= 7) {
       return Strings.shortDietitianCodeError;
     }
-    // final hasLetter = text.contains(RegExp(r'[a-zA-Z]'));
-    // final hasNumber = text.contains(RegExp(r'[0-9]'));
-    // if (!hasLetter || !hasNumber) {
-    //   return Strings.invalidDietitianCodeError;
-    // }
     else
       return null;
   }
-  Future<void> selectDate(BuildContext context) async {
+  Future<void> selectDatePlatformWise(BuildContext context) async {
+    final ThemeData theme = Theme.of(context);
+    switch (theme.platform) {
+      case TargetPlatform.android:
+        return buildMaterialDatePicker(context);
+      case TargetPlatform.iOS:
+        return buildCupertinoDatePicker(context);
+      default:
+        return buildMaterialDatePicker(context);
+    }
+  }
+  Future<void> buildMaterialDatePicker(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: DateTime(2000, 01, 01),
-      firstDate: DateTime(1900),
+      initialDate: DateTime(1992, 01, 01),
+      firstDate: DateTime(1920),
       lastDate: DateTime.now(),
+      initialEntryMode: DatePickerEntryMode.calendarOnly,
+      initialDatePickerMode: DatePickerMode.year,
+      helpText: 'Select Date Of Birth',
     );
     if (picked != null && picked != selectedDate) {
-        selectedDate = picked;
-        dobController.text = '${picked.month} / ${picked.day} / ${picked.year}';
+      selectedDate = picked;
+      dobController.text = '${picked.month}/${picked.day}/${picked.year}';
     }
     FocusScope.of(context).requestFocus(dietitianFocusNode);
+  }
+  Future<void> buildCupertinoDatePicker(BuildContext context) async {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext builder) {
+          return Container(
+            height: MediaQuery.of(context).copyWith().size.height / 3,
+            color: Colors.white,
+            child: CupertinoDatePicker(
+              mode: CupertinoDatePickerMode.date,
+              onDateTimeChanged: (picked) {
+                if (picked != selectedDate) {
+                  selectedDate = picked;
+                  dobController.text = '${picked.month}/${picked.day}/${picked.year}';
+                }
+                FocusScope.of(context).requestFocus(dietitianFocusNode);
+              },
+              initialDateTime: DateTime(1992, 01, 01),
+              minimumYear: 1920,
+              maximumYear: DateTime.now().year,
+            ),
+          );
+        });
   }
   void openCountryPickerDialog() => showDialog(
     context: Get.context!,

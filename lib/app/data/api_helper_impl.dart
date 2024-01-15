@@ -36,12 +36,11 @@ class ApiHelperImpl extends GetConnect implements ApiHelper {
 
   void addRequestModifier() {
     httpClient.addRequestModifier<dynamic>((request) {
-      // if (Storage.hasData(Constants.accessToken)) {
-      //   var token = Storage.getValue(Constants.accessToken);
-      //   print("Token $token");
-      //   var tokenResponse = TokenResponse.fromJson(token);
-      //   request.headers['Authorization'] = "Bearer ${tokenResponse.result}";
-      // }
+      if (Storage.hasData(Constants.accessToken)) {
+        var token = Storage.getValue(Constants.accessToken);
+        print("Token $token");
+        request.headers['Authorization'] = "Bearer ${token}";
+      }
 
       printInfo(
         info: 'REQUEST ║ ${request.method.toUpperCase()}\n'
@@ -101,5 +100,20 @@ class ApiHelperImpl extends GetConnect implements ApiHelper {
       UpdatePasswordRequest updatePasswordRequest) {
     return post('otp/verify-reset-password/',
         json.encode(updatePasswordRequest.toJson()));
+  }
+
+    @override
+  Future<Response<dynamic>> sentEmail(sentEmail) {
+    return post('facescandata/', json.encode(sentEmail.toJson()));
+  }
+
+  @override
+  Future<Response> getDailyCheckInQuestions() async {
+    return get('dailycheckin/');
+  }
+
+  @override
+  Future<Response<dynamic>> postCheckInAnswers(AnsResponse answers) {
+    return post('dailycheckin/', json.encode(answers.toJson()));
   }
 }

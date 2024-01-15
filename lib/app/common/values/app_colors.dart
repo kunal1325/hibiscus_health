@@ -4,6 +4,7 @@ abstract class AppColors {
   static const Color kPrimaryColor = Color(0xff12296d);
   static const Color kPrimaryColorText = Color(0xFF4B5768);
   static const Color kSecColor = Color(0xffb8eb5e);
+  static const Color kSecColorNotSelected = Color(0xffF0F5DE);
   static const Color kSecColorText = Color(0xFF928FA6);
   static const Color kLightBlue = Color(0xFF3893CC);
   static const Color black = Colors.black;
@@ -23,5 +24,7 @@ abstract class AppColors {
 
   static const Color lightSecColor = Color(0xffEBF1DF);
   static const Color darkSecColor = Color(0xff4D7508);
+  static const Color darkSelectedColor = Color(0xff82A931);
   static const Color avgSecColor = Color(0xff65980C);
+  static const Color kDarkGreenColorText = Color(0xff485713);
 }

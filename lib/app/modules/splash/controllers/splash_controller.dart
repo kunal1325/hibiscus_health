@@ -6,9 +6,6 @@ class SplashController extends GetxController  with GetSingleTickerProviderState
   late AnimationController controller;
   late Animation<double> animation;
 
-
-  var userId = "".obs;
-
   @override
   Future<void> onInit() async {
     controller = AnimationController(
@@ -30,12 +27,23 @@ class SplashController extends GetxController  with GetSingleTickerProviderState
 
   onDoneLoading() async {
     var userId = Storage.getValue(Constants.userId);
-    navigateToRout(userId);
+    var isFaceScanCompleted = Storage.getValue(Constants.isFaceScanCompleted);
+    var lastTime = Storage.getValue(Constants.lastTime);
+    navigateToRout(userId, isFaceScanCompleted, lastTime);
   }
 
-  navigateToRout(userId) {
+  navigateToRout(userId, isFaceScanCompleted, lastTime) {
     if (userId == null || userId == "userId") {
       Get.offAndToNamed(Routes.onBoarding);
+    } else if (isFaceScanCompleted == null || isFaceScanCompleted == "isFaceScanComplete" || isFaceScanCompleted != true ) {
+      Get.offAndToNamed(Routes.startMyJourney);
+    } else if (lastTime != null && lastTime != "lastTime") {
+      Duration diff = DateTime.now().difference( DateTime.parse(lastTime));
+      if(diff.inHours >24){
+        Get.offAndToNamed(Routes.dailyCheckinScreen);
+      }else{
+        Get.offAndToNamed(Routes.landingPage);
+      }
     } else {
       Get.offAndToNamed(Routes.landingPage);
     }
