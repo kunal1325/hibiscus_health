@@ -28,10 +28,19 @@ class ArticleTemplateView1 extends GetView<ArticleTemplateView1> {
                       style: Utils.kParagraphTextStyle
                           .copyWith(color: AppColors.kLightBlue),
                     ),
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.bookmark_border,
-                            size: 35, color: AppColors.kLightBlue)),
+                    Theme(
+                      data: ThemeData(
+                        highlightColor: Colors.transparent,
+                        splashColor: Colors.transparent,
+                        splashFactory: NoSplash.splashFactory,
+                      ),
+                      child: IconButton(
+                          onPressed: () {},
+                          splashColor: AppColors.transparent,
+                          splashRadius: 0.0000000000001,
+                          icon: const Icon(Icons.bookmark_border,
+                              size: 35, color: AppColors.kLightBlue)),
+                    ),
                   ],
                 )
               ],
