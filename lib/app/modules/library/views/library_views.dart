@@ -68,6 +68,11 @@ class LibraryView extends GetView<LibraryController> {
                                         color: AppColors.kPrimaryColor),
                                     suffixIcon: IconButton(
                                         onPressed: () {
+                                          if (controller
+                                              .searchKey.text.isEmpty) {
+                                            controller.isSearching.value =
+                                                !controller.isSearching.value;
+                                          }
                                           controller.searchKey.clear();
                                         },
                                         icon: const Icon(Icons.close,
