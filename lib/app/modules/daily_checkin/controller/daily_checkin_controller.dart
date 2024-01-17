@@ -1,7 +1,6 @@
 import 'package:hibiscus_health/import.dart';
 
 class DailyCheckinController extends GetxController {
-  // final ApiHelper _apiHelper = Get.put<ApiHelper>(ApiHelperImpl());
   final ApiHelper _apiHelper = Get.find();
   List<DailyCheckIns> checkInQuestions =
       List<DailyCheckIns>.empty(growable: true).obs;

@@ -8,7 +8,6 @@ class AnuraWebViewController extends GetxController {
   var hash = "".obs;
   var arguments = Get.arguments;
   var newController = WebViewController().obs;
-  // final ApiHelper _apiHelper = Get.put<ApiHelper>(ApiHelperImpl());
   final ApiHelper _apiHelper = Get.find();
   @override
   void onInit() {
