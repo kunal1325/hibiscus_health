@@ -4,171 +4,197 @@ class OnBoardingView extends GetView<OnBoardingController> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<OnBoardingController>(
-      init: OnBoardingController(),
-      builder: (controller) => PopScope(
-        canPop:false,
-        onPopInvoked: (didPop) {
-            controller.backwardAction();
-          return;
-        },
-        child: Scaffold(
-          body: Container(
-            width: Get.width,
-            height: Get.height,
-            color: AppColors.black,
-            child: Stack(
-              children: [
-                PageView.builder(
-                    controller: controller.pageController,
-                    onPageChanged: controller.selectedPageIndex,
-                    itemCount: controller.onboardingPages.length,
-                    itemBuilder: (context, index) {
-                      return Image.asset(
-                        controller.onboardingPages[index].imageAsset,
-                        height: Get.height,
-                        width: Get.width,
-                        fit: BoxFit.fill,
-                      );
-                    }),
-                Positioned(
-                    right: 10,
-                    top: 35,
-                    child: InkWell(
-                      onTap: controller.skipAction,
-                      child: SizedBox(
-                        width: 72,
-                        height: 52,
-                        child: Center(
-                          child: Text(Strings.skip,
-                              style: GoogleFonts.inter(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                                color: AppColors.previous,
-                                shadows: [
-                                  const Shadow(
-                                    color: AppColors.black,      // Choose the color of the shadow
-                                    blurRadius: 4.0,          // Adjust the blur radius for the shadow effect
-                                    offset: Offset(0.0, 2.0), // Set the horizontal and vertical offset for the shadow
-                                  ),
-                                ],
-                              ),
-                          ),
-                        ),
-                      ),
-                    )),//skip
-                Positioned(
-                    bottom: 0,
-                    child: BlurBoxWidget(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Obx(() =>
-                                  Expanded(
-                                    child: Text(
-                                      controller.onboardingPages[controller.selectedPageIndex.value].title,
-                                      textAlign: TextAlign.center,
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 4,
-                                      style: GoogleFonts.inter(
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.bold,
-                                        color: AppColors.white,
-                                        shadows: [
-                                          const Shadow(
-                                            color: AppColors.black,      // Choose the color of the shadow
-                                            blurRadius: 10.0,          // Adjust the blur radius for the shadow effect
-                                            offset: Offset(0.0, 4.0), // Set the horizontal and vertical offset for the shadow
-                                          ),
-                                        ],
-                                      ),
+        init: OnBoardingController(),
+        builder: (controller) => ConnectivityCheckWidget(
+              body: PopScope(
+                canPop: false,
+                onPopInvoked: (didPop) {
+                  controller.backwardAction();
+                  return;
+                },
+                child: Scaffold(
+                  body: Container(
+                    width: Get.width,
+                    height: Get.height,
+                    color: AppColors.black,
+                    child: Stack(
+                      children: [
+                        PageView.builder(
+                            controller: controller.pageController,
+                            onPageChanged: controller.selectedPageIndex,
+                            itemCount: controller.onboardingPages.length,
+                            itemBuilder: (context, index) {
+                              return Image.asset(
+                                controller.onboardingPages[index].imageAsset,
+                                height: Get.height,
+                                width: Get.width,
+                                fit: BoxFit.fill,
+                              );
+                            }),
+                        Positioned(
+                            right: 10,
+                            top: 35,
+                            child: InkWell(
+                              onTap: controller.skipAction,
+                              child: SizedBox(
+                                width: 72,
+                                height: 52,
+                                child: Center(
+                                  child: Text(
+                                    Strings.skip,
+                                    style: GoogleFonts.inter(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: AppColors.previous,
+                                      shadows: [
+                                        const Shadow(
+                                          color: AppColors
+                                              .black, // Choose the color of the shadow
+                                          blurRadius:
+                                              4.0, // Adjust the blur radius for the shadow effect
+                                          offset: Offset(0.0,
+                                              2.0), // Set the horizontal and vertical offset for the shadow
+                                        ),
+                                      ],
                                     ),
                                   ),
+                                ),
                               ),
-                            ],
-                          ),
-                          SizedBox(height: 44,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: List.generate(
-                              controller.onboardingPages.length,
-                                  (index) => Obx(() {
-                                return Container(
-                                  margin: const EdgeInsets.all(4),
-                                  width: 10,
-                                  height: 10,
-                                  decoration: BoxDecoration(
-                                    color: controller.selectedPageIndex.value == index
-                                        ? AppColors.white
-                                        : Colors.grey[700],
-                                    shape: BoxShape.circle,
-                                  ),
-                                );
-                              }),
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Obx(
-                                      () =>InkWell(
-                                    onTap: controller.isFirstPage ? null : controller.backwardAction,
-                                    child: SizedBox(
-                                      height: 52,
-                                      child: Center(
-                                        child: Text(controller.isFirstPage ? "" : Strings.previous,
+                            )), //skip
+                        Positioned(
+                          bottom: 0,
+                          child: BlurBoxWidget(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Obx(
+                                      () => Expanded(
+                                        child: Text(
+                                          controller
+                                              .onboardingPages[controller
+                                                  .selectedPageIndex.value]
+                                              .title,
+                                          textAlign: TextAlign.center,
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 4,
                                           style: GoogleFonts.inter(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w500,
-                                            color: AppColors.previous,
+                                            fontSize: 24,
+                                            fontWeight: FontWeight.bold,
+                                            color: AppColors.white,
                                             shadows: [
                                               const Shadow(
-                                                color: AppColors.black,      // Choose the color of the shadow
-                                                blurRadius: 4.0,          // Adjust the blur radius for the shadow effect
-                                                offset: Offset(0.0, 2.0), // Set the horizontal and vertical offset for the shadow
+                                                color: AppColors
+                                                    .black, // Choose the color of the shadow
+                                                blurRadius:
+                                                    10.0, // Adjust the blur radius for the shadow effect
+                                                offset: Offset(0.0,
+                                                    4.0), // Set the horizontal and vertical offset for the shadow
                                               ),
                                             ],
                                           ),
                                         ),
                                       ),
                                     ),
-                                  )
-                              ), //previous
-                              InkWell(
-                                onTap: controller.forwardAction,
-                                child: SizedBox(
-                                  height: 52,
-                                  child: Center(
-                                    child: Text(Strings.next,
-                                      style: GoogleFonts.inter(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500,
-                                        color: AppColors.kSecColor,
-                                        shadows: [
-                                          const Shadow(
-                                            color: AppColors.black,      // Choose the color of the shadow
-                                            blurRadius: 4.0,          // Adjust the blur radius for the shadow effect
-                                            offset: Offset(0.0, 2.0), // Set the horizontal and vertical offset for the shadow
-                                          ),
-                                        ],
-                                      ),
-                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 44,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: List.generate(
+                                    controller.onboardingPages.length,
+                                    (index) => Obx(() {
+                                      return Container(
+                                        margin: const EdgeInsets.all(4),
+                                        width: 10,
+                                        height: 10,
+                                        decoration: BoxDecoration(
+                                          color: controller.selectedPageIndex
+                                                      .value ==
+                                                  index
+                                              ? AppColors.white
+                                              : Colors.grey[700],
+                                          shape: BoxShape.circle,
+                                        ),
+                                      );
+                                    }),
                                   ),
                                 ),
-                              ) //next
-                            ],
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Obx(() => InkWell(
+                                          onTap: controller.isFirstPage
+                                              ? null
+                                              : controller.backwardAction,
+                                          child: SizedBox(
+                                            height: 52,
+                                            child: Center(
+                                              child: Text(
+                                                controller.isFirstPage
+                                                    ? ""
+                                                    : Strings.previous,
+                                                style: GoogleFonts.inter(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: AppColors.previous,
+                                                  shadows: [
+                                                    const Shadow(
+                                                      color: AppColors
+                                                          .black, // Choose the color of the shadow
+                                                      blurRadius:
+                                                          4.0, // Adjust the blur radius for the shadow effect
+                                                      offset: Offset(0.0,
+                                                          2.0), // Set the horizontal and vertical offset for the shadow
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        )), //previous
+                                    InkWell(
+                                      onTap: controller.forwardAction,
+                                      child: SizedBox(
+                                        height: 52,
+                                        child: Center(
+                                          child: Text(
+                                            Strings.next,
+                                            style: GoogleFonts.inter(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w500,
+                                              color: AppColors.kSecColor,
+                                              shadows: [
+                                                const Shadow(
+                                                  color: AppColors
+                                                      .black, // Choose the color of the shadow
+                                                  blurRadius:
+                                                      4.0, // Adjust the blur radius for the shadow effect
+                                                  offset: Offset(0.0,
+                                                      2.0), // Set the horizontal and vertical offset for the shadow
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ) //next
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
+                  ),
                 ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+              ),
+            ));
   }
 }

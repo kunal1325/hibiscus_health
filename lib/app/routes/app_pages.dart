@@ -4,7 +4,6 @@ part 'app_routes.dart';
 
 abstract class AppPages {
   static const initial = Routes.splash;
-  //Routes.splash;
 
   static final routes = [
     GetPage(
@@ -112,6 +111,21 @@ abstract class AppPages {
       name: _Paths.landingPage,
       page: () => LandingScreen(),
       binding: LandingBinding(),
+    ),
+    GetPage(
+      name: _Paths.dataCollection,
+      page: () => DataCollectionView(),
+      binding: DataCollectionBinding(),
+    ),
+    GetPage(
+      name: _Paths.anuraWebView,
+      page: () => AnuraWebView(),
+      binding: AnuraWebViewBinding(),
+    ),
+    GetPage(
+      name: _Paths.dailyCheckinPage,
+      page: () => const DailyCheckinView(),
+      binding: DailyCheckinBinding(),
     ),
   ];
 }

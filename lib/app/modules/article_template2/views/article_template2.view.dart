@@ -8,8 +8,8 @@ class ArticleTemplateView2 extends GetView<ArticleTemplateView2> {
     return GetBuilder<ArticleTemplate2Controller>(
         init: ArticleTemplate2Controller(),
         builder: (controller) {
-          return SafeArea(
-              child: Scaffold(
+          return ConnectivityCheckWidget(
+              body: Scaffold(
             appBar: AppBar(
               toolbarHeight: 80,
               backgroundColor: AppColors.kPrimaryColor,
@@ -79,13 +79,22 @@ class ArticleTemplateView2 extends GetView<ArticleTemplateView2> {
                                                       color:
                                                           AppColors.kLightBlue),
                                             ),
-                                            IconButton(
-                                                onPressed: () {},
-                                                icon: const Icon(
-                                                    Icons.bookmark_border,
-                                                    size: 25,
-                                                    color:
-                                                        AppColors.kLightBlue)),
+                                            Theme(
+                                              data: ThemeData(
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                splashColor: Colors.transparent,
+                                                splashFactory:
+                                                    NoSplash.splashFactory,
+                                              ),
+                                              child: IconButton(
+                                                  onPressed: () {},
+                                                  icon: const Icon(
+                                                      Icons.bookmark_border,
+                                                      size: 25,
+                                                      color: AppColors
+                                                          .kLightBlue)),
+                                            ),
                                           ],
                                         )
                                       ],

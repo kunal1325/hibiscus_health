@@ -6,8 +6,10 @@ class UserModel {
   String? dietitianID;
   String? patientName;
   String? dietitianName;
+  String? email;
+  int? age;
 
-  UserModel({this.token, this.msg, this.status, this.userID, this.dietitianID, this.patientName, this.dietitianName});
+  UserModel({this.token, this.msg, this.status, this.userID, this.dietitianID, this.patientName, this.dietitianName, this.email, this.age});
 
   UserModel.fromJson(Map<String, dynamic> json) {
     token = json['token'] != null ? new Token.fromJson(json['token']) : null;
@@ -17,6 +19,8 @@ class UserModel {
     dietitianID = json['dietitianID'];
     patientName = json['patientName'];
     dietitianName = json['dietitianName'];
+    email = json['email'];
+    age = json['age'];
   }
 
   Map<String, dynamic> toJson() {
@@ -30,6 +34,8 @@ class UserModel {
     data['dietitianID'] = this.dietitianID;
     data['patientName'] = this.patientName;
     data['dietitianName'] = this.dietitianName;
+    data['email'] = this.email;
+    data['age'] = this.age;
     return data;
   }
 }

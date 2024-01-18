@@ -3,13 +3,15 @@ import '../../../../import.dart';
 class HomeController extends GetxController {
 
   var counter = 0.obs;
-
+  var isDataLoading = false.obs;
   void incrementCounter() {
-    Utils.showSnackBarFun(Get.context, Strings.alreadyTakenError);
-      counter.value++;
-      if (kDebugMode) {
-        print("For Testing ");
-      }
+    counter.value++;
+    if (kDebugMode) {
+      print("For Testing ");
+    }
   }
+
+
+
 
 }

@@ -23,7 +23,7 @@ class HelpUsController extends GetxController {
   ].obs;
 
   var dropdownValue = Strings.issue.obs;
-  final ApiHelper _apiHelper = Get.put<ApiHelper>(ApiHelperImpl());
+  final ApiHelper _apiHelper = Get.find();
   String? isValidFullName(String? text) {
     if (text!.isEmpty) {
       return Strings.emptyFullNameError;

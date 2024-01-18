@@ -6,10 +6,10 @@ class LandingScreen extends GetView<LandingScreenController> {
     return GetBuilder<LandingScreenController>(
         init: LandingScreenController(),
         builder: (controller) {
-          return SafeArea(
-              child: Scaffold(
+          return ConnectivityCheckWidget(
+              body: Scaffold(
                   body: PopScope(
-                    canPop:false,
+                    canPop: false,
                     onPopInvoked: (didPop) {
                       if (controller.currentIndex.value == 0) {
                         showExitPopup(Get.context);

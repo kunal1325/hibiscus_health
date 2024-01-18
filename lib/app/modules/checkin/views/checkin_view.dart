@@ -12,23 +12,21 @@ class CheckinView extends GetView<CheckinController> {
     return GetBuilder<CheckinController>(
         init: CheckinController(),
         builder: (controller) {
-          return SafeArea(
-            child: Scaffold(
-              appBar: AppBar(
-                backgroundColor: AppColors.kPrimaryColor,
-                elevation: 0,
-                toolbarHeight: 80,
-                title: Text(
-                  Strings.checkin,
-                  style: Utils.kBigText.copyWith(fontWeight: FontWeight.w500),
-                ),
-                centerTitle: true,
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: AppColors.kPrimaryColor,
+              elevation: 0,
+              toolbarHeight: 80,
+              title: Text(
+                Strings.checkin,
+                style: Utils.kBigText.copyWith(fontWeight: FontWeight.w500),
               ),
-              body: ComingSoon(
-                onClick: () {
-                  pageController?.jumpToPage(0);
-                },
-              ),
+              centerTitle: true,
+            ),
+            body: ComingSoon(
+              onClick: () {
+                pageController?.jumpToPage(0);
+              },
             ),
           );
         });
