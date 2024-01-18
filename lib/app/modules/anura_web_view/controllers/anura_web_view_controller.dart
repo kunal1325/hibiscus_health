@@ -103,7 +103,6 @@ class AnuraWebViewController extends GetxController {
             await Get.offAll(() => StartMyJourneyView());
             isLoading.value = false;
           }else{
-            Utils.showSnackBarFun(Get.context, userResponse.msg ?? "Something Went Wrong !!!");
             Storage.saveValue(Constants.isFaceScanCompleted, false);
             Storage.saveValue(Constants.isScanFailed, true);
             Get.back(result: "triggerIt");
@@ -114,7 +113,6 @@ class AnuraWebViewController extends GetxController {
           Storage.saveValue(Constants.isScanFailed, true);
           Get.back(result: "triggerIt");
         });
-
       } else {
         Utils.showSnackBarFun(Get.context, Strings.noConnection);
         Storage.saveValue(Constants.isFaceScanCompleted, false);

@@ -287,47 +287,40 @@ class LibraryView extends GetView<LibraryController> {
                                                     color: AppColors.kGreyText),
                                           ),
                                           const SizedBox(height: 25),
-                                          InkWell(
-                                              onTap: () {
-                                                controller.resetFilters();
-                                              },
-                                              child: CustomButtons(
-                                                weight: Get.width / 2,
-                                                height: 40,
-                                                color: AppColors.kSecColor,
-                                                shadowColor:
-                                                    AppColors.kSecColor,
-                                                borderRadius: 30,
-                                                title: Strings.backToContent,
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w600,
-                                                fontColor:
-                                                    AppColors.kPrimaryColor,
-                                                withShadow: false,
-                                              )),
+                                          controller
+                                                          .categoryList[
+                                                              controller
+                                                                  .isChipSelected
+                                                                  .value]
+                                                          .attributes
+                                                          ?.categoryName ==
+                                                      'All' &&
+                                                  controller
+                                                      .searchKey.text.isEmpty
+                                              ? const SizedBox()
+                                              : InkWell(
+                                                  onTap: () {
+                                                    controller.resetFilters();
+                                                  },
+                                                  child: CustomButtons(
+                                                    weight: Get.width / 2,
+                                                    height: 40,
+                                                    color: AppColors.kSecColor,
+                                                    shadowColor:
+                                                        AppColors.kSecColor,
+                                                    borderRadius: 30,
+                                                    title:
+                                                        Strings.backToContent,
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontColor:
+                                                        AppColors.kPrimaryColor,
+                                                    withShadow: false,
+                                                  )),
                                         ],
                                       ),
                                     )),
                         ),
-
-                        // builderDelegate: PagedChildBuilderDelegate(
-                        //   itemBuilder: (BuildContext context, item,
-                        //       int index) {
-                        //     return InkWell(
-                        //       onTap: () => Get.toNamed(
-                        //           controller.screensToGo[index %
-                        //               controller
-                        //                   .screensToGo.length],
-                        //           arguments: [item.attributes]),
-                        //       child: LibraryCard(
-                        //           cardTitle:
-                        //               "${item.attributes?.title}",
-                        //           image:
-                        //               "${item.attributes?.image}")git m
-                        //     );
-                        //   },
-                        // ),
-                        //),
                       ),
                       const SizedBox(height: 60),
                     ],
