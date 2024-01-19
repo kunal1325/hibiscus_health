@@ -6,6 +6,8 @@ class LibraryController extends GetxController {
   List<CategoryModel> categoryList =
       List<CategoryModel>.empty(growable: true).obs;
 
+  ScrollController categoryScroller = ScrollController();
+
   static const pageSize = 120;
 
   var isCategoryLoading = false.obs;
@@ -101,5 +103,18 @@ class LibraryController extends GetxController {
     } else {
       return null;
     }
+  }
+
+  onTapBackToContent() {
+    resetFilters();
+    categoryScroller.animateTo(0.0,
+        duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
+  }
+
+  @override
+  void dispose() {
+    categoryScroller.dispose();
+    searchKey.dispose();
+    super.dispose();
   }
 }
