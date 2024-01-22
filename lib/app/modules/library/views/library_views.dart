@@ -140,6 +140,7 @@ class LibraryView extends GetView<LibraryController> {
                                       child: ListView.builder(
                                         itemCount:
                                             controller.categoryList.length,
+                                        controller: controller.categoryScroller,
                                         scrollDirection: Axis.horizontal,
                                         physics: const ClampingScrollPhysics(),
                                         shrinkWrap: true,
@@ -299,9 +300,8 @@ class LibraryView extends GetView<LibraryController> {
                                                       .searchKey.text.isEmpty
                                               ? const SizedBox()
                                               : InkWell(
-                                                  onTap: () {
-                                                    controller.resetFilters();
-                                                  },
+                                                  onTap: controller
+                                                      .onTapBackToContent,
                                                   child: CustomButtons(
                                                     weight: Get.width / 2,
                                                     height: 40,
