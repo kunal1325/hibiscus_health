@@ -90,6 +90,9 @@ dependencies:
   #For step indicator
   step_progress_indicator:
 
+  #For notifications
+  awesome_notifications:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

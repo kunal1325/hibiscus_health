@@ -57,4 +57,6 @@ abstract class AppImages {
   static const String Figure = 'assets/images/pngs/Figure.png';
   static const String FigureSvg = 'assets/images/svgs/Figure.svg';
 
+  //Check-In
+  static const String checkinTimeIcon = "assets/images/pngs/checkinTime.png";
 }

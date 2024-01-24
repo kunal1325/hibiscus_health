@@ -25,8 +25,10 @@ class CheckinView extends GetView<CheckinController> {
             ),
             body: ComingSoon(
               onClick: () {
-                pageController?.jumpToPage(0);
+                // pageController?.jumpToPage(0);
+                controller.setReminderModal();
               },
+              buttonTitle: "Set Check-In Time",
             ),
           );
         });
