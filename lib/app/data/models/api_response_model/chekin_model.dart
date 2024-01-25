@@ -1,13 +1,13 @@
-class CheckInResponse {
-  List<DailyCheckIns>? dailyCheckIns;
+class DailyCheckInResponse {
+  List<CheckInModel>? dailyCheckIns;
 
-  CheckInResponse({this.dailyCheckIns});
+  DailyCheckInResponse({this.dailyCheckIns});
 
-  CheckInResponse.fromJson(Map<String, dynamic> json) {
+  DailyCheckInResponse.fromJson(Map<String, dynamic> json) {
     if (json['Daily Check-ins'] != null) {
-      dailyCheckIns = <DailyCheckIns>[];
+      dailyCheckIns = <CheckInModel>[];
       json['Daily Check-ins'].forEach((v) {
-        dailyCheckIns!.add(new DailyCheckIns.fromJson(v));
+        dailyCheckIns!.add(new CheckInModel.fromJson(v));
       });
     }
   }
@@ -22,14 +22,14 @@ class CheckInResponse {
   }
 }
 
-class DailyCheckIns {
+class CheckInModel {
   String? model;
   int? pk;
   Fields? fields;
 
-  DailyCheckIns({this.model, this.pk, this.fields});
+  CheckInModel({this.model, this.pk, this.fields});
 
-  DailyCheckIns.fromJson(Map<String, dynamic> json) {
+  CheckInModel.fromJson(Map<String, dynamic> json) {
     model = json['model'];
     pk = json['pk'];
     fields =

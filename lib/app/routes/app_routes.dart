@@ -27,6 +27,7 @@ abstract class Routes {
   static const dataCollection = _Paths.dataCollection;
   static const anuraWebView = _Paths.anuraWebView;
   static const dailyCheckinScreen = _Paths.dailyCheckinPage;
+  static const initialCheckInScreen = _Paths.initialCheckInPage;
 }
 
 abstract class _Paths {
@@ -55,4 +56,5 @@ abstract class _Paths {
   static const articleTemplate2 = '/articleTemplate2';
   static const landingPage = '/landingPage';
   static const dailyCheckinPage = '/dailyCheckInPage';
+  static const initialCheckInPage = "/initialCheckInPage";
 }

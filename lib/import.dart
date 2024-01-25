@@ -41,6 +41,7 @@ export 'app/data/models/api_response_model/article_model.dart';
 export 'app/data/models/api_response_model/category_model.dart';
 export 'app/data/models/api_response_model/face_scan_requirement_model.dart';
 export 'app/data/models/api_response_model/chekin_model.dart';
+export 'app/data/models/api_response_model/initial_checkin.dart';
 
 ///Request Models
 export 'app/data/models/request_models/registration_request.dart';
@@ -231,7 +232,13 @@ export 'app/modules/face_scan_description/views/face_scan_description_view.dart'
 export 'app/modules/anura_web_view/bindings/anura_web_view_binding.dart';
 export 'app/modules/anura_web_view/controllers/anura_web_view_controller.dart';
 export 'app/modules/anura_web_view/views/anura_web_view.dart';
+
 //Daily Check-in
 export 'app/modules/daily_checkin/binding/daily_checkin_binding.dart';
 export 'app/modules/daily_checkin/controller/daily_checkin_controller.dart';
 export 'app/modules/daily_checkin/view/daily_checkin_view.dart';
+
+//Initial Check-in
+export 'app/modules/initial_checkin/binding/initial_checkin_binding.dart';
+export 'app/modules/initial_checkin/controller/initial_checkin_controller.dart';
+export 'app/modules/initial_checkin/view/initial_checkin_view.dart';

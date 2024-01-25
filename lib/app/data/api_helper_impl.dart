@@ -102,7 +102,7 @@ class ApiHelperImpl extends GetConnect implements ApiHelper {
         json.encode(updatePasswordRequest.toJson()));
   }
 
-    @override
+  @override
   Future<Response<dynamic>> sentEmail(sentEmail) {
     return post('facescandata/', json.encode(sentEmail.toJson()));
   }
@@ -115,5 +115,15 @@ class ApiHelperImpl extends GetConnect implements ApiHelper {
   @override
   Future<Response<dynamic>> postCheckInAnswers(AnsResponse answers) {
     return post('dailycheckin/', json.encode(answers.toJson()));
+  }
+
+  @override
+  Future<Response> getInitialCheckInQuestions() async {
+    return get('initialAssessment/');
+  }
+
+  @override
+  Future<Response<dynamic>> postInitialCheckInAnswers(AnsResponse answers) {
+    return post('initialAssessment/', json.encode(answers.toJson()));
   }
 }

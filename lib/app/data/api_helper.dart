@@ -13,4 +13,6 @@ abstract class ApiHelper {
 
   Future<Response> getDailyCheckInQuestions();
   Future<Response> postCheckInAnswers(AnsResponse answers);
+  Future<Response> getInitialCheckInQuestions();
+  Future<Response> postInitialCheckInAnswers(AnsResponse answer);
 }

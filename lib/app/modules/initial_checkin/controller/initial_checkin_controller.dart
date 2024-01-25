@@ -1,6 +1,6 @@
 import 'package:hibiscus_health/import.dart';
 
-class DailyCheckinController extends GetxController {
+class InitialCheckinController extends GetxController {
   // final ApiHelper _apiHelper = Get.put<ApiHelper>(ApiHelperImpl());
   final ApiHelper _apiHelper = Get.find();
   List<CheckInModel> checkInQuestions =
@@ -10,7 +10,6 @@ class DailyCheckinController extends GetxController {
 
   List<String> answers = List<String>.empty(growable: true).obs;
 
-  static const pageSize = 20;
   var currentQuestionIndex = 0.obs;
   var selectedOptionIndex = 100.obs;
   var patient;
@@ -26,18 +25,13 @@ class DailyCheckinController extends GetxController {
     super.onInit();
   }
 
-  void navigateToContentLibrary() {
-    Get.offAll(() => LandingScreen());
+  void navigateToDailyCheckIn() {
+    Get.offAll(() => DailyCheckinView());
   }
 
   delayedNavigation() async {
     await Future.delayed(Duration(seconds: 3));
-    navigateToContentLibrary();
-  }
-
-  oneUnansweredPost() {
-    postAnswers();
-    currentQuestionIndex.value += 2;
+    navigateToDailyCheckIn();
   }
 
   allAnsweredPost() {
@@ -58,13 +52,7 @@ class DailyCheckinController extends GetxController {
       if (currentQuestionIndex == checkInQuestions.length - 1) {
         return allAnsweredPost;
       } else {
-        //When answered 'A' for question 4 AND/OR 'B' for option 5
-        if (currentQuestionIndex.value == 4 &&
-            (answers[3] != options[3][0] && answers[4] != options[4][1])) {
-          return oneUnansweredPost;
-        } else {
-          return normalQuestionNext;
-        }
+        return normalQuestionNext;
       }
     }
   }
@@ -80,10 +68,13 @@ class DailyCheckinController extends GetxController {
 
   Future<void> getQuestions() async {
     isLoading.value = true;
-    _apiHelper.getDailyCheckInQuestions().futureValue((value) {
+    _apiHelper.getInitialCheckInQuestions().futureValue((value) {
+      print("🐲🐲🐲🐲🐲");
+      print(value);
       checkInQuestions
-          .addAll(DailyCheckInResponse.fromJson(value).dailyCheckIns ?? []);
+          .addAll(InitialCheckInResponse.fromJson(value).dailyCheckIns ?? []);
       addOptions();
+      print("😍😍😍 ${checkInQuestions.length}");
       isLoading.value = false;
     }, onError: (error) {
       isLoading.value = false;
@@ -123,7 +114,7 @@ class DailyCheckinController extends GetxController {
           delayedNavigation();
         }
       }, onError: (error) {
-        print("Daily checkin response error $error");
+        print("Initial checkin response error $error");
         isLoading.value = false;
       });
     } catch (e) {

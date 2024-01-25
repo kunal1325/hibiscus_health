@@ -4,7 +4,8 @@ abstract class Strings {
   static const connectionTimeout =
       'Connection timeout. Please try again after some time.';
   static const noConnection = 'No connection. Please turn on your internet!';
-  static const stillNoConnection = 'Still No connection. Please check all the points mention bellow!! ';
+  static const stillNoConnection =
+      'Still No connection. Please check all the points mention bellow!! ';
   static const unAuthorize = 'Unauthorized. Please login again!';
   static const String appName = 'Hibiscus Health';
   static const String emptyString = '';
@@ -99,6 +100,12 @@ abstract class Strings {
   static const String reminderTomorrow =
       "We will send a reminder tomorrow just in case";
   static const String submit = "Submit";
+
+  ///Initial Check-in Module
+  static const String initialCheckIn = "Initial Check-in";
+  static const String initialAssessment = "Initial Assessment";
+  static const String assessmentCompleted = "Assessment completed!";
+  static const String tillNextTime = "Till next time again!";
 
   //Privacy First
 
@@ -223,15 +230,20 @@ abstract class Strings {
 
   ///Offline
   static const String offlineTitle = 'Looks like you are offline. ';
-  static const String offlineDescription = 'Check your internet connection and try again';
+  static const String offlineDescription =
+      'Check your internet connection and try again';
   static const String offlineInstructionTitleOne = 'Check Connectivity: ';
-  static const String offlineInstructionDescriptionOne = 'Ensure you have a stable internet connection.';
+  static const String offlineInstructionDescriptionOne =
+      'Ensure you have a stable internet connection.';
   static const String offlineInstructionTitleTwo = 'Switch Networks: ';
-  static const String offlineInstructionDescriptionTwo = 'If Wi-Fi is on , try switching to cellular data.';
+  static const String offlineInstructionDescriptionTwo =
+      'If Wi-Fi is on , try switching to cellular data.';
   static const String offlineInstructionTitleThree = "Disable VPN: ";
-  static const String offlineInstructionDescriptionThree = "If you're using a VPN, consider disabling it.";
+  static const String offlineInstructionDescriptionThree =
+      "If you're using a VPN, consider disabling it.";
   static const String offlineInstructionTitleFour = 'Restart Device: ';
-  static const String offlineInstructionDescriptionFour = 'Restart your device and relaunch the app';
+  static const String offlineInstructionDescriptionFour =
+      'Restart your device and relaunch the app';
 
   ///Face Scan
 
@@ -248,7 +260,8 @@ abstract class Strings {
   static const String tryAgain = 'Try again';
   static const String proceedToFaceScan = 'Proceed to Face Scan';
   static const String physicalAttributes = 'Physical Attributes';
-  static const String physicalAttributesDescription = 'Lorem ipsum dolor sit amet, consetur adipiscing elit, sed do eiusmod ';
+  static const String physicalAttributesDescription =
+      'Lorem ipsum dolor sit amet, consetur adipiscing elit, sed do eiusmod ';
   static const String heightFt = 'Height (ft)';
   static const String heightFtHint = '6';
   static const String heightIn = 'Height (In)';
@@ -257,18 +270,22 @@ abstract class Strings {
   static const String weightLbsHint = '189';
   static const String emptyHeightFtError = 'Please enter height Ft';
   static const String invalidHeightFtError = 'Height Can not greater than 6 ft';
-  static const String invalidLessHeightFtError = 'Height Can not Less than 4 ft';
+  static const String invalidLessHeightFtError =
+      'Height Can not Less than 4 ft';
   static const String emptyHeightInError = 'Please enter height In';
   static const String emptyWeightError = 'Please enter your weight';
-  static const String invalidWeightError = 'Please enter your Correct weight, In between 99 - 606 lbs';
+  static const String invalidWeightError =
+      'Please enter your Correct weight, In between 99 - 606 lbs';
   static const String answerTheseQuestions = 'Answer these questions';
   static const String gender = 'What is your sex at birth? *';
   static const String smoke = 'Do you smoke? *';
   static const String hypertension = 'Do you have hypertension? *';
-  static const String bloodPressureMedication = 'Are you taking blood pressure medication? *';
+  static const String bloodPressureMedication =
+      'Are you taking blood pressure medication? *';
   static const String diabetic = 'Are you diabetic? *';
   static const String notSelected = 'Not Selected';
-  static const String compulsoryQuestionsError = 'All the questions are compulsory, Please provide suitable answer for these questions to start face scan';
+  static const String compulsoryQuestionsError =
+      'All the questions are compulsory, Please provide suitable answer for these questions to start face scan';
 
   static const String no = 'no';
   static const String noCapital = 'No';
@@ -287,15 +304,17 @@ abstract class Strings {
   static const String checkIn = 'Check-in';
   static const String faceScanCompleted = 'Face scan completed!';
   static const String resultsReady = 'The results are ready!';
-  static const String customAskingForPermissionTitle = '”Hibiscus Health” Would Like to Access to the Camera';
-  static const String customAskingForPermissionDescription = 'To take pictures and detect your face';
-  static const String customAskingForPermissionTitleAfterDenied = 'Allow Hibiscus Health to access your camera ?';
-  static const String customAskingForPermissionDescriptionAfterDenied = 'You need to allow camera access in parameters for face scan in the app';
-  static const String reasonForAskingForPermission = 'Without Camera Permission, We are not able to get you face scan completed. So for go further, Please provide camera access permission.';
+  static const String customAskingForPermissionTitle =
+      '”Hibiscus Health” Would Like to Access to the Camera';
+  static const String customAskingForPermissionDescription =
+      'To take pictures and detect your face';
+  static const String customAskingForPermissionTitleAfterDenied =
+      'Allow Hibiscus Health to access your camera ?';
+  static const String customAskingForPermissionDescriptionAfterDenied =
+      'You need to allow camera access in parameters for face scan in the app';
+  static const String reasonForAskingForPermission =
+      'Without Camera Permission, We are not able to get you face scan completed. So for go further, Please provide camera access permission.';
   static const String doNotAllow = 'Don’t Allow';
   static const String allow = '   Allow   ';
   static const String settings = ' Settings ';
-
-
-
 }
