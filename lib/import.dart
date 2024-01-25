@@ -14,6 +14,7 @@ export 'app/common/util/initializer.dart';
 export 'app/common/util/utils.dart';
 export 'app/common/util/store.dart';
 export 'app/common/util/extensions.dart';
+export 'app/common/util/notifcation_controller.dart';
 
 ///-------------------- Data --------------------
 export 'app/data/api_helper.dart';
@@ -91,8 +92,7 @@ export 'package:permission_handler/permission_handler.dart';
 export 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 export 'package:webview_flutter/webview_flutter.dart';
 export 'package:flutter/cupertino.dart' hide RefreshCallback;
-
-
+export 'package:awesome_notifications/awesome_notifications.dart';
 
 ///-------------------- Routes --------------------
 export 'app/routes/app_pages.dart';

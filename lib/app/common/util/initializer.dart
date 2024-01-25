@@ -45,7 +45,7 @@ class InitialBindings extends Bindings {
     Get.put<ApiHelper>(ApiHelperImpl());
 
     Get.put<ApiInterfaceController>(
-       ApiInterfaceController(),
+      ApiInterfaceController(),
     );
   }
 }
