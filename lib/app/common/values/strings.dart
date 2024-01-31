@@ -122,17 +122,17 @@ abstract class Strings {
       'You are now connected to a Dietitian';
   static const String firstFaceScan = 'Complete your first face scan';
   static const String firstFaceScanDescription =
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ';
+      'Scan your face and get instant insights about your health and other metabolic. ';
   static const String firstAssessment = 'Take first assessment';
   static const String firstAssessmentDescription =
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod ';
+      'Let your dietitian know how you are doing today with  just a few questions.';
   static const String startMyJourney = 'Start my journey';
 
   /// Complete Profile
 
   static const String completeProfile = 'Complete Profile';
   static const String completeProfileDescription =
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo';
+      'To get started on your health journey, please take a moment to fill out the registration form below. ';
   static const String fNameHint = 'John';
   static const String fName = 'First Name';
   static const String lNameHint = 'Doe';
@@ -148,7 +148,7 @@ abstract class Strings {
   static const String emptyLastNameError = 'Please enter Last Name';
   static const String emptyPhoneNumberError = 'Please enter Phone Number';
   static const String shortPhoneNumberError =
-      'Phone Number must have than 10 characters.';
+      'Phone Number must have 10 characters.';
   static const String emptyDobNameError = 'Please enter Date Of Birth';
   static const String emptyDietitianCodeNameError =
       'Please enter Dietitian code';
@@ -183,7 +183,7 @@ abstract class Strings {
   static const sendResetCode = "Send Reset Code";
   static const setNewPassword = "Set New Password";
   static const String emptyOtpError = 'Please enter OTP ';
-  static const String shortOtpError = 'Otp must have more than 6 characters.';
+  static const String shortOtpError = 'OTP must have 6 digits.';
   static const String emptyNewPasswordError = 'Please enter new password';
   static const String shortNewPasswordError =
       'New Password must have more than 8 characters.';
@@ -248,7 +248,7 @@ abstract class Strings {
   static const String tryAgain = 'Try again';
   static const String proceedToFaceScan = 'Proceed to Face Scan';
   static const String physicalAttributes = 'Physical Attributes';
-  static const String physicalAttributesDescription = 'Lorem ipsum dolor sit amet, consetur adipiscing elit, sed do eiusmod ';
+  static const String physicalAttributesDescription = 'Complete the form below to help us assess your vitals. ';
   static const String heightFt = 'Height (ft)';
   static const String heightFtHint = '6';
   static const String heightIn = 'Height (In)';
@@ -295,6 +295,7 @@ abstract class Strings {
   static const String doNotAllow = 'Don’t Allow';
   static const String allow = '   Allow   ';
   static const String settings = ' Settings ';
+
 
 
 

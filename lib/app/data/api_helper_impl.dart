@@ -29,7 +29,6 @@ class ApiHelperImpl extends GetConnect implements ApiHelper {
           },
         );
       }
-
       return response;
     });
   }

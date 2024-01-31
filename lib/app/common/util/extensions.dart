@@ -1,13 +1,12 @@
 import '../../../import.dart';
 
 extension FutureExt<T> on Future<Response<T>?> {
-
   void futureValue(
-      Function(T value) response, {
-        Function(String? error)? onError,
-        VoidCallback? retryFunction,
-        bool showLoading = true,
-      }) {
+    Function(T value) response, {
+    Function(String? error)? onError,
+    VoidCallback? retryFunction,
+    bool showLoading = true,
+  }) {
     final _interface = Get.find<ApiInterfaceController>();
     _interface.error = null;
 
@@ -22,7 +21,6 @@ extension FutureExt<T> on Future<Response<T>?> {
         );
       },
     ).then((value) {
-
       if (value?.body != null) {
         final result = ApiResponse.getResponse<T>(value!);
         if (result != null) {
@@ -30,18 +28,13 @@ extension FutureExt<T> on Future<Response<T>?> {
           print("$result");
           response(result);
         }
-      }else{
+      } else {
         print(" ===============> body null $value");
-        Utils.showDialog(
-          "Something Went Wrong !!!",
-          onTap: () => Get.back()
-        );
+        Utils.showDialog("Something Went Wrong !!!", onTap: () => Get.back());
       }
 
       _interface.update();
-    })
-        .catchError((e) {
-
+    }).catchError((e) {
       if (e == null) return;
 
       final String errorMessage = e is ApiError ? e.message : e.toString();
@@ -58,15 +51,14 @@ extension FutureExt<T> on Future<Response<T>?> {
             onTap: errorMessage != Strings.unauthorized
                 ? null
                 : () {
-              Storage.clearStorage();
-              Get.offAllNamed(
-                Routes.signIn,
-              );
-            },
+                    Storage.clearStorage();
+                    Get.offAllNamed(
+                      Routes.signIn,
+                    );
+                  },
           );
         }
       }
-
       if (onError != null) {
         onError(errorMessage);
       }
@@ -76,11 +68,10 @@ extension FutureExt<T> on Future<Response<T>?> {
   }
 
   void _retry(
-      ApiInterfaceController _interface,
-      VoidCallback retryFunction,
-      ) {
+    ApiInterfaceController _interface,
+    VoidCallback retryFunction,
+  ) {
     _interface.retry = retryFunction;
     _interface.update();
   }
-
 }

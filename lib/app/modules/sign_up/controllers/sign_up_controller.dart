@@ -62,7 +62,6 @@ class SignUpController extends GetxController {
       if (isConnected) {
         errorMsg.value = Strings.emptyString;
         isLoading.value = true;
-
         _apiHelper
             .register(RegisterRequest(
             email: emailController.text,
@@ -322,11 +321,19 @@ class SignUpController extends GetxController {
   void navigateToPrivacyFirst(){
     Get.toNamed(Routes.privacyFirst);
   }
-  void openTermsOfService(){
-
+  Future<void> openTermsOfService() async {
+    if (await canLaunchUrlString(Constants.TERM_CONDITION_URL)) {
+    await launchUrlString(Constants.TERM_CONDITION_URL);
+    } else {
+    Get.to(TermAndConditionPage());
+    }
   }
-  void openPrivacyPolicy(){
-
+  Future<void> openPrivacyPolicy() async {
+    if (await canLaunchUrlString(Constants.PRIVACY_POLICIES_URL)) {
+    await launchUrlString(Constants.PRIVACY_POLICIES_URL);
+    } else {
+    Get.to(PrivacyPoliciesPage());
+    }
   }
   navigateBackFromSignUp(){
     Get.offNamedUntil(Routes.welcomeScreen, (route) => false);

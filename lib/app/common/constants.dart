@@ -15,6 +15,9 @@ abstract class Constants {
   static const String uRLForWebViewResultTwo = 'https://hibiscushealth.com/results?results=';
   static const String uRLForWebViewErrorInvalidBmi = 'https://hibiscushealth.com/results?error=INVALID_BMI';
 
+  static const TERM_CONDITION_URL = "https://hibiscushealth.com/mobile-terms";
+  static const PRIVACY_POLICIES_URL = "https://hibiscushealth.com/mobile-privacy";
+
   
   static const String articleUrl = "api/articles";
   static const String categoryUrl = "api/category-lists";

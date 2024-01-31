@@ -90,7 +90,10 @@ export 'package:step_progress_indicator/step_progress_indicator.dart';
 export 'package:permission_handler/permission_handler.dart';
 export 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 export 'package:webview_flutter/webview_flutter.dart';
+export 'package:url_launcher/url_launcher.dart';
+export 'package:url_launcher/url_launcher_string.dart';
 export 'package:flutter/cupertino.dart' hide RefreshCallback;
+
 
 
 
@@ -143,6 +146,8 @@ export 'app/modules/sign_up/bindings/sign_up_binding.dart';
 export 'app/modules/sign_up/controllers/sign_up_controller.dart';
 export 'app/modules/sign_up/views/sign_up_view.dart';
 export 'app/modules/sign_up/views/complete_profile.dart';
+export 'app/modules/sign_up/views/terms_condition.dart';
+export 'app/modules/sign_up/views/privacy_policies.dart';
 
 /// Privacy First Screen
 export 'app/modules/privacy_page/bindings/privacy_first_binding.dart';
